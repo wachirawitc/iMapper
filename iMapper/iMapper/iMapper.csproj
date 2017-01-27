@@ -53,6 +53,8 @@
   <ItemGroup>
     <Compile Include="Commands\MapperCommand.cs" />
     <Compile Include="Commands\MapperCommandPackage.cs" />
+    <Compile Include="Model\ClassElement.cs" />
+    <Compile Include="Model\MemberElement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,8 +1,10 @@
 ﻿using EnvDTE;
 using EnvDTE80;
+using iMapper.Model;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Globalization;
 using System.Linq;
@@ -62,10 +64,7 @@ namespace iMapper.Commands
             var dte2 = Package.GetGlobalService(typeof(SDTE)) as DTE2;
             if (dte2 != null)
             {
-                string fullName = dte2.ActiveDocument.FullName;
-                string fileName = dte2.ActiveDocument.Name;
-                string language = dte2.ActiveDocument.Language;
-                var selection = dte2.ActiveDocument.Selection;
+                var elements = GetProjectsInSolution(dte2);
 
                 var textSelection = dte2.ActiveWindow.Selection as EnvDTE.TextSelection;
 
@@ -73,23 +72,13 @@ namespace iMapper.Commands
                 var selectedClass = textSelection?.ActivePoint.CodeElement[vsCMElement.vsCMElementClass] as CodeClass;
                 if (selectedClass != null)
                 {
-                    CodeInterface @interface = selectedClass.ImplementedInterfaces.OfType<CodeInterface>().FirstOrDefault();
+                    var @interface = selectedClass.ImplementedInterfaces.OfType<CodeInterface>().FirstOrDefault();
                     if (@interface != null)
                     {
                         string interfaceFullName = @interface.FullName;
 
                         if (string.IsNullOrEmpty(interfaceFullName) == false)
                         {
-                            foreach (Project project in dte2.Solution.Projects)
-                            {
-                                foreach (ProjectItem projectItem in project.ProjectItems)
-                                {
-                                    string name = projectItem.Name;
-                                    if (string.IsNullOrEmpty(name))
-                                    {
-                                    }
-                                }
-                            }
                         }
                     }
 
@@ -123,6 +112,77 @@ namespace iMapper.Commands
                 OLEMSGICON.OLEMSGICON_INFO,
                 OLEMSGBUTTON.OLEMSGBUTTON_OK,
                 OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+        }
+
+        private static List<ClassElement> GetProjectsInSolution(DTE2 dte2)
+        {
+            List<ClassElement> model = new List<ClassElement>();
+
+            foreach (Project project in dte2.Solution.Projects)
+            {
+                var item = GetProjectItems(project);
+                model.AddRange(item);
+            }
+
+            return model;
+        }
+
+        private static List<ClassElement> GetProjectItems(Project project)
+        {
+            List<ClassElement> elements = new List<ClassElement>();
+
+            foreach (ProjectItem projectItem in project.ProjectItems)
+            {
+                var fileCodeModel2 = projectItem.FileCodeModel as FileCodeModel2;
+                if (fileCodeModel2 != null && projectItem.Name.EndsWith(".cs"))
+                {
+                    foreach (CodeElement codeElement in fileCodeModel2.CodeElements)
+                    {
+                        var elementNamespace = codeElement.Kind;
+                        if (elementNamespace == vsCMElement.vsCMElementNamespace)
+                        {
+                            elements.AddRange(from CodeElement element in codeElement.Children select GetClass(element));
+                        }
+                    }
+                }
+            }
+
+            return elements;
+        }
+
+        private static ClassElement GetClass(CodeElement element)
+        {
+            var model = new ClassElement();
+            model.Name = element.Name;
+            model.FullName = element.FullName;
+
+            var elementClass = element.Kind;
+            if (elementClass == vsCMElement.vsCMElementClass)
+            {
+                model.Members = GetMembers(element);
+            }
+
+            return model;
+        }
+
+        private static List<MemberElement> GetMembers(CodeElement element)
+        {
+            var model = new List<MemberElement>();
+
+            var elementClass = element.Kind;
+            if (elementClass == vsCMElement.vsCMElementClass)
+            {
+                model.AddRange(from CodeElement child in element.Children
+                               where child.Kind == vsCMElement.vsCMElementProperty
+                               select new MemberElement
+                               {
+                                   Name = child.Name,
+                                   FullName = child.FullName,
+                                   Type = null
+                               });
+            }
+
+            return model;
         }
     }
 }

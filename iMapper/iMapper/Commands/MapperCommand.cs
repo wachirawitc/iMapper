@@ -62,10 +62,20 @@ namespace iMapper.Commands
             if (dte2 != null)
             {
                 string fullName = dte2.ActiveDocument.FullName;
-                string name = dte2.ActiveDocument.Name;
+                string fileName = dte2.ActiveDocument.Name;
                 string language = dte2.ActiveDocument.Language;
+                var selection = dte2.ActiveDocument.Selection;
 
-                
+                var textSelection = dte2.ActiveWindow.Selection as EnvDTE.TextSelection;
+                var codeClass = textSelection?.ActivePoint.CodeElement[vsCMElement.vsCMElementClass] as CodeClass;
+                if (codeClass != null)
+                {
+                    foreach (CodeElement elem in codeClass.Members)
+                    {
+                        var kind = elem.Kind;
+                        var name = elem.Name;
+                    }
+                }
             }
 
             VsShellUtilities.ShowMessageBox(

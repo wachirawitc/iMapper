@@ -70,38 +70,31 @@ namespace iMapper.Commands
 
                 //เลือกที่ชื่อ Class
                 var selectedClass = textSelection?.ActivePoint.CodeElement[vsCMElement.vsCMElementClass] as CodeClass;
-                if (selectedClass != null)
+                var @interface = selectedClass?.ImplementedInterfaces.OfType<CodeInterface>().FirstOrDefault();
+                if (@interface != null)
                 {
-                    var @interface = selectedClass.ImplementedInterfaces.OfType<CodeInterface>().FirstOrDefault();
-                    if (@interface != null)
+                    string interfaceName = @interface.FullName;
+                    string namespaceFullName = @interface.Namespace.FullName;
+                    if (string.IsNullOrEmpty(interfaceName) == false)
                     {
-                        string interfaceFullName = @interface.FullName;
-
-                        if (string.IsNullOrEmpty(interfaceFullName) == false)
+                        var strings = interfaceName.Replace(namespaceFullName + ".", string.Empty).Split('<', '>').ToList();
+                        if (strings.Count == 3)
                         {
+                            var names = strings[1].Split(',').ToList()
+                                .Select(x => x.Trim())
+                                .ToList();
+                            if (names.Count == 2)
+                            {
+                                var source = elements.FirstOrDefault(x => x.Name == names[0]);
+                                var destination = elements.FirstOrDefault(x => x.Name == names[1]);
+
+                                if (source != null && destination != null)
+                                {
+                                    int x = 0;
+                                }
+                            }
                         }
                     }
-
-                    //var classBases = selectedClass.Bases;
-                    //if (classBases != null)
-                    //{
-                    //    int count = classBases.Count;
-                    //    foreach (var codeElement in classBases)
-                    //    {
-                    //        var baseCodeClass = codeElement as CodeClass;
-                    //        if (baseCodeClass != null)
-                    //        {
-                    //        }
-                    //    }
-                    //}
-
-                    //foreach (CodeElement elem in selectedClass.Members)
-                    //{
-                    //    if (elem.Kind == vsCMElement.vsCMElementProperty)
-                    //    {
-                    //        var name = elem.Name;
-                    //    }
-                    //}
                 }
             }
 
@@ -172,14 +165,20 @@ namespace iMapper.Commands
             var elementClass = element.Kind;
             if (elementClass == vsCMElement.vsCMElementClass)
             {
-                model.AddRange(from CodeElement child in element.Children
-                               where child.Kind == vsCMElement.vsCMElementProperty
-                               select new MemberElement
-                               {
-                                   Name = child.Name,
-                                   FullName = child.FullName,
-                                   Type = null
-                               });
+                foreach (CodeElement child in element.Children)
+                {
+                    if (child.Kind == vsCMElement.vsCMElementProperty)
+                    {
+                        CodeProperty property = (CodeProperty)child;
+
+                        model.Add(new MemberElement
+                        {
+                            Name = child.Name,
+                            FullName = child.FullName,
+                            Type = property.Type.AsFullName
+                        });
+                    }
+                }
             }
 
             return model;

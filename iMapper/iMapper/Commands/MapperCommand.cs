@@ -91,25 +91,25 @@ namespace iMapper.Commands
                                 if (source != null && destination != null)
                                 {
                                     int x = 0;
+
+                                    VsShellUtilities.ShowMessageBox(
+                                        this.ServiceProvider,
+                                        "Success",
+                                        "iMapper",
+                                        OLEMSGICON.OLEMSGICON_INFO,
+                                        OLEMSGBUTTON.OLEMSGBUTTON_OK,
+                                        OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
                                 }
                             }
                         }
                     }
                 }
             }
-
-            VsShellUtilities.ShowMessageBox(
-                this.ServiceProvider,
-                message,
-                title,
-                OLEMSGICON.OLEMSGICON_INFO,
-                OLEMSGBUTTON.OLEMSGBUTTON_OK,
-                OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
         }
 
         private static List<ClassElement> GetProjectsInSolution(DTE2 dte2)
         {
-            List<ClassElement> model = new List<ClassElement>();
+            var model = new List<ClassElement>();
 
             foreach (Project project in dte2.Solution.Projects)
             {
@@ -169,7 +169,7 @@ namespace iMapper.Commands
                 {
                     if (child.Kind == vsCMElement.vsCMElementProperty)
                     {
-                        CodeProperty property = (CodeProperty)child;
+                        var property = (CodeProperty)child;
 
                         model.Add(new MemberElement
                         {

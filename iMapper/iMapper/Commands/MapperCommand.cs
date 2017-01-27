@@ -5,6 +5,7 @@ using Microsoft.VisualStudio.Shell.Interop;
 using System;
 using System.ComponentModel.Design;
 using System.Globalization;
+using System.Linq;
 
 namespace iMapper.Commands
 {
@@ -67,14 +68,51 @@ namespace iMapper.Commands
                 var selection = dte2.ActiveDocument.Selection;
 
                 var textSelection = dte2.ActiveWindow.Selection as EnvDTE.TextSelection;
-                var codeClass = textSelection?.ActivePoint.CodeElement[vsCMElement.vsCMElementClass] as CodeClass;
-                if (codeClass != null)
+
+                //เลือกที่ชื่อ Class
+                var selectedClass = textSelection?.ActivePoint.CodeElement[vsCMElement.vsCMElementClass] as CodeClass;
+                if (selectedClass != null)
                 {
-                    foreach (CodeElement elem in codeClass.Members)
+                    CodeInterface @interface = selectedClass.ImplementedInterfaces.OfType<CodeInterface>().FirstOrDefault();
+                    if (@interface != null)
                     {
-                        var kind = elem.Kind;
-                        var name = elem.Name;
+                        string interfaceFullName = @interface.FullName;
+
+                        if (string.IsNullOrEmpty(interfaceFullName) == false)
+                        {
+                            foreach (Project project in dte2.Solution.Projects)
+                            {
+                                foreach (ProjectItem projectItem in project.ProjectItems)
+                                {
+                                    string name = projectItem.Name;
+                                    if (string.IsNullOrEmpty(name))
+                                    {
+                                    }
+                                }
+                            }
+                        }
                     }
+
+                    //var classBases = selectedClass.Bases;
+                    //if (classBases != null)
+                    //{
+                    //    int count = classBases.Count;
+                    //    foreach (var codeElement in classBases)
+                    //    {
+                    //        var baseCodeClass = codeElement as CodeClass;
+                    //        if (baseCodeClass != null)
+                    //        {
+                    //        }
+                    //    }
+                    //}
+
+                    //foreach (CodeElement elem in selectedClass.Members)
+                    //{
+                    //    if (elem.Kind == vsCMElement.vsCMElementProperty)
+                    //    {
+                    //        var name = elem.Name;
+                    //    }
+                    //}
                 }
             }
 

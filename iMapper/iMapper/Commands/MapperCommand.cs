@@ -62,8 +62,6 @@ namespace iMapper.Commands
             var dte2 = Package.GetGlobalService(typeof(SDTE)) as DTE2;
             if (dte2 != null)
             {
-                var elements = GetProjectsInSolution(dte2);
-
                 var textSelection = dte2.ActiveWindow.Selection as TextSelection;
 
                 //เลือกที่ชื่อ Class
@@ -87,6 +85,7 @@ namespace iMapper.Commands
                                         .ToList();
                                     if (names.Count == 2)
                                     {
+                                        var elements = GetProjectsInSolution(dte2);
                                         var source = elements.FirstOrDefault(x => x.Name == names[0]);
                                         var destination = elements.FirstOrDefault(x => x.Name == names[1]);
 

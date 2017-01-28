@@ -3,3 +3,25 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="iMapper.Model" #>
+<#@ parameter name="source" type="iMapper.Model.ClassElement" #>
+<#@ parameter name="destination" type="iMapper.Model.ClassElement" #>
+			<# Write(destination.Name); #> model = null;
+			if(source != null)
+			{
+				<# if(destination.Members.Any()){ #>
+model = new <# Write(destination.Name); #>();
+<# foreach (var member in destination.Members) { #>
+<#
+var name = member.Element.Name;
+var type = member.Type.AsFullName;
+var element = source.Members.FirstOrDefault(x => x.Element.Name.Equals(name) && x.Type.AsFullName.Equals(type));
+if (element != null)
+{
+#>
+				<# WriteLine("model." + name + " = source." + name + ";"); #>
+<# } #>
+<# } #>
+<# } #>
+			}
+			return model;

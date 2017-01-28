@@ -125,7 +125,6 @@ namespace iMapper.Commands
 
         private static void InitMapFunctionDetail(CodeFunction codeFunction, MapperModelTemplate template)
         {
-            template.Verify();
             EditPoint startPoint = codeFunction.StartPoint.CreateEditPoint();
             startPoint.LineDown(2);
             startPoint.Insert(template.GetText());

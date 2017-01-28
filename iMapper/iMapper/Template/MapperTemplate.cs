@@ -12,6 +12,7 @@ namespace iMapper.Template
     using System.Linq;
     using System.Text;
     using System.Collections.Generic;
+    using iMapper.Model;
     using System;
     
     /// <summary>
@@ -28,8 +29,148 @@ namespace iMapper.Template
         /// </summary>
         public virtual string TransformText()
         {
+            this.Write("\t\t\t");
+            
+            #line 9 "D:\Source\iMapper\iMapper\iMapper\Template\MapperTemplate.tt"
+ Write(destination.Name); 
+            
+            #line default
+            #line hidden
+            this.Write(" model = null;\r\n\t\t\tif(source != null)\r\n\t\t\t{\r\n\t\t\t\t");
+            
+            #line 12 "D:\Source\iMapper\iMapper\iMapper\Template\MapperTemplate.tt"
+ if(destination.Members.Any()){ 
+            
+            #line default
+            #line hidden
+            this.Write("model = new ");
+            
+            #line 13 "D:\Source\iMapper\iMapper\iMapper\Template\MapperTemplate.tt"
+ Write(destination.Name); 
+            
+            #line default
+            #line hidden
+            this.Write("();\r\n");
+            
+            #line 14 "D:\Source\iMapper\iMapper\iMapper\Template\MapperTemplate.tt"
+ foreach (var member in destination.Members) { 
+            
+            #line default
+            #line hidden
+            
+            #line 15 "D:\Source\iMapper\iMapper\iMapper\Template\MapperTemplate.tt"
+
+var name = member.Element.Name;
+var type = member.Type.AsFullName;
+var element = source.Members.FirstOrDefault(x => x.Element.Name.Equals(name) && x.Type.AsFullName.Equals(type));
+if (element != null)
+{
+
+            
+            #line default
+            #line hidden
+            this.Write("\t\t\t\t");
+            
+            #line 22 "D:\Source\iMapper\iMapper\iMapper\Template\MapperTemplate.tt"
+ WriteLine("model." + name + " = source." + name + ";"); 
+            
+            #line default
+            #line hidden
+            
+            #line 23 "D:\Source\iMapper\iMapper\iMapper\Template\MapperTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            
+            #line 24 "D:\Source\iMapper\iMapper\iMapper\Template\MapperTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            
+            #line 25 "D:\Source\iMapper\iMapper\iMapper\Template\MapperTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\t\t\t}\r\n\t\t\treturn model;");
             return this.GenerationEnvironment.ToString();
         }
+        
+        #line 1 "D:\Source\iMapper\iMapper\iMapper\Template\MapperTemplate.tt"
+
+private global::iMapper.Model.ClassElement _sourceField;
+
+/// <summary>
+/// Access the source parameter of the template.
+/// </summary>
+private global::iMapper.Model.ClassElement source
+{
+    get
+    {
+        return this._sourceField;
+    }
+}
+
+private global::iMapper.Model.ClassElement _destinationField;
+
+/// <summary>
+/// Access the destination parameter of the template.
+/// </summary>
+private global::iMapper.Model.ClassElement destination
+{
+    get
+    {
+        return this._destinationField;
+    }
+}
+
+
+/// <summary>
+/// Initialize the template
+/// </summary>
+public virtual void Initialize()
+{
+    if ((this.Errors.HasErrors == false))
+    {
+bool sourceValueAcquired = false;
+if (this.Session.ContainsKey("source"))
+{
+    this._sourceField = ((global::iMapper.Model.ClassElement)(this.Session["source"]));
+    sourceValueAcquired = true;
+}
+if ((sourceValueAcquired == false))
+{
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("source");
+    if ((data != null))
+    {
+        this._sourceField = ((global::iMapper.Model.ClassElement)(data));
+    }
+}
+bool destinationValueAcquired = false;
+if (this.Session.ContainsKey("destination"))
+{
+    this._destinationField = ((global::iMapper.Model.ClassElement)(this.Session["destination"]));
+    destinationValueAcquired = true;
+}
+if ((destinationValueAcquired == false))
+{
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("destination");
+    if ((data != null))
+    {
+        this._destinationField = ((global::iMapper.Model.ClassElement)(data));
+    }
+}
+
+
+    }
+}
+
+
+        
+        #line default
+        #line hidden
     }
     
     #line default

@@ -1,5 +1,6 @@
 ﻿using EnvDTE;
 using EnvDTE80;
+using iMapper.Constance;
 using iMapper.Model;
 using iMapper.Template.ModelTemplate;
 using Microsoft.VisualStudio.Shell;
@@ -79,46 +80,77 @@ namespace iMapper.Commands
                             var strings = interfaceName.Replace(namespaceFullName + ".", string.Empty).Split('<', '>').ToList();
                             if (strings.Count == 3)
                             {
-                                var names = strings[1].Split(',').ToList()
-                                    .Select(x => x.Trim())
-                                    .ToList();
-                                if (names.Count == 2)
+                                if (MapperInfo.Interface.Equals(strings[0]))
                                 {
-                                    var source = elements.FirstOrDefault(x => x.Name == names[0]);
-                                    var destination = elements.FirstOrDefault(x => x.Name == names[1]);
-
-                                    if (source != null && destination != null)
+                                    var names = strings[1].Split(',').ToList()
+                                        .Select(x => x.Trim())
+                                        .ToList();
+                                    if (names.Count == 2)
                                     {
-                                        var template = new MapperModelTemplate(source, destination);
-                                        template.Verify();
+                                        var source = elements.FirstOrDefault(x => x.Name == names[0]);
+                                        var destination = elements.FirstOrDefault(x => x.Name == names[1]);
 
-                                        selectedClass.RemoveMember("Map");
+                                        if (source != null && destination != null)
+                                        {
+                                            DeleteMapFunctionIfExisting(MapperInfo.Member, selectedClass);
 
-                                        CodeFunction codeFunction = selectedClass.AddFunction("Map",
-                                            vsCMFunction.vsCMFunctionFunction,
-                                            destination.FullName,
-                                            -1,
-                                            vsCMAccess.vsCMAccessPublic,
-                                            null);
+                                            CodeFunction codeFunction = selectedClass.AddFunction(MapperInfo.Member,
+                                                vsCMFunction.vsCMFunctionFunction,
+                                                destination.FullName,
+                                                -1,
+                                                vsCMAccess.vsCMAccessPublic,
+                                                null);
 
-                                        codeFunction.AddParameter("source", source.FullName);
+                                            codeFunction.AddParameter("source", source.FullName);
 
-                                        EditPoint startPoint = codeFunction.StartPoint.CreateEditPoint();
-                                        startPoint.LineDown(2);
-                                        startPoint.Insert(template.GetText());
+                                            InitMapFunctionDetail(codeFunction, new MapperModelTemplate(source, destination));
 
-                                        VsShellUtilities.ShowMessageBox(
-                                            this.ServiceProvider,
-                                            "Success",
-                                            "iMapper",
-                                            OLEMSGICON.OLEMSGICON_INFO,
-                                            OLEMSGBUTTON.OLEMSGBUTTON_OK,
-                                            OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+                                            ShowDiabog("Success", "iMapper");
+                                        }
                                     }
+                                }
+                                else
+                                {
+                                    ShowDiabog("You must implement IMapper", "iMapper");
                                 }
                             }
                         }
                     }
+                    else
+                    {
+                        ShowDiabog("Please implement IMapper", "iMapper");
+                    }
+                }
+            }
+        }
+
+        private static void InitMapFunctionDetail(CodeFunction codeFunction, MapperModelTemplate template)
+        {
+            template.Verify();
+            EditPoint startPoint = codeFunction.StartPoint.CreateEditPoint();
+            startPoint.LineDown(2);
+            startPoint.Insert(template.GetText());
+        }
+
+        private void ShowDiabog(string message, string title)
+        {
+            VsShellUtilities.ShowMessageBox(
+                this.ServiceProvider,
+                message,
+                title,
+                OLEMSGICON.OLEMSGICON_INFO,
+                OLEMSGBUTTON.OLEMSGBUTTON_OK,
+                OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+        }
+
+        private static void DeleteMapFunctionIfExisting(string functionName, CodeClass codeClass)
+        {
+            foreach (CodeElement child in codeClass.Children)
+            {
+                string name = child.Name;
+                if (child.Kind == vsCMElement.vsCMElementFunction && functionName.Equals(name))
+                {
+                    codeClass.RemoveMember(functionName);
                 }
             }
         }

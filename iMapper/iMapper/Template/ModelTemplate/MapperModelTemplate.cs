@@ -24,13 +24,13 @@ namespace iMapper.Template.ModelTemplate
                 return;
             }
 
-            mapping.AppendLine($"{destination.FullName} model = null;");
-            mapping.AppendLine("if(source != null)");
-            mapping.AppendLine("{");
+            mapping.AppendLine($"\t\t\t{destination.FullName} model = null;");
+            mapping.AppendLine("\t\t\tif(source != null)");
+            mapping.AppendLine("\t\t\t{");
 
             if (destination.Members.Any())
             {
-                mapping.AppendLine($"model = new {destination.FullName}();");
+                mapping.AppendLine($"\t\t\t\tmodel = new {destination.FullName}();");
 
                 foreach (var member in destination.Members)
                 {
@@ -41,13 +41,13 @@ namespace iMapper.Template.ModelTemplate
 
                     if (element != null)
                     {
-                        mapping.AppendLine($"model.{name} = source.{name};");
+                        mapping.AppendLine($"\t\t\t\tmodel.{name} = source.{name};");
                     }
                 }
             }
 
-            mapping.AppendLine("}");
-            mapping.AppendLine("return model;");
+            mapping.AppendLine("\t\t\t}");
+            mapping.AppendLine("\t\t\treturn model;");
         }
 
         public string GetText()

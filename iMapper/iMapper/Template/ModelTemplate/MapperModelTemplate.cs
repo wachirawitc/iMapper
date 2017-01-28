@@ -24,13 +24,13 @@ namespace iMapper.Template.ModelTemplate
                 return;
             }
 
-            mapping.AppendLine($"\t\t\t{destination.FullName} model = null;");
+            mapping.AppendLine($"\t\t\t{destination.Name} model = null;");
             mapping.AppendLine("\t\t\tif(source != null)");
             mapping.AppendLine("\t\t\t{");
 
             if (destination.Members.Any())
             {
-                mapping.AppendLine($"\t\t\t\tmodel = new {destination.FullName}();");
+                mapping.AppendLine($"\t\t\t\tmodel = new {destination.Name}();");
 
                 foreach (var member in destination.Members)
                 {

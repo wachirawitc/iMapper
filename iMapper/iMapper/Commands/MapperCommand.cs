@@ -85,9 +85,9 @@ namespace iMapper.Commands
                                         .ToList();
                                     if (names.Count == 2)
                                     {
-                                        var elements = GetProjectsInSolution(dte2);
-                                        var source = elements.FirstOrDefault(x => x.Name == names[0]);
-                                        var destination = elements.FirstOrDefault(x => x.Name == names[1]);
+                                        var elements = GetProjectsInSolution();
+                                        var source = elements.FirstOrDefault(x => x.FullName.EndsWith(names[0]));
+                                        var destination = elements.FirstOrDefault(x => x.FullName.EndsWith(names[1]));
 
                                         if (source != null && destination != null)
                                         {
@@ -153,11 +153,11 @@ namespace iMapper.Commands
             }
         }
 
-        private static List<ClassElement> GetProjectsInSolution(DTE2 dte2)
+        private static List<ClassElement> GetProjectsInSolution()
         {
             var model = new List<ClassElement>();
 
-            foreach (Project project in dte2.Solution.Projects)
+            foreach (Project project in Projects())
             {
                 var item = GetProjectItems(project);
                 model.AddRange(item);
@@ -168,40 +168,98 @@ namespace iMapper.Commands
 
         private static List<ClassElement> GetProjectItems(Project project)
         {
-            List<ClassElement> elements = new List<ClassElement>();
+            var elements = new List<ClassElement>();
 
-            foreach (ProjectItem projectItem in project.ProjectItems)
+            List<FileCodeModel2> models = new List<FileCodeModel2>();
+            var projectItems = project.ProjectItems.GetEnumerator();
+            while (projectItems.MoveNext())
             {
-                var fileCodeModel2 = projectItem.FileCodeModel as FileCodeModel2;
-                if (fileCodeModel2 != null && projectItem.Name.EndsWith(".cs"))
+                var projectItem = projectItems.Current as ProjectItem;
+                if (projectItem == null)
                 {
-                    foreach (CodeElement codeElement in fileCodeModel2.CodeElements)
+                    continue;
+                }
+
+                if (projectItem.Kind == EnvDTE.Constants.vsProjectItemKindPhysicalFolder)
+                {
+                    var subProjectItems = GetSubItemsInFolder(projectItem);
+                    var fileCodes = (from model in subProjectItems let name = model.Name select model.FileCodeModel)
+                        .OfType<FileCodeModel2>()
+                        .Where(x => x != null).ToList();
+
+                    models.AddRange(fileCodes);
+                }
+                else
+                {
+                    var fileCodeModel2 = projectItem.FileCodeModel as FileCodeModel2;
+                    if (fileCodeModel2 != null)
                     {
-                        var elementNamespace = codeElement.Kind;
-                        if (elementNamespace == vsCMElement.vsCMElementNamespace)
-                        {
-                            elements.AddRange(from CodeElement element in codeElement.Children select GetClass(element));
-                        }
+                        models.Add(fileCodeModel2);
                     }
                 }
             }
 
-            return elements;
+            foreach (var model2 in models)
+            {
+                foreach (CodeElement codeElement in model2.CodeElements)
+                {
+                    var elementNamespace = codeElement.Kind;
+                    if (elementNamespace == vsCMElement.vsCMElementNamespace)
+                    {
+                        elements.AddRange(from CodeElement element in codeElement.Children select GetClass(element));
+                    }
+                }
+            }
+
+            return elements.Where(x => x != null).ToList();
+        }
+
+        private static List<ProjectItem> GetSubItemsInFolder(ProjectItem projectItem)
+        {
+            List<ProjectItem> items = new List<ProjectItem>();
+            for (var i = 1; i <= projectItem.ProjectItems.Count; i++)
+            {
+                ProjectItem item = projectItem.ProjectItems.Item(i);
+                if (item == null)
+                {
+                    continue;
+                }
+
+                if (item.ProjectItems.Count > 0)
+                {
+                    items.AddRange(GetSubItemsInFolder(item));
+                }
+                else
+                {
+                    if (item.Name.EndsWith(".cs"))
+                    {
+                        items.Add(item);
+                    }
+                }
+            }
+            return items;
         }
 
         private static ClassElement GetClass(CodeElement element)
         {
-            var model = new ClassElement();
-            model.Name = element.Name;
-            model.FullName = element.FullName;
-
-            var elementClass = element.Kind;
-            if (elementClass == vsCMElement.vsCMElementClass)
+            try
             {
-                model.Members = GetMembers(element);
-            }
+                var model = new ClassElement();
+                model.Name = element.Name;
+                model.FullName = element.FullName;
 
-            return model;
+                var elementClass = element.Kind;
+                if (elementClass == vsCMElement.vsCMElementClass)
+                {
+                    model.Members = GetMembers(element);
+                }
+
+                return model;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         private static List<MemberElement> GetMembers(CodeElement element)
@@ -227,6 +285,61 @@ namespace iMapper.Commands
             }
 
             return model;
+        }
+
+        public static DTE2 GetActiveIde()
+        {
+            var dte2 = Package.GetGlobalService(typeof(DTE)) as DTE2;
+            return dte2;
+        }
+
+        public static IList<Project> Projects()
+        {
+            Projects projects = GetActiveIde().Solution.Projects;
+            List<Project> list = new List<Project>();
+            var item = projects.GetEnumerator();
+            while (item.MoveNext())
+            {
+                var project = item.Current as Project;
+                if (project == null)
+                {
+                    continue;
+                }
+
+                if (project.Kind == ProjectKinds.vsProjectKindSolutionFolder)
+                {
+                    list.AddRange(GetSolutionFolderProjects(project));
+                }
+                else
+                {
+                    list.Add(project);
+                }
+            }
+
+            return list;
+        }
+
+        private static IEnumerable<Project> GetSolutionFolderProjects(Project solutionFolder)
+        {
+            List<Project> list = new List<Project>();
+            for (var i = 1; i <= solutionFolder.ProjectItems.Count; i++)
+            {
+                var subProject = solutionFolder.ProjectItems.Item(i).SubProject;
+                if (subProject == null)
+                {
+                    continue;
+                }
+
+                if (subProject.Kind == ProjectKinds.vsProjectKindSolutionFolder)
+                {
+                    list.AddRange(GetSolutionFolderProjects(subProject));
+                }
+                else
+                {
+                    list.Add(subProject);
+                }
+            }
+            return list;
         }
     }
 }

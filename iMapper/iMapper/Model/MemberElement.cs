@@ -1,11 +1,11 @@
-﻿namespace iMapper.Model
+﻿using EnvDTE;
+
+namespace iMapper.Model
 {
     public class MemberElement
     {
-        public string Name { get; set; }
+        public CodeElement Element { get; set; }
 
-        public string FullName { get; set; }
-
-        public string Type { get; set; }
+        public CodeTypeRef Type { get; set; }
     }
 }

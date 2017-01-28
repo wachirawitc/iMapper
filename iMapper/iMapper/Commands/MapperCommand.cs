@@ -6,7 +6,6 @@ using Microsoft.VisualStudio.Shell.Interop;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
-using System.Globalization;
 using System.Linq;
 
 namespace iMapper.Commands
@@ -58,47 +57,60 @@ namespace iMapper.Commands
 
         private void MenuItemCallback(object sender, EventArgs e)
         {
-            string message = string.Format(CultureInfo.CurrentCulture, "Inside {0}.MenuItemCallback()", this.GetType().FullName);
-            string title = "MapperCommand";
-
             var dte2 = Package.GetGlobalService(typeof(SDTE)) as DTE2;
             if (dte2 != null)
             {
                 var elements = GetProjectsInSolution(dte2);
 
-                var textSelection = dte2.ActiveWindow.Selection as EnvDTE.TextSelection;
+                var textSelection = dte2.ActiveWindow.Selection as TextSelection;
 
                 //เลือกที่ชื่อ Class
                 var selectedClass = textSelection?.ActivePoint.CodeElement[vsCMElement.vsCMElementClass] as CodeClass;
-                var @interface = selectedClass?.ImplementedInterfaces.OfType<CodeInterface>().FirstOrDefault();
-                if (@interface != null)
+                if (selectedClass != null)
                 {
-                    string interfaceName = @interface.FullName;
-                    string namespaceFullName = @interface.Namespace.FullName;
-                    if (string.IsNullOrEmpty(interfaceName) == false)
+                    var @interface = selectedClass.ImplementedInterfaces.OfType<CodeInterface>().FirstOrDefault();
+                    if (@interface != null)
                     {
-                        var strings = interfaceName.Replace(namespaceFullName + ".", string.Empty).Split('<', '>').ToList();
-                        if (strings.Count == 3)
+                        string interfaceName = @interface.FullName;
+                        string namespaceFullName = @interface.Namespace.FullName;
+                        if (string.IsNullOrEmpty(interfaceName) == false)
                         {
-                            var names = strings[1].Split(',').ToList()
-                                .Select(x => x.Trim())
-                                .ToList();
-                            if (names.Count == 2)
+                            var strings = interfaceName.Replace(namespaceFullName + ".", string.Empty).Split('<', '>').ToList();
+                            if (strings.Count == 3)
                             {
-                                var source = elements.FirstOrDefault(x => x.Name == names[0]);
-                                var destination = elements.FirstOrDefault(x => x.Name == names[1]);
-
-                                if (source != null && destination != null)
+                                var names = strings[1].Split(',').ToList()
+                                    .Select(x => x.Trim())
+                                    .ToList();
+                                if (names.Count == 2)
                                 {
-                                    int x = 0;
+                                    var source = elements.FirstOrDefault(x => x.Name == names[0]);
+                                    var destination = elements.FirstOrDefault(x => x.Name == names[1]);
 
-                                    VsShellUtilities.ShowMessageBox(
-                                        this.ServiceProvider,
-                                        "Success",
-                                        "iMapper",
-                                        OLEMSGICON.OLEMSGICON_INFO,
-                                        OLEMSGBUTTON.OLEMSGBUTTON_OK,
-                                        OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+                                    if (source != null && destination != null)
+                                    {
+                                        selectedClass.RemoveMember("Map");
+
+                                        CodeFunction codeFunction = selectedClass.AddFunction("Map",
+                                            vsCMFunction.vsCMFunctionFunction,
+                                            destination.FullName,
+                                            -1,
+                                            vsCMAccess.vsCMAccessPublic,
+                                            null);
+
+                                        codeFunction.AddParameter("model", source.FullName);
+
+                                        EditPoint startPoint = codeFunction.StartPoint.CreateEditPoint();
+                                        startPoint.LineDown(2);
+                                        startPoint.Insert("xxxx");
+
+                                        VsShellUtilities.ShowMessageBox(
+                                            this.ServiceProvider,
+                                            "Success",
+                                            "iMapper",
+                                            OLEMSGICON.OLEMSGICON_INFO,
+                                            OLEMSGBUTTON.OLEMSGBUTTON_OK,
+                                            OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+                                    }
                                 }
                             }
                         }
@@ -173,9 +185,8 @@ namespace iMapper.Commands
 
                         model.Add(new MemberElement
                         {
-                            Name = child.Name,
-                            FullName = child.FullName,
-                            Type = property.Type.AsFullName
+                            Element = child,
+                            Type = property.Type
                         });
                     }
                 }

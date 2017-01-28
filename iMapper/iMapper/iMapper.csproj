@@ -62,6 +62,7 @@
       <DependentUpon>MapperTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Template\MapperTemplateGenerate.cs" />
+    <Compile Include="Template\ModelTemplate\MapperModelTemplate.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Key.snk" />

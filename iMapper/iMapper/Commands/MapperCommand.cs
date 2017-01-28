@@ -1,6 +1,7 @@
 ﻿using EnvDTE;
 using EnvDTE80;
 using iMapper.Model;
+using iMapper.Template.ModelTemplate;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using System;
@@ -88,6 +89,9 @@ namespace iMapper.Commands
 
                                     if (source != null && destination != null)
                                     {
+                                        var template = new MapperModelTemplate(source, destination);
+                                        template.Verify();
+
                                         selectedClass.RemoveMember("Map");
 
                                         CodeFunction codeFunction = selectedClass.AddFunction("Map",
@@ -97,11 +101,11 @@ namespace iMapper.Commands
                                             vsCMAccess.vsCMAccessPublic,
                                             null);
 
-                                        codeFunction.AddParameter("model", source.FullName);
+                                        codeFunction.AddParameter("source", source.FullName);
 
                                         EditPoint startPoint = codeFunction.StartPoint.CreateEditPoint();
                                         startPoint.LineDown(2);
-                                        startPoint.Insert("xxxx");
+                                        startPoint.Insert(template.GetText());
 
                                         VsShellUtilities.ShowMessageBox(
                                             this.ServiceProvider,

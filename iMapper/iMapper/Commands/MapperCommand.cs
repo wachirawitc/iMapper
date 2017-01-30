@@ -159,88 +159,33 @@ namespace iMapper.Commands
 
             foreach (Project project in Projects())
             {
-                var item = GetProjectItems(project);
+                var item = GetClass(project);
                 model.AddRange(item);
             }
 
             return model;
         }
 
-        private static List<ClassElement> GetProjectItems(Project project)
+        private static List<ClassElement> GetClass(Project project)
         {
             var elements = new List<ClassElement>();
 
-            List<FileCodeModel2> models = new List<FileCodeModel2>();
-            var projectItems = project.ProjectItems.GetEnumerator();
-            while (projectItems.MoveNext())
+            var codeModel2S = GetProjectItems(project.ProjectItems)
+                .Select(x => x.FileCodeModel as FileCodeModel2)
+                .Where(x => x != null)
+                .ToList();
+
+            foreach (var codeElement in codeModel2S
+                .SelectMany(model2 =>
+                    (from CodeElement codeElement in model2.CodeElements let elementNamespace = codeElement.Kind where elementNamespace == vsCMElement.vsCMElementNamespace select codeElement)))
             {
-                var projectItem = projectItems.Current as ProjectItem;
-                if (projectItem == null)
-                {
-                    continue;
-                }
-
-                if (projectItem.Kind == EnvDTE.Constants.vsProjectItemKindPhysicalFolder)
-                {
-                    var subProjectItems = GetSubItemsInFolder(projectItem);
-                    var fileCodes = (from model in subProjectItems let name = model.Name select model.FileCodeModel)
-                        .OfType<FileCodeModel2>()
-                        .Where(x => x != null).ToList();
-
-                    models.AddRange(fileCodes);
-                }
-                else
-                {
-                    var fileCodeModel2 = projectItem.FileCodeModel as FileCodeModel2;
-                    if (fileCodeModel2 != null)
-                    {
-                        models.Add(fileCodeModel2);
-                    }
-                }
-            }
-
-            foreach (var model2 in models)
-            {
-                foreach (CodeElement codeElement in model2.CodeElements)
-                {
-                    var elementNamespace = codeElement.Kind;
-                    if (elementNamespace == vsCMElement.vsCMElementNamespace)
-                    {
-                        elements.AddRange(from CodeElement element in codeElement.Children select GetClass(element));
-                    }
-                }
+                elements.AddRange(from CodeElement element in codeElement.Children select GetClassElement(element));
             }
 
             return elements.Where(x => x != null).ToList();
         }
 
-        private static List<ProjectItem> GetSubItemsInFolder(ProjectItem projectItem)
-        {
-            List<ProjectItem> items = new List<ProjectItem>();
-            for (var i = 1; i <= projectItem.ProjectItems.Count; i++)
-            {
-                ProjectItem item = projectItem.ProjectItems.Item(i);
-                if (item == null)
-                {
-                    continue;
-                }
-
-                if (item.ProjectItems.Count > 0)
-                {
-                    items.AddRange(GetSubItemsInFolder(item));
-                }
-                else
-                {
-                    if (item.Name.EndsWith(".cs"))
-                    {
-                        items.Add(item);
-                    }
-                }
-            }
-            return items;
-        }
-
-        private static ClassElement GetClass(CodeElement element)
+        private static ClassElement GetClassElement(CodeElement element)
         {
             try
             {
@@ -340,6 +285,28 @@ namespace iMapper.Commands
                 }
             }
             return list;
+        }
+
+        public static IEnumerable<ProjectItem> GetProjectItems(ProjectItems projectItems)
+        {
+            if (projectItems != null)
+            {
+                foreach (ProjectItem item in projectItems)
+                {
+                    yield return item;
+
+                    if (item.SubProject != null)
+                    {
+                        foreach (var childItem in GetProjectItems(item.SubProject.ProjectItems))
+                            yield return childItem;
+                    }
+                    else
+                    {
+                        foreach (ProjectItem childItem in GetProjectItems(item.ProjectItems))
+                            yield return childItem;
+                    }
+                }
+            }
         }
     }
 }

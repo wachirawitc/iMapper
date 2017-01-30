@@ -5,17 +5,10 @@ namespace iMapper.Support
 {
     public static class Session
     {
-        public static List<DirectoryInfo> GetMapDirectories
+        public static List<DirectoryInfo> GetMapDirectories => new List<DirectoryInfo>
         {
-            get
-            {
-                var model = new List<DirectoryInfo>
-                {
-                    Directory.GetParent(@"D:\Project\HRMS\HRMS\HRMS\ViewModels\"),
-                    Directory.GetParent(@"D:\Project\HRMS\HRMS\HR.Models\")
-                };
-                return model;
-            }
-        }
+            Directory.GetParent(@"D:\Project\HRMS\HRMS\HRMS\ViewModels\"),
+            Directory.GetParent(@"D:\Project\HRMS\HRMS\HR.Models\")
+        };
     }
 }

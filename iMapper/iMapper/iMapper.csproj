@@ -55,9 +55,14 @@
     <Compile Include="Commands\MapperCommand.cs" />
     <Compile Include="Commands\MapperCommandPackage.cs" />
     <Compile Include="Constance\MapperInfo.cs" />
+    <Compile Include="Extensions\DirectoryInfoExtension.cs" />
+    <Compile Include="Extensions\ProjectExtension.cs" />
+    <Compile Include="Extensions\ProjectItemExtension.cs" />
     <Compile Include="Model\ClassElement.cs" />
     <Compile Include="Model\MemberElement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Support\DirectoryInfoComparer.cs" />
+    <Compile Include="Support\Session.cs" />
     <Compile Include="Template\MapperTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

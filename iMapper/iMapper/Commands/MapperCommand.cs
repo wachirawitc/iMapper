@@ -1,7 +1,9 @@
 ﻿using EnvDTE;
 using EnvDTE80;
 using iMapper.Constance;
+using iMapper.Extensions;
 using iMapper.Model;
+using iMapper.Support;
 using iMapper.Template.ModelTemplate;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
@@ -159,8 +161,13 @@ namespace iMapper.Commands
 
             foreach (Project project in Projects())
             {
-                var item = GetClass(project);
-                model.AddRange(item);
+                var directoryInfo = project.GetDirectoryInfo();
+                bool isSubDirectory = Session.GetMapDirectories.Any(directory => directory.IsSubDirectoryOfOrSame(directoryInfo));
+                if (isSubDirectory)
+                {
+                    var item = GetClass(project);
+                    model.AddRange(item);
+                }
             }
 
             return model;
@@ -171,6 +178,7 @@ namespace iMapper.Commands
             var elements = new List<ClassElement>();
 
             var codeModel2S = GetProjectItems(project.ProjectItems)
+                .Where(FilterSource)
                 .Select(x => x.FileCodeModel as FileCodeModel2)
                 .Where(x => x != null)
                 .ToList();
@@ -183,6 +191,23 @@ namespace iMapper.Commands
             }
 
             return elements.Where(x => x != null).ToList();
+        }
+
+        private static bool FilterSource(ProjectItem item)
+        {
+            if (item?.IsFolder() == false)
+            {
+                var fileInfo = item.GetFileInfo();
+                if (fileInfo != null)
+                {
+                    if (Session.GetMapDirectories.Any(parent => fileInfo.Directory.IsSubDirectoryOfOrSame(parent)))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
 
         private static ClassElement GetClassElement(CodeElement element)

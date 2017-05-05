@@ -85,21 +85,16 @@ namespace iMapper.Commands
                 Array selectedItems = (Array)uih.SelectedItems;
                 if (selectedItems == null || selectedItems.Length > 1)
                 {
-                    ShowDiabog("Select one item.", "xxx");
+                    ShowDiabog("Select one item.", "Map view model");
                 }
                 else
                 {
-                    foreach (UIHierarchyItem selItem in selectedItems)
+                    var hierarchyItem = selectedItems.Cast<UIHierarchyItem>().First();
+                    ProjectItem projectItem = hierarchyItem.Object as ProjectItem;
+                    if (projectItem != null)
                     {
-                        ProjectItem projectItem = selItem.Object as ProjectItem;
-                        if (projectItem != null)
-                        {
-                            string filePath = projectItem.Properties.Item("FullPath").Value.ToString();
-                            if (string.IsNullOrEmpty(filePath))
-                            {
-                                
-                            }
-                        }
+                        ProjectItems projectItems = projectItem.ProjectItems;
+                        projectItems.AddFromFileCopy(@"C:\Users\Admin\Desktop\xxx\code.txt");
                     }
                 }
             }

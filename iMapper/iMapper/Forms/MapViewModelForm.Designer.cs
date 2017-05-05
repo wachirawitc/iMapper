@@ -33,8 +33,8 @@
             this.Tables = new System.Windows.Forms.ComboBox();
             this.Columns = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.IsAspNetMvc = new System.Windows.Forms.CheckBox();
             this.IsFluentValidation = new System.Windows.Forms.CheckBox();
+            this.IsAspNetMvc = new System.Windows.Forms.CheckBox();
             this.FileName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Columns)).BeginInit();
@@ -68,6 +68,7 @@
             this.Tables.Name = "Tables";
             this.Tables.Size = new System.Drawing.Size(382, 21);
             this.Tables.TabIndex = 2;
+            this.Tables.SelectedIndexChanged += new System.EventHandler(this.Tables_SelectedIndexChanged);
             // 
             // Columns
             // 
@@ -88,16 +89,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Option";
             // 
-            // IsAspNetMvc
-            // 
-            this.IsAspNetMvc.AutoSize = true;
-            this.IsAspNetMvc.Location = new System.Drawing.Point(7, 20);
-            this.IsAspNetMvc.Name = "IsAspNetMvc";
-            this.IsAspNetMvc.Size = new System.Drawing.Size(147, 17);
-            this.IsAspNetMvc.TabIndex = 0;
-            this.IsAspNetMvc.Text = "ASP.NET MVC Validation";
-            this.IsAspNetMvc.UseVisualStyleBackColor = true;
-            // 
             // IsFluentValidation
             // 
             this.IsFluentValidation.AutoSize = true;
@@ -107,6 +98,16 @@
             this.IsFluentValidation.TabIndex = 1;
             this.IsFluentValidation.Text = "FluentValidation";
             this.IsFluentValidation.UseVisualStyleBackColor = true;
+            // 
+            // IsAspNetMvc
+            // 
+            this.IsAspNetMvc.AutoSize = true;
+            this.IsAspNetMvc.Location = new System.Drawing.Point(7, 20);
+            this.IsAspNetMvc.Name = "IsAspNetMvc";
+            this.IsAspNetMvc.Size = new System.Drawing.Size(147, 17);
+            this.IsAspNetMvc.TabIndex = 0;
+            this.IsAspNetMvc.Text = "ASP.NET MVC Validation";
+            this.IsAspNetMvc.UseVisualStyleBackColor = true;
             // 
             // FileName
             // 

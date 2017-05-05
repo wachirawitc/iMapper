@@ -81,6 +81,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\MsRepository.cs" />
     <Compile Include="Repository\TemporaryRepository.cs" />
+    <Compile Include="Support\ComboboxItem.cs" />
     <Compile Include="Support\DirectoryInfoComparer.cs" />
     <Compile Include="Support\Session.cs" />
     <Compile Include="Support\Temporary.cs" />
@@ -91,6 +92,12 @@
     </Compile>
     <Compile Include="Template\MapperTemplateGenerate.cs" />
     <Compile Include="Template\ModelTemplate\MapperModelTemplate.cs" />
+    <Compile Include="Template\ViewModelAspNetMvc.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ViewModelAspNetMvc.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Template\ViewModelAspNetMvcPresenter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -104,6 +111,10 @@
     <Content Include="Template\MapperTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>MapperTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Template\ViewModelAspNetMvc.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ViewModelAspNetMvc.cs</LastGenOutput>
     </Content>
     <VSCTCompile Include="Commands\MapperCommandPackage.vsct">
       <ResourceName>Menus.ctmenu</ResourceName>

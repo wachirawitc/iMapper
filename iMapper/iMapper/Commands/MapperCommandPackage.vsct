@@ -4,8 +4,12 @@
   <Extern href="vsshlids.h" />
   <Commands package="guidMapperCommandPackage">
     <Groups>
-      
-      <Group guid="guidMapperCommandPackageCmdSet" id="MyMenuGroup" priority="0x0600">
+
+      <Group guid="mapperCmdSet" id="MapperMenuGroup" priority="0x0600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_CODEWIN" />
+      </Group>
+
+      <Group guid="ConnectDbCmdSet" id="ConnectDbGroup" priority="0x0601">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_CODEWIN" />
       </Group>
       
@@ -13,14 +17,22 @@
 
     <Buttons>
 
-      <Button guid="guidMapperCommandPackageCmdSet" id="MapperCommandId" priority="0x0100" type="Button">
-        <Parent guid="guidMapperCommandPackageCmdSet" id="MyMenuGroup" />
+      <Button guid="mapperCmdSet" id="MapperCommandId" priority="0x0100" type="Button">
+        <Parent guid="mapperCmdSet" id="MapperMenuGroup" />
         <Icon guid="guidImages" id="bmpPic1" />
         <Strings>
           <ButtonText>iMapper</ButtonText>
         </Strings>
       </Button>
-      
+
+      <Button guid="ConnectDbCmdSet" id="ConnectDatabaseCommandId" priority="0x0101" type="Button">
+        <Parent guid="ConnectDbCmdSet" id="ConnectDbGroup" />
+        <Icon guid="guidImages" id="bmpPic1" />
+        <Strings>
+          <ButtonText>Connect Database</ButtonText>
+        </Strings>
+      </Button>
+
     </Buttons>
 
     <Bitmaps>
@@ -30,9 +42,15 @@
 
   <Symbols>
     <GuidSymbol name="guidMapperCommandPackage" value="{37023129-2a33-478e-8bb8-8fa2efbc2e54}" />
-    <GuidSymbol name="guidMapperCommandPackageCmdSet" value="{a3b89b0e-701e-48e0-843b-79082041a30c}">
-      <IDSymbol name="MyMenuGroup" value="0x1020" />
+
+    <GuidSymbol name="mapperCmdSet" value="{a3b89b0e-701e-48e0-843b-79082041a30c}">
+      <IDSymbol name="MapperMenuGroup" value="0x1020" />
       <IDSymbol name="MapperCommandId" value="0x0100" />
+    </GuidSymbol>
+
+    <GuidSymbol name="ConnectDbCmdSet" value="{89629128-c144-443f-9920-0ed1b9bc65b6}">
+      <IDSymbol name="ConnectDbGroup" value="0x0201" />
+      <IDSymbol name="ConnectDatabaseCommandId" value="0x0200" />
     </GuidSymbol>
 
     <GuidSymbol name="guidImages" value="{800f86f7-dada-497c-8666-ddbcce338fc0}">

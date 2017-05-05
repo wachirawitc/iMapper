@@ -17,8 +17,10 @@ namespace iMapper.Commands
     internal sealed class MapperCommand
     {
         public const int CommandId = 0x0100;
+        public const int ConnectDatabaseCommandId = 0x0200;
 
-        public static readonly Guid CommandSet = new Guid("a3b89b0e-701e-48e0-843b-79082041a30c");
+        public static readonly Guid MapperCommandId = new Guid("a3b89b0e-701e-48e0-843b-79082041a30c");
+        public static readonly Guid ConnectDatabaseCommand = new Guid("89629128-c144-443f-9920-0ed1b9bc65b6");
 
         private readonly Package package;
 
@@ -26,17 +28,21 @@ namespace iMapper.Commands
         {
             if (package == null)
             {
-                throw new ArgumentNullException("package");
+                throw new ArgumentNullException(nameof(package));
             }
 
             this.package = package;
 
-            OleMenuCommandService commandService = this.ServiceProvider.GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
+            OleMenuCommandService commandService = ServiceProvider.GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
             if (commandService != null)
             {
-                var menuCommandID = new CommandID(CommandSet, CommandId);
-                var menuItem = new MenuCommand(this.MenuItemCallback, menuCommandID);
+                var menuCommandId = new CommandID(MapperCommandId, CommandId);
+                var menuItem = new MenuCommand(MenuItemCallback, menuCommandId);
                 commandService.AddCommand(menuItem);
+
+                var connectDatabaseCommand = new CommandID(ConnectDatabaseCommand, ConnectDatabaseCommandId);
+                var connectDatabaseCommandMenuItem = new MenuCommand(ConnectDatabaseCallback, connectDatabaseCommand);
+                commandService.AddCommand(connectDatabaseCommandMenuItem);
             }
         }
 
@@ -46,17 +52,21 @@ namespace iMapper.Commands
             private set;
         }
 
-        private IServiceProvider ServiceProvider
-        {
-            get
-            {
-                return this.package;
-            }
-        }
+        private IServiceProvider ServiceProvider => package;
 
         public static void Initialize(Package package)
         {
             Instance = new MapperCommand(package);
+        }
+
+        private void ConnectDatabaseCallback(object sender, EventArgs e)
+        {
+            var dte2 = Package.GetGlobalService(typeof(SDTE)) as DTE2;
+            if (dte2 != null)
+            {
+                
+            }
+            ShowDiabog("xx", "yy");
         }
 
         private void MenuItemCallback(object sender, EventArgs e)

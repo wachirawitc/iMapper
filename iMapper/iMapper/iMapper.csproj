@@ -64,6 +64,12 @@
     <Compile Include="Forms\ConnectDatabaseForm.Designer.cs">
       <DependentUpon>ConnectDatabaseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MapViewModelForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MapViewModelForm.Designer.cs">
+      <DependentUpon>MapViewModelForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\ClassElement.cs" />
     <Compile Include="Model\Config.cs" />
     <Compile Include="Model\Database\ColumnModel.cs" />
@@ -74,6 +80,7 @@
     <Compile Include="Model\MemberElement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\MsRepository.cs" />
+    <Compile Include="Repository\TemporaryRepository.cs" />
     <Compile Include="Support\DirectoryInfoComparer.cs" />
     <Compile Include="Support\Session.cs" />
     <Compile Include="Support\Temporary.cs" />
@@ -356,6 +363,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ConnectDatabaseForm.resx">
       <DependentUpon>ConnectDatabaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MapViewModelForm.resx">
+      <DependentUpon>MapViewModelForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

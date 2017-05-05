@@ -94,7 +94,8 @@ namespace iMapper.Commands
                     if (projectItem != null)
                     {
                         ProjectItems projectItems = projectItem.ProjectItems;
-                        projectItems.AddFromFileCopy(@"C:\Users\Admin\Desktop\xxx\code.txt");
+                        MapViewModelForm mapViewModelForm = new MapViewModelForm(projectItems);
+                        mapViewModelForm.ShowDialog();
                     }
                 }
             }

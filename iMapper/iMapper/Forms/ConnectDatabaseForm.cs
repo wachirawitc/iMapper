@@ -1,65 +1,32 @@
 ﻿using iMapper.Model;
-using iMapper.Model.Database;
 using iMapper.Repository;
-using iMapper.Support;
-using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Windows.Forms;
 
 namespace iMapper.Forms
 {
     public partial class ConnectDatabaseForm : Form
     {
+        private readonly TemporaryRepository temporaryRepository;
+
         public ConnectDatabaseForm()
         {
             InitializeComponent();
-            CreateFile();
-        }
 
-        private static void CreateFile()
-        {
-            if (Directory.Exists(Temporary.Directory) == false)
-            {
-                Directory.CreateDirectory(Temporary.Directory);
-            }
-
-            if (File.Exists(Temporary.TableFile) == false)
-            {
-                using (File.Create(Temporary.TableFile))
-                {
-                }
-            }
-
-            if (File.Exists(Temporary.ConfigFile) == false)
-            {
-                using (File.Create(Temporary.ConfigFile))
-                {
-                }
-            }
+            temporaryRepository = new TemporaryRepository();
         }
 
         private void ConnectDatabaseForm_Load(object sender, EventArgs e)
         {
-            if (File.Exists(Temporary.TableFile))
-            {
-                string contents = File.ReadAllText(Temporary.TableFile);
-                List<ColumnModel> columns = JsonConvert.DeserializeObject<List<ColumnModel>>(contents);
-                TableGrid.DataSource = columns ?? new List<ColumnModel>();
-            }
+            TableGrid.DataSource = temporaryRepository.GetColumns();
 
-            if (File.Exists(Temporary.ConfigFile))
+            Config config = temporaryRepository.GetConfig();
+            if (config != null)
             {
-                string contents = File.ReadAllText(Temporary.ConfigFile);
-                Config config = JsonConvert.DeserializeObject<Config>(contents);
-                if (config != null)
-                {
-                    ServerName.Text = config.ServerName;
-                    DatabaseName.Text = config.Database;
-                    Username.Text = config.User;
-                    Password.Text = config.Password;
-                }
+                ServerName.Text = config.ServerName;
+                DatabaseName.Text = config.Database;
+                Username.Text = config.User;
+                Password.Text = config.Password;
             }
         }
 
@@ -69,17 +36,8 @@ namespace iMapper.Forms
             MsRepository repository = new MsRepository(config.ServerName, config.Database, config.User, config.Password);
 
             var columns = repository.GetColumns();
-            using (TextWriter writer = new StreamWriter(Temporary.TableFile))
-            {
-                writer.WriteLine(JsonConvert.SerializeObject(columns));
-                writer.Close();
-            }
-
-            using (TextWriter writer = new StreamWriter(Temporary.ConfigFile))
-            {
-                writer.WriteLine(JsonConvert.SerializeObject(config));
-                writer.Close();
-            }
+            temporaryRepository.SetColumns(columns);
+            temporaryRepository.SetConfig(config);
 
             TableGrid.DataSource = columns;
         }

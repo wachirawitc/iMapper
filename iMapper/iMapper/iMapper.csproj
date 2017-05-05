@@ -65,8 +65,14 @@
       <DependentUpon>ConnectDatabaseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\ClassElement.cs" />
+    <Compile Include="Model\Database\ColumnModel.cs" />
+    <Compile Include="Model\Database\StoredProceduresColumnsModel.cs" />
+    <Compile Include="Model\Database\StoredProceduresModel.cs" />
+    <Compile Include="Model\Database\StoredProceduresParameterModel.cs" />
+    <Compile Include="Model\Database\TableModel.cs" />
     <Compile Include="Model\MemberElement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\MsRepository.cs" />
     <Compile Include="Support\DirectoryInfoComparer.cs" />
     <Compile Include="Support\Session.cs" />
     <Compile Include="Template\MapperTemplate.cs">

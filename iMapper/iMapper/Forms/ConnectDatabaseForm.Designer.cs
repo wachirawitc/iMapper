@@ -39,6 +39,8 @@
             this.Password = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.TableGrid = new System.Windows.Forms.DataGridView();
+            this.label4 = new System.Windows.Forms.Label();
+            this.DatabaseName = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ConfigurationGrid)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -53,12 +55,13 @@
             this.LoadButton.TabIndex = 0;
             this.LoadButton.Text = "Load";
             this.LoadButton.UseVisualStyleBackColor = true;
+            this.LoadButton.Click += new System.EventHandler(this.LoadButton_Click);
             // 
             // ServerName
             // 
             this.ServerName.Location = new System.Drawing.Point(12, 29);
             this.ServerName.Name = "ServerName";
-            this.ServerName.Size = new System.Drawing.Size(305, 20);
+            this.ServerName.Size = new System.Drawing.Size(134, 20);
             this.ServerName.TabIndex = 1;
             // 
             // groupBox1
@@ -66,7 +69,7 @@
             this.groupBox1.Controls.Add(this.ConfigurationGrid);
             this.groupBox1.Location = new System.Drawing.Point(13, 334);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(385, 180);
+            this.groupBox1.Size = new System.Drawing.Size(867, 180);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Configuration";
@@ -76,7 +79,8 @@
             this.ConfigurationGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ConfigurationGrid.Location = new System.Drawing.Point(6, 19);
             this.ConfigurationGrid.Name = "ConfigurationGrid";
-            this.ConfigurationGrid.Size = new System.Drawing.Size(373, 150);
+            this.ConfigurationGrid.ReadOnly = true;
+            this.ConfigurationGrid.Size = new System.Drawing.Size(855, 150);
             this.ConfigurationGrid.TabIndex = 3;
             // 
             // label1
@@ -125,7 +129,7 @@
             this.groupBox2.Controls.Add(this.TableGrid);
             this.groupBox2.Location = new System.Drawing.Point(13, 106);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(385, 222);
+            this.groupBox2.Size = new System.Drawing.Size(867, 222);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tables";
@@ -135,14 +139,33 @@
             this.TableGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TableGrid.Location = new System.Drawing.Point(6, 19);
             this.TableGrid.Name = "TableGrid";
-            this.TableGrid.Size = new System.Drawing.Size(373, 197);
+            this.TableGrid.ReadOnly = true;
+            this.TableGrid.Size = new System.Drawing.Size(855, 197);
             this.TableGrid.TabIndex = 3;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(152, 13);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(84, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Database Name";
+            // 
+            // DatabaseName
+            // 
+            this.DatabaseName.Location = new System.Drawing.Point(155, 29);
+            this.DatabaseName.Name = "DatabaseName";
+            this.DatabaseName.Size = new System.Drawing.Size(162, 20);
+            this.DatabaseName.TabIndex = 8;
             // 
             // ConnectDatabaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(414, 526);
+            this.ClientSize = new System.Drawing.Size(892, 526);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.DatabaseName);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Password);
@@ -179,5 +202,7 @@
         private System.Windows.Forms.TextBox Password;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView TableGrid;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox DatabaseName;
     }
 }

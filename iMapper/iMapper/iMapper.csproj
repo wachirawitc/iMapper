@@ -58,6 +58,12 @@
     <Compile Include="Extensions\DirectoryInfoExtension.cs" />
     <Compile Include="Extensions\ProjectExtension.cs" />
     <Compile Include="Extensions\ProjectItemExtension.cs" />
+    <Compile Include="Forms\ConnectDatabaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ConnectDatabaseForm.Designer.cs">
+      <DependentUpon>ConnectDatabaseForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\ClassElement.cs" />
     <Compile Include="Model\MemberElement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -214,6 +220,10 @@
       <HintPath>..\packages\Microsoft.VisualStudio.Validation.14.1.111\lib\net45\Microsoft.VisualStudio.Validation.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
@@ -335,6 +345,9 @@
     <EmbeddedResource Include="Commands\VSPackage.resx">
       <MergeWithCTO>true</MergeWithCTO>
       <ManifestResourceName>VSPackage</ManifestResourceName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ConnectDatabaseForm.resx">
+      <DependentUpon>ConnectDatabaseForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

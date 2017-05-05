@@ -2,6 +2,7 @@
 using EnvDTE80;
 using iMapper.Constance;
 using iMapper.Extensions;
+using iMapper.Forms;
 using iMapper.Model;
 using iMapper.Support;
 using iMapper.Template.ModelTemplate;
@@ -64,9 +65,9 @@ namespace iMapper.Commands
             var dte2 = Package.GetGlobalService(typeof(SDTE)) as DTE2;
             if (dte2 != null)
             {
-                
+                var form = new ConnectDatabaseForm();
+                form.ShowDialog();
             }
-            ShowDiabog("xx", "yy");
         }
 
         private void MenuItemCallback(object sender, EventArgs e)

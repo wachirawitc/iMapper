@@ -12,6 +12,10 @@
       <Group guid="ConnectDbCmdSet" id="ConnectDbGroup" priority="0x0601">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_CODEWIN" />
       </Group>
+
+      <Group guid="MapViewModelCmdSet" id="MapViewModelGroup" priority="0x0602">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_FOLDERNODE" />
+      </Group>
       
     </Groups>
 
@@ -33,6 +37,14 @@
         </Strings>
       </Button>
 
+      <Button guid="MapViewModelCmdSet" id="MapViewModelCommandId" priority="0x0102" type="Button">
+        <Parent guid="MapViewModelCmdSet" id="MapViewModelGroup" />
+        <Icon guid="guidImages" id="bmpPic1" />
+        <Strings>
+          <ButtonText>Map view model</ButtonText>
+        </Strings>
+      </Button>
+
     </Buttons>
 
     <Bitmaps>
@@ -51,6 +63,11 @@
     <GuidSymbol name="ConnectDbCmdSet" value="{89629128-c144-443f-9920-0ed1b9bc65b6}">
       <IDSymbol name="ConnectDbGroup" value="0x0201" />
       <IDSymbol name="ConnectDatabaseCommandId" value="0x0200" />
+    </GuidSymbol>
+
+    <GuidSymbol name="MapViewModelCmdSet" value="{0f8fad5b-d9cb-469f-a165-70867728950e}">
+      <IDSymbol name="MapViewModelGroup" value="0x0301" />
+      <IDSymbol name="MapViewModelCommandId" value="0x0300" />
     </GuidSymbol>
 
     <GuidSymbol name="guidImages" value="{800f86f7-dada-497c-8666-ddbcce338fc0}">

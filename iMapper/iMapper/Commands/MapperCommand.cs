@@ -19,9 +19,11 @@ namespace iMapper.Commands
     {
         public const int CommandId = 0x0100;
         public const int ConnectDatabaseCommandId = 0x0200;
+        public const int MapViewModelCommandId = 0x0300;
 
         public static readonly Guid MapperCommandId = new Guid("a3b89b0e-701e-48e0-843b-79082041a30c");
         public static readonly Guid ConnectDatabaseCommand = new Guid("89629128-c144-443f-9920-0ed1b9bc65b6");
+        public static readonly Guid MapViewModelCommand = new Guid("0f8fad5b-d9cb-469f-a165-70867728950e");
 
         private readonly Package package;
 
@@ -44,6 +46,10 @@ namespace iMapper.Commands
                 var connectDatabaseCommand = new CommandID(ConnectDatabaseCommand, ConnectDatabaseCommandId);
                 var connectDatabaseCommandMenuItem = new MenuCommand(ConnectDatabaseCallback, connectDatabaseCommand);
                 commandService.AddCommand(connectDatabaseCommandMenuItem);
+
+                var mapViewModelCommand = new CommandID(MapViewModelCommand, MapViewModelCommandId);
+                var mapViewModelCommandMenuItem = new MenuCommand(MapViewModelCallback, mapViewModelCommand);
+                commandService.AddCommand(mapViewModelCommandMenuItem);
             }
         }
 
@@ -67,6 +73,35 @@ namespace iMapper.Commands
             {
                 var form = new ConnectDatabaseForm();
                 form.ShowDialog();
+            }
+        }
+
+        private void MapViewModelCallback(object sender, EventArgs e)
+        {
+            var dte2 = Package.GetGlobalService(typeof(SDTE)) as DTE2;
+            if (dte2 != null)
+            {
+                UIHierarchy uih = dte2.ToolWindows.SolutionExplorer;
+                Array selectedItems = (Array)uih.SelectedItems;
+                if (selectedItems == null || selectedItems.Length > 1)
+                {
+                    ShowDiabog("Select one item.", "xxx");
+                }
+                else
+                {
+                    foreach (UIHierarchyItem selItem in selectedItems)
+                    {
+                        ProjectItem projectItem = selItem.Object as ProjectItem;
+                        if (projectItem != null)
+                        {
+                            string filePath = projectItem.Properties.Item("FullPath").Value.ToString();
+                            if (string.IsNullOrEmpty(filePath))
+                            {
+                                
+                            }
+                        }
+                    }
+                }
             }
         }
 

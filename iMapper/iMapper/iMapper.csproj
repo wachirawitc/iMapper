@@ -65,6 +65,7 @@
       <DependentUpon>ConnectDatabaseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\ClassElement.cs" />
+    <Compile Include="Model\Config.cs" />
     <Compile Include="Model\Database\ColumnModel.cs" />
     <Compile Include="Model\Database\StoredProceduresColumnsModel.cs" />
     <Compile Include="Model\Database\StoredProceduresModel.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Repository\MsRepository.cs" />
     <Compile Include="Support\DirectoryInfoComparer.cs" />
     <Compile Include="Support\Session.cs" />
+    <Compile Include="Support\Temporary.cs" />
     <Compile Include="Template\MapperTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

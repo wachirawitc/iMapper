@@ -3,6 +3,7 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="iMapper.Extensions" #>
 
 namespace <# Write(Namespace); #>
 {
@@ -10,7 +11,7 @@ namespace <# Write(Namespace); #>
 	{
 		<# foreach(var column in Columns) { #> 
 			
-			public <# Write(column.DataType); #> <#	Write(column.ColumnName); #> { get; set; } 
+			public <# Write(column.DataType.GetMsType(column.IsNullable)); #> <#	Write(column.ColumnName); #> { get; set; } 
 
 		<# } #>
 	}

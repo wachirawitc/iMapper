@@ -12,6 +12,7 @@ namespace iMapper.Template
     using System.Linq;
     using System.Text;
     using System.Collections.Generic;
+    using iMapper.Extensions;
     using System;
     
     /// <summary>
@@ -30,42 +31,42 @@ namespace iMapper.Template
         {
             this.Write("\r\nnamespace ");
             
-            #line 7 "D:\Source\iMapper\iMapper\iMapper\Template\ViewModelAspNetMvc.tt"
+            #line 8 "D:\Source\iMapper\iMapper\iMapper\Template\ViewModelAspNetMvc.tt"
  Write(Namespace); 
             
             #line default
             #line hidden
             this.Write("{\r\n\tpublic class ");
             
-            #line 9 "D:\Source\iMapper\iMapper\iMapper\Template\ViewModelAspNetMvc.tt"
+            #line 10 "D:\Source\iMapper\iMapper\iMapper\Template\ViewModelAspNetMvc.tt"
  Write(Name); 
             
             #line default
             #line hidden
             this.Write("\t{\r\n\t\t");
             
-            #line 11 "D:\Source\iMapper\iMapper\iMapper\Template\ViewModelAspNetMvc.tt"
+            #line 12 "D:\Source\iMapper\iMapper\iMapper\Template\ViewModelAspNetMvc.tt"
  foreach(var column in Columns) { 
             
             #line default
             #line hidden
             this.Write(" \r\n\t\t\t\r\n\t\t\tpublic ");
             
-            #line 13 "D:\Source\iMapper\iMapper\iMapper\Template\ViewModelAspNetMvc.tt"
- Write(column.DataType); 
+            #line 14 "D:\Source\iMapper\iMapper\iMapper\Template\ViewModelAspNetMvc.tt"
+ Write(column.DataType.GetMsType(column.IsNullable)); 
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 13 "D:\Source\iMapper\iMapper\iMapper\Template\ViewModelAspNetMvc.tt"
+            #line 14 "D:\Source\iMapper\iMapper\iMapper\Template\ViewModelAspNetMvc.tt"
 	Write(column.ColumnName); 
             
             #line default
             #line hidden
             this.Write(" { get; set; } \r\n\r\n\t\t");
             
-            #line 15 "D:\Source\iMapper\iMapper\iMapper\Template\ViewModelAspNetMvc.tt"
+            #line 16 "D:\Source\iMapper\iMapper\iMapper\Template\ViewModelAspNetMvc.tt"
  } 
             
             #line default

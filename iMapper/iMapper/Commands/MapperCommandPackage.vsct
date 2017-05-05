@@ -41,7 +41,7 @@
         <Parent guid="MapViewModelCmdSet" id="MapViewModelGroup" />
         <Icon guid="guidImages" id="bmpPic1" />
         <Strings>
-          <ButtonText>Map view model</ButtonText>
+          <ButtonText>View model</ButtonText>
         </Strings>
       </Button>
 

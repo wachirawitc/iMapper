@@ -1,9 +1,10 @@
 ﻿using EnvDTE;
+using iMapper.Constance.Enumeration;
 using iMapper.Repository;
 using iMapper.Support;
 using iMapper.Template;
 using System;
-using System.IO;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -24,16 +25,7 @@ namespace iMapper.Forms
 
         private void MapViewModelForm_Load(object sender, EventArgs e)
         {
-            var tables = temporaryRepository
-                .GetColumns()
-                .GroupBy(x => new { x.TableSchema, x.TableName })
-                .Select(x => new ComboboxItem { Text = $"[{x.Key.TableSchema}].[{x.Key.TableName}]", Value = x.Key.TableName })
-                .Distinct();
-
-            foreach (var table in tables)
-            {
-                Tables.Items.Add(table);
-            }
+            Init();
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
@@ -48,21 +40,12 @@ namespace iMapper.Forms
 
                 var template = new ViewModelAspNetMvc();
                 template.Namespace = "Test";
-                template.Name = $"{item.Value}ViewModel";
+                template.Name = FileName.Text;
                 template.Columns = columns;
 
-                string file = Temporary.Directory + $"{item.Value}ViewModel.cs";
-                if (File.Exists(file))
-                {
-                    File.Delete(file);
-                }
-
-                using (TextWriter writer = new StreamWriter(file))
-                {
-                    writer.WriteLine(template.TransformText());
-                    writer.Close();
-                }
-                projectItems.AddFromFileCopy(file);
+                var source = new SourceCode(FileName.Text, template.TransformText());
+                var sourceFile = source.Create();
+                projectItems.AddFromFileCopy(sourceFile.FullName);
             }
 
             Close();
@@ -73,7 +56,7 @@ namespace iMapper.Forms
             var item = Tables.SelectedItem as ComboboxItem;
             if (item != null)
             {
-                FileName.Text = $"{item.Value}ViewModel.cs";
+                FileName.Text = $"{item.Value}ViewModel";
 
                 var columns = temporaryRepository
                     .GetColumns()
@@ -84,6 +67,38 @@ namespace iMapper.Forms
                     Columns.DataSource = columns;
                 }
             }
+        }
+
+        private void CloseButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void Init()
+        {
+            var tables = temporaryRepository
+                .GetColumns()
+                .GroupBy(x => new { x.TableSchema, x.TableName })
+                .Select(x => new ComboboxItem
+                {
+                    Text = $"[{x.Key.TableSchema}].[{x.Key.TableName}]",
+                    Value = x.Key.TableName
+                })
+                .Distinct();
+            foreach (var table in tables)
+            {
+                Tables.Items.Add(table);
+            }
+
+            var options = new List<ComboboxItem>();
+            options.Add(new ComboboxItem { Text = nameof(ViewModelOption.Default), Value = (int)ViewModelOption.Default });
+            options.Add(new ComboboxItem { Text = nameof(ViewModelOption.AspMvc), Value = (int)ViewModelOption.AspMvc });
+            options.Add(new ComboboxItem { Text = nameof(ViewModelOption.FluentValidation), Value = (int)ViewModelOption.FluentValidation });
+            foreach (var item in options)
+            {
+                Options.Items.Add(item);
+            }
+            Options.SelectedIndex = 1;
         }
     }
 }

@@ -43,7 +43,7 @@
             // 
             // SaveButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(308, 407);
+            this.SaveButton.Location = new System.Drawing.Point(308, 364);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(90, 27);
             this.SaveButton.TabIndex = 0;
@@ -83,7 +83,7 @@
             this.groupBox1.Controls.Add(this.IsAspNetMvc);
             this.groupBox1.Location = new System.Drawing.Point(16, 287);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(382, 114);
+            this.groupBox1.Size = new System.Drawing.Size(382, 71);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Option";
@@ -128,7 +128,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(410, 446);
+            this.ClientSize = new System.Drawing.Size(410, 404);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.FileName);
             this.Controls.Add(this.groupBox1);

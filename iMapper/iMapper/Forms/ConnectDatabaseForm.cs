@@ -27,19 +27,51 @@ namespace iMapper.Forms
                 DatabaseName.Text = config.Database;
                 Username.Text = config.User;
                 Password.Text = config.Password;
+                IsWindowsAuthentication.Checked = config.IsWindowsAuthentication;
+                InitWindowsAuthentication(config.IsWindowsAuthentication);
             }
         }
 
         private void LoadButton_Click(object sender, EventArgs e)
         {
-            Config config = new Config { ServerName = ServerName.Text, Database = DatabaseName.Text, User = Username.Text, Password = Password.Text };
+            Config config = new Config
+            {
+                ServerName = ServerName.Text,
+                Database = DatabaseName.Text,
+                User = Username.Text,
+                Password = Password.Text,
+                IsWindowsAuthentication = IsWindowsAuthentication.Checked
+            };
             MsRepository repository = new MsRepository(config.ServerName, config.Database, config.User, config.Password);
+            if (IsWindowsAuthentication.Checked)
+            {
+                repository = new MsRepository(ServerName.Text, DatabaseName.Text);
+            }
 
             var columns = repository.GetColumns();
             temporaryRepository.SetColumns(columns);
             temporaryRepository.SetConfig(config);
 
             TableGrid.DataSource = columns;
+        }
+
+        private void IsWindowsAuthentication_CheckedChanged(object sender, EventArgs e)
+        {
+            InitWindowsAuthentication(IsWindowsAuthentication.Checked);
+        }
+
+        private void InitWindowsAuthentication(bool isCheck)
+        {
+            if (isCheck)
+            {
+                Username.ReadOnly = true;
+                Password.ReadOnly = true;
+            }
+            else
+            {
+                Username.ReadOnly = false;
+                Password.ReadOnly = false;
+            }
         }
     }
 }

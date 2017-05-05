@@ -41,6 +41,7 @@
             this.TableGrid = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.DatabaseName = new System.Windows.Forms.TextBox();
+            this.IsWindowsAuthentication = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ConfigurationGrid)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -49,9 +50,9 @@
             // 
             // LoadButton
             // 
-            this.LoadButton.Location = new System.Drawing.Point(323, 77);
+            this.LoadButton.Location = new System.Drawing.Point(742, 29);
             this.LoadButton.Name = "LoadButton";
-            this.LoadButton.Size = new System.Drawing.Size(75, 23);
+            this.LoadButton.Size = new System.Drawing.Size(132, 71);
             this.LoadButton.TabIndex = 0;
             this.LoadButton.Text = "Load";
             this.LoadButton.UseVisualStyleBackColor = true;
@@ -61,7 +62,7 @@
             // 
             this.ServerName.Location = new System.Drawing.Point(12, 29);
             this.ServerName.Name = "ServerName";
-            this.ServerName.Size = new System.Drawing.Size(134, 20);
+            this.ServerName.Size = new System.Drawing.Size(321, 20);
             this.ServerName.TabIndex = 1;
             // 
             // groupBox1
@@ -95,7 +96,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 63);
+            this.label2.Location = new System.Drawing.Point(171, 60);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 5;
@@ -103,15 +104,15 @@
             // 
             // Username
             // 
-            this.Username.Location = new System.Drawing.Point(12, 79);
+            this.Username.Location = new System.Drawing.Point(174, 76);
             this.Username.Name = "Username";
-            this.Username.Size = new System.Drawing.Size(134, 20);
+            this.Username.Size = new System.Drawing.Size(298, 20);
             this.Username.TabIndex = 4;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(152, 63);
+            this.label3.Location = new System.Drawing.Point(475, 60);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 13);
             this.label3.TabIndex = 7;
@@ -119,9 +120,9 @@
             // 
             // Password
             // 
-            this.Password.Location = new System.Drawing.Point(155, 79);
+            this.Password.Location = new System.Drawing.Point(478, 76);
             this.Password.Name = "Password";
-            this.Password.Size = new System.Drawing.Size(162, 20);
+            this.Password.Size = new System.Drawing.Size(255, 20);
             this.Password.TabIndex = 6;
             // 
             // groupBox2
@@ -146,7 +147,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(152, 13);
+            this.label4.Location = new System.Drawing.Point(336, 13);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(84, 13);
             this.label4.TabIndex = 9;
@@ -154,16 +155,28 @@
             // 
             // DatabaseName
             // 
-            this.DatabaseName.Location = new System.Drawing.Point(155, 29);
+            this.DatabaseName.Location = new System.Drawing.Point(339, 29);
             this.DatabaseName.Name = "DatabaseName";
-            this.DatabaseName.Size = new System.Drawing.Size(162, 20);
+            this.DatabaseName.Size = new System.Drawing.Size(397, 20);
             this.DatabaseName.TabIndex = 8;
+            // 
+            // IsWindowsAuthentication
+            // 
+            this.IsWindowsAuthentication.AutoSize = true;
+            this.IsWindowsAuthentication.Location = new System.Drawing.Point(12, 76);
+            this.IsWindowsAuthentication.Name = "IsWindowsAuthentication";
+            this.IsWindowsAuthentication.Size = new System.Drawing.Size(141, 17);
+            this.IsWindowsAuthentication.TabIndex = 10;
+            this.IsWindowsAuthentication.Text = "Windows Authentication";
+            this.IsWindowsAuthentication.UseVisualStyleBackColor = true;
+            this.IsWindowsAuthentication.CheckedChanged += new System.EventHandler(this.IsWindowsAuthentication_CheckedChanged);
             // 
             // ConnectDatabaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(892, 526);
+            this.Controls.Add(this.IsWindowsAuthentication);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.DatabaseName);
             this.Controls.Add(this.groupBox2);
@@ -204,5 +217,6 @@
         private System.Windows.Forms.DataGridView TableGrid;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox DatabaseName;
+        private System.Windows.Forms.CheckBox IsWindowsAuthentication;
     }
 }

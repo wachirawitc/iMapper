@@ -7,8 +7,8 @@ namespace iMapper.Support
     {
         public static List<DirectoryInfo> GetMapDirectories => new List<DirectoryInfo>
         {
-            Directory.GetParent(@"D:\Project\HRMS\HRMS\HRMS\ViewModels\"),
-            Directory.GetParent(@"D:\Project\HRMS\HRMS\HR.Models\")
+            Directory.GetParent(@"c:\users\admin\documents\visual studio 2015\Projects\ConsoleApplication3\ConsoleApplication3\ViewModel\"),
+            Directory.GetParent(@"C:\Users\Admin\Documents\Visual Studio 2015\Projects\ConsoleApplication3\Model\")
         };
     }
 }

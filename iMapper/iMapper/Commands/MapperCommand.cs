@@ -61,6 +61,11 @@ namespace iMapper.Commands
 
         private void MenuItemCallback(object sender, EventArgs e)
         {
+            MapObject();
+        }
+
+        private void MapObject()
+        {
             var dte2 = Package.GetGlobalService(typeof(SDTE)) as DTE2;
             if (dte2 != null)
             {

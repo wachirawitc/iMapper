@@ -43,30 +43,30 @@ namespace iMapper.Template.Model
             
             #line default
             #line hidden
-            this.Write("\t{\r\n\r\n\t\t");
+            this.Write("\t{\r\n\t\t");
             
-            #line 13 "D:\Source\iMapper\iMapper\iMapper\Template\Model\DefaultModelTemplate.tt"
+            #line 12 "D:\Source\iMapper\iMapper\iMapper\Template\Model\DefaultModelTemplate.tt"
     foreach(var column in Columns) { 
             
             #line default
             #line hidden
             this.Write(" \r\n\t    public ");
             
-            #line 14 "D:\Source\iMapper\iMapper\iMapper\Template\Model\DefaultModelTemplate.tt"
+            #line 13 "D:\Source\iMapper\iMapper\iMapper\Template\Model\DefaultModelTemplate.tt"
  Write(column.DataType.GetMsType(column.IsNullable)); 
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 14 "D:\Source\iMapper\iMapper\iMapper\Template\Model\DefaultModelTemplate.tt"
+            #line 13 "D:\Source\iMapper\iMapper\iMapper\Template\Model\DefaultModelTemplate.tt"
  Write(GetName(column.ColumnName)); 
             
             #line default
             #line hidden
             this.Write(" { get; set; } \r\n\t\t");
             
-            #line 15 "D:\Source\iMapper\iMapper\iMapper\Template\Model\DefaultModelTemplate.tt"
+            #line 14 "D:\Source\iMapper\iMapper\iMapper\Template\Model\DefaultModelTemplate.tt"
     } 
             
             #line default

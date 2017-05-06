@@ -119,6 +119,7 @@
             this.Options.Name = "Options";
             this.Options.Size = new System.Drawing.Size(316, 24);
             this.Options.TabIndex = 7;
+            this.Options.SelectedIndexChanged += new System.EventHandler(this.Options_SelectedIndexChanged);
             // 
             // label3
             // 

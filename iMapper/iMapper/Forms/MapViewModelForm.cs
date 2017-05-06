@@ -82,7 +82,7 @@ namespace iMapper.Forms
             var item = Tables.SelectedItem as ComboboxItem;
             if (item != null)
             {
-                FileName.Text = $"{item.Value.ToString().Pascalize()}ViewModel";
+                FileName.Text = $"{item.Value.ToString().Pascalize()}Model";
 
                 var columns = temporaryRepository
                     .GetColumns()
@@ -162,6 +162,24 @@ namespace iMapper.Forms
                 code = template.TransformText();
             }
             return code;
+        }
+
+        private void Options_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var option = Options.SelectedItem as ComboboxItem;
+            var table = Tables.SelectedItem as ComboboxItem;
+            if (option != null && table != null)
+            {
+                var viewModelOption = (ViewModelOption)(int)option.Value;
+                if (viewModelOption == ViewModelOption.Default)
+                {
+                    FileName.Text = $"{table.Value.ToString().Pascalize()}Model";
+                }
+                else if (viewModelOption == ViewModelOption.AspMvc)
+                {
+                    FileName.Text = $"{table.Value.ToString().Pascalize()}ViewModel";
+                }
+            }
         }
     }
 }

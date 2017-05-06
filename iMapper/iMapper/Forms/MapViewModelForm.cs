@@ -120,6 +120,7 @@ namespace iMapper.Forms
             var options = new List<ComboboxItem>();
             options.Add(new ComboboxItem { Text = nameof(ViewModelOption.Default), Value = (int)ViewModelOption.Default });
             options.Add(new ComboboxItem { Text = nameof(ViewModelOption.AspMvc), Value = (int)ViewModelOption.AspMvc });
+            options.Add(new ComboboxItem { Text = nameof(ViewModelOption.AspMvcCustom1), Value = (int)ViewModelOption.AspMvcCustom1 });
             foreach (var item in options)
             {
                 Options.Items.Add(item);
@@ -161,6 +162,15 @@ namespace iMapper.Forms
                 template.Columns = columns;
                 code = template.TransformText();
             }
+            else if (ViewModelOption == ViewModelOption.AspMvcCustom1)
+            {
+                var template = new AspMvcModelTemplateCustom1();
+                template.IsPascalize = IsPascalize.Checked;
+                template.Namespace = NamespaceHelper.Get(projectItem.ContainingProject, projectItem);
+                template.Name = FileName.Text;
+                template.Columns = columns;
+                code = template.TransformText();
+            }
             return code;
         }
 
@@ -176,6 +186,10 @@ namespace iMapper.Forms
                     FileName.Text = $"{table.Value.ToString().Pascalize()}Model";
                 }
                 else if (viewModelOption == ViewModelOption.AspMvc)
+                {
+                    FileName.Text = $"{table.Value.ToString().Pascalize()}ViewModel";
+                }
+                else if (viewModelOption == ViewModelOption.AspMvcCustom1)
                 {
                     FileName.Text = $"{table.Value.ToString().Pascalize()}ViewModel";
                 }

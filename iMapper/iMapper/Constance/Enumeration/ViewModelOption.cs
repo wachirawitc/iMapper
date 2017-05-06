@@ -3,6 +3,7 @@
     public enum ViewModelOption
     {
         Default,
-        AspMvc
+        AspMvc,
+        AspMvcCustom1
     }
 }

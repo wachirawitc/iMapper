@@ -109,6 +109,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AspMvcModelTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Template\Model\AspMvcModelTemplateCustom1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AspMvcModelTemplateCustom1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Template\Model\AspMvcModelTemplateCustom1Presenter.cs" />
     <Compile Include="Template\Model\AspMvcModelTemplatePresenter.cs" />
     <Compile Include="Template\Model\DefaultModelTemplate.cs">
       <AutoGen>True</AutoGen>
@@ -136,6 +142,10 @@
     <Content Include="Template\Model\AspMvcModelTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>AspMvcModelTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Template\Model\AspMvcModelTemplateCustom1.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>AspMvcModelTemplateCustom1.cs</LastGenOutput>
     </Content>
     <Content Include="Template\Model\DefaultModelTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

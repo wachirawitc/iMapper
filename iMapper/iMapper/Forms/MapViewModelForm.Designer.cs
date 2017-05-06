@@ -37,6 +37,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.CloseButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
+            this.IsReplace = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.Columns)).BeginInit();
             this.SuspendLayout();
             // 
@@ -142,11 +143,22 @@
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
+            // IsReplace
+            // 
+            this.IsReplace.AutoSize = true;
+            this.IsReplace.Location = new System.Drawing.Point(20, 521);
+            this.IsReplace.Name = "IsReplace";
+            this.IsReplace.Size = new System.Drawing.Size(136, 20);
+            this.IsReplace.TabIndex = 10;
+            this.IsReplace.Text = "Replace if existing";
+            this.IsReplace.UseVisualStyleBackColor = true;
+            // 
             // MapViewModelForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(454, 554);
+            this.Controls.Add(this.IsReplace);
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Options);
@@ -180,5 +192,6 @@
         private System.Windows.Forms.ComboBox Options;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button CloseButton;
+        private System.Windows.Forms.CheckBox IsReplace;
     }
 }

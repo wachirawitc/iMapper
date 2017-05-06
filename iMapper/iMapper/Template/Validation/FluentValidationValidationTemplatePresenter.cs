@@ -21,11 +21,7 @@ namespace iMapper.Template.Validation
 
         public string GetName(string name)
         {
-            if (IsPascalize)
-            {
-                return name.Pascalize();
-            }
-            return name;
+            return IsPascalize ? name.Pascalize() : name;
         }
 
         private static bool IsString(ColumnModel column)

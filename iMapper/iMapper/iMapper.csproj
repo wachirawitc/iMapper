@@ -129,6 +129,12 @@
       <DependentUpon>DefaultModelTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Template\Model\DefaultModelTemplatePresenter.cs" />
+    <Compile Include="Template\Validation\Custom1ValidationTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Custom1ValidationTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Template\Validation\Custom1ValidationTemplatePresenter.cs" />
     <Compile Include="Template\Validation\FluentValidationValidationTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -162,6 +168,10 @@
     <Content Include="Template\Model\DefaultModelTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DefaultModelTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Template\Validation\Custom1ValidationTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>Custom1ValidationTemplate.cs</LastGenOutput>
     </Content>
     <Content Include="Template\Validation\FluentValidationValidationTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

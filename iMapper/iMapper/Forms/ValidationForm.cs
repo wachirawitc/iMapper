@@ -89,6 +89,8 @@ namespace iMapper.Forms
 
                 case ValidationOption.Custom1:
                     FileName.Text = $"{TableName.Pascalize()}Investigate";
+                    ValidatorName.Text = $"{TableName.Pascalize()}Model";
+                    ValidatorName.ReadOnly = false;
                     break;
             }
         }
@@ -172,6 +174,16 @@ namespace iMapper.Forms
             if (ValidationOption == ValidationOption.FluentValidation)
             {
                 var template = new FluentValidationValidationTemplate();
+                template.IsPascalize = IsPascalize.Checked;
+                template.Namespace = NamespaceHelper.Get(projectItem.ContainingProject, projectItem);
+                template.Name = FileName.Text;
+                template.ValidatorName = ValidatorName.Text;
+                template.Columns = columns;
+                code = template.TransformText();
+            }
+            else if (ValidationOption == ValidationOption.Custom1)
+            {
+                var template = new Custom1ValidationTemplate();
                 template.IsPascalize = IsPascalize.Checked;
                 template.Namespace = NamespaceHelper.Get(projectItem.ContainingProject, projectItem);
                 template.Name = FileName.Text;

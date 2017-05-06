@@ -1,9 +1,10 @@
 ﻿using EnvDTE;
 using Humanizer;
 using iMapper.Constance.Enumeration;
+using iMapper.Model.Database;
 using iMapper.Repository;
 using iMapper.Support;
-using iMapper.Template.ViewModel;
+using iMapper.Template.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -40,16 +41,7 @@ namespace iMapper.Forms
                     .Where(x => x.TableName == (string)item.Value)
                     .ToList();
 
-                var code = string.Empty;
-                if (ViewModelOption == ViewModelOption.Default)
-                {
-                    var template = new DefaultViewModel();
-                    template.IsPascalize = IsPascalize.Checked;
-                    template.Namespace = "Test";
-                    template.Name = FileName.Text;
-                    template.Columns = columns;
-                    code = template.TransformText();
-                }
+                var code = GetCode(columns);
 
                 var fileName = $"{FileName.Text}.cs";
                 var destinationPath = projectItem.Properties.Item("FullPath").Value as string;
@@ -147,6 +139,30 @@ namespace iMapper.Forms
                 }
                 return (ViewModelOption)(int)value.Value;
             }
+        }
+
+        private string GetCode(List<ColumnModel> columns)
+        {
+            string code = string.Empty;
+            if (ViewModelOption == ViewModelOption.Default)
+            {
+                var template = new DefaultModelTemplate();
+                template.IsPascalize = IsPascalize.Checked;
+                template.Namespace = "Test";
+                template.Name = FileName.Text;
+                template.Columns = columns;
+                code = template.TransformText();
+            }
+            else if (ViewModelOption == ViewModelOption.AspMvc)
+            {
+                var template = new AspMvcModelTemplate();
+                template.IsPascalize = IsPascalize.Checked;
+                template.Namespace = "Test";
+                template.Name = FileName.Text;
+                template.Columns = columns;
+                code = template.TransformText();
+            }
+            return code;
         }
     }
 }

@@ -101,12 +101,18 @@
     </Compile>
     <Compile Include="Template\MapperTemplateGenerate.cs" />
     <Compile Include="Template\ModelTemplate\MapperModelTemplate.cs" />
-    <Compile Include="Template\ViewModel\DefaultViewModel.cs">
+    <Compile Include="Template\Model\AspMvcModelTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DefaultViewModel.tt</DependentUpon>
+      <DependentUpon>AspMvcModelTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Template\ViewModel\DefaultViewModelPresenter.cs" />
+    <Compile Include="Template\Model\AspMvcModelTemplatePresenter.cs" />
+    <Compile Include="Template\Model\DefaultModelTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DefaultModelTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Template\Model\DefaultModelTemplatePresenter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -124,9 +130,13 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>MapperTemplate.cs</LastGenOutput>
     </Content>
-    <Content Include="Template\ViewModel\DefaultViewModel.tt">
+    <Content Include="Template\Model\AspMvcModelTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>DefaultViewModel.cs</LastGenOutput>
+      <LastGenOutput>AspMvcModelTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Template\Model\DefaultModelTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DefaultModelTemplate.cs</LastGenOutput>
     </Content>
     <VSCTCompile Include="Commands\MapperCommandPackage.vsct">
       <ResourceName>Menus.ctmenu</ResourceName>

@@ -2,11 +2,12 @@
 using iMapper.Model.Database;
 using System.Collections.Generic;
 
-namespace iMapper.Template.ViewModel
+namespace iMapper.Template.Model
 {
-    public partial class DefaultViewModel
+    public partial class DefaultModelTemplate
     {
         public bool IsPascalize { get; set; }
+
         public string Name { get; set; }
 
         public string Namespace { get; set; }

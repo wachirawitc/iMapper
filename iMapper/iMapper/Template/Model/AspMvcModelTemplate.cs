@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace iMapper.Template.ViewModel
+namespace iMapper.Template.Model
 {
     using System.Linq;
     using System.Text;
@@ -19,9 +19,9 @@ namespace iMapper.Template.ViewModel
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "D:\Source\iMapper\iMapper\iMapper\Template\ViewModel\DefaultViewModel.tt"
+    #line 1 "D:\Source\iMapper\iMapper\iMapper\Template\Model\AspMvcModelTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public partial class DefaultViewModel : DefaultViewModelBase
+    public partial class AspMvcModelTemplate : AspMvcModelTemplateBase
     {
 #line hidden
         /// <summary>
@@ -29,44 +29,51 @@ namespace iMapper.Template.ViewModel
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\r\nusing System;\r\nnamespace ");
+            this.Write("using System;\r\nusing System.ComponentModel.DataAnnotations;\r\nnamespace ");
             
-            #line 9 "D:\Source\iMapper\iMapper\iMapper\Template\ViewModel\DefaultViewModel.tt"
+            #line 9 "D:\Source\iMapper\iMapper\iMapper\Template\Model\AspMvcModelTemplate.tt"
  Write(Namespace); 
             
             #line default
             #line hidden
             this.Write("{\r\n\tpublic class ");
             
-            #line 11 "D:\Source\iMapper\iMapper\iMapper\Template\ViewModel\DefaultViewModel.tt"
+            #line 11 "D:\Source\iMapper\iMapper\iMapper\Template\Model\AspMvcModelTemplate.tt"
  Write(Name); 
             
             #line default
             #line hidden
             this.Write("\t{\r\n\r\n\t\t");
             
-            #line 14 "D:\Source\iMapper\iMapper\iMapper\Template\ViewModel\DefaultViewModel.tt"
+            #line 14 "D:\Source\iMapper\iMapper\iMapper\Template\Model\AspMvcModelTemplate.tt"
     foreach(var column in Columns) { 
             
             #line default
             #line hidden
-            this.Write(" \r\n\t    public ");
+            this.Write(" \r\n");
             
-            #line 15 "D:\Source\iMapper\iMapper\iMapper\Template\ViewModel\DefaultViewModel.tt"
+            #line 15 "D:\Source\iMapper\iMapper\iMapper\Template\Model\AspMvcModelTemplate.tt"
+ Write(GetAttribute(column)); 
+            
+            #line default
+            #line hidden
+            this.Write("\t\tpublic ");
+            
+            #line 16 "D:\Source\iMapper\iMapper\iMapper\Template\Model\AspMvcModelTemplate.tt"
  Write(column.DataType.GetMsType(column.IsNullable)); 
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 15 "D:\Source\iMapper\iMapper\iMapper\Template\ViewModel\DefaultViewModel.tt"
+            #line 16 "D:\Source\iMapper\iMapper\iMapper\Template\Model\AspMvcModelTemplate.tt"
  Write(GetName(column.ColumnName)); 
             
             #line default
             #line hidden
             this.Write(" { get; set; } \r\n\t\t");
             
-            #line 16 "D:\Source\iMapper\iMapper\iMapper\Template\ViewModel\DefaultViewModel.tt"
+            #line 17 "D:\Source\iMapper\iMapper\iMapper\Template\Model\AspMvcModelTemplate.tt"
     } 
             
             #line default
@@ -83,7 +90,7 @@ namespace iMapper.Template.ViewModel
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public class DefaultViewModelBase
+    public class AspMvcModelTemplateBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

@@ -5,26 +5,26 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="iMapper.Extensions" #>
 using System;
-using System.ComponentModel.DataAnnotations;
+using FluentValidation;
+
 namespace <# Write(Namespace); #>
 {
 	public class <# Write(Name); #> : AbstractValidator<<# Write(ValidatorName); #>>
 	{
-        <# Write(GetRepositoryVariable()); #>
+		<# Write(GetRepositoryVariable()); #>
 
-        public <# Write(Name); #>()
-        {
-            <# Write(GetRepositoryInitVariable()); #>
-            InitialRule();
-        }
+		public <# Write(Name); #>()
+		{
+			<# Write(GetRepositoryInitVariable()); #>
+			InitialRule();
+		}
 
-        public void InitialRule()
-        {
+		public void InitialRule()
+		{
 		<# foreach(var column in Columns) { #> 
 <# Write(GetStringRule(column)); #>
 <# Write(GetNumberRule(column)); #>
-<# Write(GetRelationRule(column)); #>
 		<# } #>
-        }
-    }
+		}
+	}
 }

@@ -29,72 +29,65 @@ namespace iMapper.Template.Validation
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("using System;\r\nusing System.ComponentModel.DataAnnotations;\r\nnamespace ");
+            this.Write("using System;\r\nusing FluentValidation;\r\n\r\nnamespace ");
             
-            #line 9 "D:\Source\iMapper\iMapper\iMapper\Template\Validation\FluentValidationValidationTemplate.tt"
+            #line 10 "D:\Source\iMapper\iMapper\iMapper\Template\Validation\FluentValidationValidationTemplate.tt"
  Write(Namespace); 
             
             #line default
             #line hidden
             this.Write("{\r\n\tpublic class ");
             
-            #line 11 "D:\Source\iMapper\iMapper\iMapper\Template\Validation\FluentValidationValidationTemplate.tt"
+            #line 12 "D:\Source\iMapper\iMapper\iMapper\Template\Validation\FluentValidationValidationTemplate.tt"
  Write(Name); 
             
             #line default
             #line hidden
             this.Write(" : AbstractValidator<");
             
-            #line 11 "D:\Source\iMapper\iMapper\iMapper\Template\Validation\FluentValidationValidationTemplate.tt"
+            #line 12 "D:\Source\iMapper\iMapper\iMapper\Template\Validation\FluentValidationValidationTemplate.tt"
  Write(ValidatorName); 
             
             #line default
             #line hidden
-            this.Write(">\r\n\t{\r\n        ");
+            this.Write(">\r\n\t{\r\n\t\t");
             
-            #line 13 "D:\Source\iMapper\iMapper\iMapper\Template\Validation\FluentValidationValidationTemplate.tt"
+            #line 14 "D:\Source\iMapper\iMapper\iMapper\Template\Validation\FluentValidationValidationTemplate.tt"
  Write(GetRepositoryVariable()); 
             
             #line default
             #line hidden
-            this.Write("\r\n        public ");
+            this.Write("\r\n\t\tpublic ");
             
-            #line 15 "D:\Source\iMapper\iMapper\iMapper\Template\Validation\FluentValidationValidationTemplate.tt"
+            #line 16 "D:\Source\iMapper\iMapper\iMapper\Template\Validation\FluentValidationValidationTemplate.tt"
  Write(Name); 
             
             #line default
             #line hidden
-            this.Write("()\r\n        {\r\n            ");
+            this.Write("()\r\n\t\t{\r\n\t\t\t");
             
-            #line 17 "D:\Source\iMapper\iMapper\iMapper\Template\Validation\FluentValidationValidationTemplate.tt"
+            #line 18 "D:\Source\iMapper\iMapper\iMapper\Template\Validation\FluentValidationValidationTemplate.tt"
  Write(GetRepositoryInitVariable()); 
             
             #line default
             #line hidden
-            this.Write("            InitialRule();\r\n        }\r\n\r\n        public void InitialRule()\r\n     " +
-                    "   {\r\n\t\t");
+            this.Write("\t\t\tInitialRule();\r\n\t\t}\r\n\r\n\t\tpublic void InitialRule()\r\n\t\t{\r\n\t\t");
             
-            #line 23 "D:\Source\iMapper\iMapper\iMapper\Template\Validation\FluentValidationValidationTemplate.tt"
+            #line 24 "D:\Source\iMapper\iMapper\iMapper\Template\Validation\FluentValidationValidationTemplate.tt"
  foreach(var column in Columns) { 
             
             #line default
             #line hidden
             this.Write(" \r\n");
             
-            #line 24 "D:\Source\iMapper\iMapper\iMapper\Template\Validation\FluentValidationValidationTemplate.tt"
+            #line 25 "D:\Source\iMapper\iMapper\iMapper\Template\Validation\FluentValidationValidationTemplate.tt"
  Write(GetStringRule(column)); 
             
             #line default
             #line hidden
             
-            #line 25 "D:\Source\iMapper\iMapper\iMapper\Template\Validation\FluentValidationValidationTemplate.tt"
- Write(GetNumberRule(column)); 
-            
-            #line default
-            #line hidden
-            
             #line 26 "D:\Source\iMapper\iMapper\iMapper\Template\Validation\FluentValidationValidationTemplate.tt"
- Write(GetRelationRule(column)); 
+ Write(GetNumberRule(column)); 
             
             #line default
             #line hidden
@@ -105,7 +98,7 @@ namespace iMapper.Template.Validation
             
             #line default
             #line hidden
-            this.Write("        }\r\n    }\r\n}");
+            this.Write("\t\t}\r\n\t}\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

@@ -3,7 +3,6 @@
     public enum ViewModelOption
     {
         Default,
-        AspMvc,
-        FluentValidation
+        AspMvc
     }
 }

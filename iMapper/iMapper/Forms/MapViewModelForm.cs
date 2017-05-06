@@ -120,7 +120,6 @@ namespace iMapper.Forms
             var options = new List<ComboboxItem>();
             options.Add(new ComboboxItem { Text = nameof(ViewModelOption.Default), Value = (int)ViewModelOption.Default });
             options.Add(new ComboboxItem { Text = nameof(ViewModelOption.AspMvc), Value = (int)ViewModelOption.AspMvc });
-            options.Add(new ComboboxItem { Text = nameof(ViewModelOption.FluentValidation), Value = (int)ViewModelOption.FluentValidation });
             foreach (var item in options)
             {
                 Options.Items.Add(item);

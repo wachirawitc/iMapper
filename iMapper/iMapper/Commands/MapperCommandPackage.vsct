@@ -33,7 +33,7 @@
         <Parent guid="ConnectDbCmdSet" id="ConnectDbGroup" />
         <Icon guid="guidImages" id="bmpPic1" />
         <Strings>
-          <ButtonText>Connect Database</ButtonText>
+          <ButtonText>Config Database</ButtonText>
         </Strings>
       </Button>
 
@@ -41,7 +41,7 @@
         <Parent guid="MapViewModelCmdSet" id="MapViewModelGroup" />
         <Icon guid="guidImages" id="bmpPic1" />
         <Strings>
-          <ButtonText>View model</ButtonText>
+          <ButtonText>Model Template</ButtonText>
         </Strings>
       </Button>
 

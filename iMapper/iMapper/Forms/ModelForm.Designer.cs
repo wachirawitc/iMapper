@@ -1,6 +1,6 @@
 ﻿namespace iMapper.Forms
 {
-    partial class MapViewModelForm
+    partial class ModelForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MapViewModelForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModelForm));
             this.label1 = new System.Windows.Forms.Label();
             this.Tables = new System.Windows.Forms.ComboBox();
             this.Columns = new System.Windows.Forms.DataGridView();
@@ -227,7 +227,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MapViewModelForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Map View Model";
+            this.Text = "Model";
             this.Load += new System.EventHandler(this.MapViewModelForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Columns)).EndInit();
             this.ResumeLayout(false);

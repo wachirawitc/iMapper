@@ -68,11 +68,17 @@
     <Compile Include="Forms\ConnectDatabaseForm.Designer.cs">
       <DependentUpon>ConnectDatabaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MapViewModelForm.cs">
+    <Compile Include="Forms\ModelForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\MapViewModelForm.Designer.cs">
-      <DependentUpon>MapViewModelForm.cs</DependentUpon>
+    <Compile Include="Forms\ModelForm.Designer.cs">
+      <DependentUpon>ModelForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ValidationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ValidationForm.Designer.cs">
+      <DependentUpon>ValidationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\ClassElement.cs" />
     <Compile Include="Model\Config.cs" />
@@ -414,8 +420,11 @@
     <EmbeddedResource Include="Forms\ConnectDatabaseForm.resx">
       <DependentUpon>ConnectDatabaseForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MapViewModelForm.resx">
-      <DependentUpon>MapViewModelForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\ModelForm.resx">
+      <DependentUpon>ModelForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ValidationForm.resx">
+      <DependentUpon>ValidationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

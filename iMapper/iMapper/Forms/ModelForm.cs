@@ -14,12 +14,12 @@ using System.Windows.Forms;
 namespace iMapper.Forms
 {
     [System.Runtime.InteropServices.Guid("03394275-34B7-403D-8A5E-CEDF45CFE71A")]
-    public partial class MapViewModelForm : Form
+    public partial class ModelForm : Form
     {
         private readonly ProjectItem projectItem;
         private readonly TemporaryRepository temporaryRepository;
 
-        public MapViewModelForm(ProjectItem projectItem)
+        public ModelForm(ProjectItem projectItem)
         {
             InitializeComponent();
             this.projectItem = projectItem;

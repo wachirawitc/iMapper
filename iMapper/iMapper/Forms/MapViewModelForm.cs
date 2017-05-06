@@ -148,7 +148,7 @@ namespace iMapper.Forms
             {
                 var template = new DefaultModelTemplate();
                 template.IsPascalize = IsPascalize.Checked;
-                template.Namespace = "Test";
+                template.Namespace = GetNamespace();
                 template.Name = FileName.Text;
                 template.Columns = columns;
                 code = template.TransformText();
@@ -157,12 +157,32 @@ namespace iMapper.Forms
             {
                 var template = new AspMvcModelTemplate();
                 template.IsPascalize = IsPascalize.Checked;
-                template.Namespace = "Test";
+                template.Namespace = GetNamespace();
                 template.Name = FileName.Text;
                 template.Columns = columns;
                 code = template.TransformText();
             }
             return code;
+        }
+
+        private string GetNamespace()
+        {
+            const string defaultNamespace = "DefaultNamespace";
+
+            var projectPath = projectItem.ContainingProject.Properties.Item("FullPath").Value as string;
+            var folderPath = projectItem.Properties.Item("FullPath").Value as string;
+            if (string.IsNullOrEmpty(projectPath) || string.IsNullOrEmpty(folderPath))
+            {
+                return defaultNamespace;
+            }
+            var subPath = folderPath.Replace(projectPath, string.Empty);
+            var subFolder = subPath.Split('\\')
+                .ToList()
+                .Where(x => string.IsNullOrEmpty(x) == false)
+                .Select(x => x.Trim());
+
+            var targetNamespace = string.Join(".", subFolder);
+            return string.IsNullOrEmpty(targetNamespace) ? defaultNamespace : targetNamespace;
         }
     }
 }

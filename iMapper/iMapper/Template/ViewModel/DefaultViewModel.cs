@@ -43,14 +43,14 @@ namespace iMapper.Template.ViewModel
             
             #line default
             #line hidden
-            this.Write("\t{\r\n\t\t");
+            this.Write("\t{\r\n\r\n\t\t");
             
-            #line 13 "D:\Source\iMapper\iMapper\iMapper\Template\ViewModel\DefaultViewModel.tt"
- foreach(var column in Columns) { 
+            #line 14 "D:\Source\iMapper\iMapper\iMapper\Template\ViewModel\DefaultViewModel.tt"
+    foreach(var column in Columns) { 
             
             #line default
             #line hidden
-            this.Write(" \r\n\t\t\t\r\n\t\t\tpublic ");
+            this.Write(" \r\n\t    public ");
             
             #line 15 "D:\Source\iMapper\iMapper\iMapper\Template\ViewModel\DefaultViewModel.tt"
  Write(column.DataType.GetMsType(column.IsNullable)); 
@@ -60,18 +60,18 @@ namespace iMapper.Template.ViewModel
             this.Write(" ");
             
             #line 15 "D:\Source\iMapper\iMapper\iMapper\Template\ViewModel\DefaultViewModel.tt"
-	Write(column.ColumnName); 
+ Write(GetName(column.ColumnName)); 
             
             #line default
             #line hidden
-            this.Write(" { get; set; } \r\n\r\n\t\t");
+            this.Write(" { get; set; } \r\n\t\t");
             
-            #line 17 "D:\Source\iMapper\iMapper\iMapper\Template\ViewModel\DefaultViewModel.tt"
- } 
+            #line 16 "D:\Source\iMapper\iMapper\iMapper\Template\ViewModel\DefaultViewModel.tt"
+    } 
             
             #line default
             #line hidden
-            this.Write("\t}\r\n}");
+            this.Write("}\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MapViewModelForm));
             this.label1 = new System.Windows.Forms.Label();
             this.Tables = new System.Windows.Forms.ComboBox();
             this.Columns = new System.Windows.Forms.DataGridView();
@@ -38,6 +41,9 @@
             this.CloseButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
             this.IsReplace = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.ColumnNumber = new System.Windows.Forms.Label();
+            this.IsPascalize = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.Columns)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,10 +70,26 @@
             // 
             // Columns
             // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Columns.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.Columns.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Columns.Location = new System.Drawing.Point(16, 102);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Columns.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Columns.Location = new System.Drawing.Point(16, 123);
             this.Columns.Name = "Columns";
-            this.Columns.Size = new System.Drawing.Size(315, 258);
+            this.Columns.Size = new System.Drawing.Size(315, 237);
             this.Columns.TabIndex = 3;
             // 
             // FileName
@@ -144,18 +166,51 @@
             this.IsReplace.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.IsReplace.ForeColor = System.Drawing.Color.Red;
             this.IsReplace.Location = new System.Drawing.Point(16, 430);
-            this.IsReplace.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.IsReplace.Margin = new System.Windows.Forms.Padding(2);
             this.IsReplace.Name = "IsReplace";
             this.IsReplace.Size = new System.Drawing.Size(131, 17);
             this.IsReplace.TabIndex = 10;
             this.IsReplace.Text = "Replace if existing";
             this.IsReplace.UseVisualStyleBackColor = true;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(16, 103);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(37, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Found";
+            // 
+            // ColumnNumber
+            // 
+            this.ColumnNumber.AutoSize = true;
+            this.ColumnNumber.Location = new System.Drawing.Point(52, 103);
+            this.ColumnNumber.Name = "ColumnNumber";
+            this.ColumnNumber.Size = new System.Drawing.Size(56, 13);
+            this.ColumnNumber.TabIndex = 12;
+            this.ColumnNumber.Text = "0 Columns";
+            // 
+            // IsPascalize
+            // 
+            this.IsPascalize.AutoSize = true;
+            this.IsPascalize.Checked = true;
+            this.IsPascalize.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.IsPascalize.Location = new System.Drawing.Point(16, 452);
+            this.IsPascalize.Name = "IsPascalize";
+            this.IsPascalize.Size = new System.Drawing.Size(71, 17);
+            this.IsPascalize.TabIndex = 13;
+            this.IsPascalize.Text = "Pascalize";
+            this.IsPascalize.UseVisualStyleBackColor = true;
+            // 
             // MapViewModelForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(340, 482);
+            this.Controls.Add(this.IsPascalize);
+            this.Controls.Add(this.ColumnNumber);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.IsReplace);
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.label3);
@@ -168,6 +223,7 @@
             this.Controls.Add(this.SaveButton);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MapViewModelForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Map View Model";
@@ -190,5 +246,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button CloseButton;
         private System.Windows.Forms.CheckBox IsReplace;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label ColumnNumber;
+        private System.Windows.Forms.CheckBox IsPascalize;
     }
 }

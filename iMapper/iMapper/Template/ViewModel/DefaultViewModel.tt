@@ -10,10 +10,9 @@ namespace <# Write(Namespace); #>
 {
 	public class <# Write(Name); #>
 	{
-		<# foreach(var column in Columns) { #> 
-			
-			public <# Write(column.DataType.GetMsType(column.IsNullable)); #> <#	Write(column.ColumnName); #> { get; set; } 
 
-		<# } #>
-	}
+		<#    foreach(var column in Columns) { #> 
+	    public <# Write(column.DataType.GetMsType(column.IsNullable)); #> <# Write(GetName(column.ColumnName)); #> { get; set; } 
+		<#    } #>
+}
 }

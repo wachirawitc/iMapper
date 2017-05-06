@@ -129,6 +129,12 @@
       <DependentUpon>DefaultModelTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Template\Model\DefaultModelTemplatePresenter.cs" />
+    <Compile Include="Template\Validation\FluentValidationValidationTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FluentValidationValidationTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Template\Validation\FluentValidationValidationTemplatePresenter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -156,6 +162,10 @@
     <Content Include="Template\Model\DefaultModelTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DefaultModelTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Template\Validation\FluentValidationValidationTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>FluentValidationValidationTemplate.cs</LastGenOutput>
     </Content>
     <VSCTCompile Include="Commands\MapperCommandPackage.vsct">
       <ResourceName>Menus.ctmenu</ResourceName>

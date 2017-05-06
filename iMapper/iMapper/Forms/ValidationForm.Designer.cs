@@ -41,6 +41,8 @@
             this.Tables = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SaveButton = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.ValidatorName = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.Columns)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,7 +51,7 @@
             this.IsPascalize.AutoSize = true;
             this.IsPascalize.Checked = true;
             this.IsPascalize.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.IsPascalize.Location = new System.Drawing.Point(14, 448);
+            this.IsPascalize.Location = new System.Drawing.Point(14, 484);
             this.IsPascalize.Name = "IsPascalize";
             this.IsPascalize.Size = new System.Drawing.Size(71, 17);
             this.IsPascalize.TabIndex = 26;
@@ -81,8 +83,8 @@
             this.IsReplace.CheckState = System.Windows.Forms.CheckState.Checked;
             this.IsReplace.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.IsReplace.ForeColor = System.Drawing.Color.Red;
-            this.IsReplace.Location = new System.Drawing.Point(14, 426);
-            this.IsReplace.Margin = new System.Windows.Forms.Padding(2);
+            this.IsReplace.Location = new System.Drawing.Point(14, 462);
+            this.IsReplace.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.IsReplace.Name = "IsReplace";
             this.IsReplace.Size = new System.Drawing.Size(131, 17);
             this.IsReplace.TabIndex = 23;
@@ -94,7 +96,7 @@
             this.CloseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.CloseButton.Image = global::iMapper.Properties.Resources.Close;
             this.CloseButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CloseButton.Location = new System.Drawing.Point(214, 492);
+            this.CloseButton.Location = new System.Drawing.Point(215, 505);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(115, 38);
             this.CloseButton.TabIndex = 22;
@@ -177,7 +179,7 @@
             this.SaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.SaveButton.Image = global::iMapper.Properties.Resources.command;
             this.SaveButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SaveButton.Location = new System.Drawing.Point(11, 494);
+            this.SaveButton.Location = new System.Drawing.Point(12, 507);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(115, 38);
             this.SaveButton.TabIndex = 14;
@@ -186,11 +188,30 @@
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(14, 419);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(79, 13);
+            this.label5.TabIndex = 27;
+            this.label5.Text = "Validator Name";
+            // 
+            // ValidatorName
+            // 
+            this.ValidatorName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ValidatorName.Location = new System.Drawing.Point(14, 435);
+            this.ValidatorName.Name = "ValidatorName";
+            this.ValidatorName.Size = new System.Drawing.Size(316, 22);
+            this.ValidatorName.TabIndex = 28;
+            // 
             // ValidationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(343, 540);
+            this.ClientSize = new System.Drawing.Size(343, 549);
+            this.Controls.Add(this.ValidatorName);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.IsPascalize);
             this.Controls.Add(this.ColumnNumber);
             this.Controls.Add(this.label4);
@@ -204,6 +225,7 @@
             this.Controls.Add(this.Tables);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.SaveButton);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ValidationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -230,5 +252,7 @@
         private System.Windows.Forms.ComboBox Tables;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button SaveButton;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox ValidatorName;
     }
 }

@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using iMapper.Template.ViewModel;
 
 namespace iMapper.Forms
 {
@@ -38,7 +39,7 @@ namespace iMapper.Forms
                     .Where(x => x.TableName == (string)item.Value)
                     .ToList();
 
-                var template = new ViewModelAspNetMvc();
+                var template = new DefaultViewModel();
                 template.Namespace = "Test";
                 template.Name = FileName.Text;
                 template.Columns = columns;

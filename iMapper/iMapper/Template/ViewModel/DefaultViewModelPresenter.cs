@@ -1,9 +1,9 @@
 ﻿using iMapper.Model.Database;
 using System.Collections.Generic;
 
-namespace iMapper.Template
+namespace iMapper.Template.ViewModel
 {
-    public partial class ViewModelAspNetMvc
+    public partial class DefaultViewModel
     {
         public string Name { get; set; }
 

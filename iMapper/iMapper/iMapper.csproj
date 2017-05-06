@@ -101,12 +101,12 @@
     </Compile>
     <Compile Include="Template\MapperTemplateGenerate.cs" />
     <Compile Include="Template\ModelTemplate\MapperModelTemplate.cs" />
-    <Compile Include="Template\ViewModelAspNetMvc.cs">
+    <Compile Include="Template\ViewModel\DefaultViewModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ViewModelAspNetMvc.tt</DependentUpon>
+      <DependentUpon>DefaultViewModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Template\ViewModelAspNetMvcPresenter.cs" />
+    <Compile Include="Template\ViewModel\DefaultViewModelPresenter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -123,9 +123,9 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>MapperTemplate.cs</LastGenOutput>
     </Content>
-    <Content Include="Template\ViewModelAspNetMvc.tt">
+    <Content Include="Template\ViewModel\DefaultViewModel.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>ViewModelAspNetMvc.cs</LastGenOutput>
+      <LastGenOutput>DefaultViewModel.cs</LastGenOutput>
     </Content>
     <VSCTCompile Include="Commands\MapperCommandPackage.vsct">
       <ResourceName>Menus.ctmenu</ResourceName>

@@ -89,8 +89,7 @@
     <Compile Include="Repository\MsRepository.cs" />
     <Compile Include="Repository\TemporaryRepository.cs" />
     <Compile Include="Support\ComboboxItem.cs" />
-    <Compile Include="Support\DataType\IDataType.cs" />
-    <Compile Include="Support\DataType\MsDataType.cs" />
+    <Compile Include="Support\DataType\SharpType.cs" />
     <Compile Include="Support\DirectoryInfoComparer.cs" />
     <Compile Include="Support\Session.cs" />
     <Compile Include="Support\SourceCode.cs" />

@@ -98,7 +98,7 @@ namespace iMapper.Forms
             {
                 Options.Items.Add(item);
             }
-            Options.SelectedIndex = 1;
+            Options.SelectedIndex = 0;
         }
     }
 }

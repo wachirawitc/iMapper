@@ -27,6 +27,7 @@ namespace iMapper.Forms
                 DatabaseName.Text = config.Database;
                 Username.Text = config.User;
                 Password.Text = config.Password;
+                KDiff.Text = config.KDiff;
                 IsWindowsAuthentication.Checked = config.IsWindowsAuthentication;
                 InitWindowsAuthentication(config.IsWindowsAuthentication);
             }
@@ -40,7 +41,8 @@ namespace iMapper.Forms
                 Database = DatabaseName.Text,
                 User = Username.Text,
                 Password = Password.Text,
-                IsWindowsAuthentication = IsWindowsAuthentication.Checked
+                IsWindowsAuthentication = IsWindowsAuthentication.Checked,
+                KDiff = KDiff.Text
             };
             MsRepository repository = new MsRepository(config.ServerName, config.Database, config.User, config.Password);
             if (IsWindowsAuthentication.Checked)

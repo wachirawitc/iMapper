@@ -2,25 +2,25 @@
 using iMapper.Constance.Enumeration;
 using iMapper.Repository;
 using iMapper.Support;
-using iMapper.Template;
+using iMapper.Template.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using iMapper.Template.ViewModel;
 
 namespace iMapper.Forms
 {
+    [System.Runtime.InteropServices.Guid("03394275-34B7-403D-8A5E-CEDF45CFE71A")]
     public partial class MapViewModelForm : Form
     {
-        private readonly ProjectItems projectItems;
+        private readonly ProjectItem projectItem;
         private readonly TemporaryRepository temporaryRepository;
 
-        public MapViewModelForm(ProjectItems projectItems)
+        public MapViewModelForm(ProjectItem projectItem)
         {
             InitializeComponent();
-            this.projectItems = projectItems;
-
+            this.projectItem = projectItem;
             temporaryRepository = new TemporaryRepository();
         }
 
@@ -44,9 +44,35 @@ namespace iMapper.Forms
                 template.Name = FileName.Text;
                 template.Columns = columns;
 
-                var source = new SourceCode(FileName.Text, template.TransformText());
+                var fileName = $"{FileName.Text}.cs";
+                var destinationPath = projectItem.Properties.Item("FullPath").Value as string;
+                var originalFile = $@"{destinationPath}{fileName}";
+
+                var source = new SourceCode(fileName, template.TransformText());
                 var sourceFile = source.Create();
-                projectItems.AddFromFileCopy(sourceFile.FullName);
+
+                if (File.Exists(originalFile) && IsReplace.Checked == false)
+                {
+                    string outputFile = Temporary.Directory + $"_{fileName}";
+                    if (File.Exists(outputFile))
+                    {
+                        File.Delete(outputFile);
+                    }
+                    using (File.Create(outputFile)) { }
+
+                    string kdiffPath = @"C:\Program Files\KDiff3\kdiff3.exe";
+                    string command = $"\"{sourceFile.FullName}\" \"{originalFile}\" -o \"{outputFile}\"";
+                    System.Diagnostics.Process.Start(kdiffPath, command);
+                }
+                else
+                {
+                    if (File.Exists(originalFile))
+                    {
+                        File.Delete(originalFile);
+                    }
+
+                    projectItem.ProjectItems.AddFromFileCopy(sourceFile.FullName);
+                }
             }
 
             Close();

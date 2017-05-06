@@ -94,7 +94,7 @@ namespace iMapper.Commands
                     if (projectItem != null)
                     {
                         ProjectItems projectItems = projectItem.ProjectItems;
-                        MapViewModelForm mapViewModelForm = new MapViewModelForm(projectItems);
+                        MapViewModelForm mapViewModelForm = new MapViewModelForm(projectItem);
                         mapViewModelForm.ShowDialog();
                     }
                 }

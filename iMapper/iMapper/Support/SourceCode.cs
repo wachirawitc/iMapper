@@ -15,7 +15,7 @@ namespace iMapper.Support
 
         public FileInfo Create()
         {
-            string file = Temporary.Directory + $"{name}.cs";
+            string file = Temporary.Directory + name;
             if (File.Exists(file))
             {
                 File.Delete(file);

@@ -45,8 +45,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label1.Location = new System.Drawing.Point(17, 16);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(13, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 16);
             this.label1.TabIndex = 1;
@@ -57,37 +56,33 @@
             this.Tables.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Tables.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.Tables.FormattingEnabled = true;
-            this.Tables.Location = new System.Drawing.Point(21, 37);
-            this.Tables.Margin = new System.Windows.Forms.Padding(4);
+            this.Tables.Location = new System.Drawing.Point(16, 30);
             this.Tables.Name = "Tables";
-            this.Tables.Size = new System.Drawing.Size(420, 24);
+            this.Tables.Size = new System.Drawing.Size(316, 24);
             this.Tables.TabIndex = 2;
             this.Tables.SelectedIndexChanged += new System.EventHandler(this.Tables_SelectedIndexChanged);
             // 
             // Columns
             // 
             this.Columns.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Columns.Location = new System.Drawing.Point(21, 126);
-            this.Columns.Margin = new System.Windows.Forms.Padding(4);
+            this.Columns.Location = new System.Drawing.Point(16, 102);
             this.Columns.Name = "Columns";
-            this.Columns.Size = new System.Drawing.Size(420, 318);
+            this.Columns.Size = new System.Drawing.Size(315, 258);
             this.Columns.TabIndex = 3;
             // 
             // FileName
             // 
             this.FileName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.FileName.Location = new System.Drawing.Point(21, 91);
-            this.FileName.Margin = new System.Windows.Forms.Padding(4);
+            this.FileName.Location = new System.Drawing.Point(16, 74);
             this.FileName.Name = "FileName";
-            this.FileName.Size = new System.Drawing.Size(420, 22);
+            this.FileName.Size = new System.Drawing.Size(316, 22);
             this.FileName.TabIndex = 5;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label2.Location = new System.Drawing.Point(17, 71);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(13, 58);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 16);
             this.label2.TabIndex = 6;
@@ -98,18 +93,16 @@
             this.Options.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Options.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.Options.FormattingEnabled = true;
-            this.Options.Location = new System.Drawing.Point(21, 482);
-            this.Options.Margin = new System.Windows.Forms.Padding(4);
+            this.Options.Location = new System.Drawing.Point(16, 392);
             this.Options.Name = "Options";
-            this.Options.Size = new System.Drawing.Size(420, 24);
+            this.Options.Size = new System.Drawing.Size(316, 24);
             this.Options.TabIndex = 7;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label3.Location = new System.Drawing.Point(21, 459);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(16, 373);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 16);
             this.label3.TabIndex = 8;
@@ -120,12 +113,12 @@
             this.CloseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.CloseButton.Image = global::iMapper.Properties.Resources.Close;
             this.CloseButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CloseButton.Location = new System.Drawing.Point(324, 514);
-            this.CloseButton.Margin = new System.Windows.Forms.Padding(4);
+            this.CloseButton.Location = new System.Drawing.Point(243, 418);
             this.CloseButton.Name = "CloseButton";
-            this.CloseButton.Size = new System.Drawing.Size(117, 33);
+            this.CloseButton.Size = new System.Drawing.Size(88, 38);
             this.CloseButton.TabIndex = 9;
             this.CloseButton.Text = "Close";
+            this.CloseButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.CloseButton.UseVisualStyleBackColor = true;
             this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
@@ -134,30 +127,35 @@
             this.SaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.SaveButton.Image = global::iMapper.Properties.Resources.Terminal;
             this.SaveButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SaveButton.Location = new System.Drawing.Point(196, 514);
-            this.SaveButton.Margin = new System.Windows.Forms.Padding(4);
+            this.SaveButton.Location = new System.Drawing.Point(147, 418);
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(120, 33);
+            this.SaveButton.Size = new System.Drawing.Size(90, 38);
             this.SaveButton.TabIndex = 0;
             this.SaveButton.Text = "Save";
+            this.SaveButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // IsReplace
             // 
             this.IsReplace.AutoSize = true;
-            this.IsReplace.Location = new System.Drawing.Point(20, 521);
+            this.IsReplace.Checked = true;
+            this.IsReplace.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.IsReplace.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.IsReplace.ForeColor = System.Drawing.Color.Red;
+            this.IsReplace.Location = new System.Drawing.Point(16, 430);
+            this.IsReplace.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.IsReplace.Name = "IsReplace";
-            this.IsReplace.Size = new System.Drawing.Size(136, 20);
+            this.IsReplace.Size = new System.Drawing.Size(131, 17);
             this.IsReplace.TabIndex = 10;
             this.IsReplace.Text = "Replace if existing";
             this.IsReplace.UseVisualStyleBackColor = true;
             // 
             // MapViewModelForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(454, 554);
+            this.ClientSize = new System.Drawing.Size(340, 482);
             this.Controls.Add(this.IsReplace);
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.label3);
@@ -168,9 +166,8 @@
             this.Controls.Add(this.Tables);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.SaveButton);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MapViewModelForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Map View Model";

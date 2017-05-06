@@ -1,10 +1,32 @@
-﻿using System.IO;
+﻿using EnvDTE;
+using iMapper.Extensions;
+using System.IO;
 using System.Linq;
 
 namespace iMapper.Support
 {
     public static class NamespaceHelper
     {
+        public static string Get(Project project, ProjectItem projectItem)
+        {
+            const string defaultNamespace = "DefaultNamespace";
+            var projctNamespace = project.GetDefaultNamespaceProperty();
+
+            if (projectItem.IsFolder() == false)
+            {
+                return projctNamespace ?? defaultNamespace;
+            }
+
+            var projectPath = project.GetFullPathProperty();
+            var folderPath = projectItem.GetFullPathDirectoryProperty();
+
+            if (projectPath == null || folderPath == null)
+            {
+                return defaultNamespace;
+            }
+            return GetNamespace(projectPath, folderPath, projctNamespace);
+        }
+
         public static string GetNamespace(DirectoryInfo project, DirectoryInfo subProject, string solutionNamespace)
         {
             if (project == null || subProject == null)

@@ -1,7 +1,6 @@
 ﻿using EnvDTE;
 using Humanizer;
 using iMapper.Constance.Enumeration;
-using iMapper.Extensions;
 using iMapper.Model.Database;
 using iMapper.Repository;
 using iMapper.Support;
@@ -148,7 +147,7 @@ namespace iMapper.Forms
             {
                 var template = new DefaultModelTemplate();
                 template.IsPascalize = IsPascalize.Checked;
-                template.Namespace = GetNamespace();
+                template.Namespace = NamespaceHelper.Get(projectItem.ContainingProject, projectItem);
                 template.Name = FileName.Text;
                 template.Columns = columns;
                 code = template.TransformText();
@@ -157,34 +156,12 @@ namespace iMapper.Forms
             {
                 var template = new AspMvcModelTemplate();
                 template.IsPascalize = IsPascalize.Checked;
-                template.Namespace = GetNamespace();
+                template.Namespace = NamespaceHelper.Get(projectItem.ContainingProject, projectItem);
                 template.Name = FileName.Text;
                 template.Columns = columns;
                 code = template.TransformText();
             }
             return code;
-        }
-
-        private string GetNamespace()
-        {
-            const string defaultNamespace = "DefaultNamespace";
-            var project = projectItem.ContainingProject;
-            var projctNamespace = project.GetDefaultNamespaceProperty();
-
-            if (projectItem.IsFolder() == false)
-            {
-                return projctNamespace ?? defaultNamespace;
-            }
-
-            var projectPath = project.GetFullPathProperty();
-            var folderPath = projectItem.GetFullPathDirectoryProperty();
-
-            if (projectPath == null || folderPath == null)
-            {
-                return defaultNamespace;
-            }
-
-            return NamespaceHelper.GetNamespace(projectPath, folderPath, projctNamespace);
         }
     }
 }

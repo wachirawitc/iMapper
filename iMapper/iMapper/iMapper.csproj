@@ -55,7 +55,9 @@
     <Compile Include="Commands\MapperCommand.cs" />
     <Compile Include="Commands\MapperCommandPackage.cs" />
     <Compile Include="Constance\Enumeration\ViewModelOption.cs" />
+    <Compile Include="Constance\KindElement.cs" />
     <Compile Include="Constance\MapperInfo.cs" />
+    <Compile Include="Exception\ProjectItemException.cs" />
     <Compile Include="Extensions\DirectoryInfoExtension.cs" />
     <Compile Include="Extensions\ProjectExtension.cs" />
     <Compile Include="Extensions\ProjectItemExtension.cs" />
@@ -91,6 +93,7 @@
     <Compile Include="Support\ComboboxItem.cs" />
     <Compile Include="Support\DataType\SharpType.cs" />
     <Compile Include="Support\DirectoryInfoComparer.cs" />
+    <Compile Include="Support\NamespaceHelper.cs" />
     <Compile Include="Support\Session.cs" />
     <Compile Include="Support\SourceCode.cs" />
     <Compile Include="Support\Temporary.cs" />

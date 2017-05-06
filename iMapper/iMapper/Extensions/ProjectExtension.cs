@@ -5,7 +5,7 @@ namespace iMapper.Extensions
 {
     public static class ProjectExtension
     {
-        public static DirectoryInfo GetDirectoryInfo(this Project project)
+        public static DirectoryInfo GetFullPathProperty(this Project project)
         {
             var fullPathProperty = project?.Properties?.Item("FullPath");
             if (fullPathProperty != null)
@@ -17,6 +17,12 @@ namespace iMapper.Extensions
                 }
             }
             return null;
+        }
+
+        public static string GetDefaultNamespaceProperty(this Project project)
+        {
+            var fullPathProperty = project?.Properties?.Item("DefaultNamespace");
+            return fullPathProperty?.Value.ToString();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using EnvDTE;
 using Humanizer;
 using iMapper.Constance.Enumeration;
+using iMapper.Extensions;
 using iMapper.Model.Database;
 using iMapper.Repository;
 using iMapper.Support;
@@ -167,21 +168,23 @@ namespace iMapper.Forms
         private string GetNamespace()
         {
             const string defaultNamespace = "DefaultNamespace";
+            var project = projectItem.ContainingProject;
+            var projctNamespace = project.GetDefaultNamespaceProperty();
 
-            var projectPath = projectItem.ContainingProject.Properties.Item("FullPath").Value as string;
-            var folderPath = projectItem.Properties.Item("FullPath").Value as string;
-            if (string.IsNullOrEmpty(projectPath) || string.IsNullOrEmpty(folderPath))
+            if (projectItem.IsFolder() == false)
+            {
+                return projctNamespace ?? defaultNamespace;
+            }
+
+            var projectPath = project.GetFullPathProperty();
+            var folderPath = projectItem.GetFullPathDirectoryProperty();
+
+            if (projectPath == null || folderPath == null)
             {
                 return defaultNamespace;
             }
-            var subPath = folderPath.Replace(projectPath, string.Empty);
-            var subFolder = subPath.Split('\\')
-                .ToList()
-                .Where(x => string.IsNullOrEmpty(x) == false)
-                .Select(x => x.Trim());
 
-            var targetNamespace = string.Join(".", subFolder);
-            return string.IsNullOrEmpty(targetNamespace) ? defaultNamespace : targetNamespace;
+            return NamespaceHelper.GetNamespace(projectPath, folderPath, projctNamespace);
         }
     }
 }

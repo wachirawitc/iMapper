@@ -1,10 +1,10 @@
-﻿using System;
-
-namespace iMapper.Support
+﻿namespace iMapper.Support
 {
     public static class Temporary
     {
-        public static string Directory => Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\iMapper\";
+        public static string SolutionPath { get; set; }
+
+        public static string Directory => SolutionPath + @"\.iMapper\";
 
         public static string TableFile => Directory + "Table.json";
 

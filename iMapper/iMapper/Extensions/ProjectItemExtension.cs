@@ -1,4 +1,6 @@
 ﻿using EnvDTE;
+using iMapper.Constance;
+using iMapper.Exception;
 using System.IO;
 
 namespace iMapper.Extensions
@@ -12,12 +14,16 @@ namespace iMapper.Extensions
                 return false;
             }
 
-            const string physicalFolder = "{6BB5F8EF-4483-11D3-8BCF-00C04F8EC28C}";
-            return projectItem.Kind == physicalFolder;
+            return projectItem.Kind == KindElement.PhysicalFolder;
         }
 
-        public static FileInfo GetFileInfo(this ProjectItem projectItem)
+        public static FileInfo GetFullPathProperty(this ProjectItem projectItem)
         {
+            if (projectItem.Kind != KindElement.PhysicalFile)
+            {
+                throw new ProjectItemException("Project item are not file.");
+            }
+
             var fullPathProperty = projectItem?.Properties?.Item("FullPath");
             if (fullPathProperty != null)
             {
@@ -25,6 +31,25 @@ namespace iMapper.Extensions
                 if (File.Exists(fullPath))
                 {
                     return new FileInfo(fullPath);
+                }
+            }
+            return null;
+        }
+
+        public static DirectoryInfo GetFullPathDirectoryProperty(this ProjectItem projectItem)
+        {
+            if (IsFolder(projectItem) == false)
+            {
+                throw new ProjectItemException("Project item are not folder.");
+            }
+
+            var fullPathProperty = projectItem?.Properties?.Item("FullPath");
+            if (fullPathProperty != null)
+            {
+                string fullPath = fullPathProperty.Value.ToString();
+                if (Directory.Exists(fullPath))
+                {
+                    return new DirectoryInfo(fullPath);
                 }
             }
             return null;

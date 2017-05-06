@@ -51,6 +51,8 @@ namespace iMapper.Commands
                 var mapViewModelCommandMenuItem = new MenuCommand(MapViewModelCallback, mapViewModelCommand);
                 commandService.AddCommand(mapViewModelCommandMenuItem);
             }
+
+            SetSolutionPath();
         }
 
         public static MapperCommand Instance
@@ -208,7 +210,7 @@ namespace iMapper.Commands
 
             foreach (Project project in Projects())
             {
-                var directoryInfo = project.GetDirectoryInfo();
+                var directoryInfo = project.GetFullPathProperty();
                 bool isSubDirectory = Session.GetMapDirectories.Any(directory => directory.IsSubDirectoryOfOrSame(directoryInfo));
                 if (isSubDirectory)
                 {
@@ -244,7 +246,7 @@ namespace iMapper.Commands
         {
             if (item?.IsFolder() == false)
             {
-                var fileInfo = item.GetFileInfo();
+                var fileInfo = item.GetFullPathProperty();
                 if (fileInfo != null)
                 {
                     if (Session.GetMapDirectories.Any(parent => fileInfo.Directory.IsSubDirectoryOfOrSame(parent)))
@@ -273,7 +275,7 @@ namespace iMapper.Commands
 
                 return model;
             }
-            catch (Exception)
+            catch (System.Exception)
             {
                 return null;
             }
@@ -378,6 +380,16 @@ namespace iMapper.Commands
                             yield return childItem;
                     }
                 }
+            }
+        }
+
+        public static void SetSolutionPath()
+        {
+            var dte2 = Package.GetGlobalService(typeof(SDTE)) as DTE2;
+            if (dte2 != null)
+            {
+                string solutionDir = System.IO.Path.GetDirectoryName(dte2.Solution.FullName);
+                Temporary.SolutionPath = solutionDir;
             }
         }
     }

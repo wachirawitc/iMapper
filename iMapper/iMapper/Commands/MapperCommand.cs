@@ -21,11 +21,13 @@ namespace iMapper.Commands
         public const int ConnectDatabaseCommandId = 0x0200;
         public const int MapViewModelCommandId = 0x0300;
         public const int ValidationCommandId = 0x0400;
+        public const int TransferCommandId = 0x0500;
 
         public static readonly Guid MapperCommandId = new Guid("a3b89b0e-701e-48e0-843b-79082041a30c");
         public static readonly Guid ConnectDatabaseCommand = new Guid("89629128-c144-443f-9920-0ed1b9bc65b6");
         public static readonly Guid MapViewModelCommand = new Guid("0f8fad5b-d9cb-469f-a165-70867728950e");
         public static readonly Guid ValidationCommand = new Guid("80d2efe5-0057-4061-b0cf-0b43565e4777");
+        public static readonly Guid TransferCommand = new Guid("b32a039d-3f1d-4db7-84a1-5015a677c6d5");
 
         private readonly Package package;
 
@@ -56,6 +58,10 @@ namespace iMapper.Commands
                 var validationCommand = new CommandID(ValidationCommand, ValidationCommandId);
                 var validationCommandMenuItem = new MenuCommand(ValidationCallback, validationCommand);
                 commandService.AddCommand(validationCommandMenuItem);
+
+                var transferCommand = new CommandID(TransferCommand, TransferCommandId);
+                var transferCommandMenuItem = new MenuCommand(TransferCallback, transferCommand);
+                commandService.AddCommand(transferCommandMenuItem);
             }
 
             SetSolutionPath();
@@ -72,6 +78,30 @@ namespace iMapper.Commands
         public static void Initialize(Package package)
         {
             Instance = new MapperCommand(package);
+        }
+
+        private void TransferCallback(object sender, EventArgs e)
+        {
+            var dte2 = Package.GetGlobalService(typeof(SDTE)) as DTE2;
+            if (dte2 != null)
+            {
+                UIHierarchy uih = dte2.ToolWindows.SolutionExplorer;
+                Array selectedItems = (Array)uih.SelectedItems;
+                if (selectedItems == null || selectedItems.Length > 1)
+                {
+                    ShowDiabog("Select one item.", "Transfer");
+                }
+                else
+                {
+                    var hierarchyItem = selectedItems.Cast<UIHierarchyItem>().First();
+                    var projectItem = hierarchyItem.Object as ProjectItem;
+                    if (projectItem != null)
+                    {
+                        var transferForm = new TransferForm(projectItem, dte2);
+                        transferForm.ShowDialog();
+                    }
+                }
+            }
         }
 
         private void ConnectDatabaseCallback(object sender, EventArgs e)

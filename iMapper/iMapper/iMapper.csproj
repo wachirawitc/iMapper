@@ -75,6 +75,12 @@
     <Compile Include="Forms\ModelForm.Designer.cs">
       <DependentUpon>ModelForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\TransferForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TransferForm.Designer.cs">
+      <DependentUpon>TransferForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ValidationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +159,7 @@
   <ItemGroup>
     <Content Include="Commands\Resources\Close.png" />
     <Content Include="Commands\Resources\command.png" />
+    <Content Include="Commands\Resources\reload.png" />
     <Content Include="Template\MapperTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>MapperTemplate.cs</LastGenOutput>
@@ -442,6 +449,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ModelForm.resx">
       <DependentUpon>ModelForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TransferForm.resx">
+      <DependentUpon>TransferForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ValidationForm.resx">
       <DependentUpon>ValidationForm.cs</DependentUpon>

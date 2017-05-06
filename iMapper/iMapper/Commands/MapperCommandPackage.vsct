@@ -10,13 +10,17 @@
       </Group>
 
       <Group guid="ConnectDbCmdSet" id="ConnectDbGroup" priority="0x0601">
-        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_CODEWIN" />
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE" />
       </Group>
 
-      <Group guid="MapViewModelCmdSet" id="MapViewModelGroup" priority="0x0602">
+      <Group guid="ModelCmdSet" id="ModelGroup" priority="0x0602">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_FOLDERNODE" />
       </Group>
-      
+
+      <Group guid="ValidationCmdSet" id="ValidationGroup" priority="0x0603">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_FOLDERNODE" />
+      </Group>
+
     </Groups>
 
     <Buttons>
@@ -37,11 +41,19 @@
         </Strings>
       </Button>
 
-      <Button guid="MapViewModelCmdSet" id="MapViewModelCommandId" priority="0x0102" type="Button">
-        <Parent guid="MapViewModelCmdSet" id="MapViewModelGroup" />
+      <Button guid="ModelCmdSet" id="ModelCommandId" priority="0x0102" type="Button">
+        <Parent guid="ModelCmdSet" id="ModelGroup" />
         <Icon guid="guidImages" id="bmpPic1" />
         <Strings>
           <ButtonText>Model Template</ButtonText>
+        </Strings>
+      </Button>
+
+      <Button guid="ValidationCmdSet" id="ValidationCommandId" priority="0x0103" type="Button">
+        <Parent guid="ValidationCmdSet" id="ValidationGroup" />
+        <Icon guid="guidImages" id="bmpPic1" />
+        <Strings>
+          <ButtonText>Validation Template</ButtonText>
         </Strings>
       </Button>
 
@@ -65,9 +77,14 @@
       <IDSymbol name="ConnectDatabaseCommandId" value="0x0200" />
     </GuidSymbol>
 
-    <GuidSymbol name="MapViewModelCmdSet" value="{0f8fad5b-d9cb-469f-a165-70867728950e}">
-      <IDSymbol name="MapViewModelGroup" value="0x0301" />
-      <IDSymbol name="MapViewModelCommandId" value="0x0300" />
+    <GuidSymbol name="ModelCmdSet" value="{0f8fad5b-d9cb-469f-a165-70867728950e}">
+      <IDSymbol name="ModelGroup" value="0x0301" />
+      <IDSymbol name="ModelCommandId" value="0x0300" />
+    </GuidSymbol>
+
+    <GuidSymbol name="ValidationCmdSet" value="{80d2efe5-0057-4061-b0cf-0b43565e4777}">
+      <IDSymbol name="ValidationGroup" value="0x0401" />
+      <IDSymbol name="ValidationCommandId" value="0x0400" />
     </GuidSymbol>
 
     <GuidSymbol name="guidImages" value="{800f86f7-dada-497c-8666-ddbcce338fc0}">

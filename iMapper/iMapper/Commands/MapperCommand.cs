@@ -20,10 +20,12 @@ namespace iMapper.Commands
         public const int CommandId = 0x0100;
         public const int ConnectDatabaseCommandId = 0x0200;
         public const int MapViewModelCommandId = 0x0300;
+        public const int ValidationCommandId = 0x0400;
 
         public static readonly Guid MapperCommandId = new Guid("a3b89b0e-701e-48e0-843b-79082041a30c");
         public static readonly Guid ConnectDatabaseCommand = new Guid("89629128-c144-443f-9920-0ed1b9bc65b6");
         public static readonly Guid MapViewModelCommand = new Guid("0f8fad5b-d9cb-469f-a165-70867728950e");
+        public static readonly Guid ValidationCommand = new Guid("80d2efe5-0057-4061-b0cf-0b43565e4777");
 
         private readonly Package package;
 
@@ -50,6 +52,10 @@ namespace iMapper.Commands
                 var mapViewModelCommand = new CommandID(MapViewModelCommand, MapViewModelCommandId);
                 var mapViewModelCommandMenuItem = new MenuCommand(MapViewModelCallback, mapViewModelCommand);
                 commandService.AddCommand(mapViewModelCommandMenuItem);
+
+                var validationCommand = new CommandID(ValidationCommand, ValidationCommandId);
+                var validationCommandMenuItem = new MenuCommand(ValidationCallback, validationCommand);
+                commandService.AddCommand(validationCommandMenuItem);
             }
 
             SetSolutionPath();
@@ -78,6 +84,30 @@ namespace iMapper.Commands
             }
         }
 
+        private void ValidationCallback(object sender, EventArgs e)
+        {
+            var dte2 = Package.GetGlobalService(typeof(SDTE)) as DTE2;
+            if (dte2 != null)
+            {
+                UIHierarchy uih = dte2.ToolWindows.SolutionExplorer;
+                Array selectedItems = (Array)uih.SelectedItems;
+                if (selectedItems == null || selectedItems.Length > 1)
+                {
+                    ShowDiabog("Select one item.", "Validation");
+                }
+                else
+                {
+                    var hierarchyItem = selectedItems.Cast<UIHierarchyItem>().First();
+                    var projectItem = hierarchyItem.Object as ProjectItem;
+                    if (projectItem != null)
+                    {
+                        var mapViewModelForm = new ValidationForm(projectItem);
+                        mapViewModelForm.ShowDialog();
+                    }
+                }
+            }
+        }
+
         private void MapViewModelCallback(object sender, EventArgs e)
         {
             var dte2 = Package.GetGlobalService(typeof(SDTE)) as DTE2;
@@ -87,7 +117,7 @@ namespace iMapper.Commands
                 Array selectedItems = (Array)uih.SelectedItems;
                 if (selectedItems == null || selectedItems.Length > 1)
                 {
-                    ShowDiabog("Select one item.", "Map view model");
+                    ShowDiabog("Select one item.", "Model");
                 }
                 else
                 {
@@ -95,7 +125,6 @@ namespace iMapper.Commands
                     ProjectItem projectItem = hierarchyItem.Object as ProjectItem;
                     if (projectItem != null)
                     {
-                        ProjectItems projectItems = projectItem.ProjectItems;
                         ModelForm mapViewModelForm = new ModelForm(projectItem);
                         mapViewModelForm.ShowDialog();
                     }

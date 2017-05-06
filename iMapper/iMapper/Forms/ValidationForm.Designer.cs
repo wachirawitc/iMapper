@@ -101,6 +101,7 @@
             this.CloseButton.Text = "Close";
             this.CloseButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.CloseButton.UseVisualStyleBackColor = true;
+            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
             // label3
             // 
@@ -121,6 +122,7 @@
             this.Options.Name = "Options";
             this.Options.Size = new System.Drawing.Size(316, 24);
             this.Options.TabIndex = 20;
+            this.Options.SelectedIndexChanged += new System.EventHandler(this.Options_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -158,6 +160,7 @@
             this.Tables.Name = "Tables";
             this.Tables.Size = new System.Drawing.Size(316, 24);
             this.Tables.TabIndex = 16;
+            this.Tables.SelectedIndexChanged += new System.EventHandler(this.Tables_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -181,6 +184,7 @@
             this.SaveButton.Text = "Save";
             this.SaveButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.SaveButton.UseVisualStyleBackColor = true;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // ValidationForm
             // 
@@ -204,6 +208,7 @@
             this.Name = "ValidationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Validation";
+            this.Load += new System.EventHandler(this.ValidationForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Columns)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

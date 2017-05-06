@@ -118,9 +118,9 @@ namespace iMapper.Forms
             }
 
             var options = new List<ComboboxItem>();
-            options.Add(new ComboboxItem { Text = nameof(ViewModelOption.Default), Value = (int)ViewModelOption.Default });
-            options.Add(new ComboboxItem { Text = nameof(ViewModelOption.AspMvc), Value = (int)ViewModelOption.AspMvc });
-            options.Add(new ComboboxItem { Text = nameof(ViewModelOption.AspMvcCustom1), Value = (int)ViewModelOption.AspMvcCustom1 });
+            options.Add(new ComboboxItem { Text = nameof(ModelOption.Default), Value = (int)ModelOption.Default });
+            options.Add(new ComboboxItem { Text = nameof(ModelOption.AspMvc), Value = (int)ModelOption.AspMvc });
+            options.Add(new ComboboxItem { Text = nameof(ModelOption.AspMvcCustom1), Value = (int)ModelOption.AspMvcCustom1 });
             foreach (var item in options)
             {
                 Options.Items.Add(item);
@@ -128,23 +128,23 @@ namespace iMapper.Forms
             Options.SelectedIndex = 0;
         }
 
-        private ViewModelOption ViewModelOption
+        private ModelOption ModelOption
         {
             get
             {
                 var value = Options.SelectedItem as ComboboxItem;
                 if (value == null)
                 {
-                    return ViewModelOption.Default;
+                    return ModelOption.Default;
                 }
-                return (ViewModelOption)(int)value.Value;
+                return (ModelOption)(int)value.Value;
             }
         }
 
         private string GetCode(List<ColumnModel> columns)
         {
             string code = string.Empty;
-            if (ViewModelOption == ViewModelOption.Default)
+            if (ModelOption == ModelOption.Default)
             {
                 var template = new DefaultModelTemplate();
                 template.IsPascalize = IsPascalize.Checked;
@@ -153,7 +153,7 @@ namespace iMapper.Forms
                 template.Columns = columns;
                 code = template.TransformText();
             }
-            else if (ViewModelOption == ViewModelOption.AspMvc)
+            else if (ModelOption == ModelOption.AspMvc)
             {
                 var template = new AspMvcModelTemplate();
                 template.IsPascalize = IsPascalize.Checked;
@@ -162,7 +162,7 @@ namespace iMapper.Forms
                 template.Columns = columns;
                 code = template.TransformText();
             }
-            else if (ViewModelOption == ViewModelOption.AspMvcCustom1)
+            else if (ModelOption == ModelOption.AspMvcCustom1)
             {
                 var template = new AspMvcModelTemplateCustom1();
                 template.IsPascalize = IsPascalize.Checked;
@@ -180,16 +180,16 @@ namespace iMapper.Forms
             var table = Tables.SelectedItem as ComboboxItem;
             if (option != null && table != null)
             {
-                var viewModelOption = (ViewModelOption)(int)option.Value;
-                if (viewModelOption == ViewModelOption.Default)
+                var viewModelOption = (ModelOption)(int)option.Value;
+                if (viewModelOption == ModelOption.Default)
                 {
                     FileName.Text = $"{table.Value.ToString().Pascalize()}Model";
                 }
-                else if (viewModelOption == ViewModelOption.AspMvc)
+                else if (viewModelOption == ModelOption.AspMvc)
                 {
                     FileName.Text = $"{table.Value.ToString().Pascalize()}ViewModel";
                 }
-                else if (viewModelOption == ViewModelOption.AspMvcCustom1)
+                else if (viewModelOption == ModelOption.AspMvcCustom1)
                 {
                     FileName.Text = $"{table.Value.ToString().Pascalize()}ViewModel";
                 }

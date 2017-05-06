@@ -54,7 +54,8 @@
   <ItemGroup>
     <Compile Include="Commands\MapperCommand.cs" />
     <Compile Include="Commands\MapperCommandPackage.cs" />
-    <Compile Include="Constance\Enumeration\ViewModelOption.cs" />
+    <Compile Include="Constance\Enumeration\ModelOption.cs" />
+    <Compile Include="Constance\Enumeration\ValidationOption.cs" />
     <Compile Include="Constance\KindElement.cs" />
     <Compile Include="Constance\MapperInfo.cs" />
     <Compile Include="Exception\ProjectItemException.cs" />

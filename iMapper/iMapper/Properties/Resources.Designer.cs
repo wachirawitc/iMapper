@@ -73,9 +73,9 @@ namespace iMapper.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Terminal {
+        internal static System.Drawing.Bitmap command {
             get {
-                object obj = ResourceManager.GetObject("Terminal", resourceCulture);
+                object obj = ResourceManager.GetObject("command", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

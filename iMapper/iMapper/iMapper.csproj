@@ -139,8 +139,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Commands\Resources\Close.png" />
-    <Content Include="Commands\Resources\Idea.png" />
-    <Content Include="Commands\Resources\Terminal.png" />
+    <Content Include="Commands\Resources\command.png" />
     <Content Include="Template\MapperTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>MapperTemplate.cs</LastGenOutput>

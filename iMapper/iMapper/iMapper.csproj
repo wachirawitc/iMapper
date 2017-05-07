@@ -55,6 +55,7 @@
     <Compile Include="Commands\MapperCommand.cs" />
     <Compile Include="Commands\MapperCommandPackage.cs" />
     <Compile Include="Constance\Enumeration\ModelOption.cs" />
+    <Compile Include="Constance\Enumeration\RepositoryOption.cs" />
     <Compile Include="Constance\Enumeration\ValidationOption.cs" />
     <Compile Include="Constance\KindElement.cs" />
     <Compile Include="Constance\MapperInfo.cs" />
@@ -77,6 +78,12 @@
     </Compile>
     <Compile Include="Forms\ModelForm.Designer.cs">
       <DependentUpon>ModelForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RepositoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RepositoryForm.Designer.cs">
+      <DependentUpon>RepositoryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\TransferForm.cs">
       <SubType>Form</SubType>
@@ -453,6 +460,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ModelForm.resx">
       <DependentUpon>ModelForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RepositoryForm.resx">
+      <DependentUpon>RepositoryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TransferForm.resx">
       <DependentUpon>TransferForm.cs</DependentUpon>

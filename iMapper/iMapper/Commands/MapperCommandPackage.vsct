@@ -21,6 +21,10 @@
         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_FOLDERNODE" />
       </Group>
 
+      <Group guid="RepositoryCmdSet" id="RepositoryGroup" priority="0x0604">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_FOLDERNODE" />
+      </Group>
+
     </Groups>
 
     <Buttons>
@@ -57,6 +61,14 @@
         </Strings>
       </Button>
 
+      <Button guid="RepositoryCmdSet" id="RepositoryCommandId" priority="0x0105" type="Button">
+        <Parent guid="RepositoryCmdSet" id="RepositoryGroup" />
+        <Icon guid="guidImages" id="bmpPic1" />
+        <Strings>
+          <ButtonText>Repository Template</ButtonText>
+        </Strings>
+      </Button>
+
     </Buttons>
 
     <Bitmaps>
@@ -85,6 +97,11 @@
     <GuidSymbol name="TransferCmdSet" value="{b32a039d-3f1d-4db7-84a1-5015a677c6d5}">
       <IDSymbol name="TransferGroup" value="0x0501" />
       <IDSymbol name="TransferCommandId" value="0x0500" />
+    </GuidSymbol>
+
+    <GuidSymbol name="RepositoryCmdSet" value="{8ae90204-5920-4068-8822-5b68e57ccb03}">
+      <IDSymbol name="RepositoryGroup" value="0x0601" />
+      <IDSymbol name="RepositoryCommandId" value="0x0600" />
     </GuidSymbol>
 
     <GuidSymbol name="guidImages" value="{800f86f7-dada-497c-8666-ddbcce338fc0}">

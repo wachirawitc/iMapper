@@ -1,6 +1,7 @@
 ﻿using EnvDTE;
 using iMapper.Constance.Enumeration;
 using iMapper.Extensions;
+using iMapper.Model;
 using iMapper.Model.Database;
 using iMapper.Repository;
 using iMapper.Support;
@@ -29,7 +30,12 @@ namespace iMapper.Forms
         private void OnLoadRepositoryForm(object sender, EventArgs e)
         {
             Init();
-            EntityFrameworkName.Text = temporaryRepository.EntityName ?? string.Empty;
+
+            var config = temporaryRepository.GetConfig() ?? new Config();
+
+            EntityFrameworkName.Text = config.Repository?.EntityName;
+            IsPluralize.Checked = config.Repository?.IsPluralizeTable ?? false;
+            IsReplace.Checked = config.Repository?.IsReplace ?? false;
         }
 
         private void Init()
@@ -83,7 +89,7 @@ namespace iMapper.Forms
         {
             if (ValidationButton()) return;
 
-            temporaryRepository.EntityName = EntityFrameworkName.Text;
+            UpdateConfig();
 
             var columns = temporaryRepository
                 .GetColumns()
@@ -93,6 +99,15 @@ namespace iMapper.Forms
             CreateEfInterfaceRepository(columns);
 
             Close();
+        }
+
+        private void UpdateConfig()
+        {
+            var config = temporaryRepository.GetConfig() ?? new Config();
+            config.Repository.EntityName = EntityFrameworkName.Text;
+            config.Repository.IsPluralizeTable = IsPluralize.Checked;
+            config.Repository.IsReplace = IsReplace.Checked;
+            temporaryRepository.SetConfig(config);
         }
 
         public string SelectTable
@@ -183,7 +198,7 @@ namespace iMapper.Forms
         {
             if (ValidationButton()) return;
 
-            temporaryRepository.EntityName = EntityFrameworkName.Text;
+            UpdateConfig();
 
             var columns = temporaryRepository
                 .GetColumns()

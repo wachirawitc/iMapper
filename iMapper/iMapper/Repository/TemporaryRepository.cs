@@ -66,7 +66,7 @@ namespace iMapper.Repository
         public Config GetConfig()
         {
             string contents = File.ReadAllText(Temporary.ConfigFile);
-            return JsonConvert.DeserializeObject<Config>(contents);
+            return JsonConvert.DeserializeObject<Config>(contents) ?? new Config();
         }
 
         public void SetTransfer(List<ClassModel> models)
@@ -95,21 +95,6 @@ namespace iMapper.Repository
                 }
 
                 return new FileInfo(config.KDiff);
-            }
-        }
-
-        public string EntityName
-        {
-            get
-            {
-                var config = GetConfig();
-                return config?.EntityName;
-            }
-            set
-            {
-                var config = GetConfig() ?? new Config();
-                config.EntityName = value;
-                SetConfig(config);
             }
         }
     }

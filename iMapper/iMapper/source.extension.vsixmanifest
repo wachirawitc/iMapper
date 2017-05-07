@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="iMapper.Company.b808327e-d33e-48fc-9980-a06522867952" Version="1.0" Language="en-US" Publisher="Company" />
+    <Identity Id="iMapper.Company.b808327e-d33e-48fc-9980-a06522867952" Version="1.2" Language="en-US" Publisher="Company" />
     <DisplayName>iMapper</DisplayName>
-    <Description>Empty VSIX Project.</Description>
+    <Description xml:space="preserve">Gen code by toom</Description>
   </Metadata>
   <Installation>
     <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[14.0]" />

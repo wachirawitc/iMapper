@@ -2,6 +2,7 @@
 using Humanizer;
 using iMapper.Constance.Enumeration;
 using iMapper.Extensions;
+using iMapper.Model;
 using iMapper.Model.Database;
 using iMapper.Repository;
 using iMapper.Support;
@@ -54,6 +55,12 @@ namespace iMapper.Forms
                 Options.Items.Add(item);
             }
             Options.SelectedIndex = 0;
+
+            var config = temporaryRepository.GetConfig() ?? new Config();
+            config.Validation = config.Validation ?? new ValidationConfig();
+            IsReplace.Checked = config.Validation.IsReplace;
+            IsPascalize.Checked = config.Validation.IsPascalize;
+            Options.SelectedIndex = config.Validation.OptionId;
         }
 
         private void OnSelectedTables(object sender, System.EventArgs e)
@@ -205,6 +212,17 @@ namespace iMapper.Forms
                 code = template.TransformText();
             }
             return code;
+        }
+
+        public void UpdateConfig()
+        {
+            var config = temporaryRepository.GetConfig() ?? new Config();
+            config.Validation = config.Validation ?? new ValidationConfig();
+            config.Validation.IsReplace = IsReplace.Checked;
+            config.Validation.IsPascalize = IsPascalize.Checked;
+            config.Validation.OptionId = Options.SelectedIndex;
+
+            temporaryRepository.SetConfig(config);
         }
     }
 }

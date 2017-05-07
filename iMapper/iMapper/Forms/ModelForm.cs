@@ -2,6 +2,7 @@
 using Humanizer;
 using iMapper.Constance.Enumeration;
 using iMapper.Extensions;
+using iMapper.Model;
 using iMapper.Model.Database;
 using iMapper.Repository;
 using iMapper.Support;
@@ -82,7 +83,7 @@ namespace iMapper.Forms
                     projectItem.ContainingProject.Save();
                 }
             }
-
+            UpdateConfig();
             Close();
         }
 
@@ -135,6 +136,12 @@ namespace iMapper.Forms
                 Options.Items.Add(item);
             }
             Options.SelectedIndex = 0;
+
+            var config = temporaryRepository.GetConfig() ?? new Config();
+            config.Model = config.Model ?? new ModelConfig();
+            IsReplace.Checked = config.Model.IsReplace;
+            IsPascalize.Checked = config.Model.IsPascalize;
+            Options.SelectedIndex = config.Model.OptionId;
         }
 
         private ModelOption ModelOption
@@ -203,6 +210,16 @@ namespace iMapper.Forms
                     FileName.Text = $"{table.Value.ToString().Pascalize()}ViewModel";
                 }
             }
+        }
+
+        private void UpdateConfig()
+        {
+            var config = temporaryRepository.GetConfig() ?? new Config();
+            config.Model = config.Model ?? new ModelConfig();
+            config.Model.IsReplace = IsReplace.Checked;
+            config.Model.IsPascalize = IsPascalize.Checked;
+            config.Model.OptionId = Options.SelectedIndex;
+            temporaryRepository.SetConfig(config);
         }
     }
 }

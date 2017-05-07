@@ -140,6 +140,18 @@
       <DependentUpon>DefaultModelTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Template\Model\DefaultModelTemplatePresenter.cs" />
+    <Compile Include="Template\Repository\EntityRepositoryInterfaceTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntityRepositoryInterfaceTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Template\Repository\EntityRepositoryInterfaceTemplatePresenter.cs" />
+    <Compile Include="Template\Repository\EntityRepositoryTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntityRepositoryTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Template\Repository\EntityRepositoryTemplatePresenter.cs" />
     <Compile Include="Template\Transfer\DefaultTransferTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -182,6 +194,14 @@
     <Content Include="Template\Model\DefaultModelTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DefaultModelTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Template\Repository\EntityRepositoryInterfaceTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>EntityRepositoryInterfaceTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Template\Repository\EntityRepositoryTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>EntityRepositoryTemplate.cs</LastGenOutput>
     </Content>
     <Content Include="Template\Transfer\DefaultTransferTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

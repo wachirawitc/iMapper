@@ -12,13 +12,9 @@ namespace iMapper.Template.Repository
 
         public string Namespace { get; set; }
 
-        private string tableName;
+        public string TableName { get; set; }
 
-        public string TableName
-        {
-            get { return IsPluralize ? tableName.Pluralize() : tableName; }
-            set { tableName = value; }
-        }
+        public string EfTableName => IsPluralize ? TableName.Pluralize() : TableName;
 
         public string TableNamePascalize => TableName.Pascalize();
 

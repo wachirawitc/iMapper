@@ -14,13 +14,9 @@ namespace iMapper.Template.Repository
 
         public string EntityName { get; set; }
 
-        private string tableName;
+        public string TableName { get; set; }
 
-        public string TableName
-        {
-            get { return IsPluralize ? tableName.Pluralize() : tableName; }
-            set { tableName = value; }
-        }
+        public string EfTableName => IsPluralize ? TableName.Pluralize() : TableName;
 
         public string TableNamePascalize => TableName.Pascalize();
 
@@ -43,7 +39,7 @@ namespace iMapper.Template.Repository
         public string GetPkArgument()
         {
             var items = Columns.Where(x => x.IsPrimaryKey)
-                .Select(x => $"x.{x.ColumnName} = {x.ColumnName.Camelize()}")
+                .Select(x => $"x.{x.ColumnName} == {x.ColumnName.Camelize()}")
                 .ToList();
             return string.Join(",", items);
         }

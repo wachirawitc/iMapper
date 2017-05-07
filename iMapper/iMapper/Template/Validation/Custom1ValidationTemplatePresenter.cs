@@ -60,7 +60,13 @@ namespace iMapper.Template.Validation
                 builder.Add($"\t\t\tI{table.Pascalize()}Repository {table.Camelize()}Repository");
             }
 
-            return string.Join(",\n", builder);
+            string value = string.Empty;
+            if (builder.Any())
+            {
+                value += ",\n";
+                value += string.Join(",\n", builder);
+            }
+            return value;
         }
 
         private static bool IsString(ColumnModel column)

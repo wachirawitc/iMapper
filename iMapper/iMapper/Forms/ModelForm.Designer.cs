@@ -66,7 +66,7 @@
             this.Tables.Name = "Tables";
             this.Tables.Size = new System.Drawing.Size(316, 24);
             this.Tables.TabIndex = 2;
-            this.Tables.SelectedIndexChanged += new System.EventHandler(this.Tables_SelectedIndexChanged);
+            this.Tables.SelectedIndexChanged += new System.EventHandler(this.OnSelectedTables);
             // 
             // Columns
             // 
@@ -120,7 +120,7 @@
             this.Options.Name = "Options";
             this.Options.Size = new System.Drawing.Size(316, 24);
             this.Options.TabIndex = 7;
-            this.Options.SelectedIndexChanged += new System.EventHandler(this.Options_SelectedIndexChanged);
+            this.Options.SelectedIndexChanged += new System.EventHandler(this.OnSelectedOptions);
             // 
             // label3
             // 
@@ -187,7 +187,7 @@
             this.CloseButton.Text = "Close";
             this.CloseButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.CloseButton.UseVisualStyleBackColor = true;
-            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
+            this.CloseButton.Click += new System.EventHandler(this.OnClickClose);
             // 
             // SaveButton
             // 
@@ -201,7 +201,7 @@
             this.SaveButton.Text = "Save";
             this.SaveButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.SaveButton.UseVisualStyleBackColor = true;
-            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
+            this.SaveButton.Click += new System.EventHandler(this.OnClickSaveButton);
             // 
             // ModelForm
             // 
@@ -227,7 +227,7 @@
             this.Name = "ModelForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Model";
-            this.Load += new System.EventHandler(this.MapViewModelForm_Load);
+            this.Load += new System.EventHandler(this.OnLoadModelForm);
             ((System.ComponentModel.ISupportInitialize)(this.Columns)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

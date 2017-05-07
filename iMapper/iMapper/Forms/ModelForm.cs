@@ -27,12 +27,12 @@ namespace iMapper.Forms
             temporaryRepository = new TemporaryRepository();
         }
 
-        private void MapViewModelForm_Load(object sender, EventArgs e)
+        private void OnLoadModelForm(object sender, EventArgs e)
         {
             Init();
         }
 
-        private void SaveButton_Click(object sender, EventArgs e)
+        private void OnClickSaveButton(object sender, EventArgs e)
         {
             var item = Tables.SelectedItem as ComboboxItem;
             if (item != null)
@@ -46,22 +46,22 @@ namespace iMapper.Forms
 
                 var fileName = $"{FileName.Text}.cs";
                 var destinationPath = projectItem.Properties.Item("FullPath").Value as string;
-                var originalFile = $@"{destinationPath}{fileName}";
+                var originalFile = new FileInfo($@"{destinationPath}{fileName}");
 
-                var source = new SourceCode(fileName, code);
-                var sourceFile = source.Create();
+                var sourceManage = new SourceManage(fileName, code);
+                var sourceFile = sourceManage.Create();
 
-                var projectItemFile = projectItem.ProjectItems
+                var fileInProject = projectItem.ProjectItems
                             .GetFiles()
                             .FirstOrDefault(x => x.Name == sourceFile.Name);
 
-                if (projectItemFile != null && IsReplace.Checked == false)
+                if (fileInProject != null && IsReplace.Checked == false)
                 {
                     var outputFile = new FileInfo(Temporary.Directory + $"_{fileName}");
                     outputFile.DeleteIfExisting();
                     outputFile.CreateAndDispose();
 
-                    string command = $"\"{sourceFile.FullName}\" \"{originalFile}\" -o \"{outputFile}\"";
+                    string command = $"\"{sourceFile.FullName}\" \"{originalFile.FullName}\" -o \"{outputFile.FullName}\"";
                     var process = System.Diagnostics.Process.Start(temporaryRepository.Kdiff.FullName, command);
                     if (process != null)
                     {
@@ -70,25 +70,23 @@ namespace iMapper.Forms
                         sourceFile.DeleteIfExisting();
                         File.Copy(outputFile.FullName, sourceFile.FullName);
 
-                        projectItemFile.Delete();
+                        fileInProject.Delete();
                         projectItem.ProjectItems.AddFromFileCopy(sourceFile.FullName);
+                        projectItem.ContainingProject.Save();
                     }
                 }
                 else
                 {
-                    if (File.Exists(originalFile))
-                    {
-                        File.Delete(originalFile);
-                    }
-
+                    originalFile.DeleteIfExisting();
                     projectItem.ProjectItems.AddFromFileCopy(sourceFile.FullName);
+                    projectItem.ContainingProject.Save();
                 }
             }
 
             Close();
         }
 
-        private void Tables_SelectedIndexChanged(object sender, EventArgs e)
+        private void OnSelectedTables(object sender, EventArgs e)
         {
             var item = Tables.SelectedItem as ComboboxItem;
             if (item != null)
@@ -107,7 +105,7 @@ namespace iMapper.Forms
             }
         }
 
-        private void CloseButton_Click(object sender, EventArgs e)
+        private void OnClickClose(object sender, EventArgs e)
         {
             Close();
         }
@@ -185,7 +183,7 @@ namespace iMapper.Forms
             return code;
         }
 
-        private void Options_SelectedIndexChanged(object sender, EventArgs e)
+        private void OnSelectedOptions(object sender, EventArgs e)
         {
             var option = Options.SelectedItem as ComboboxItem;
             var table = Tables.SelectedItem as ComboboxItem;

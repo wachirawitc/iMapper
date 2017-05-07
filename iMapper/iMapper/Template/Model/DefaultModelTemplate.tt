@@ -5,6 +5,7 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="iMapper.Extensions" #>
 using System;
+
 namespace <# WriteLine(Namespace); #>
 {
 	public class <# WriteLine(Name); #>

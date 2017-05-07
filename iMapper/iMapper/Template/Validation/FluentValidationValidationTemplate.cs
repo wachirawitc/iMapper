@@ -32,7 +32,7 @@ namespace iMapper.Template.Validation
             this.Write("using System;\r\nusing FluentValidation;\r\n\r\nnamespace ");
             
             #line 10 "D:\Source\iMapper\iMapper\iMapper\Template\Validation\FluentValidationValidationTemplate.tt"
- Write(Namespace); 
+ WriteLine(Namespace); 
             
             #line default
             #line hidden
@@ -71,7 +71,7 @@ namespace iMapper.Template.Validation
             
             #line default
             #line hidden
-            this.Write("\t\t\tInitialRule();\r\n\t\t}\r\n\r\n\t\tpublic void InitialRule()\r\n\t\t{\r\n\t\t");
+            this.Write("\t\t\tInitialRule();\r\n\t\t}\r\n\r\n\t\tpublic void InitialRule()\r\n\t\t{\r\n");
             
             #line 24 "D:\Source\iMapper\iMapper\iMapper\Template\Validation\FluentValidationValidationTemplate.tt"
  foreach(var column in Columns) { 
@@ -91,14 +91,14 @@ namespace iMapper.Template.Validation
             
             #line default
             #line hidden
-            this.Write("\t\t");
+            this.Write("\t    ");
             
             #line 27 "D:\Source\iMapper\iMapper\iMapper\Template\Validation\FluentValidationValidationTemplate.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("\t\t}\r\n\t}\r\n}");
+            this.Write("}\r\n\t}\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

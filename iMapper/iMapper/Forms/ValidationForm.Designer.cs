@@ -79,12 +79,10 @@
             // IsReplace
             // 
             this.IsReplace.AutoSize = true;
-            this.IsReplace.Checked = true;
-            this.IsReplace.CheckState = System.Windows.Forms.CheckState.Checked;
             this.IsReplace.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.IsReplace.ForeColor = System.Drawing.Color.Red;
             this.IsReplace.Location = new System.Drawing.Point(14, 462);
-            this.IsReplace.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.IsReplace.Margin = new System.Windows.Forms.Padding(2);
             this.IsReplace.Name = "IsReplace";
             this.IsReplace.Size = new System.Drawing.Size(131, 17);
             this.IsReplace.TabIndex = 23;
@@ -103,7 +101,7 @@
             this.CloseButton.Text = "Close";
             this.CloseButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.CloseButton.UseVisualStyleBackColor = true;
-            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
+            this.CloseButton.Click += new System.EventHandler(this.OnClickClose);
             // 
             // label3
             // 
@@ -124,7 +122,7 @@
             this.Options.Name = "Options";
             this.Options.Size = new System.Drawing.Size(316, 24);
             this.Options.TabIndex = 20;
-            this.Options.SelectedIndexChanged += new System.EventHandler(this.Options_SelectedIndexChanged);
+            this.Options.SelectedIndexChanged += new System.EventHandler(this.OnSelectedOptions);
             // 
             // label2
             // 
@@ -162,7 +160,7 @@
             this.Tables.Name = "Tables";
             this.Tables.Size = new System.Drawing.Size(316, 24);
             this.Tables.TabIndex = 16;
-            this.Tables.SelectedIndexChanged += new System.EventHandler(this.Tables_SelectedIndexChanged);
+            this.Tables.SelectedIndexChanged += new System.EventHandler(this.OnSelectedTables);
             // 
             // label1
             // 
@@ -186,7 +184,7 @@
             this.SaveButton.Text = "Save";
             this.SaveButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.SaveButton.UseVisualStyleBackColor = true;
-            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
+            this.SaveButton.Click += new System.EventHandler(this.OnClickSave);
             // 
             // label5
             // 
@@ -230,7 +228,7 @@
             this.Name = "ValidationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Validation";
-            this.Load += new System.EventHandler(this.ValidationForm_Load);
+            this.Load += new System.EventHandler(this.OnLoadValidationForm);
             ((System.ComponentModel.ISupportInitialize)(this.Columns)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

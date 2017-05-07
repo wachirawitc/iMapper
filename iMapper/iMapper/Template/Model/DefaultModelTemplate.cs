@@ -29,44 +29,44 @@ namespace iMapper.Template.Model
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("using System;\r\nnamespace ");
+            this.Write("using System;\r\n\r\nnamespace ");
             
-            #line 8 "D:\Source\iMapper\iMapper\iMapper\Template\Model\DefaultModelTemplate.tt"
+            #line 9 "D:\Source\iMapper\iMapper\iMapper\Template\Model\DefaultModelTemplate.tt"
  WriteLine(Namespace); 
             
             #line default
             #line hidden
             this.Write("{\r\n\tpublic class ");
             
-            #line 10 "D:\Source\iMapper\iMapper\iMapper\Template\Model\DefaultModelTemplate.tt"
+            #line 11 "D:\Source\iMapper\iMapper\iMapper\Template\Model\DefaultModelTemplate.tt"
  WriteLine(Name); 
             
             #line default
             #line hidden
             this.Write("\t{");
             
-            #line 11 "D:\Source\iMapper\iMapper\iMapper\Template\Model\DefaultModelTemplate.tt"
+            #line 12 "D:\Source\iMapper\iMapper\iMapper\Template\Model\DefaultModelTemplate.tt"
     foreach(var column in Columns) { 
             
             #line default
             #line hidden
             this.Write(" \r\n\t\tpublic ");
             
-            #line 12 "D:\Source\iMapper\iMapper\iMapper\Template\Model\DefaultModelTemplate.tt"
+            #line 13 "D:\Source\iMapper\iMapper\iMapper\Template\Model\DefaultModelTemplate.tt"
  Write(column.DataType.GetMsType(column.IsNullable)); 
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 12 "D:\Source\iMapper\iMapper\iMapper\Template\Model\DefaultModelTemplate.tt"
+            #line 13 "D:\Source\iMapper\iMapper\iMapper\Template\Model\DefaultModelTemplate.tt"
  Write(GetName(column.ColumnName)); 
             
             #line default
             #line hidden
             this.Write(" { get; set; } \r\n\t");
             
-            #line 13 "D:\Source\iMapper\iMapper\iMapper\Template\Model\DefaultModelTemplate.tt"
+            #line 14 "D:\Source\iMapper\iMapper\iMapper\Template\Model\DefaultModelTemplate.tt"
     } 
             
             #line default

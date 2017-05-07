@@ -131,7 +131,7 @@ namespace iMapper.Forms
                 var destinationPath = projectItem.Properties.Item("FullPath").Value as string;
                 var originalFile = $@"{destinationPath}{fileName}";
 
-                var sourceCode = new SourceCode(fileName, code);
+                var sourceCode = new SourceManage(fileName, code);
                 var sourceFile = sourceCode.Create();
 
                 var projectItemFile = projectItem.ProjectItems
@@ -169,6 +169,11 @@ namespace iMapper.Forms
 
                 Close();
             }
+        }
+
+        private void CloseButton_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

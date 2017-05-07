@@ -29,21 +29,21 @@ namespace iMapper.Template.Model
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("using System;\r\nusing System.ComponentModel.DataAnnotations;\r\nnamespace ");
+            this.Write("using System;\r\nusing System.ComponentModel.DataAnnotations;\r\n\r\nnamespace ");
             
-            #line 9 "D:\Source\iMapper\iMapper\iMapper\Template\Model\AspMvcModelTemplateCustom1.tt"
- Write(Namespace); 
+            #line 10 "D:\Source\iMapper\iMapper\iMapper\Template\Model\AspMvcModelTemplateCustom1.tt"
+ WriteLine(Namespace); 
             
             #line default
             #line hidden
             this.Write("{\r\n\tpublic class ");
             
-            #line 11 "D:\Source\iMapper\iMapper\iMapper\Template\Model\AspMvcModelTemplateCustom1.tt"
- Write(Name); 
+            #line 12 "D:\Source\iMapper\iMapper\iMapper\Template\Model\AspMvcModelTemplateCustom1.tt"
+ WriteLine(Name); 
             
             #line default
             #line hidden
-            this.Write("\t{\r\n\r\n\t\t");
+            this.Write("\t{\r\n\t\t");
             
             #line 14 "D:\Source\iMapper\iMapper\iMapper\Template\Model\AspMvcModelTemplateCustom1.tt"
     foreach(var column in Columns) { 
@@ -71,7 +71,7 @@ namespace iMapper.Template.Model
             
             #line default
             #line hidden
-            this.Write(" { get; set; } \r\n\t\t");
+            this.Write(" { get; set; } \r\n\t");
             
             #line 17 "D:\Source\iMapper\iMapper\iMapper\Template\Model\AspMvcModelTemplateCustom1.tt"
     } 

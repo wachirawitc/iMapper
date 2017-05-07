@@ -25,7 +25,7 @@ namespace iMapper.Forms
             temporaryRepository = new TemporaryRepository();
         }
 
-        private void ValidationForm_Load(object sender, System.EventArgs e)
+        private void OnLoadValidationForm(object sender, System.EventArgs e)
         {
             Init();
         }
@@ -56,7 +56,7 @@ namespace iMapper.Forms
             Options.SelectedIndex = 0;
         }
 
-        private void Tables_SelectedIndexChanged(object sender, System.EventArgs e)
+        private void OnSelectedTables(object sender, System.EventArgs e)
         {
             var columns = temporaryRepository
                 .GetColumns()
@@ -66,7 +66,7 @@ namespace iMapper.Forms
             InitTableName();
         }
 
-        private void Options_SelectedIndexChanged(object sender, System.EventArgs e)
+        private void OnSelectedOptions(object sender, System.EventArgs e)
         {
             InitTableName();
         }
@@ -118,12 +118,12 @@ namespace iMapper.Forms
             }
         }
 
-        private void CloseButton_Click(object sender, System.EventArgs e)
+        private void OnClickClose(object sender, System.EventArgs e)
         {
             Close();
         }
 
-        private void SaveButton_Click(object sender, System.EventArgs e)
+        private void OnClickSave(object sender, System.EventArgs e)
         {
             if (string.IsNullOrEmpty(TableName))
             {
@@ -141,7 +141,7 @@ namespace iMapper.Forms
             var destinationPath = projectItem.Properties.Item("FullPath").Value as string;
             var originalFile = $@"{destinationPath}{fileName}";
 
-            var source = new SourceCode(fileName, code);
+            var source = new SourceManage(fileName, code);
             var sourceFile = source.Create();
 
             var projectItemFile = projectItem.ProjectItems
@@ -165,6 +165,7 @@ namespace iMapper.Forms
 
                     projectItemFile.Delete();
                     projectItem.ProjectItems.AddFromFileCopy(sourceFile.FullName);
+                    projectItem.ContainingProject.Save();
                 }
             }
             else
@@ -175,6 +176,7 @@ namespace iMapper.Forms
                 }
 
                 projectItem.ProjectItems.AddFromFileCopy(sourceFile.FullName);
+                projectItem.ContainingProject.Save();
             }
             Close();
         }

@@ -7,7 +7,7 @@
 using System;
 using FluentValidation;
 
-namespace <# Write(Namespace); #>
+namespace <# WriteLine(Namespace); #>
 {
 	public class <# Write(Name); #> : AbstractValidator<<# Write(ValidatorName); #>>
 	{
@@ -21,10 +21,9 @@ namespace <# Write(Namespace); #>
 
 		public void InitialRule()
 		{
-		<# foreach(var column in Columns) { #> 
+<# foreach(var column in Columns) { #> 
 <# Write(GetStringRule(column)); #>
 <# Write(GetNumberRule(column)); #>
-		<# } #>
-		}
+	    <# } #>}
 	}
 }

@@ -39,25 +39,25 @@ namespace iMapper.Template.Validation
             string name = GetName(column.ColumnName);
 
             var rules = new List<string>();
-            rules.Add($@"RuleFor(x => x.{name})");
-            rules.Add("\t.Cascade(CascadeMode.StopOnFirstFailure)");
+            rules.Add($"\t\t\tRuleFor(x => x.{name})");
+            rules.Add("\t\t\t\t.Cascade(CascadeMode.StopOnFirstFailure)");
 
             if (column.IsNullable == false)
             {
-                rules.Add("\t\t.NotNull().WithLocalizedMessage(() => ValidationMessage.Require)");
-                rules.Add("\t\t.NotEmpty().WithLocalizedMessage(() => ValidationMessage.Require)");
+                rules.Add("\t\t\t\t\t.NotNull().WithLocalizedMessage(() => ValidationMessage.Require)");
+                rules.Add("\t\t\t\t\t.NotEmpty().WithLocalizedMessage(() => ValidationMessage.Require)");
             }
 
             if (column.CharacterMaximumLength != null)
             {
-                rules.Add($"\t\t.Length(0, {column.CharacterMaximumLength.Value}).WithLocalizedMessage(() => ValidationMessage.InvalidStringLength)");
+                rules.Add($"\t\t\t\t\t.Length(0, {column.CharacterMaximumLength.Value}).WithLocalizedMessage(() => ValidationMessage.InvalidStringLength)");
             }
 
             if (column.IsRelation && string.IsNullOrEmpty(column.RelationTable) == false)
             {
                 var relationTable = column.RelationTable;
                 var columnName = column.ColumnName;
-                rules.Add($"\t\t.Must({columnName.Camelize()} => {relationTable.Camelize()}Repository.IsExisting({columnName.Camelize()})).WithMessage(ValidationMessage.NotExist)");
+                rules.Add($"\t\t\t\t\t.Must({columnName.Camelize()} => {relationTable.Camelize()}Repository.IsExisting({columnName.Camelize()})).WithMessage(ValidationMessage.NotExist)");
             }
 
             return string.Join("\n", rules) + ";";
@@ -79,19 +79,19 @@ namespace iMapper.Template.Validation
 
             string name = GetName(column.ColumnName);
             var rules = new List<string>();
-            rules.Add($@"RuleFor(x => x.{name})");
-            rules.Add("\t.Cascade(CascadeMode.StopOnFirstFailure)");
+            rules.Add($"\t\t\tRuleFor(x => x.{name})");
+            rules.Add("\t\t\t\t.Cascade(CascadeMode.StopOnFirstFailure)");
 
             if (column.IsNullable == false)
             {
-                rules.Add("\t\t.NotNull().WithLocalizedMessage(() => ValidationMessage.Require)");
+                rules.Add("\t\t\t\t\t.NotNull().WithLocalizedMessage(() => ValidationMessage.Require)");
             }
 
             if (column.IsRelation && string.IsNullOrEmpty(column.RelationTable) == false)
             {
                 var relationTable = column.RelationTable;
                 var columnName = column.ColumnName;
-                rules.Add($"\t\t.Must({columnName.Camelize()} => {relationTable.Camelize()}Repository.IsExisting({columnName.Camelize()})).WithMessage(ValidationMessage.NotExist)");
+                rules.Add($"\t\t\t\t\t.Must({columnName.Camelize()} => {relationTable.Camelize()}Repository.IsExisting({columnName.Camelize()})).WithMessage(ValidationMessage.NotExist)");
             }
 
             return string.Join("\n", rules) + ";";

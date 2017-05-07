@@ -2,12 +2,12 @@
 
 namespace iMapper.Support
 {
-    public class SourceCode
+    public class SourceManage
     {
         private readonly string name;
         private readonly string content;
 
-        public SourceCode(string name, string content)
+        public SourceManage(string name, string content)
         {
             this.name = name;
             this.content = content;

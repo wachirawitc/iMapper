@@ -81,17 +81,7 @@ namespace iMapper.Forms
 
         private void OnClickInterfaceSave(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(EntityFrameworkName.Text))
-            {
-                MessageBox.Show("Not found entity framework name", Text);
-                return;
-            }
-
-            if (string.IsNullOrEmpty(SelectTable))
-            {
-                MessageBox.Show("Select table.", Text);
-                return;
-            }
+            if (ValidationButton()) return;
 
             temporaryRepository.EntityName = EntityFrameworkName.Text;
 
@@ -191,17 +181,7 @@ namespace iMapper.Forms
 
         private void OnClickImplementSave(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(EntityFrameworkName.Text))
-            {
-                MessageBox.Show("Not found entity framework name", Text);
-                return;
-            }
-
-            if (string.IsNullOrEmpty(SelectTable))
-            {
-                MessageBox.Show("Select table.", Text);
-                return;
-            }
+            if (ValidationButton()) return;
 
             temporaryRepository.EntityName = EntityFrameworkName.Text;
 
@@ -213,6 +193,22 @@ namespace iMapper.Forms
             CreateEfRepository(columns);
 
             Close();
+        }
+
+        private bool ValidationButton()
+        {
+            if (string.IsNullOrEmpty(EntityFrameworkName.Text))
+            {
+                MessageBox.Show("Not found entity framework name", Text);
+                return true;
+            }
+
+            if (string.IsNullOrEmpty(SelectTable))
+            {
+                MessageBox.Show("Select table.", Text);
+                return true;
+            }
+            return false;
         }
     }
 }

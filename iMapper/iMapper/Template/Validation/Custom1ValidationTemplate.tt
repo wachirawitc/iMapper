@@ -11,7 +11,7 @@ namespace <# WriteLine(Namespace); #>
 	{
 <# Write(GetRepositoryVariable()); #>
 
-		public BasicCalculateInvestigate(<# Write(ValidatorName); #> model,
+		public <# Write(Name); #>(<# Write(ValidatorName); #> model,
 <# Write(GetRepositoryParameter()); #>) : base(model)
 		{
 <# Write(GetRepositoryInitVariable()); #>

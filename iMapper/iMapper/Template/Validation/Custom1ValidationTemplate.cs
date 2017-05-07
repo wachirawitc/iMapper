@@ -56,7 +56,14 @@ namespace iMapper.Template.Validation
             
             #line default
             #line hidden
-            this.Write("\r\n\t\tpublic BasicCalculateInvestigate(");
+            this.Write("\r\n\t\tpublic ");
+            
+            #line 14 "D:\Source\iMapper\iMapper\iMapper\Template\Validation\Custom1ValidationTemplate.tt"
+ Write(Name); 
+            
+            #line default
+            #line hidden
+            this.Write("(");
             
             #line 14 "D:\Source\iMapper\iMapper\iMapper\Template\Validation\Custom1ValidationTemplate.tt"
  Write(ValidatorName); 

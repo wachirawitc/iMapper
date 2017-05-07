@@ -92,8 +92,7 @@ namespace iMapper.Template.Validation
             if (column.IsRelation && string.IsNullOrEmpty(column.RelationTable) == false)
             {
                 var relationTable = column.RelationTable;
-                var columnName = column.ColumnName;
-                rules.Add($"\t\t\tAdd(() => {relationTable.Camelize()}Repository.IsExisting(Model.{name}), ValidationMessage.NotFound{columnName.Camelize()});");
+                rules.Add($"\t\t\tAdd(() => {relationTable.Camelize()}Repository.IsExisting(Model.{name}), ValidationMessage.NotFound{relationTable});");
             }
 
             return string.Join("\n", rules);
@@ -117,14 +116,13 @@ namespace iMapper.Template.Validation
             var rules = new List<string>();
 
             var relationTable = column.RelationTable;
-            var columnName = column.ColumnName;
             if (column.IsNullable && column.IsRelation && string.IsNullOrEmpty(column.RelationTable) == false)
             {
-                rules.Add($"\t\t\tAdd(() => Model.{name} != null && {relationTable.Camelize()}Repository.IsExisting(Model.{name}.Value), ValidationMessage.NotFound{columnName.Camelize()});");
+                rules.Add($"\t\t\tAdd(() => Model.{name} != null && {relationTable.Camelize()}Repository.IsExisting(Model.{name}.Value), ValidationMessage.NotFound{relationTable});");
             }
             else if (column.IsRelation && string.IsNullOrEmpty(column.RelationTable) == false)
             {
-                rules.Add($"\t\t\tAdd(() => {relationTable.Camelize()}Repository.IsExisting(Model.{name}), ValidationMessage.NotFound{columnName.Camelize()});");
+                rules.Add($"\t\t\tAdd(() => {relationTable.Camelize()}Repository.IsExisting(Model.{name}), ValidationMessage.NotFound{relationTable});");
             }
 
             return string.Join("\n", rules);
@@ -155,8 +153,7 @@ namespace iMapper.Template.Validation
             if (column.IsRelation && string.IsNullOrEmpty(column.RelationTable) == false)
             {
                 var relationTable = column.RelationTable;
-                var columnName = column.ColumnName;
-                rules.Add($"\t\t\tAdd(() => {relationTable.Camelize()}Repository.IsExisting(Model.{name}), ValidationMessage.NotFound{columnName.Camelize()});");
+                rules.Add($"\t\t\tAdd(() => {relationTable.Camelize()}Repository.IsExisting(Model.{name}), ValidationMessage.NotFound{relationTable});");
             }
 
             return string.Join("\n", rules);

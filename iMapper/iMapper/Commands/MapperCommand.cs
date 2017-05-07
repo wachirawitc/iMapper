@@ -268,7 +268,7 @@ namespace iMapper.Commands
 
         public static void SetSolutionPath()
         {
-            var dte2 = Package.GetGlobalService(typeof(SDTE)) as DTE2;
+            var dte2 = GetActiveIde();
             if (dte2 != null)
             {
                 string solutionDir = System.IO.Path.GetDirectoryName(dte2.Solution.FullName);

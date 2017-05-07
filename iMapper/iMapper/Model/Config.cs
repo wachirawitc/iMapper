@@ -11,5 +11,6 @@
         public string Password { get; set; }
         public bool IsWindowsAuthentication { get; set; }
         public string KDiff { get; set; }
+        public string EntityName { get; set; }
     }
 }

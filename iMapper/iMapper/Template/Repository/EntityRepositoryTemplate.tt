@@ -3,3 +3,63 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
+using System;
+using System.Collections.Generic;
+
+namespace <# Write(Namespace); #>
+{
+    public class <# Write(Name); #> : I<# Write(Name); #>
+    {
+        <# if(HasPk){ #>
+public <#  Write(TableName); #> Get(<# Write(GetPkParameter()); #>)
+        {
+            using (var db = new <#  Write(EntityName); #>())
+            {
+                return db.<#  Write(TableName); #>.FirstOrDefault(x => <#  Write(GetPkArgument()); #>);
+            }
+        }
+        <# } #>
+
+        public List<<#  Write(TableName); #>> Get<#  Write(TableNamePluralize); #>()
+        {
+            using (var db = new <#  Write(EntityName); #>())
+            {
+                return db.<#  Write(TableName); #>.ToList();
+            }
+        }
+
+        public ScopeIdentity<<# Write(TableName); #>> Create(<# Write(TableName); #> <# Write(TableNameCamelize); #>)
+        {
+            using (var db = new <#  Write(EntityName); #>())
+            {
+                var identity = db.<#  Write(TableName); #>.Add(<# Write(TableNameCamelize); #>);
+                db.SaveChanges();
+                return new ScopeIdentity<<# Write(TableName); #>>(identity);
+            }
+        }
+
+        public ScopeIdentity<<# Write(TableName); #>> Update(<# Write(TableName); #> <# Write(TableNameCamelize); #>)
+        {
+            using (var db = new <#  Write(EntityName); #>())
+            {
+                var model = db.<#  Write(TableName); #>.First(x => <#  Write(GetPkArgument()); #>);
+<#    foreach(var column in ColumnsWithoutPk) { #> 
+                model.<# Write(column.ColumnName); #> = <# Write(TableNameCamelize); #>.<# Write(column.ColumnName); #>;
+<#    } #>
+                db.SaveChanges();
+            }
+            return new ScopeIdentity<<# Write(TableName); #>>(model);
+        }
+
+        <# if(HasPk){ #>
+public bool IsExisting(<# Write(GetPkParameter()); #>)
+        {
+            using (var db = new <#  Write(EntityName); #>())
+            {
+                return db.<#  Write(TableName); #>.Any(x => <#  Write(GetPkArgument()); #>);
+            }
+        }
+        <# } #>
+
+    }
+}

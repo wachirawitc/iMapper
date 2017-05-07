@@ -97,5 +97,20 @@ namespace iMapper.Repository
                 return new FileInfo(config.KDiff);
             }
         }
+
+        public string EntityName
+        {
+            get
+            {
+                var config = GetConfig();
+                return config?.EntityName;
+            }
+            set
+            {
+                var config = GetConfig() ?? new Config();
+                config.EntityName = value;
+                SetConfig(config);
+            }
+        }
     }
 }

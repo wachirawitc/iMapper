@@ -29,6 +29,7 @@ namespace iMapper.Forms
         private void OnLoadRepositoryForm(object sender, EventArgs e)
         {
             Init();
+            EntityFrameworkName.Text = temporaryRepository.EntityName ?? string.Empty;
         }
 
         private void Init()
@@ -92,6 +93,8 @@ namespace iMapper.Forms
                 return;
             }
 
+            temporaryRepository.EntityName = EntityFrameworkName.Text;
+
             var columns = temporaryRepository
                 .GetColumns()
                 .Where(x => x.TableName.Equals(SelectTable))
@@ -121,11 +124,19 @@ namespace iMapper.Forms
 
         public void CreateEfRepository(List<ColumnModel> columns)
         {
-            var fileName = $"{SelectTable}Repository.cs";
+            var name = $"{SelectTable}Repository";
+            var fileName = $"{name}.cs";
             var destinationPath = projectItem.Properties.Item("FullPath").Value as string;
             var originalFile = new FileInfo($@"{destinationPath}{fileName}");
 
             var template = new EntityRepositoryTemplate();
+            template.Name = name;
+            template.TableName = SelectTable;
+            template.Columns = columns;
+            template.Namespace = NamespaceHelper.Get(projectItem.ContainingProject, projectItem);
+            template.IsPluralize = IsPluralize.Checked;
+            template.EntityName = EntityFrameworkName.Text;
+
             var sourceManage = new SourceManage(fileName, template.TransformText());
             var sourceFile = sourceManage.Create();
 

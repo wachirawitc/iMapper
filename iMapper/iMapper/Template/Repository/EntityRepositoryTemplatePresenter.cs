@@ -47,7 +47,7 @@ namespace iMapper.Template.Repository
         public string GetPkUpdateArgument()
         {
             var items = Columns.Where(x => x.IsPrimaryKey)
-                .Select(x => $"x.{x.ColumnName} == {TableNameCamelize}.{x.ColumnName.Camelize()}")
+                .Select(x => $"x.{x.ColumnName} == {TableNameCamelize}.{x.ColumnName}")
                 .ToList();
             return string.Join(",", items);
         }

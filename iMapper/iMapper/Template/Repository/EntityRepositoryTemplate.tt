@@ -48,8 +48,8 @@ public <#  Write(TableName); #> Get(<# Write(GetPkParameter()); #>)
                 model.<# Write(column.ColumnName); #> = <# Write(TableNameCamelize); #>.<# Write(column.ColumnName); #>;
 <#    } #>
                 db.SaveChanges();
+                return new ScopeIdentity<<# Write(TableName); #>>(model);
             }
-            return new ScopeIdentity<<# Write(TableName); #>>(model);
         }
 
         <# if(HasPk){ #>

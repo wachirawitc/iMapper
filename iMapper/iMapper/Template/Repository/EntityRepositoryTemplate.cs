@@ -253,15 +253,14 @@ namespace iMapper.Template.Repository
             
             #line default
             #line hidden
-            this.Write("                db.SaveChanges();\r\n            }\r\n            return new ScopeIde" +
-                    "ntity<");
+            this.Write("                db.SaveChanges();\r\n                return new ScopeIdentity<");
             
-            #line 52 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
+            #line 51 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
  Write(TableName); 
             
             #line default
             #line hidden
-            this.Write(">(model);\r\n        }\r\n\r\n        ");
+            this.Write(">(model);\r\n            }\r\n        }\r\n\r\n        ");
             
             #line 55 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
  if(HasPk){ 

@@ -32,6 +32,11 @@
       <Group guid="ValidationProjNodeCmdSet" id="ValidationProjNodeGroup" priority="0x0606">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE" />
       </Group>
+
+      <Group guid="RepositoryProjNodeCmdSet" id="RepositoryProjNodeGroup" priority="0x0607">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE" />
+      </Group>
+      
     </Groups>
 
     <Buttons>
@@ -91,7 +96,15 @@
           <ButtonText>Validation Template</ButtonText>
         </Strings>
       </Button>
-      
+
+      <Button guid="RepositoryProjNodeCmdSet" id="RepositoryProjNodeCommandId" priority="0x0108" type="Button">
+        <Parent guid="RepositoryProjNodeCmdSet" id="RepositoryProjNodeGroup" />
+        <Icon guid="guidImages" id="bmpPic1" />
+        <Strings>
+          <ButtonText>Repository Template</ButtonText>
+        </Strings>
+      </Button>
+
     </Buttons>
 
     <Bitmaps>
@@ -135,6 +148,11 @@
     <GuidSymbol name="ValidationProjNodeCmdSet" value="{ef162887-333c-4e3a-b22c-0d26604d0097}">
       <IDSymbol name="ValidationProjNodeGroup" value="0x0801" />
       <IDSymbol name="ValidationProjNodeCommandId" value="0x0800" />
+    </GuidSymbol>
+
+    <GuidSymbol name="RepositoryProjNodeCmdSet" value="{a0d109bf-55fa-4eac-838f-c2a36e9976c3}">
+      <IDSymbol name="RepositoryProjNodeGroup" value="0x0901" />
+      <IDSymbol name="RepositoryProjNodeCommandId" value="0x0900" />
     </GuidSymbol>
     
     <GuidSymbol name="guidImages" value="{800f86f7-dada-497c-8666-ddbcce338fc0}">

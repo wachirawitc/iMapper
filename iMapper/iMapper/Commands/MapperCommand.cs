@@ -20,6 +20,7 @@ namespace iMapper.Commands
         public const int RepositoryCommandId = 0x0600;
         public const int ModelProjNodeCommandId = 0x0700;
         public const int ValidationProjNodeCommandId = 0x0800;
+        public const int RepositoryProjNodeCommandId = 0x0900;
 
         public static readonly Guid ConnectDatabaseCommand = new Guid("89629128-c144-443f-9920-0ed1b9bc65b6");
         public static readonly Guid MapViewModelCommand = new Guid("0f8fad5b-d9cb-469f-a165-70867728950e");
@@ -28,6 +29,7 @@ namespace iMapper.Commands
         public static readonly Guid RepositoryCommand = new Guid("8ae90204-5920-4068-8822-5b68e57ccb03");
         public static readonly Guid ModelProjNodeCommand = new Guid("97235e93-1311-44de-982e-27798e9f1270");
         public static readonly Guid ValidationProjNodeCommand = new Guid("ef162887-333c-4e3a-b22c-0d26604d0097");
+        public static readonly Guid RepositoryProjNodeCommand = new Guid("a0d109bf-55fa-4eac-838f-c2a36e9976c3");
 
         private readonly Package package;
 
@@ -70,6 +72,10 @@ namespace iMapper.Commands
                 var validationProjNodeCommand = new CommandID(ValidationProjNodeCommand, ValidationProjNodeCommandId);
                 var validationProjNodeCommandMenuItem = new MenuCommand(ValidationProjNodeCallback, validationProjNodeCommand);
                 commandService.AddCommand(validationProjNodeCommandMenuItem);
+
+                var repositoryProjNodeCommand = new CommandID(RepositoryProjNodeCommand, RepositoryProjNodeCommandId);
+                var repositoryProjNodeCommandMenuItem = new MenuCommand(RepositoryProjNodeCallback, repositoryProjNodeCommand);
+                commandService.AddCommand(repositoryProjNodeCommandMenuItem);
             }
 
             SetSolutionPath();
@@ -105,8 +111,38 @@ namespace iMapper.Commands
                     var projectItem = hierarchyItem.Object as ProjectItem;
                     if (projectItem != null)
                     {
-                        var repositoryForm = new RepositoryForm(projectItem);
+                        var destinationPath = projectItem.Properties.Item("FullPath").Value as string;
+                        var nameSpace = NamespaceHelper.Get(projectItem.ContainingProject, projectItem);
+
+                        var repositoryForm = new RepositoryForm(destinationPath, nameSpace, projectItem.ProjectItems);
                         repositoryForm.ShowDialog();
+                    }
+                }
+            }
+        }
+
+        private void RepositoryProjNodeCallback(object sender, EventArgs e)
+        {
+            var dte2 = Package.GetGlobalService(typeof(SDTE)) as DTE2;
+            if (dte2 != null)
+            {
+                UIHierarchy uih = dte2.ToolWindows.SolutionExplorer;
+                Array selectedItems = (Array)uih.SelectedItems;
+                if (selectedItems == null || selectedItems.Length > 1)
+                {
+                    ShowDiabog("Select one item.", "Model");
+                }
+                else
+                {
+                    var hierarchyItem = selectedItems.Cast<UIHierarchyItem>().First();
+                    Project project = hierarchyItem.Object as Project;
+                    if (project != null)
+                    {
+                        var destinationPath = project.Properties.Item("FullPath").Value as string;
+                        var nameSpace = NamespaceHelper.Get(project);
+
+                        var validationForm = new RepositoryForm(destinationPath, nameSpace, project.ProjectItems);
+                        validationForm.ShowDialog();
                     }
                 }
             }

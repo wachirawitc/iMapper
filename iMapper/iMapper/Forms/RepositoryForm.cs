@@ -16,14 +16,18 @@ namespace iMapper.Forms
 {
     public partial class RepositoryForm : Form
     {
-        private readonly ProjectItem projectItem;
+        private readonly string destinationPath;
+        private readonly string nameSpace;
+
+        private readonly ProjectItems projectItems;
         private readonly TemporaryRepository temporaryRepository;
 
-        public RepositoryForm(ProjectItem projectItem)
+        public RepositoryForm(string destinationPath, string nameSpace, ProjectItems projectItems)
         {
             InitializeComponent();
-
-            this.projectItem = projectItem;
+            this.destinationPath = destinationPath;
+            this.nameSpace = nameSpace;
+            this.projectItems = projectItems;
             temporaryRepository = new TemporaryRepository();
         }
 
@@ -123,14 +127,13 @@ namespace iMapper.Forms
         {
             var name = $"{SelectTable}Repository";
             var fileName = $"{name}.cs";
-            var destinationPath = projectItem.Properties.Item("FullPath").Value as string;
             var originalFile = new FileInfo($@"{destinationPath}{fileName}");
 
             var template = new EntityRepositoryTemplate();
             template.Name = name;
             template.TableName = SelectTable;
             template.Columns = columns;
-            template.Namespace = NamespaceHelper.Get(projectItem.ContainingProject, projectItem);
+            template.Namespace = nameSpace;
             template.IsPluralize = IsPluralize.Checked;
             template.EntityName = EntityFrameworkName.Text;
 
@@ -144,14 +147,13 @@ namespace iMapper.Forms
         {
             var name = $"I{SelectTable}Repository";
             var fileName = $"{name}.cs";
-            var destinationPath = projectItem.Properties.Item("FullPath").Value as string;
             var originalFile = new FileInfo($@"{destinationPath}{fileName}");
 
             var template = new EntityRepositoryInterfaceTemplate();
             template.Name = name;
             template.TableName = SelectTable;
             template.Columns = columns;
-            template.Namespace = NamespaceHelper.Get(projectItem.ContainingProject, projectItem);
+            template.Namespace = nameSpace;
             template.IsPluralize = IsPluralize.Checked;
 
             var sourceManage = new SourceManage(fileName, template.TransformText());
@@ -162,7 +164,7 @@ namespace iMapper.Forms
 
         private void CreateFile(FileInfo sourceFile, string fileName, FileInfo originalFile)
         {
-            var fileInProject = projectItem.ProjectItems
+            var fileInProject = projectItems
                 .GetFiles()
                 .FirstOrDefault(x => x.Name == sourceFile.Name);
 
@@ -182,15 +184,15 @@ namespace iMapper.Forms
                     File.Copy(outputFile.FullName, sourceFile.FullName);
 
                     fileInProject.Delete();
-                    projectItem.ProjectItems.AddFromFileCopy(sourceFile.FullName);
-                    projectItem.ContainingProject.Save();
+                    projectItems.AddFromFileCopy(sourceFile.FullName);
+                    projectItems.ContainingProject.Save();
                 }
             }
             else
             {
                 originalFile.DeleteIfExisting();
-                projectItem.ProjectItems.AddFromFileCopy(sourceFile.FullName);
-                projectItem.ContainingProject.Save();
+                projectItems.AddFromFileCopy(sourceFile.FullName);
+                projectItems.ContainingProject.Save();
             }
         }
 

@@ -59,9 +59,11 @@
     <Compile Include="Constance\KindElement.cs" />
     <Compile Include="Constance\MapperInfo.cs" />
     <Compile Include="Exception\ProjectItemException.cs" />
+    <Compile Include="Extensions\CodeElementExtension.cs" />
     <Compile Include="Extensions\DirectoryInfoExtension.cs" />
     <Compile Include="Extensions\ProjectExtension.cs" />
     <Compile Include="Extensions\ProjectItemExtension.cs" />
+    <Compile Include="Extensions\ProjectItemsExtension.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
     <Compile Include="Forms\ConnectDatabaseForm.cs">
       <SubType>Form</SubType>

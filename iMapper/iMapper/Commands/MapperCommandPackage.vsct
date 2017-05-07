@@ -25,6 +25,9 @@
         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_FOLDERNODE" />
       </Group>
 
+      <Group guid="ModelProjNodeCmdSet" id="ModelProjNodeGroup" priority="0x0605">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE" />
+      </Group>
     </Groups>
 
     <Buttons>
@@ -69,6 +72,14 @@
         </Strings>
       </Button>
 
+      <Button guid="ModelProjNodeCmdSet" id="ModelProjNodeCommandId" priority="0x0106" type="Button">
+        <Parent guid="ModelProjNodeCmdSet" id="ModelProjNodeGroup" />
+        <Icon guid="guidImages" id="bmpPic1" />
+        <Strings>
+          <ButtonText>Model Template</ButtonText>
+        </Strings>
+      </Button>
+      
     </Buttons>
 
     <Bitmaps>
@@ -104,6 +115,11 @@
       <IDSymbol name="RepositoryCommandId" value="0x0600" />
     </GuidSymbol>
 
+    <GuidSymbol name="ModelProjNodeCmdSet" value="{97235e93-1311-44de-982e-27798e9f1270}">
+      <IDSymbol name="ModelProjNodeGroup" value="0x0701" />
+      <IDSymbol name="ModelProjNodeCommandId" value="0x0700" />
+    </GuidSymbol>
+    
     <GuidSymbol name="guidImages" value="{800f86f7-dada-497c-8666-ddbcce338fc0}">
       <IDSymbol name="bmpPic1" value="1" />
       <IDSymbol name="bmpPic2" value="2" />

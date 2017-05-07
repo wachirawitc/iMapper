@@ -1,5 +1,7 @@
 ﻿using EnvDTE;
+using iMapper.Exception;
 using System.Collections.Generic;
+using System.IO;
 
 namespace iMapper.Extensions
 {

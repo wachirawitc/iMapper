@@ -18,13 +18,17 @@ namespace iMapper.Forms
     [System.Runtime.InteropServices.Guid("03394275-34B7-403D-8A5E-CEDF45CFE71A")]
     public partial class ModelForm : Form
     {
-        private readonly ProjectItem projectItem;
+        private readonly string destinationPath;
+        private readonly string nameSpace;
+        private readonly ProjectItems projectItem;
         private readonly TemporaryRepository temporaryRepository;
 
-        public ModelForm(ProjectItem projectItem)
+        public ModelForm(string destinationPath, string nameSpace, ProjectItems projectItem)
         {
             InitializeComponent();
             this.projectItem = projectItem;
+            this.destinationPath = destinationPath;
+            this.nameSpace = nameSpace;
             temporaryRepository = new TemporaryRepository();
         }
 
@@ -46,13 +50,13 @@ namespace iMapper.Forms
                 var code = GetCode(columns);
 
                 var fileName = $"{FileName.Text}.cs";
-                var destinationPath = projectItem.Properties.Item("FullPath").Value as string;
+
                 var originalFile = new FileInfo($@"{destinationPath}{fileName}");
 
                 var sourceManage = new SourceManage(fileName, code);
                 var sourceFile = sourceManage.Create();
 
-                var fileInProject = projectItem.ProjectItems
+                var fileInProject = projectItem
                             .GetFiles()
                             .FirstOrDefault(x => x.Name == sourceFile.Name);
 
@@ -72,14 +76,14 @@ namespace iMapper.Forms
                         File.Copy(outputFile.FullName, sourceFile.FullName);
 
                         fileInProject.Delete();
-                        projectItem.ProjectItems.AddFromFileCopy(sourceFile.FullName);
+                        projectItem.AddFromFileCopy(sourceFile.FullName);
                         projectItem.ContainingProject.Save();
                     }
                 }
                 else
                 {
                     originalFile.DeleteIfExisting();
-                    projectItem.ProjectItems.AddFromFileCopy(sourceFile.FullName);
+                    projectItem.AddFromFileCopy(sourceFile.FullName);
                     projectItem.ContainingProject.Save();
                 }
             }
@@ -164,7 +168,7 @@ namespace iMapper.Forms
             {
                 var template = new DefaultModelTemplate();
                 template.IsPascalize = IsPascalize.Checked;
-                template.Namespace = NamespaceHelper.Get(projectItem.ContainingProject, projectItem);
+                template.Namespace = nameSpace;
                 template.Name = FileName.Text;
                 template.Columns = columns;
                 code = template.TransformText();
@@ -173,7 +177,7 @@ namespace iMapper.Forms
             {
                 var template = new AspMvcModelTemplate();
                 template.IsPascalize = IsPascalize.Checked;
-                template.Namespace = NamespaceHelper.Get(projectItem.ContainingProject, projectItem);
+                template.Namespace = nameSpace;
                 template.Name = FileName.Text;
                 template.Columns = columns;
                 code = template.TransformText();
@@ -182,7 +186,7 @@ namespace iMapper.Forms
             {
                 var template = new AspMvcModelTemplateCustom1();
                 template.IsPascalize = IsPascalize.Checked;
-                template.Namespace = NamespaceHelper.Get(projectItem.ContainingProject, projectItem);
+                template.Namespace = nameSpace;
                 template.Name = FileName.Text;
                 template.Columns = columns;
                 code = template.TransformText();

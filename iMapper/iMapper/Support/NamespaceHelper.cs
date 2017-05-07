@@ -1,4 +1,5 @@
 ﻿using EnvDTE;
+using iMapper.Constance;
 using iMapper.Extensions;
 using System.IO;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace iMapper.Support
             const string defaultNamespace = "DefaultNamespace";
             var projctNamespace = project.GetDefaultNamespaceProperty();
 
-            if (projectItem.IsFolder() == false)
+            if (projectItem.Kind != KindElement.PhysicalFolder)
             {
                 return projctNamespace ?? defaultNamespace;
             }
@@ -25,6 +26,13 @@ namespace iMapper.Support
                 return defaultNamespace;
             }
             return GetNamespace(projectPath, folderPath, projctNamespace);
+        }
+
+        public static string Get(Project project)
+        {
+            const string defaultNamespace = "DefaultNamespace";
+            var projctNamespace = project.GetDefaultNamespaceProperty();
+            return projctNamespace ?? defaultNamespace;
         }
 
         public static string GetNamespace(DirectoryInfo project, DirectoryInfo subProject, string solutionNamespace)

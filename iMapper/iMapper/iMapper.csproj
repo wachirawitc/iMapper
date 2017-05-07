@@ -61,6 +61,7 @@
     <Compile Include="Exception\ProjectItemException.cs" />
     <Compile Include="Extensions\CodeElementExtension.cs" />
     <Compile Include="Extensions\DirectoryInfoExtension.cs" />
+    <Compile Include="Extensions\FileExtension.cs" />
     <Compile Include="Extensions\ProjectExtension.cs" />
     <Compile Include="Extensions\ProjectItemExtension.cs" />
     <Compile Include="Extensions\ProjectItemsExtension.cs" />

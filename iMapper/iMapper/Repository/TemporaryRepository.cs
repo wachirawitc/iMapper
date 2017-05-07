@@ -83,5 +83,19 @@ namespace iMapper.Repository
             string contents = File.ReadAllText(Temporary.TransferFile);
             return JsonConvert.DeserializeObject<List<ClassModel>>(contents) ?? new List<ClassModel>();
         }
+
+        public FileInfo Kdiff
+        {
+            get
+            {
+                var config = GetConfig();
+                if (config == null || File.Exists(config.KDiff) == false)
+                {
+                    throw new FileNotFoundException("Not found Kdiff");
+                }
+
+                return new FileInfo(config.KDiff);
+            }
+        }
     }
 }

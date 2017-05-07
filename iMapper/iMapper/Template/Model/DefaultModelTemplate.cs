@@ -32,41 +32,41 @@ namespace iMapper.Template.Model
             this.Write("using System;\r\nnamespace ");
             
             #line 8 "D:\Source\iMapper\iMapper\iMapper\Template\Model\DefaultModelTemplate.tt"
- Write(Namespace); 
+ WriteLine(Namespace); 
             
             #line default
             #line hidden
             this.Write("{\r\n\tpublic class ");
             
             #line 10 "D:\Source\iMapper\iMapper\iMapper\Template\Model\DefaultModelTemplate.tt"
- Write(Name); 
+ WriteLine(Name); 
             
             #line default
             #line hidden
-            this.Write("\t{\r\n\t\t");
+            this.Write("\t{");
             
-            #line 12 "D:\Source\iMapper\iMapper\iMapper\Template\Model\DefaultModelTemplate.tt"
+            #line 11 "D:\Source\iMapper\iMapper\iMapper\Template\Model\DefaultModelTemplate.tt"
     foreach(var column in Columns) { 
             
             #line default
             #line hidden
-            this.Write(" \r\n\t    public ");
+            this.Write(" \r\n\t\tpublic ");
             
-            #line 13 "D:\Source\iMapper\iMapper\iMapper\Template\Model\DefaultModelTemplate.tt"
+            #line 12 "D:\Source\iMapper\iMapper\iMapper\Template\Model\DefaultModelTemplate.tt"
  Write(column.DataType.GetMsType(column.IsNullable)); 
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 13 "D:\Source\iMapper\iMapper\iMapper\Template\Model\DefaultModelTemplate.tt"
+            #line 12 "D:\Source\iMapper\iMapper\iMapper\Template\Model\DefaultModelTemplate.tt"
  Write(GetName(column.ColumnName)); 
             
             #line default
             #line hidden
-            this.Write(" { get; set; } \r\n\t\t");
+            this.Write(" { get; set; } \r\n\t");
             
-            #line 14 "D:\Source\iMapper\iMapper\iMapper\Template\Model\DefaultModelTemplate.tt"
+            #line 13 "D:\Source\iMapper\iMapper\iMapper\Template\Model\DefaultModelTemplate.tt"
     } 
             
             #line default

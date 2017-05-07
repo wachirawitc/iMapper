@@ -5,7 +5,7 @@ namespace iMapper.Extensions
 {
     public static class ProjectItemsExtension
     {
-        public static IEnumerable<ProjectItem> GetFiles(this ProjectItems projectItems)
+        public static IEnumerable<ProjectItem> GetFilesIncludeSubFolder(this ProjectItems projectItems)
         {
             if (projectItems != null)
             {
@@ -15,10 +15,27 @@ namespace iMapper.Extensions
 
                     if (item.SubProject != null)
                     {
-                        foreach (var childItem in GetFiles(item.SubProject.ProjectItems))
+                        foreach (var childItem in GetFilesIncludeSubFolder(item.SubProject.ProjectItems))
                             yield return childItem;
                     }
                     else
+                    {
+                        foreach (ProjectItem childItem in GetFilesIncludeSubFolder(item.ProjectItems))
+                            yield return childItem;
+                    }
+                }
+            }
+        }
+
+        public static IEnumerable<ProjectItem> GetFiles(this ProjectItems projectItems)
+        {
+            if (projectItems != null)
+            {
+                foreach (ProjectItem item in projectItems)
+                {
+                    yield return item;
+
+                    if (item.SubProject == null)
                     {
                         foreach (ProjectItem childItem in GetFiles(item.ProjectItems))
                             yield return childItem;

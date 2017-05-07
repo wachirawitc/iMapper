@@ -64,7 +64,7 @@ namespace iMapper.Forms
                 var projects = dte2.Solution.Projects.Cast<Project>();
                 foreach (var project in projects)
                 {
-                    var projectItems = project.ProjectItems.GetFiles().ToList();
+                    var projectItems = project.ProjectItems.GetFilesIncludeSubFolder().ToList();
                     var fileCodeModel2S = projectItems
                         .Where(x => x.Kind == KindElement.PhysicalFile)
                         .Where(x => x.FileCodeModel is FileCodeModel2)
@@ -134,18 +134,28 @@ namespace iMapper.Forms
                 var sourceCode = new SourceCode(fileName, code);
                 var sourceFile = sourceCode.Create();
 
-                if (File.Exists(originalFile))
-                {
-                    string outputFile = Temporary.Directory + $"_{fileName}";
-                    if (File.Exists(outputFile))
-                    {
-                        File.Delete(outputFile);
-                    }
-                    using (File.Create(outputFile)) { }
+                var projectItemFile = projectItem.ProjectItems
+                            .GetFiles()
+                            .FirstOrDefault(x => x.Name == sourceFile.Name);
 
-                    string kdiffPath = @"C:\Program Files\KDiff3\kdiff3.exe";
+                if (projectItemFile != null)
+                {
+                    var outputFile = new FileInfo(Temporary.Directory + $"_{fileName}");
+                    outputFile.DeleteIfExisting();
+                    outputFile.CreateAndDispose();
+
                     string command = $"\"{sourceFile.FullName}\" \"{originalFile}\" -o \"{outputFile}\"";
-                    System.Diagnostics.Process.Start(kdiffPath, command);
+                    var process = System.Diagnostics.Process.Start(temporaryRepository.Kdiff.FullName, command);
+                    if (process != null)
+                    {
+                        process.WaitForExit();
+
+                        sourceFile.DeleteIfExisting();
+                        File.Copy(outputFile.FullName, sourceFile.FullName);
+
+                        projectItemFile.Delete();
+                        projectItem.ProjectItems.AddFromFileCopy(sourceFile.FullName);
+                    }
                 }
                 else
                 {

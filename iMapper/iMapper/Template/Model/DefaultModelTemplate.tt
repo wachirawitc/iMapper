@@ -5,12 +5,10 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="iMapper.Extensions" #>
 using System;
-namespace <# Write(Namespace); #>
+namespace <# WriteLine(Namespace); #>
 {
-	public class <# Write(Name); #>
-	{
-		<#    foreach(var column in Columns) { #> 
-	    public <# Write(column.DataType.GetMsType(column.IsNullable)); #> <# Write(GetName(column.ColumnName)); #> { get; set; } 
-		<#    } #>
-}
+	public class <# WriteLine(Name); #>
+	{<#    foreach(var column in Columns) { #> 
+		public <# Write(column.DataType.GetMsType(column.IsNullable)); #> <# Write(GetName(column.ColumnName)); #> { get; set; } 
+	<#    } #>}
 }

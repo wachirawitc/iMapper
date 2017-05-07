@@ -44,6 +44,14 @@ namespace iMapper.Template.Repository
             return string.Join(",", items);
         }
 
+        public string GetPkUpdateArgument()
+        {
+            var items = Columns.Where(x => x.IsPrimaryKey)
+                .Select(x => $"x.{x.ColumnName} == {TableNameCamelize}.{x.ColumnName.Camelize()}")
+                .ToList();
+            return string.Join(",", items);
+        }
+
         public bool HasPk => Columns.Any(x => x.IsPrimaryKey);
 
         public bool IsPluralize { get; set; }

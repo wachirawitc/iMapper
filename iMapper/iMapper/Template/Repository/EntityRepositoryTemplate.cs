@@ -214,7 +214,7 @@ namespace iMapper.Template.Repository
             this.Write(".First(x => ");
             
             #line 46 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
-  Write(GetPkArgument()); 
+  Write(GetPkUpdateArgument()); 
             
             #line default
             #line hidden

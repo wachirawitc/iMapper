@@ -43,7 +43,7 @@ public <#  Write(TableName); #> Get(<# Write(GetPkParameter()); #>)
         {
             using (var db = new <#  Write(EntityName); #>())
             {
-                var model = db.<#  Write(EfTableName); #>.First(x => <#  Write(GetPkArgument()); #>);
+                var model = db.<#  Write(EfTableName); #>.First(x => <#  Write(GetPkUpdateArgument()); #>);
 <#    foreach(var column in ColumnsWithoutPk) { #> 
                 model.<# Write(column.ColumnName); #> = <# Write(TableNameCamelize); #>.<# Write(column.ColumnName); #>;
 <#    } #>

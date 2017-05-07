@@ -6,10 +6,10 @@ namespace iMapper.Template.ModelTemplate
 {
     public class MapperModelTemplate
     {
-        private readonly ClassElement source;
-        private readonly ClassElement destination;
+        private readonly ClassElementModel source;
+        private readonly ClassElementModel destination;
 
-        public MapperModelTemplate(ClassElement source, ClassElement destination)
+        public MapperModelTemplate(ClassElementModel source, ClassElementModel destination)
         {
             this.source = source;
             this.destination = destination;

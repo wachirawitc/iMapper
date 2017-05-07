@@ -263,9 +263,9 @@ namespace iMapper.Commands
             }
         }
 
-        private static List<ClassElement> GetProjectsInSolution()
+        private static List<ClassElementModel> GetProjectsInSolution()
         {
-            var model = new List<ClassElement>();
+            var model = new List<ClassElementModel>();
 
             foreach (Project project in Projects())
             {
@@ -281,9 +281,9 @@ namespace iMapper.Commands
             return model;
         }
 
-        private static List<ClassElement> GetClass(Project project)
+        private static List<ClassElementModel> GetClass(Project project)
         {
-            var elements = new List<ClassElement>();
+            var elements = new List<ClassElementModel>();
 
             var codeModel2S = GetProjectItems(project.ProjectItems)
                 .Where(FilterSource)
@@ -318,11 +318,11 @@ namespace iMapper.Commands
             return false;
         }
 
-        private static ClassElement GetClassElement(CodeElement element)
+        private static ClassElementModel GetClassElement(CodeElement element)
         {
             try
             {
-                var model = new ClassElement();
+                var model = new ClassElementModel();
                 model.Name = element.Name;
                 model.FullName = element.FullName;
 
@@ -340,9 +340,9 @@ namespace iMapper.Commands
             }
         }
 
-        private static List<MemberElement> GetMembers(CodeElement element)
+        private static List<MemberElementModel> GetMembers(CodeElement element)
         {
-            var model = new List<MemberElement>();
+            var model = new List<MemberElementModel>();
 
             var elementClass = element.Kind;
             if (elementClass == vsCMElement.vsCMElementClass)
@@ -353,7 +353,7 @@ namespace iMapper.Commands
                     {
                         var property = (CodeProperty)child;
 
-                        model.Add(new MemberElement
+                        model.Add(new MemberElementModel
                         {
                             Element = child,
                             Type = property.Type

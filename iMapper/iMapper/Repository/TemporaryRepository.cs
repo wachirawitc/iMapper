@@ -29,6 +29,13 @@ namespace iMapper.Repository
                 {
                 }
             }
+
+            if (File.Exists(Temporary.TransferFile) == false)
+            {
+                using (File.Create(Temporary.TransferFile))
+                {
+                }
+            }
         }
 
         public void SetColumns(List<ColumnModel> models)
@@ -60,6 +67,21 @@ namespace iMapper.Repository
         {
             string contents = File.ReadAllText(Temporary.ConfigFile);
             return JsonConvert.DeserializeObject<Config>(contents);
+        }
+
+        public void SetTransfer(List<ClassModel> models)
+        {
+            using (TextWriter writer = new StreamWriter(Temporary.TransferFile))
+            {
+                writer.WriteLine(JsonConvert.SerializeObject(models));
+                writer.Close();
+            }
+        }
+
+        public List<ClassModel> GetTransfer()
+        {
+            string contents = File.ReadAllText(Temporary.TransferFile);
+            return JsonConvert.DeserializeObject<List<ClassModel>>(contents) ?? new List<ClassModel>();
         }
     }
 }

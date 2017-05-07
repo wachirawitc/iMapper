@@ -2,8 +2,7 @@
 using EnvDTE80;
 using iMapper.Constance;
 using iMapper.Model;
-using Microsoft.VisualStudio.Shell;
-using Microsoft.VisualStudio.Shell.Interop;
+using iMapper.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,27 +10,47 @@ using System.Windows.Forms;
 
 namespace iMapper.Forms
 {
+    [System.Runtime.InteropServices.Guid("F3C11D52-4077-4075-BCE0-D8EE88F5A5BE")]
     public partial class TransferForm : Form
     {
         private readonly ProjectItem projectItem;
         private readonly DTE2 dte2;
+
+        private readonly TemporaryRepository temporaryRepository;
 
         public TransferForm(ProjectItem projectItem, DTE2 dte2)
         {
             InitializeComponent();
             this.projectItem = projectItem;
             this.dte2 = dte2;
+
+            temporaryRepository = new TemporaryRepository();
         }
 
         private void TransferForm_Load(object sender, EventArgs e)
         {
+            var models = temporaryRepository.GetTransfer();
+            if (models.Any())
+            {
+                var fullNames = models.Select(x => x.FullName).ToArray();
+                AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+                collection.AddRange(fullNames);
+
+                Source.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                Source.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                Source.AutoCompleteCustomSource = collection;
+
+                Destination.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                Destination.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                Destination.AutoCompleteCustomSource = collection;
+            }
         }
 
         private void ReloadClass_Click(object sender, EventArgs e)
         {
             if (dte2 != null)
             {
-                var classElements = new List<ClassElement>();
+                var classElements = new List<ClassModel>();
 
                 var projects = dte2.Solution.Projects.Cast<Project>();
                 foreach (var project in projects)
@@ -59,6 +78,14 @@ namespace iMapper.Forms
                         }
                     }
                 }
+
+                if (classElements.Any())
+                {
+                    temporaryRepository.SetTransfer(classElements);
+                }
+
+                string message = $"Found {classElements.Count} class.";
+                MessageBox.Show(message, Text);
             }
         }
 
@@ -84,18 +111,22 @@ namespace iMapper.Forms
             }
         }
 
-        private static ClassElement GetClassElement(CodeElement element)
+        private static ClassModel GetClassElement(CodeElement element)
         {
             try
             {
-                var model = new ClassElement();
+                var model = new ClassModel();
                 model.Name = element.Name;
                 model.FullName = element.FullName;
-               
+
                 var elementClass = element.Kind;
                 if (elementClass == vsCMElement.vsCMElementClass)
                 {
                     model.Members = GetMembers(element);
+                    if (model.Members.Any() == false)
+                    {
+                        return null;
+                    }
                 }
 
                 return model;
@@ -106,9 +137,9 @@ namespace iMapper.Forms
             }
         }
 
-        private static List<MemberElement> GetMembers(CodeElement element)
+        private static List<PropertyModel> GetMembers(CodeElement element)
         {
-            var model = new List<MemberElement>();
+            var model = new List<PropertyModel>();
 
             var elementClass = element.Kind;
             if (elementClass == vsCMElement.vsCMElementClass)
@@ -119,16 +150,38 @@ namespace iMapper.Forms
                     {
                         var property = (CodeProperty)child;
 
-                        model.Add(new MemberElement
+                        model.Add(new PropertyModel
                         {
-                            Element = child,
-                            Type = property.Type
+                            Name = child.Name,
+                            TypeFullName = property.Type.AsFullName
                         });
                     }
                 }
             }
 
             return model;
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            var models = temporaryRepository.GetTransfer();
+
+            var source = models.FirstOrDefault(x => x.FullName.Equals(Source.Text));
+            var destination = models.FirstOrDefault(x => x.FullName.Equals(Destination.Text));
+
+            if (source == null)
+            {
+                MessageBox.Show("Not found source class.");
+            }
+
+            if (destination == null)
+            {
+                MessageBox.Show("Not found destination class.");
+            }
+
+            if (source != null && destination != null)
+            {
+            }
         }
     }
 }

@@ -100,12 +100,12 @@ if (element != null)
         
         #line 1 "D:\Source\iMapper\iMapper\iMapper\Template\MapperTemplate.tt"
 
-private global::iMapper.Model.ClassElement _sourceField;
+private global::iMapper.Model.ClassElementModel _sourceField;
 
 /// <summary>
 /// Access the source parameter of the template.
 /// </summary>
-private global::iMapper.Model.ClassElement source
+private global::iMapper.Model.ClassElementModel source
 {
     get
     {
@@ -113,12 +113,12 @@ private global::iMapper.Model.ClassElement source
     }
 }
 
-private global::iMapper.Model.ClassElement _destinationField;
+private global::iMapper.Model.ClassElementModel _destinationField;
 
 /// <summary>
 /// Access the destination parameter of the template.
 /// </summary>
-private global::iMapper.Model.ClassElement destination
+private global::iMapper.Model.ClassElementModel destination
 {
     get
     {
@@ -137,7 +137,7 @@ public virtual void Initialize()
 bool sourceValueAcquired = false;
 if (this.Session.ContainsKey("source"))
 {
-    this._sourceField = ((global::iMapper.Model.ClassElement)(this.Session["source"]));
+    this._sourceField = ((global::iMapper.Model.ClassElementModel)(this.Session["source"]));
     sourceValueAcquired = true;
 }
 if ((sourceValueAcquired == false))
@@ -145,13 +145,13 @@ if ((sourceValueAcquired == false))
     object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("source");
     if ((data != null))
     {
-        this._sourceField = ((global::iMapper.Model.ClassElement)(data));
+        this._sourceField = ((global::iMapper.Model.ClassElementModel)(data));
     }
 }
 bool destinationValueAcquired = false;
 if (this.Session.ContainsKey("destination"))
 {
-    this._destinationField = ((global::iMapper.Model.ClassElement)(this.Session["destination"]));
+    this._destinationField = ((global::iMapper.Model.ClassElementModel)(this.Session["destination"]));
     destinationValueAcquired = true;
 }
 if ((destinationValueAcquired == false))
@@ -159,7 +159,7 @@ if ((destinationValueAcquired == false))
     object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("destination");
     if ((data != null))
     {
-        this._destinationField = ((global::iMapper.Model.ClassElement)(data));
+        this._destinationField = ((global::iMapper.Model.ClassElementModel)(data));
     }
 }
 

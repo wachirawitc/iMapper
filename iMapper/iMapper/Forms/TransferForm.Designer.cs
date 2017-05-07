@@ -31,14 +31,14 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ReloadClass = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
-            this.Source = new System.Windows.Forms.TextBox();
-            this.Destination = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.CloseButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.StatusBar = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.StatusBar = new System.Windows.Forms.ToolStripProgressBar();
+            this.Source = new System.Windows.Forms.TextBox();
+            this.Destination = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -71,20 +71,6 @@
             this.label1.Size = new System.Drawing.Size(51, 16);
             this.label1.TabIndex = 1;
             this.label1.Text = "Source";
-            // 
-            // Source
-            // 
-            this.Source.Location = new System.Drawing.Point(12, 53);
-            this.Source.Name = "Source";
-            this.Source.Size = new System.Drawing.Size(348, 22);
-            this.Source.TabIndex = 2;
-            // 
-            // Destination
-            // 
-            this.Destination.Location = new System.Drawing.Point(12, 110);
-            this.Destination.Name = "Destination";
-            this.Destination.Size = new System.Drawing.Size(348, 22);
-            this.Destination.TabIndex = 4;
             // 
             // label2
             // 
@@ -120,22 +106,18 @@
             this.SaveButton.Text = "Save";
             this.SaveButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.SaveButton.UseVisualStyleBackColor = true;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.StatusBar});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 206);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 201);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(382, 22);
             this.statusStrip1.TabIndex = 25;
             this.statusStrip1.Text = "statusStrip1";
-            // 
-            // StatusBar
-            // 
-            this.StatusBar.Name = "StatusBar";
-            this.StatusBar.Size = new System.Drawing.Size(100, 16);
             // 
             // toolStripStatusLabel1
             // 
@@ -143,17 +125,36 @@
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel1.Text = "Status";
             // 
+            // StatusBar
+            // 
+            this.StatusBar.Name = "StatusBar";
+            this.StatusBar.Size = new System.Drawing.Size(100, 16);
+            // 
+            // Source
+            // 
+            this.Source.Location = new System.Drawing.Point(12, 54);
+            this.Source.Name = "Source";
+            this.Source.Size = new System.Drawing.Size(348, 22);
+            this.Source.TabIndex = 26;
+            // 
+            // Destination
+            // 
+            this.Destination.Location = new System.Drawing.Point(12, 111);
+            this.Destination.Name = "Destination";
+            this.Destination.Size = new System.Drawing.Size(348, 22);
+            this.Destination.TabIndex = 27;
+            // 
             // TransferForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(382, 228);
+            this.ClientSize = new System.Drawing.Size(382, 223);
+            this.Controls.Add(this.Destination);
+            this.Controls.Add(this.Source);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.SaveButton);
-            this.Controls.Add(this.Destination);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.Source);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -178,13 +179,13 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem ReloadClass;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox Source;
-        private System.Windows.Forms.TextBox Destination;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button CloseButton;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripProgressBar StatusBar;
+        private System.Windows.Forms.TextBox Source;
+        private System.Windows.Forms.TextBox Destination;
     }
 }

@@ -9,5 +9,7 @@
         public static string TableFile => Directory + "Table.json";
 
         public static string ConfigFile => Directory + "Config.json";
+
+        public static string TransferFile => Directory + "Transfer.json";
     }
 }

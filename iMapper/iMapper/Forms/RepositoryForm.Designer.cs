@@ -39,12 +39,11 @@
             this.Columns = new System.Windows.Forms.DataGridView();
             this.Tables = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.SaveButton = new System.Windows.Forms.Button();
+            this.SaveInterfaceButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.EntityFrameworkName = new System.Windows.Forms.TextBox();
-            this.IsInterfaceOnly = new System.Windows.Forms.CheckBox();
-            this.IsImplementOnly = new System.Windows.Forms.CheckBox();
             this.IsPluralize = new System.Windows.Forms.CheckBox();
+            this.SaveImplementButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Columns)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,7 +83,7 @@
             this.CloseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.CloseButton.Image = global::iMapper.Properties.Resources.Close;
             this.CloseButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CloseButton.Location = new System.Drawing.Point(217, 485);
+            this.CloseButton.Location = new System.Drawing.Point(314, 485);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(115, 38);
             this.CloseButton.TabIndex = 22;
@@ -159,19 +158,19 @@
             this.label1.TabIndex = 15;
             this.label1.Text = "Table";
             // 
-            // SaveButton
+            // SaveInterfaceButton
             // 
-            this.SaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.SaveButton.Image = global::iMapper.Properties.Resources.command;
-            this.SaveButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SaveButton.Location = new System.Drawing.Point(96, 485);
-            this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(115, 38);
-            this.SaveButton.TabIndex = 14;
-            this.SaveButton.Text = "Save";
-            this.SaveButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.SaveButton.UseVisualStyleBackColor = true;
-            this.SaveButton.Click += new System.EventHandler(this.OnClickSave);
+            this.SaveInterfaceButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.SaveInterfaceButton.Image = global::iMapper.Properties.Resources.command;
+            this.SaveInterfaceButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SaveInterfaceButton.Location = new System.Drawing.Point(9, 485);
+            this.SaveInterfaceButton.Name = "SaveInterfaceButton";
+            this.SaveInterfaceButton.Size = new System.Drawing.Size(136, 38);
+            this.SaveInterfaceButton.TabIndex = 14;
+            this.SaveInterfaceButton.Text = "Save Interface";
+            this.SaveInterfaceButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.SaveInterfaceButton.UseVisualStyleBackColor = true;
+            this.SaveInterfaceButton.Click += new System.EventHandler(this.OnClickInterfaceSave);
             // 
             // label5
             // 
@@ -191,30 +190,6 @@
             this.EntityFrameworkName.Size = new System.Drawing.Size(316, 22);
             this.EntityFrameworkName.TabIndex = 26;
             // 
-            // IsInterfaceOnly
-            // 
-            this.IsInterfaceOnly.AutoSize = true;
-            this.IsInterfaceOnly.Checked = true;
-            this.IsInterfaceOnly.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.IsInterfaceOnly.Location = new System.Drawing.Point(96, 420);
-            this.IsInterfaceOnly.Name = "IsInterfaceOnly";
-            this.IsInterfaceOnly.Size = new System.Drawing.Size(68, 17);
-            this.IsInterfaceOnly.TabIndex = 28;
-            this.IsInterfaceOnly.Text = "Interface";
-            this.IsInterfaceOnly.UseVisualStyleBackColor = true;
-            // 
-            // IsImplementOnly
-            // 
-            this.IsImplementOnly.AutoSize = true;
-            this.IsImplementOnly.Checked = true;
-            this.IsImplementOnly.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.IsImplementOnly.Location = new System.Drawing.Point(178, 420);
-            this.IsImplementOnly.Name = "IsImplementOnly";
-            this.IsImplementOnly.Size = new System.Drawing.Size(74, 17);
-            this.IsImplementOnly.TabIndex = 29;
-            this.IsImplementOnly.Text = "Implement";
-            this.IsImplementOnly.UseVisualStyleBackColor = true;
-            // 
             // IsPluralize
             // 
             this.IsPluralize.AutoSize = true;
@@ -225,14 +200,27 @@
             this.IsPluralize.Text = "Pluralize";
             this.IsPluralize.UseVisualStyleBackColor = true;
             // 
+            // SaveImplementButton
+            // 
+            this.SaveImplementButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.SaveImplementButton.Image = global::iMapper.Properties.Resources.command;
+            this.SaveImplementButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SaveImplementButton.Location = new System.Drawing.Point(151, 485);
+            this.SaveImplementButton.Name = "SaveImplementButton";
+            this.SaveImplementButton.Size = new System.Drawing.Size(157, 38);
+            this.SaveImplementButton.TabIndex = 31;
+            this.SaveImplementButton.Text = "Save Implement";
+            this.SaveImplementButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.SaveImplementButton.UseVisualStyleBackColor = true;
+            this.SaveImplementButton.Click += new System.EventHandler(this.OnClickImplementSave);
+            // 
             // RepositoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(344, 535);
+            this.ClientSize = new System.Drawing.Size(435, 535);
+            this.Controls.Add(this.SaveImplementButton);
             this.Controls.Add(this.IsPluralize);
-            this.Controls.Add(this.IsImplementOnly);
-            this.Controls.Add(this.IsInterfaceOnly);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.EntityFrameworkName);
             this.Controls.Add(this.ColumnNumber);
@@ -244,7 +232,7 @@
             this.Controls.Add(this.Columns);
             this.Controls.Add(this.Tables);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.SaveButton);
+            this.Controls.Add(this.SaveInterfaceButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "RepositoryForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -267,11 +255,10 @@
         private System.Windows.Forms.DataGridView Columns;
         private System.Windows.Forms.ComboBox Tables;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button SaveButton;
+        private System.Windows.Forms.Button SaveInterfaceButton;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox EntityFrameworkName;
-        private System.Windows.Forms.CheckBox IsInterfaceOnly;
-        private System.Windows.Forms.CheckBox IsImplementOnly;
         private System.Windows.Forms.CheckBox IsPluralize;
+        private System.Windows.Forms.Button SaveImplementButton;
     }
 }

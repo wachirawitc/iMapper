@@ -79,7 +79,7 @@ namespace iMapper.Forms
             Close();
         }
 
-        private void OnClickSave(object sender, EventArgs e)
+        private void OnClickInterfaceSave(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(EntityFrameworkName.Text))
             {
@@ -100,15 +100,7 @@ namespace iMapper.Forms
                 .Where(x => x.TableName.Equals(SelectTable))
                 .ToList();
 
-            if (IsInterfaceOnly.Checked)
-            {
-                CreateEfInterfaceRepository(columns);
-            }
-
-            if (IsImplementOnly.Checked)
-            {
-                CreateEfRepository(columns);
-            }
+            CreateEfInterfaceRepository(columns);
 
             Close();
         }
@@ -195,6 +187,32 @@ namespace iMapper.Forms
                 projectItem.ProjectItems.AddFromFileCopy(sourceFile.FullName);
                 projectItem.ContainingProject.Save();
             }
+        }
+
+        private void OnClickImplementSave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(EntityFrameworkName.Text))
+            {
+                MessageBox.Show("Not found entity framework name", Text);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(SelectTable))
+            {
+                MessageBox.Show("Select table.", Text);
+                return;
+            }
+
+            temporaryRepository.EntityName = EntityFrameworkName.Text;
+
+            var columns = temporaryRepository
+                .GetColumns()
+                .Where(x => x.TableName.Equals(SelectTable))
+                .ToList();
+
+            CreateEfRepository(columns);
+
+            Close();
         }
     }
 }

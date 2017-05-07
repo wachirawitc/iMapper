@@ -28,51 +28,51 @@ namespace iMapper.Template.Transfer
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\r\nusing System;\r\n\r\nnamespace ");
+            this.Write("using System;\r\n\r\nnamespace ");
             
-            #line 9 "D:\Source\iMapper\iMapper\iMapper\Template\Transfer\DefaultTransferTemplate.tt"
+            #line 8 "D:\Source\iMapper\iMapper\iMapper\Template\Transfer\DefaultTransferTemplate.tt"
  Write(Namespace); 
             
             #line default
             #line hidden
             this.Write("{\r\n    internal class ");
             
-            #line 11 "D:\Source\iMapper\iMapper\iMapper\Template\Transfer\DefaultTransferTemplate.tt"
+            #line 10 "D:\Source\iMapper\iMapper\iMapper\Template\Transfer\DefaultTransferTemplate.tt"
  Write(Name); 
             
             #line default
             #line hidden
             this.Write(" : IMapper<");
             
-            #line 11 "D:\Source\iMapper\iMapper\iMapper\Template\Transfer\DefaultTransferTemplate.tt"
+            #line 10 "D:\Source\iMapper\iMapper\iMapper\Template\Transfer\DefaultTransferTemplate.tt"
  Write(Source.FullName); 
             
             #line default
             #line hidden
             this.Write(", ");
             
-            #line 11 "D:\Source\iMapper\iMapper\iMapper\Template\Transfer\DefaultTransferTemplate.tt"
+            #line 10 "D:\Source\iMapper\iMapper\iMapper\Template\Transfer\DefaultTransferTemplate.tt"
  Write(Destination.FullName); 
             
             #line default
             #line hidden
             this.Write(">\r\n    {\r\n        public ");
             
-            #line 13 "D:\Source\iMapper\iMapper\iMapper\Template\Transfer\DefaultTransferTemplate.tt"
+            #line 12 "D:\Source\iMapper\iMapper\iMapper\Template\Transfer\DefaultTransferTemplate.tt"
  Write(Destination.FullName); 
             
             #line default
             #line hidden
             this.Write(" Map(");
             
-            #line 13 "D:\Source\iMapper\iMapper\iMapper\Template\Transfer\DefaultTransferTemplate.tt"
+            #line 12 "D:\Source\iMapper\iMapper\iMapper\Template\Transfer\DefaultTransferTemplate.tt"
  Write(Source.FullName); 
             
             #line default
             #line hidden
             this.Write(" source)\r\n        {\r\n            ");
             
-            #line 15 "D:\Source\iMapper\iMapper\iMapper\Template\Transfer\DefaultTransferTemplate.tt"
+            #line 14 "D:\Source\iMapper\iMapper\iMapper\Template\Transfer\DefaultTransferTemplate.tt"
  Write(Destination.FullName); 
             
             #line default
@@ -80,49 +80,49 @@ namespace iMapper.Template.Transfer
             this.Write(" destination = null;\r\n            if (source != null)\r\n            {\r\n           " +
                     "     destination = new ");
             
-            #line 18 "D:\Source\iMapper\iMapper\iMapper\Template\Transfer\DefaultTransferTemplate.tt"
+            #line 17 "D:\Source\iMapper\iMapper\iMapper\Template\Transfer\DefaultTransferTemplate.tt"
  Write(Destination.FullName); 
             
             #line default
             #line hidden
             this.Write("();\r\n                ");
             
-            #line 19 "D:\Source\iMapper\iMapper\iMapper\Template\Transfer\DefaultTransferTemplate.tt"
+            #line 18 "D:\Source\iMapper\iMapper\iMapper\Template\Transfer\DefaultTransferTemplate.tt"
  foreach(var item in  Destination.Members) { 
             
             #line default
             #line hidden
             this.Write("                ");
             
-            #line 20 "D:\Source\iMapper\iMapper\iMapper\Template\Transfer\DefaultTransferTemplate.tt"
+            #line 19 "D:\Source\iMapper\iMapper\iMapper\Template\Transfer\DefaultTransferTemplate.tt"
  if(IsMatchInSource(item)) { 
             
             #line default
             #line hidden
             this.Write(" \r\n                destination.");
             
-            #line 21 "D:\Source\iMapper\iMapper\iMapper\Template\Transfer\DefaultTransferTemplate.tt"
+            #line 20 "D:\Source\iMapper\iMapper\iMapper\Template\Transfer\DefaultTransferTemplate.tt"
  Write(item.Name); 
             
             #line default
             #line hidden
             this.Write(" = source.");
             
-            #line 21 "D:\Source\iMapper\iMapper\iMapper\Template\Transfer\DefaultTransferTemplate.tt"
+            #line 20 "D:\Source\iMapper\iMapper\iMapper\Template\Transfer\DefaultTransferTemplate.tt"
  Write(item.Name); 
             
             #line default
             #line hidden
             this.Write("; \r\n                ");
             
-            #line 22 "D:\Source\iMapper\iMapper\iMapper\Template\Transfer\DefaultTransferTemplate.tt"
+            #line 21 "D:\Source\iMapper\iMapper\iMapper\Template\Transfer\DefaultTransferTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("                ");
             
-            #line 23 "D:\Source\iMapper\iMapper\iMapper\Template\Transfer\DefaultTransferTemplate.tt"
+            #line 22 "D:\Source\iMapper\iMapper\iMapper\Template\Transfer\DefaultTransferTemplate.tt"
  } 
             
             #line default

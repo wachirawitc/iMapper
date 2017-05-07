@@ -55,7 +55,7 @@ namespace iMapper.Forms
             }
         }
 
-        private void ReloadClass_Click(object sender, EventArgs e)
+        private void OnClickReloadClass(object sender, EventArgs e)
         {
             if (dte2 != null)
             {
@@ -99,7 +99,7 @@ namespace iMapper.Forms
             }
         }
 
-        private void SaveButton_Click(object sender, EventArgs e)
+        private void OnClickSave(object sender, EventArgs e)
         {
             var models = temporaryRepository.GetTransfer();
 
@@ -129,7 +129,7 @@ namespace iMapper.Forms
 
                 var fileName = $"{name}.cs";
                 var destinationPath = projectItem.Properties.Item("FullPath").Value as string;
-                var originalFile = $@"{destinationPath}{fileName}";
+                var originalFile = new FileInfo($@"{destinationPath}{fileName}");
 
                 var sourceCode = new SourceManage(fileName, code);
                 var sourceFile = sourceCode.Create();
@@ -144,7 +144,7 @@ namespace iMapper.Forms
                     outputFile.DeleteIfExisting();
                     outputFile.CreateAndDispose();
 
-                    string command = $"\"{sourceFile.FullName}\" \"{originalFile}\" -o \"{outputFile}\"";
+                    string command = $"\"{sourceFile.FullName}\" \"{originalFile.FullName}\" -o \"{outputFile.FullName}\"";
                     var process = System.Diagnostics.Process.Start(temporaryRepository.Kdiff.FullName, command);
                     if (process != null)
                     {
@@ -155,23 +155,21 @@ namespace iMapper.Forms
 
                         projectItemFile.Delete();
                         projectItem.ProjectItems.AddFromFileCopy(sourceFile.FullName);
+                        projectItem.ContainingProject.Save();
                     }
                 }
                 else
                 {
-                    if (File.Exists(originalFile))
-                    {
-                        File.Delete(originalFile);
-                    }
-
+                    originalFile.DeleteIfExisting();
                     projectItem.ProjectItems.AddFromFileCopy(sourceFile.FullName);
+                    projectItem.ContainingProject.Save();
                 }
 
                 Close();
             }
         }
 
-        private void CloseButton_Click(object sender, EventArgs e)
+        private void OnClickClose(object sender, EventArgs e)
         {
             Close();
         }

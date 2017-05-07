@@ -61,7 +61,7 @@
             this.ReloadClass.Name = "ReloadClass";
             this.ReloadClass.Size = new System.Drawing.Size(126, 25);
             this.ReloadClass.Text = "Reload Class";
-            this.ReloadClass.Click += new System.EventHandler(this.ReloadClass_Click);
+            this.ReloadClass.Click += new System.EventHandler(this.OnClickReloadClass);
             // 
             // label1
             // 
@@ -93,7 +93,7 @@
             this.CloseButton.Text = "Close";
             this.CloseButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.CloseButton.UseVisualStyleBackColor = true;
-            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
+            this.CloseButton.Click += new System.EventHandler(this.OnClickClose);
             // 
             // SaveButton
             // 
@@ -107,7 +107,7 @@
             this.SaveButton.Text = "Save";
             this.SaveButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.SaveButton.UseVisualStyleBackColor = true;
-            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
+            this.SaveButton.Click += new System.EventHandler(this.OnClickSave);
             // 
             // statusStrip1
             // 

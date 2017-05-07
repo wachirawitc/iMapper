@@ -3,3 +3,26 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
+using System;
+using System.Collections.Generic;
+
+namespace <# Write(Namespace); #>
+{
+    public interface <# Write(Name); #>
+    {
+        <# if(HasPk){ #>
+<#  Write(TableName); #> Get(<# Write(GetPkParameter()); #>);
+        <# } #>
+
+        List<<#  Write(TableName); #>> Get<#  Write(TableNamePluralize); #>();
+
+        ScopeIdentity<<# Write(TableName); #>> Create(<# Write(TableName); #> <# Write(TableNameCamelize); #>);
+
+        ScopeIdentity<<# Write(TableName); #>> Update(<# Write(TableName); #> <# Write(TableNameCamelize); #>);
+
+        <# if(HasPk){ #>
+bool IsExisting(<# Write(GetPkParameter()); #>);
+        <# } #>
+
+    }
+}

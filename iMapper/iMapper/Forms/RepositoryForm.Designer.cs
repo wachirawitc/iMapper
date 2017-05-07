@@ -42,6 +42,9 @@
             this.SaveButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.EntityFrameworkName = new System.Windows.Forms.TextBox();
+            this.IsInterfaceOnly = new System.Windows.Forms.CheckBox();
+            this.IsImplementOnly = new System.Windows.Forms.CheckBox();
+            this.IsPluralize = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.Columns)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,7 +71,7 @@
             this.IsReplace.AutoSize = true;
             this.IsReplace.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.IsReplace.ForeColor = System.Drawing.Color.Red;
-            this.IsReplace.Location = new System.Drawing.Point(13, 431);
+            this.IsReplace.Location = new System.Drawing.Point(14, 453);
             this.IsReplace.Margin = new System.Windows.Forms.Padding(2);
             this.IsReplace.Name = "IsReplace";
             this.IsReplace.Size = new System.Drawing.Size(131, 17);
@@ -81,7 +84,7 @@
             this.CloseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.CloseButton.Image = global::iMapper.Properties.Resources.Close;
             this.CloseButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CloseButton.Location = new System.Drawing.Point(216, 462);
+            this.CloseButton.Location = new System.Drawing.Point(217, 485);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(115, 38);
             this.CloseButton.TabIndex = 22;
@@ -161,7 +164,7 @@
             this.SaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.SaveButton.Image = global::iMapper.Properties.Resources.command;
             this.SaveButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SaveButton.Location = new System.Drawing.Point(95, 462);
+            this.SaveButton.Location = new System.Drawing.Point(96, 485);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(115, 38);
             this.SaveButton.TabIndex = 14;
@@ -188,11 +191,48 @@
             this.EntityFrameworkName.Size = new System.Drawing.Size(316, 22);
             this.EntityFrameworkName.TabIndex = 26;
             // 
+            // IsInterfaceOnly
+            // 
+            this.IsInterfaceOnly.AutoSize = true;
+            this.IsInterfaceOnly.Checked = true;
+            this.IsInterfaceOnly.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.IsInterfaceOnly.Location = new System.Drawing.Point(96, 420);
+            this.IsInterfaceOnly.Name = "IsInterfaceOnly";
+            this.IsInterfaceOnly.Size = new System.Drawing.Size(68, 17);
+            this.IsInterfaceOnly.TabIndex = 28;
+            this.IsInterfaceOnly.Text = "Interface";
+            this.IsInterfaceOnly.UseVisualStyleBackColor = true;
+            // 
+            // IsImplementOnly
+            // 
+            this.IsImplementOnly.AutoSize = true;
+            this.IsImplementOnly.Checked = true;
+            this.IsImplementOnly.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.IsImplementOnly.Location = new System.Drawing.Point(178, 420);
+            this.IsImplementOnly.Name = "IsImplementOnly";
+            this.IsImplementOnly.Size = new System.Drawing.Size(74, 17);
+            this.IsImplementOnly.TabIndex = 29;
+            this.IsImplementOnly.Text = "Implement";
+            this.IsImplementOnly.UseVisualStyleBackColor = true;
+            // 
+            // IsPluralize
+            // 
+            this.IsPluralize.AutoSize = true;
+            this.IsPluralize.Location = new System.Drawing.Point(14, 420);
+            this.IsPluralize.Name = "IsPluralize";
+            this.IsPluralize.Size = new System.Drawing.Size(65, 17);
+            this.IsPluralize.TabIndex = 30;
+            this.IsPluralize.Text = "Pluralize";
+            this.IsPluralize.UseVisualStyleBackColor = true;
+            // 
             // RepositoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(344, 505);
+            this.ClientSize = new System.Drawing.Size(344, 535);
+            this.Controls.Add(this.IsPluralize);
+            this.Controls.Add(this.IsImplementOnly);
+            this.Controls.Add(this.IsInterfaceOnly);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.EntityFrameworkName);
             this.Controls.Add(this.ColumnNumber);
@@ -230,5 +270,8 @@
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox EntityFrameworkName;
+        private System.Windows.Forms.CheckBox IsInterfaceOnly;
+        private System.Windows.Forms.CheckBox IsImplementOnly;
+        private System.Windows.Forms.CheckBox IsPluralize;
     }
 }

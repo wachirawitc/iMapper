@@ -115,13 +115,6 @@
     <Compile Include="Support\Session.cs" />
     <Compile Include="Support\SourceManage.cs" />
     <Compile Include="Support\Temporary.cs" />
-    <Compile Include="Template\MapperTemplate.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MapperTemplate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Template\MapperTemplateGenerate.cs" />
-    <Compile Include="Template\ModelTemplate\MapperModelTemplate.cs" />
     <Compile Include="Template\Model\AspMvcModelTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -171,10 +164,6 @@
     <Content Include="Commands\Resources\Close.png" />
     <Content Include="Commands\Resources\command.png" />
     <Content Include="Commands\Resources\reload.png" />
-    <Content Include="Template\MapperTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>MapperTemplate.cs</LastGenOutput>
-    </Content>
     <Content Include="Template\Model\AspMvcModelTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>AspMvcModelTemplate.cs</LastGenOutput>

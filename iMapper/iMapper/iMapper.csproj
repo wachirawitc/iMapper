@@ -191,7 +191,10 @@
     <Content Include="Commands\Resources\Close.png" />
     <Content Include="Commands\Resources\command.png" />
     <Content Include="Commands\Resources\reload.png" />
-    <Content Include="MapperCommandPackage.ico" />
+    <Content Include="MapperCommandPackage.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="Template\Model\AspMvcModelTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>AspMvcModelTemplate.cs</LastGenOutput>

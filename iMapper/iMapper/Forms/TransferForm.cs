@@ -3,8 +3,11 @@ using EnvDTE80;
 using iMapper.Constance;
 using iMapper.Model;
 using iMapper.Repository;
+using iMapper.Support;
+using iMapper.Template.Transfer;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -28,6 +31,11 @@ namespace iMapper.Forms
         }
 
         private void TransferForm_Load(object sender, EventArgs e)
+        {
+            InitAutoComplete();
+        }
+
+        private void InitAutoComplete()
         {
             var models = temporaryRepository.GetTransfer();
             if (models.Any())
@@ -82,6 +90,7 @@ namespace iMapper.Forms
                 if (classElements.Any())
                 {
                     temporaryRepository.SetTransfer(classElements);
+                    InitAutoComplete();
                 }
 
                 string message = $"Found {classElements.Count} class.";
@@ -181,6 +190,46 @@ namespace iMapper.Forms
 
             if (source != null && destination != null)
             {
+                string name = $"Map{source.Name}To{destination.Name}";
+
+                var template = new DefaultTransferTemplate();
+                template.Namespace = NamespaceHelper.Get(projectItem.ContainingProject, projectItem);
+                template.Name = name;
+                template.Source = source;
+                template.Destination = destination;
+                var code = template.TransformText();
+
+                var fileName = $"{name}.cs";
+                var destinationPath = projectItem.Properties.Item("FullPath").Value as string;
+                var originalFile = $@"{destinationPath}{fileName}";
+
+                var sourceCode = new SourceCode(fileName, code);
+                var sourceFile = sourceCode.Create();
+
+                if (File.Exists(originalFile))
+                {
+                    string outputFile = Temporary.Directory + $"_{fileName}";
+                    if (File.Exists(outputFile))
+                    {
+                        File.Delete(outputFile);
+                    }
+                    using (File.Create(outputFile)) { }
+
+                    string kdiffPath = @"C:\Program Files\KDiff3\kdiff3.exe";
+                    string command = $"\"{sourceFile.FullName}\" \"{originalFile}\" -o \"{outputFile}\"";
+                    System.Diagnostics.Process.Start(kdiffPath, command);
+                }
+                else
+                {
+                    if (File.Exists(originalFile))
+                    {
+                        File.Delete(originalFile);
+                    }
+
+                    projectItem.ProjectItems.AddFromFileCopy(sourceFile.FullName);
+                }
+
+                Close();
             }
         }
     }

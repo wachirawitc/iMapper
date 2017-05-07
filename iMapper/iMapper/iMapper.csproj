@@ -137,6 +137,12 @@
       <DependentUpon>DefaultModelTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Template\Model\DefaultModelTemplatePresenter.cs" />
+    <Compile Include="Template\Transfer\DefaultTransferTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DefaultTransferTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Template\Transfer\DefaultTransferTemplatePresenter.cs" />
     <Compile Include="Template\Validation\Custom1ValidationTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -177,6 +183,10 @@
     <Content Include="Template\Model\DefaultModelTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DefaultModelTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Template\Transfer\DefaultTransferTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DefaultTransferTemplate.cs</LastGenOutput>
     </Content>
     <Content Include="Template\Validation\Custom1ValidationTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

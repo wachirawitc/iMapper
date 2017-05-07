@@ -1,0 +1,29 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+using System;
+
+namespace <# Write(Namespace); #>
+{
+    internal class <# Write(Name); #> : IMapper<<# Write(Source.FullName); #>, <# Write(Destination.FullName); #>>
+    {
+        public <# Write(Destination.FullName); #> Map(<# Write(Source.FullName); #> source)
+        {
+            <# Write(Destination.FullName); #> destination = null;
+            if (source != null)
+            {
+                destination = new <# Write(Destination.FullName); #>();
+                <# foreach(var item in  Destination.Members) { #>
+                <# if(IsMatchInSource(item)) { #> 
+                destination.<# Write(item.Name); #> = source.<# Write(item.Name); #>; 
+                <# } #>
+                <# } #>
+}
+
+            return destination;
+        }
+    }
+}

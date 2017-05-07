@@ -36,7 +36,6 @@
       <Group guid="RepositoryProjNodeCmdSet" id="RepositoryProjNodeGroup" priority="0x0607">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE" />
       </Group>
-      
     </Groups>
 
     <Buttons>
@@ -104,7 +103,6 @@
           <ButtonText>Repository Template</ButtonText>
         </Strings>
       </Button>
-
     </Buttons>
 
     <Bitmaps>
@@ -154,7 +152,7 @@
       <IDSymbol name="RepositoryProjNodeGroup" value="0x0901" />
       <IDSymbol name="RepositoryProjNodeCommandId" value="0x0900" />
     </GuidSymbol>
-    
+
     <GuidSymbol name="guidImages" value="{800f86f7-dada-497c-8666-ddbcce338fc0}">
       <IDSymbol name="bmpPic1" value="1" />
       <IDSymbol name="bmpPic2" value="2" />

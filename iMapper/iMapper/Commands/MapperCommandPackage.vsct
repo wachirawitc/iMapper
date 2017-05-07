@@ -28,6 +28,10 @@
       <Group guid="ModelProjNodeCmdSet" id="ModelProjNodeGroup" priority="0x0605">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE" />
       </Group>
+
+      <Group guid="ValidationProjNodeCmdSet" id="ValidationProjNodeGroup" priority="0x0606">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE" />
+      </Group>
     </Groups>
 
     <Buttons>
@@ -79,6 +83,14 @@
           <ButtonText>Model Template</ButtonText>
         </Strings>
       </Button>
+
+      <Button guid="ValidationProjNodeCmdSet" id="ValidationProjNodeCommandId" priority="0x0107" type="Button">
+        <Parent guid="ValidationProjNodeCmdSet" id="ValidationProjNodeGroup" />
+        <Icon guid="guidImages" id="bmpPic1" />
+        <Strings>
+          <ButtonText>Validation Template</ButtonText>
+        </Strings>
+      </Button>
       
     </Buttons>
 
@@ -118,6 +130,11 @@
     <GuidSymbol name="ModelProjNodeCmdSet" value="{97235e93-1311-44de-982e-27798e9f1270}">
       <IDSymbol name="ModelProjNodeGroup" value="0x0701" />
       <IDSymbol name="ModelProjNodeCommandId" value="0x0700" />
+    </GuidSymbol>
+
+    <GuidSymbol name="ValidationProjNodeCmdSet" value="{ef162887-333c-4e3a-b22c-0d26604d0097}">
+      <IDSymbol name="ValidationProjNodeGroup" value="0x0801" />
+      <IDSymbol name="ValidationProjNodeCommandId" value="0x0800" />
     </GuidSymbol>
     
     <GuidSymbol name="guidImages" value="{800f86f7-dada-497c-8666-ddbcce338fc0}">

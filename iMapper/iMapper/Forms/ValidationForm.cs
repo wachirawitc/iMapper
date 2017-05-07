@@ -16,13 +16,17 @@ namespace iMapper.Forms
 {
     public partial class ValidationForm : Form
     {
-        private readonly ProjectItem projectItem;
+        private readonly string destinationPath;
+        private readonly string nameSpace;
+        private readonly ProjectItems projectItems;
         private readonly TemporaryRepository temporaryRepository;
 
-        public ValidationForm(ProjectItem projectItem)
+        public ValidationForm(string destinationPath, string nameSpace, ProjectItems projectItems)
         {
             InitializeComponent();
-            this.projectItem = projectItem;
+            this.destinationPath = destinationPath;
+            this.nameSpace = nameSpace;
+            this.projectItems = projectItems;
             temporaryRepository = new TemporaryRepository();
         }
 
@@ -145,13 +149,12 @@ namespace iMapper.Forms
             var code = GetCode(columns);
 
             var fileName = $"{FileName.Text}.cs";
-            var destinationPath = projectItem.Properties.Item("FullPath").Value as string;
             var originalFile = $@"{destinationPath}{fileName}";
 
             var source = new SourceManage(fileName, code);
             var sourceFile = source.Create();
 
-            var projectItemFile = projectItem.ProjectItems
+            var projectItemFile = projectItems
                         .GetFiles()
                         .FirstOrDefault(x => x.Name == sourceFile.Name);
 
@@ -171,8 +174,8 @@ namespace iMapper.Forms
                     File.Copy(outputFile.FullName, sourceFile.FullName);
 
                     projectItemFile.Delete();
-                    projectItem.ProjectItems.AddFromFileCopy(sourceFile.FullName);
-                    projectItem.ContainingProject.Save();
+                    projectItems.AddFromFileCopy(sourceFile.FullName);
+                    projectItems.ContainingProject.Save();
                 }
             }
             else
@@ -182,8 +185,8 @@ namespace iMapper.Forms
                     File.Delete(originalFile);
                 }
 
-                projectItem.ProjectItems.AddFromFileCopy(sourceFile.FullName);
-                projectItem.ContainingProject.Save();
+                projectItems.AddFromFileCopy(sourceFile.FullName);
+                projectItems.ContainingProject.Save();
             }
             Close();
         }
@@ -195,7 +198,7 @@ namespace iMapper.Forms
             {
                 var template = new FluentValidationValidationTemplate();
                 template.IsPascalize = IsPascalize.Checked;
-                template.Namespace = NamespaceHelper.Get(projectItem.ContainingProject, projectItem);
+                template.Namespace = nameSpace;
                 template.Name = FileName.Text;
                 template.ValidatorName = ValidatorName.Text;
                 template.Columns = columns;
@@ -205,7 +208,7 @@ namespace iMapper.Forms
             {
                 var template = new Custom1ValidationTemplate();
                 template.IsPascalize = IsPascalize.Checked;
-                template.Namespace = NamespaceHelper.Get(projectItem.ContainingProject, projectItem);
+                template.Namespace = nameSpace;
                 template.Name = FileName.Text;
                 template.ValidatorName = ValidatorName.Text;
                 template.Columns = columns;

@@ -30,7 +30,7 @@ namespace iMapper.Template.Validation
 
             foreach (var table in Columns.Where(x => x.IsRelation && string.IsNullOrEmpty(x.RelationTable) == false).Select(x => x.RelationTable).Distinct())
             {
-                builder.AppendLine($@"private readonly I{table.Pascalize()}Repository {table.Camelize()}Repository;");
+                builder.AppendLine($"\t\tprivate readonly I{table.Pascalize()}Repository {table.Camelize()}Repository;");
             }
 
             return builder.ToString();
@@ -42,7 +42,7 @@ namespace iMapper.Template.Validation
 
             foreach (var table in Columns.Where(x => x.IsRelation && string.IsNullOrEmpty(x.RelationTable) == false).Select(x => x.RelationTable).Distinct())
             {
-                builder.AppendLine($@"this.{table.Camelize()}Repository = {table.Camelize()}Repository;");
+                builder.AppendLine($"\t\t\tthis.{table.Camelize()}Repository = {table.Camelize()}Repository;");
             }
 
             return builder.ToString();
@@ -57,7 +57,7 @@ namespace iMapper.Template.Validation
                 .Select(x => x.RelationTable)
                 .Distinct())
             {
-                builder.Add($@"I{table.Pascalize()}Repository {table.Camelize()}Repository");
+                builder.Add($"\t\t\tI{table.Pascalize()}Repository {table.Camelize()}Repository");
             }
 
             return string.Join(",\n", builder);
@@ -81,19 +81,19 @@ namespace iMapper.Template.Validation
 
             if (column.IsNullable == false)
             {
-                rules.Add($"Add(new Required(Model.{name}, Text.{name}));");
+                rules.Add($"\t\t\tAdd(new Required(Model.{name}, Text.{name}));");
             }
 
             if (column.CharacterMaximumLength != null)
             {
-                rules.Add($"Add(new StringLength(Model.{name}, {column.CharacterMaximumLength.Value}, Text.{name}));");
+                rules.Add($"\t\t\tAdd(new StringLength(Model.{name}, {column.CharacterMaximumLength.Value}, Text.{name}));");
             }
 
             if (column.IsRelation && string.IsNullOrEmpty(column.RelationTable) == false)
             {
                 var relationTable = column.RelationTable;
                 var columnName = column.ColumnName;
-                rules.Add($"Add(() => {relationTable.Camelize()}Repository.IsExisting(Model.{name}), ValidationMessage.NotFound{columnName.Camelize()});");
+                rules.Add($"\t\t\tAdd(() => {relationTable.Camelize()}Repository.IsExisting(Model.{name}), ValidationMessage.NotFound{columnName.Camelize()});");
             }
 
             return string.Join("\n", rules);
@@ -120,11 +120,11 @@ namespace iMapper.Template.Validation
             var columnName = column.ColumnName;
             if (column.IsNullable && column.IsRelation && string.IsNullOrEmpty(column.RelationTable) == false)
             {
-                rules.Add($"Add(() => Model.{name} != null && {relationTable.Camelize()}Repository.IsExisting(Model.{name}.Value), ValidationMessage.NotFound{columnName.Camelize()});");
+                rules.Add($"\t\t\tAdd(() => Model.{name} != null && {relationTable.Camelize()}Repository.IsExisting(Model.{name}.Value), ValidationMessage.NotFound{columnName.Camelize()});");
             }
             else if (column.IsRelation && string.IsNullOrEmpty(column.RelationTable) == false)
             {
-                rules.Add($"Add(() => {relationTable.Camelize()}Repository.IsExisting(Model.{name}), ValidationMessage.NotFound{columnName.Camelize()});");
+                rules.Add($"\t\t\tAdd(() => {relationTable.Camelize()}Repository.IsExisting(Model.{name}), ValidationMessage.NotFound{columnName.Camelize()});");
             }
 
             return string.Join("\n", rules);
@@ -149,14 +149,14 @@ namespace iMapper.Template.Validation
 
             if (column.IsNullable == false)
             {
-                rules.Add($"Add(new Required(Model.{name}, Text.{name}));");
+                rules.Add($"\t\t\tAdd(new Required(Model.{name}, Text.{name}));");
             }
 
             if (column.IsRelation && string.IsNullOrEmpty(column.RelationTable) == false)
             {
                 var relationTable = column.RelationTable;
                 var columnName = column.ColumnName;
-                rules.Add($"Add(() => {relationTable.Camelize()}Repository.IsExisting(Model.{name}), ValidationMessage.NotFound{columnName.Camelize()});");
+                rules.Add($"\t\t\tAdd(() => {relationTable.Camelize()}Repository.IsExisting(Model.{name}), ValidationMessage.NotFound{columnName.Camelize()});");
             }
 
             return string.Join("\n", rules);

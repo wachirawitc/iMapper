@@ -31,7 +31,7 @@ namespace iMapper.Template.Validation
             this.Write("\r\n\r\nnamespace ");
             
             #line 8 "D:\Source\iMapper\iMapper\iMapper\Template\Validation\Custom1ValidationTemplate.tt"
- Write(Namespace); 
+ WriteLine(Namespace); 
             
             #line default
             #line hidden
@@ -49,7 +49,7 @@ namespace iMapper.Template.Validation
             
             #line default
             #line hidden
-            this.Write(">\r\n\t{\r\n\t\t");
+            this.Write(">\r\n\t{\r\n");
             
             #line 12 "D:\Source\iMapper\iMapper\iMapper\Template\Validation\Custom1ValidationTemplate.tt"
  Write(GetRepositoryVariable()); 
@@ -63,14 +63,14 @@ namespace iMapper.Template.Validation
             
             #line default
             #line hidden
-            this.Write(" model,\r\n\t\t\t\t");
+            this.Write(" model,\r\n");
             
             #line 15 "D:\Source\iMapper\iMapper\iMapper\Template\Validation\Custom1ValidationTemplate.tt"
  Write(GetRepositoryParameter()); 
             
             #line default
             #line hidden
-            this.Write(") : base(model)\r\n\t\t{\r\n\t\t\t");
+            this.Write(") : base(model)\r\n\t\t{\r\n");
             
             #line 17 "D:\Source\iMapper\iMapper\iMapper\Template\Validation\Custom1ValidationTemplate.tt"
  Write(GetRepositoryInitVariable()); 
@@ -87,19 +87,19 @@ namespace iMapper.Template.Validation
             this.Write(" \r\n");
             
             #line 23 "D:\Source\iMapper\iMapper\iMapper\Template\Validation\Custom1ValidationTemplate.tt"
- WriteLine(GetStringRule(column)); 
+ var stringRule = GetStringRule(column); if(string.IsNullOrEmpty(stringRule) == false) { WriteLine(stringRule); } 
             
             #line default
             #line hidden
             
             #line 24 "D:\Source\iMapper\iMapper\iMapper\Template\Validation\Custom1ValidationTemplate.tt"
- WriteLine(GetNumberRule(column)); 
+ var numberRule = GetNumberRule(column); if(string.IsNullOrEmpty(numberRule) == false) { WriteLine(numberRule); } 
             
             #line default
             #line hidden
             
             #line 25 "D:\Source\iMapper\iMapper\iMapper\Template\Validation\Custom1ValidationTemplate.tt"
- WriteLine(GetDateTimeValidations(column)); 
+ var datetimeRule = GetDateTimeValidations(column); if(string.IsNullOrEmpty(datetimeRule) == false) { WriteLine(datetimeRule); } 
             
             #line default
             #line hidden
@@ -110,7 +110,7 @@ namespace iMapper.Template.Validation
             
             #line default
             #line hidden
-            this.Write("\t\t}\r\n\t}\r\n}");
+            this.Write("}\r\n\t}\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

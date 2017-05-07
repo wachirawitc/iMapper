@@ -5,25 +5,24 @@
 <#@ import namespace="System.Collections.Generic" #>
 
 
-namespace <# Write(Namespace); #>
+namespace <# WriteLine(Namespace); #>
 {
 	public class <# Write(Name); #> : InvestigationBase<<# Write(ValidatorName); #>>
 	{
-		<# Write(GetRepositoryVariable()); #>
+<# Write(GetRepositoryVariable()); #>
 
 		public BasicCalculateInvestigate(<# Write(ValidatorName); #> model,
-				<# Write(GetRepositoryParameter()); #>) : base(model)
+<# Write(GetRepositoryParameter()); #>) : base(model)
 		{
-			<# Write(GetRepositoryInitVariable()); #>
+<# Write(GetRepositoryInitVariable()); #>
 		}
 
 		protected override void InitialRule()
 		{
 		<# foreach(var column in Columns) { #> 
-<# WriteLine(GetStringRule(column)); #>
-<# WriteLine(GetNumberRule(column)); #>
-<# WriteLine(GetDateTimeValidations(column)); #>
-		<# } #>
-		}
+<# var stringRule = GetStringRule(column); if(string.IsNullOrEmpty(stringRule) == false) { WriteLine(stringRule); } #>
+<# var numberRule = GetNumberRule(column); if(string.IsNullOrEmpty(numberRule) == false) { WriteLine(numberRule); } #>
+<# var datetimeRule = GetDateTimeValidations(column); if(string.IsNullOrEmpty(datetimeRule) == false) { WriteLine(datetimeRule); } #>
+		<# } #>}
 	}
 }

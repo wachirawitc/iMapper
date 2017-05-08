@@ -20,11 +20,14 @@
 
         public ValidationConfig Validation { get; set; }
 
+        public ServiceConfig Service { get; set; }
+
         public Config()
         {
             Repository = new RepositoryConfig();
             Model = new ModelConfig();
             Validation = new ValidationConfig();
+            Service = new ServiceConfig();
         }
     }
 }

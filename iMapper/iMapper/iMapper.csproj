@@ -61,6 +61,7 @@
     <Compile Include="Commands\MapperCommandPackage.cs" />
     <Compile Include="Constance\Enumeration\ModelOption.cs" />
     <Compile Include="Constance\Enumeration\RepositoryOption.cs" />
+    <Compile Include="Constance\Enumeration\ServiceOption.cs" />
     <Compile Include="Constance\Enumeration\ValidationOption.cs" />
     <Compile Include="Constance\KindElement.cs" />
     <Compile Include="Constance\MapperInfo.cs" />
@@ -121,6 +122,7 @@
     <Compile Include="Model\ModelConfig.cs" />
     <Compile Include="Model\PropertyModel.cs" />
     <Compile Include="Model\RepositoryConfig.cs" />
+    <Compile Include="Model\ServiceConfig.cs" />
     <Compile Include="Model\ValidationConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

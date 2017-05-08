@@ -21,6 +21,7 @@ namespace iMapper.Commands
         public const int ModelProjNodeCommandId = 0x0700;
         public const int ValidationProjNodeCommandId = 0x0800;
         public const int RepositoryProjNodeCommandId = 0x0900;
+        public const int ServiceCommandId = 0x0100;
 
         public static readonly Guid ConnectDatabaseCommand = new Guid("89629128-c144-443f-9920-0ed1b9bc65b6");
         public static readonly Guid MapViewModelCommand = new Guid("0f8fad5b-d9cb-469f-a165-70867728950e");
@@ -30,6 +31,7 @@ namespace iMapper.Commands
         public static readonly Guid ModelProjNodeCommand = new Guid("97235e93-1311-44de-982e-27798e9f1270");
         public static readonly Guid ValidationProjNodeCommand = new Guid("ef162887-333c-4e3a-b22c-0d26604d0097");
         public static readonly Guid RepositoryProjNodeCommand = new Guid("a0d109bf-55fa-4eac-838f-c2a36e9976c3");
+        public static readonly Guid ServiceCommand = new Guid("501a94a1-4dce-46b1-ab4a-84370e66d06c");
 
         private readonly Package package;
 
@@ -76,6 +78,10 @@ namespace iMapper.Commands
                 var repositoryProjNodeCommand = new CommandID(RepositoryProjNodeCommand, RepositoryProjNodeCommandId);
                 var repositoryProjNodeCommandMenuItem = new MenuCommand(RepositoryProjNodeCallback, repositoryProjNodeCommand);
                 commandService.AddCommand(repositoryProjNodeCommandMenuItem);
+
+                var serviceCommand = new CommandID(ServiceCommand, ServiceCommandId);
+                var serviceCommandMenuItem = new MenuCommand(ServiceCallback, serviceCommand);
+                commandService.AddCommand(serviceCommandMenuItem);
             }
 
             SetSolutionPath();
@@ -92,6 +98,33 @@ namespace iMapper.Commands
         public static void Initialize(Package package)
         {
             Instance = new MapperCommand(package);
+        }
+
+        private void ServiceCallback(object sender, EventArgs e)
+        {
+            var dte2 = Package.GetGlobalService(typeof(SDTE)) as DTE2;
+            if (dte2 != null)
+            {
+                UIHierarchy uih = dte2.ToolWindows.SolutionExplorer;
+                Array selectedItems = (Array)uih.SelectedItems;
+                if (selectedItems == null || selectedItems.Length > 1)
+                {
+                    ShowDiabog("Select one item.", "Transfer");
+                }
+                else
+                {
+                    var hierarchyItem = selectedItems.Cast<UIHierarchyItem>().First();
+                    var projectItem = hierarchyItem.Object as ProjectItem;
+                    if (projectItem != null)
+                    {
+                        var destinationPath = projectItem.Properties.Item("FullPath").Value as string;
+                        var nameSpace = NamespaceHelper.Get(projectItem.ContainingProject, projectItem);
+
+                        var repositoryForm = new RepositoryForm(destinationPath, nameSpace, projectItem.ProjectItems);
+                        repositoryForm.ShowDialog();
+                    }
+                }
+            }
         }
 
         private void RepositoryCallback(object sender, EventArgs e)

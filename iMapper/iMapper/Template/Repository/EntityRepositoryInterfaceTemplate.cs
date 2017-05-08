@@ -32,117 +32,117 @@ namespace iMapper.Template.Repository
                     " ");
             
             #line 10 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryInterfaceTemplate.tt"
- Write(Namespace); 
+ WriteLine(Namespace); 
             
             #line default
             #line hidden
             this.Write("{\r\n    public interface ");
             
-            #line 12 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryInterfaceTemplate.tt"
- Write(Name); 
+            #line 11 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryInterfaceTemplate.tt"
+ WriteLine(Name); 
             
             #line default
             #line hidden
             this.Write("    {\r\n        ");
             
-            #line 14 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryInterfaceTemplate.tt"
+            #line 12 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryInterfaceTemplate.tt"
  if(HasPk){ 
             
             #line default
             #line hidden
             
-            #line 15 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryInterfaceTemplate.tt"
+            #line 13 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryInterfaceTemplate.tt"
   Write(TableName); 
             
             #line default
             #line hidden
             this.Write(" Get(");
             
-            #line 15 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryInterfaceTemplate.tt"
+            #line 13 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryInterfaceTemplate.tt"
  Write(GetPkParameter()); 
             
             #line default
             #line hidden
             this.Write(");\r\n        ");
             
-            #line 16 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryInterfaceTemplate.tt"
+            #line 14 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryInterfaceTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\r\n        List<");
             
-            #line 18 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryInterfaceTemplate.tt"
+            #line 16 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryInterfaceTemplate.tt"
   Write(TableName); 
             
             #line default
             #line hidden
             this.Write("> Get");
             
-            #line 18 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryInterfaceTemplate.tt"
+            #line 16 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryInterfaceTemplate.tt"
   Write(TableNamePluralize); 
             
             #line default
             #line hidden
             this.Write("();\r\n\r\n        ScopeIdentity<");
             
-            #line 20 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryInterfaceTemplate.tt"
+            #line 18 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryInterfaceTemplate.tt"
  Write(TableName); 
             
             #line default
             #line hidden
             this.Write("> Create(");
             
-            #line 20 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryInterfaceTemplate.tt"
+            #line 18 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryInterfaceTemplate.tt"
  Write(TableName); 
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 20 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryInterfaceTemplate.tt"
+            #line 18 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryInterfaceTemplate.tt"
  Write(TableNameCamelize); 
             
             #line default
             #line hidden
             this.Write(");\r\n\r\n        ScopeIdentity<");
             
-            #line 22 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryInterfaceTemplate.tt"
+            #line 20 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryInterfaceTemplate.tt"
  Write(TableName); 
             
             #line default
             #line hidden
             this.Write("> Update(");
             
-            #line 22 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryInterfaceTemplate.tt"
+            #line 20 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryInterfaceTemplate.tt"
  Write(TableName); 
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 22 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryInterfaceTemplate.tt"
+            #line 20 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryInterfaceTemplate.tt"
  Write(TableNameCamelize); 
             
             #line default
             #line hidden
             this.Write(");\r\n\r\n        ");
             
-            #line 24 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryInterfaceTemplate.tt"
+            #line 22 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryInterfaceTemplate.tt"
  if(HasPk){ 
             
             #line default
             #line hidden
             this.Write("bool IsExisting(");
             
-            #line 25 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryInterfaceTemplate.tt"
+            #line 23 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryInterfaceTemplate.tt"
  Write(GetPkParameter()); 
             
             #line default
             #line hidden
             this.Write(");\r\n        ");
             
-            #line 26 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryInterfaceTemplate.tt"
+            #line 24 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryInterfaceTemplate.tt"
  } 
             
             #line default

@@ -32,272 +32,266 @@ namespace iMapper.Template.Repository
                     " ");
             
             #line 10 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
- Write(Namespace); 
+ WriteLine(Namespace); 
             
             #line default
             #line hidden
             this.Write("{\r\n    public class ");
             
-            #line 12 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
+            #line 11 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
  Write(Name); 
             
             #line default
             #line hidden
             this.Write(" : I");
             
-            #line 12 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
- Write(Name); 
+            #line 11 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
+ WriteLine(Name); 
             
             #line default
             #line hidden
             this.Write("    {\r\n        ");
             
-            #line 14 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
+            #line 12 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
  if(HasPk){ 
             
             #line default
             #line hidden
             this.Write("public ");
             
-            #line 15 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
+            #line 13 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
   Write(TableName); 
             
             #line default
             #line hidden
             this.Write(" Get(");
             
-            #line 15 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
+            #line 13 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
  Write(GetPkParameter()); 
             
             #line default
             #line hidden
             this.Write(")\r\n        {\r\n            using (var db = new ");
             
-            #line 17 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
+            #line 15 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
   Write(EntityName); 
             
             #line default
             #line hidden
             this.Write("())\r\n            {\r\n                return db.");
             
-            #line 19 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
+            #line 17 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
   Write(EfTableName); 
             
             #line default
             #line hidden
             this.Write(".FirstOrDefault(x => ");
             
-            #line 19 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
+            #line 17 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
   Write(GetPkArgument()); 
             
             #line default
             #line hidden
             this.Write(");\r\n            }\r\n        }\r\n        ");
             
-            #line 22 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
+            #line 20 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\r\n        public List<");
             
-            #line 24 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
+            #line 22 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
   Write(TableName); 
             
             #line default
             #line hidden
             this.Write("> Get");
             
-            #line 24 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
+            #line 22 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
   Write(TableNamePluralize); 
             
             #line default
             #line hidden
             this.Write("()\r\n        {\r\n            using (var db = new ");
             
-            #line 26 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
+            #line 24 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
   Write(EntityName); 
             
             #line default
             #line hidden
             this.Write("())\r\n            {\r\n                return db.");
             
-            #line 28 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
+            #line 26 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
   Write(EfTableName); 
             
             #line default
             #line hidden
             this.Write(".ToList();\r\n            }\r\n        }\r\n\r\n        public ScopeIdentity<");
             
-            #line 32 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
+            #line 30 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
  Write(TableName); 
             
             #line default
             #line hidden
             this.Write("> Create(");
             
-            #line 32 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
+            #line 30 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
  Write(TableName); 
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 32 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
+            #line 30 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
  Write(TableNameCamelize); 
             
             #line default
             #line hidden
             this.Write(")\r\n        {\r\n            using (var db = new ");
             
-            #line 34 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
+            #line 32 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
   Write(EntityName); 
             
             #line default
             #line hidden
             this.Write("())\r\n            {\r\n                var identity = db.");
             
-            #line 36 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
+            #line 34 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
   Write(EfTableName); 
             
             #line default
             #line hidden
             this.Write(".Add(");
             
-            #line 36 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
+            #line 34 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
  Write(TableNameCamelize); 
             
             #line default
             #line hidden
             this.Write(");\r\n                db.SaveChanges();\r\n                return new ScopeIdentity<");
             
-            #line 38 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
+            #line 36 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
  Write(TableName); 
             
             #line default
             #line hidden
             this.Write(">(identity);\r\n            }\r\n        }\r\n\r\n        public ScopeIdentity<");
             
-            #line 42 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
+            #line 40 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
  Write(TableName); 
             
             #line default
             #line hidden
             this.Write("> Update(");
             
-            #line 42 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
+            #line 40 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
  Write(TableName); 
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 42 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
+            #line 40 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
  Write(TableNameCamelize); 
             
             #line default
             #line hidden
             this.Write(")\r\n        {\r\n            using (var db = new ");
             
-            #line 44 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
+            #line 42 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
   Write(EntityName); 
             
             #line default
             #line hidden
             this.Write("())\r\n            {\r\n                var model = db.");
             
-            #line 46 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
+            #line 44 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
   Write(EfTableName); 
             
             #line default
             #line hidden
             this.Write(".First(x => ");
             
-            #line 46 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
+            #line 44 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
   Write(GetPkUpdateArgument()); 
             
             #line default
             #line hidden
-            this.Write(");\r\n");
+            this.Write(");");
             
-            #line 47 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
+            #line 44 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
     foreach(var column in ColumnsWithoutPk) { 
             
             #line default
             #line hidden
             this.Write(" \r\n                model.");
             
-            #line 48 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
+            #line 45 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
  Write(column.ColumnName); 
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 48 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
+            #line 45 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
  Write(TableNameCamelize); 
             
             #line default
             #line hidden
             this.Write(".");
             
+            #line 45 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
+ Write(column.ColumnName + ";"); } 
+            
+            #line default
+            #line hidden
+            this.Write("                \r\n                db.SaveChanges();\r\n                return new S" +
+                    "copeIdentity<");
+            
             #line 48 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
- Write(column.ColumnName); 
-            
-            #line default
-            #line hidden
-            this.Write(";\r\n");
-            
-            #line 49 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
-    } 
-            
-            #line default
-            #line hidden
-            this.Write("                db.SaveChanges();\r\n                return new ScopeIdentity<");
-            
-            #line 51 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
  Write(TableName); 
             
             #line default
             #line hidden
             this.Write(">(model);\r\n            }\r\n        }\r\n\r\n        ");
             
-            #line 55 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
+            #line 52 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
  if(HasPk){ 
             
             #line default
             #line hidden
             this.Write("public bool IsExisting(");
             
-            #line 56 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
+            #line 53 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
  Write(GetPkParameter()); 
             
             #line default
             #line hidden
             this.Write(")\r\n        {\r\n            using (var db = new ");
             
-            #line 58 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
+            #line 55 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
   Write(EntityName); 
             
             #line default
             #line hidden
             this.Write("())\r\n            {\r\n                return db.");
             
-            #line 60 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
+            #line 57 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
   Write(EfTableName); 
             
             #line default
             #line hidden
             this.Write(".Any(x => ");
             
-            #line 60 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
+            #line 57 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
   Write(GetPkArgument()); 
             
             #line default
             #line hidden
             this.Write(");\r\n            }\r\n        }\r\n        ");
             
-            #line 63 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
+            #line 60 "D:\Source\iMapper\iMapper\iMapper\Template\Repository\EntityRepositoryTemplate.tt"
  } 
             
             #line default

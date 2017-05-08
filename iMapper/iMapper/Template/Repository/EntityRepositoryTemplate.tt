@@ -7,10 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace <# Write(Namespace); #>
-{
-    public class <# Write(Name); #> : I<# Write(Name); #>
-    {
+namespace <# WriteLine(Namespace); #>{
+    public class <# Write(Name); #> : I<# WriteLine(Name); #>    {
         <# if(HasPk){ #>
 public <#  Write(TableName); #> Get(<# Write(GetPkParameter()); #>)
         {
@@ -43,10 +41,9 @@ public <#  Write(TableName); #> Get(<# Write(GetPkParameter()); #>)
         {
             using (var db = new <#  Write(EntityName); #>())
             {
-                var model = db.<#  Write(EfTableName); #>.First(x => <#  Write(GetPkUpdateArgument()); #>);
-<#    foreach(var column in ColumnsWithoutPk) { #> 
-                model.<# Write(column.ColumnName); #> = <# Write(TableNameCamelize); #>.<# Write(column.ColumnName); #>;
-<#    } #>
+                var model = db.<#  Write(EfTableName); #>.First(x => <#  Write(GetPkUpdateArgument()); #>);<#    foreach(var column in ColumnsWithoutPk) { #> 
+                model.<# Write(column.ColumnName); #> = <# Write(TableNameCamelize); #>.<# Write(column.ColumnName + ";"); } #>
+                
                 db.SaveChanges();
                 return new ScopeIdentity<<# Write(TableName); #>>(model);
             }

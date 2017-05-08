@@ -7,10 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace <# Write(Namespace); #>
-{
-    public interface <# Write(Name); #>
-    {
+namespace <# WriteLine(Namespace); #>{
+    public interface <# WriteLine(Name); #>    {
         <# if(HasPk){ #>
 <#  Write(TableName); #> Get(<# Write(GetPkParameter()); #>);
         <# } #>

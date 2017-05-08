@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace iMapper.Extensions
 {
@@ -15,6 +16,11 @@ namespace iMapper.Extensions
         public static void CreateAndDispose(this FileInfo fileInfo)
         {
             using (File.Create(fileInfo.FullName)) { }
+        }
+
+        public static DateTime GetLastWriteTime(this FileInfo fileInfo)
+        {
+            return File.GetLastWriteTime(fileInfo.FullName);
         }
     }
 }

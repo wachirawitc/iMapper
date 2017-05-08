@@ -174,18 +174,24 @@ namespace iMapper.Forms
                 outputFile.DeleteIfExisting();
                 outputFile.CreateAndDispose();
 
+                var beforeModificationDate = outputFile.GetLastWriteTime();
+
                 string command = $"\"{sourceFile.FullName}\" \"{originalFile.FullName}\" -o \"{outputFile.FullName}\"";
                 var process = System.Diagnostics.Process.Start(temporaryRepository.Kdiff.FullName, command);
                 if (process != null)
                 {
                     process.WaitForExit();
 
-                    sourceFile.DeleteIfExisting();
-                    File.Copy(outputFile.FullName, sourceFile.FullName);
+                    var afterModificationDate = outputFile.GetLastWriteTime();
+                    if (beforeModificationDate.IsEarlierThan(afterModificationDate))
+                    {
+                        sourceFile.DeleteIfExisting();
+                        File.Copy(outputFile.FullName, sourceFile.FullName);
 
-                    fileInProject.Delete();
-                    projectItems.AddFromFileCopy(sourceFile.FullName);
-                    projectItems.ContainingProject.Save();
+                        fileInProject.Delete();
+                        projectItems.AddFromFileCopy(sourceFile.FullName);
+                        projectItems.ContainingProject.Save();
+                    }
                 }
             }
             else

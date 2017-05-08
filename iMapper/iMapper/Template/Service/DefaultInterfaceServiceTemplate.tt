@@ -1,0 +1,16 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+using System.Collections.Generic;
+
+namespace <# Write(Namespace); #>
+{
+    public interface I<# Write(Name); #>
+    {
+        <# Write(TableName); #>Model Get(<# Write(GetPkParameter()); #>);
+
+        List<<# Write(TableName); #>Model> Get<# Write(TableNamePluralize); #>();
+    }
+}

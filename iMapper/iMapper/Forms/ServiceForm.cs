@@ -1,16 +1,15 @@
 ﻿using EnvDTE;
 using iMapper.Constance.Enumeration;
+using iMapper.Extensions;
 using iMapper.Model;
 using iMapper.Repository;
 using iMapper.Support;
+using iMapper.Template.Repository;
+using iMapper.Template.Service;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace iMapper.Forms
@@ -19,14 +18,14 @@ namespace iMapper.Forms
     {
         private readonly string destinationPath;
         private readonly string nameSpace;
-        private readonly ProjectItems projectItem;
+        private readonly ProjectItems projectItems;
         private readonly TemporaryRepository temporaryRepository;
 
-        public ServiceForm(string destinationPath, string nameSpace, ProjectItems projectItem)
+        public ServiceForm(string destinationPath, string nameSpace, ProjectItems projectItems)
         {
             InitializeComponent();
 
-            this.projectItem = projectItem;
+            this.projectItems = projectItems;
             this.destinationPath = destinationPath;
             this.nameSpace = nameSpace;
             temporaryRepository = new TemporaryRepository();
@@ -55,7 +54,6 @@ namespace iMapper.Forms
 
             var options = new List<ComboboxItem>();
             options.Add(new ComboboxItem { Text = nameof(ServiceOption.Default), Value = (int)ServiceOption.Default });
-            options.Add(new ComboboxItem { Text = nameof(ServiceOption.Custom1), Value = (int)ServiceOption.Custom1 });
             foreach (var item in options)
             {
                 Options.Items.Add(item);
@@ -100,6 +98,26 @@ namespace iMapper.Forms
         {
             if (ValidationButton()) return;
 
+            var columns = temporaryRepository
+                .GetColumns()
+                .Where(x => x.TableName.Equals(SelectTable))
+                .ToList();
+
+            var name = $"I{SelectTable}Service";
+            var fileName = $"{name}.cs";
+            var originalFile = new FileInfo($@"{destinationPath}{fileName}");
+
+            var template = new DefaultInterfaceServiceTemplate();
+            template.Name = name;
+            template.TableName = SelectTable;
+            template.Columns = columns;
+            template.Namespace = nameSpace;
+
+            var sourceManage = new SourceManage(fileName, template.TransformText());
+            var sourceFile = sourceManage.Create();
+
+            CreateFile(sourceFile, fileName, originalFile);
+
             SetConfig();
             Close();
         }
@@ -108,6 +126,26 @@ namespace iMapper.Forms
         {
             if (ValidationButton()) return;
 
+            var columns = temporaryRepository
+                .GetColumns()
+                .Where(x => x.TableName.Equals(SelectTable))
+                .ToList();
+
+            var name = $"{SelectTable}Service";
+            var fileName = $"{name}.cs";
+            var originalFile = new FileInfo($@"{destinationPath}{fileName}");
+
+            var template = new DefaultServiceTemplate();
+            template.Name = name;
+            template.TableName = SelectTable;
+            template.Columns = columns;
+            template.Namespace = nameSpace;
+
+            var sourceManage = new SourceManage(fileName, template.TransformText());
+            var sourceFile = sourceManage.Create();
+
+            CreateFile(sourceFile, fileName, originalFile);
+
             SetConfig();
             Close();
         }
@@ -115,6 +153,46 @@ namespace iMapper.Forms
         private void CloseButton_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void CreateFile(FileInfo sourceFile, string fileName, FileInfo originalFile)
+        {
+            var fileInProject = projectItems
+                .GetFiles()
+                .FirstOrDefault(x => x.Name == sourceFile.Name);
+
+            if (fileInProject != null && IsReplace.Checked == false)
+            {
+                var outputFile = new FileInfo(Temporary.Directory + $"_{fileName}");
+                outputFile.DeleteIfExisting();
+                outputFile.CreateAndDispose();
+
+                var beforeModificationDate = outputFile.GetLastWriteTime();
+
+                string command = $"\"{sourceFile.FullName}\" \"{originalFile.FullName}\" -o \"{outputFile.FullName}\"";
+                var process = System.Diagnostics.Process.Start(temporaryRepository.Kdiff.FullName, command);
+                if (process != null)
+                {
+                    process.WaitForExit();
+
+                    var afterModificationDate = outputFile.GetLastWriteTime();
+                    if (beforeModificationDate.IsEarlierThan(afterModificationDate))
+                    {
+                        sourceFile.DeleteIfExisting();
+                        File.Copy(outputFile.FullName, sourceFile.FullName);
+
+                        fileInProject.Delete();
+                        projectItems.AddFromFileCopy(sourceFile.FullName);
+                        projectItems.ContainingProject.Save();
+                    }
+                }
+            }
+            else
+            {
+                originalFile.DeleteIfExisting();
+                projectItems.AddFromFileCopy(sourceFile.FullName);
+                projectItems.ContainingProject.Save();
+            }
         }
     }
 }

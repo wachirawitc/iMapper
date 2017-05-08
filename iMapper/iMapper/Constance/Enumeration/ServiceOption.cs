@@ -2,7 +2,6 @@
 {
     public enum ServiceOption
     {
-        Default,
-        Custom1
+        Default
     }
 }

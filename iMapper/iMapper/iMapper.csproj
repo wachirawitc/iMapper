@@ -169,6 +169,18 @@
       <DependentUpon>EntityRepositoryTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Template\Repository\EntityRepositoryTemplatePresenter.cs" />
+    <Compile Include="Template\Service\DefaultInterfaceServiceTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DefaultInterfaceServiceTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Template\Service\DefaultInterfaceServiceTemplatePresenter.cs" />
+    <Compile Include="Template\Service\DefaultServiceTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DefaultServiceTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Template\Service\DefaultServiceTemplatePresenter.cs" />
     <Compile Include="Template\Transfer\DefaultTransferTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -223,6 +235,14 @@
     <Content Include="Template\Repository\EntityRepositoryTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>EntityRepositoryTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Template\Service\DefaultInterfaceServiceTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DefaultInterfaceServiceTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Template\Service\DefaultServiceTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DefaultServiceTemplate.cs</LastGenOutput>
     </Content>
     <Content Include="Template\Transfer\DefaultTransferTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

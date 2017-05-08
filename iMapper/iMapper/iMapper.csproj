@@ -91,6 +91,12 @@
     <Compile Include="Forms\RepositoryForm.Designer.cs">
       <DependentUpon>RepositoryForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ServiceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ServiceForm.Designer.cs">
+      <DependentUpon>ServiceForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\TransferForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -494,6 +500,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RepositoryForm.resx">
       <DependentUpon>RepositoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ServiceForm.resx">
+      <DependentUpon>ServiceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TransferForm.resx">
       <DependentUpon>TransferForm.cs</DependentUpon>

@@ -83,9 +83,9 @@
             this.CloseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.CloseButton.Image = global::iMapper.Properties.Resources.Close;
             this.CloseButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CloseButton.Location = new System.Drawing.Point(314, 485);
+            this.CloseButton.Location = new System.Drawing.Point(345, 485);
             this.CloseButton.Name = "CloseButton";
-            this.CloseButton.Size = new System.Drawing.Size(115, 38);
+            this.CloseButton.Size = new System.Drawing.Size(78, 38);
             this.CloseButton.TabIndex = 22;
             this.CloseButton.Text = "Close";
             this.CloseButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -109,7 +109,7 @@
             this.Options.FormattingEnabled = true;
             this.Options.Location = new System.Drawing.Point(14, 346);
             this.Options.Name = "Options";
-            this.Options.Size = new System.Drawing.Size(415, 24);
+            this.Options.Size = new System.Drawing.Size(409, 24);
             this.Options.TabIndex = 20;
             // 
             // Columns
@@ -134,7 +134,7 @@
             this.Columns.Location = new System.Drawing.Point(0, 77);
             this.Columns.Name = "Columns";
             this.Columns.ReadOnly = true;
-            this.Columns.Size = new System.Drawing.Size(429, 237);
+            this.Columns.Size = new System.Drawing.Size(435, 237);
             this.Columns.TabIndex = 17;
             // 
             // Tables
@@ -165,9 +165,9 @@
             this.SaveInterfaceButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.SaveInterfaceButton.Location = new System.Drawing.Point(9, 485);
             this.SaveInterfaceButton.Name = "SaveInterfaceButton";
-            this.SaveInterfaceButton.Size = new System.Drawing.Size(136, 38);
+            this.SaveInterfaceButton.Size = new System.Drawing.Size(97, 38);
             this.SaveInterfaceButton.TabIndex = 14;
-            this.SaveInterfaceButton.Text = "Save Interface";
+            this.SaveInterfaceButton.Text = "Interface";
             this.SaveInterfaceButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.SaveInterfaceButton.UseVisualStyleBackColor = true;
             this.SaveInterfaceButton.Click += new System.EventHandler(this.OnClickInterfaceSave);
@@ -187,7 +187,7 @@
             this.EntityFrameworkName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.EntityFrameworkName.Location = new System.Drawing.Point(14, 392);
             this.EntityFrameworkName.Name = "EntityFrameworkName";
-            this.EntityFrameworkName.Size = new System.Drawing.Size(415, 22);
+            this.EntityFrameworkName.Size = new System.Drawing.Size(409, 22);
             this.EntityFrameworkName.TabIndex = 26;
             // 
             // IsPluralize
@@ -205,11 +205,11 @@
             this.SaveImplementButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.SaveImplementButton.Image = global::iMapper.Properties.Resources.command;
             this.SaveImplementButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SaveImplementButton.Location = new System.Drawing.Point(151, 485);
+            this.SaveImplementButton.Location = new System.Drawing.Point(112, 485);
             this.SaveImplementButton.Name = "SaveImplementButton";
-            this.SaveImplementButton.Size = new System.Drawing.Size(157, 38);
+            this.SaveImplementButton.Size = new System.Drawing.Size(112, 38);
             this.SaveImplementButton.TabIndex = 31;
-            this.SaveImplementButton.Text = "Save Implement";
+            this.SaveImplementButton.Text = "Implement";
             this.SaveImplementButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.SaveImplementButton.UseVisualStyleBackColor = true;
             this.SaveImplementButton.Click += new System.EventHandler(this.OnClickImplementSave);

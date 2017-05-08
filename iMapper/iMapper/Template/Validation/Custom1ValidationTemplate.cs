@@ -28,7 +28,7 @@ namespace iMapper.Template.Validation
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\r\n\r\nnamespace ");
+            this.Write("using System;\r\n\r\nnamespace ");
             
             #line 8 "D:\Source\iMapper\iMapper\iMapper\Template\Validation\Custom1ValidationTemplate.tt"
  WriteLine(Namespace); 

@@ -5,7 +5,6 @@ using iMapper.Support;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Linq;
 
@@ -109,7 +108,7 @@ namespace iMapper.Commands
                 Array selectedItems = (Array)uih.SelectedItems;
                 if (selectedItems == null || selectedItems.Length > 1)
                 {
-                    ShowDiabog("Select one item.", "Transfer");
+                    ShowDiabog("Select one item.", "Service");
                 }
                 else
                 {
@@ -120,8 +119,8 @@ namespace iMapper.Commands
                         var destinationPath = projectItem.Properties.Item("FullPath").Value as string;
                         var nameSpace = NamespaceHelper.Get(projectItem.ContainingProject, projectItem);
 
-                        var repositoryForm = new RepositoryForm(destinationPath, nameSpace, projectItem.ProjectItems);
-                        repositoryForm.ShowDialog();
+                        var serviceForm = new ServiceForm(destinationPath, nameSpace, projectItem.ProjectItems);
+                        serviceForm.ShowDialog();
                     }
                 }
             }
@@ -136,7 +135,7 @@ namespace iMapper.Commands
                 Array selectedItems = (Array)uih.SelectedItems;
                 if (selectedItems == null || selectedItems.Length > 1)
                 {
-                    ShowDiabog("Select one item.", "Transfer");
+                    ShowDiabog("Select one item.", "Repository");
                 }
                 else
                 {
@@ -163,7 +162,7 @@ namespace iMapper.Commands
                 Array selectedItems = (Array)uih.SelectedItems;
                 if (selectedItems == null || selectedItems.Length > 1)
                 {
-                    ShowDiabog("Select one item.", "Model");
+                    ShowDiabog("Select one item.", "Repository");
                 }
                 else
                 {
@@ -251,7 +250,7 @@ namespace iMapper.Commands
                 Array selectedItems = (Array)uih.SelectedItems;
                 if (selectedItems == null || selectedItems.Length > 1)
                 {
-                    ShowDiabog("Select one item.", "Model");
+                    ShowDiabog("Select one item.", "Validation");
                 }
                 else
                 {
@@ -336,77 +335,6 @@ namespace iMapper.Commands
         {
             var dte2 = Package.GetGlobalService(typeof(DTE)) as DTE2;
             return dte2;
-        }
-
-        public static IList<Project> Projects()
-        {
-            Projects projects = GetActiveIde().Solution.Projects;
-            List<Project> list = new List<Project>();
-            var item = projects.GetEnumerator();
-            while (item.MoveNext())
-            {
-                var project = item.Current as Project;
-                if (project == null)
-                {
-                    continue;
-                }
-
-                if (project.Kind == ProjectKinds.vsProjectKindSolutionFolder)
-                {
-                    list.AddRange(GetSolutionFolderProjects(project));
-                }
-                else
-                {
-                    list.Add(project);
-                }
-            }
-
-            return list;
-        }
-
-        private static IEnumerable<Project> GetSolutionFolderProjects(Project solutionFolder)
-        {
-            List<Project> list = new List<Project>();
-            for (var i = 1; i <= solutionFolder.ProjectItems.Count; i++)
-            {
-                var subProject = solutionFolder.ProjectItems.Item(i).SubProject;
-                if (subProject == null)
-                {
-                    continue;
-                }
-
-                if (subProject.Kind == ProjectKinds.vsProjectKindSolutionFolder)
-                {
-                    list.AddRange(GetSolutionFolderProjects(subProject));
-                }
-                else
-                {
-                    list.Add(subProject);
-                }
-            }
-            return list;
-        }
-
-        public static IEnumerable<ProjectItem> GetProjectItems(ProjectItems projectItems)
-        {
-            if (projectItems != null)
-            {
-                foreach (ProjectItem item in projectItems)
-                {
-                    yield return item;
-
-                    if (item.SubProject != null)
-                    {
-                        foreach (var childItem in GetProjectItems(item.SubProject.ProjectItems))
-                            yield return childItem;
-                    }
-                    else
-                    {
-                        foreach (ProjectItem childItem in GetProjectItems(item.ProjectItems))
-                            yield return childItem;
-                    }
-                }
-            }
         }
 
         public static void SetSolutionPath()

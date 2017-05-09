@@ -51,7 +51,7 @@
             // 
             // LoadButton
             // 
-            this.LoadButton.Location = new System.Drawing.Point(836, 94);
+            this.LoadButton.Location = new System.Drawing.Point(794, 61);
             this.LoadButton.Margin = new System.Windows.Forms.Padding(4);
             this.LoadButton.Name = "LoadButton";
             this.LoadButton.Size = new System.Drawing.Size(75, 28);
@@ -93,13 +93,13 @@
             this.Username.Location = new System.Drawing.Point(467, 64);
             this.Username.Margin = new System.Windows.Forms.Padding(4);
             this.Username.Name = "Username";
-            this.Username.Size = new System.Drawing.Size(218, 22);
+            this.Username.Size = new System.Drawing.Size(155, 22);
             this.Username.TabIndex = 4;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(689, 44);
+            this.label3.Location = new System.Drawing.Point(626, 44);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 16);
@@ -108,20 +108,20 @@
             // 
             // Password
             // 
-            this.Password.Location = new System.Drawing.Point(693, 64);
+            this.Password.Location = new System.Drawing.Point(630, 64);
             this.Password.Margin = new System.Windows.Forms.Padding(4);
             this.Password.Name = "Password";
-            this.Password.Size = new System.Drawing.Size(218, 22);
+            this.Password.Size = new System.Drawing.Size(156, 22);
             this.Password.TabIndex = 6;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.TableGrid);
-            this.groupBox2.Location = new System.Drawing.Point(17, 130);
+            this.groupBox2.Location = new System.Drawing.Point(17, 94);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(894, 273);
+            this.groupBox2.Size = new System.Drawing.Size(852, 273);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tables";
@@ -133,7 +133,7 @@
             this.TableGrid.Margin = new System.Windows.Forms.Padding(4);
             this.TableGrid.Name = "TableGrid";
             this.TableGrid.ReadOnly = true;
-            this.TableGrid.Size = new System.Drawing.Size(878, 242);
+            this.TableGrid.Size = new System.Drawing.Size(836, 242);
             this.TableGrid.TabIndex = 3;
             // 
             // label4
@@ -169,7 +169,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(14, 414);
+            this.label5.Location = new System.Drawing.Point(14, 378);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(42, 16);
@@ -178,16 +178,16 @@
             // 
             // KDiff
             // 
-            this.KDiff.Location = new System.Drawing.Point(64, 411);
+            this.KDiff.Location = new System.Drawing.Point(64, 375);
             this.KDiff.Margin = new System.Windows.Forms.Padding(4);
             this.KDiff.Name = "KDiff";
-            this.KDiff.Size = new System.Drawing.Size(765, 22);
+            this.KDiff.Size = new System.Drawing.Size(723, 22);
             this.KDiff.TabIndex = 12;
             this.KDiff.Text = "C:\\Program Files\\KDiff3\\kdiff3.exe";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(836, 410);
+            this.button1.Location = new System.Drawing.Point(794, 374);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 13;
@@ -204,7 +204,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(921, 444);
+            this.ClientSize = new System.Drawing.Size(876, 403);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.KDiff);
             this.Controls.Add(this.LoadButton);

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.ReloadClass = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.CloseButton = new System.Windows.Forms.Button();
@@ -39,6 +38,7 @@
             this.StatusBar = new System.Windows.Forms.ToolStripProgressBar();
             this.Source = new System.Windows.Forms.TextBox();
             this.Destination = new System.Windows.Forms.TextBox();
+            this.ReloadClass = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -53,15 +53,6 @@
             this.menuStrip1.Size = new System.Drawing.Size(382, 29);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // ReloadClass
-            // 
-            this.ReloadClass.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ReloadClass.Image = global::iMapper.Properties.Resources.reload;
-            this.ReloadClass.Name = "ReloadClass";
-            this.ReloadClass.Size = new System.Drawing.Size(126, 25);
-            this.ReloadClass.Text = "Reload Class";
-            this.ReloadClass.Click += new System.EventHandler(this.OnClickReloadClass);
             // 
             // label1
             // 
@@ -145,6 +136,15 @@
             this.Destination.Size = new System.Drawing.Size(348, 22);
             this.Destination.TabIndex = 27;
             // 
+            // ReloadClass
+            // 
+            this.ReloadClass.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReloadClass.Image = global::iMapper.Properties.Resources.reload;
+            this.ReloadClass.Name = "ReloadClass";
+            this.ReloadClass.Size = new System.Drawing.Size(95, 25);
+            this.ReloadClass.Text = "Reload...";
+            this.ReloadClass.Click += new System.EventHandler(this.OnClickReloadClass);
+            // 
             // TransferForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -178,7 +178,6 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem ReloadClass;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button CloseButton;
@@ -188,5 +187,6 @@
         private System.Windows.Forms.ToolStripProgressBar StatusBar;
         private System.Windows.Forms.TextBox Source;
         private System.Windows.Forms.TextBox Destination;
+        private System.Windows.Forms.ToolStripMenuItem ReloadClass;
     }
 }

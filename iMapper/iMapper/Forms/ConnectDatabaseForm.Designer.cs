@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConnectDatabaseForm));
             this.LoadButton = new System.Windows.Forms.Button();
             this.ServerName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,25 +43,26 @@
             this.IsWindowsAuthentication = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
             this.KDiff = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TableGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // LoadButton
             // 
-            this.LoadButton.Location = new System.Drawing.Point(681, 94);
-            this.LoadButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LoadButton.Location = new System.Drawing.Point(693, 94);
+            this.LoadButton.Margin = new System.Windows.Forms.Padding(4);
             this.LoadButton.Name = "LoadButton";
-            this.LoadButton.Size = new System.Drawing.Size(176, 39);
+            this.LoadButton.Size = new System.Drawing.Size(218, 28);
             this.LoadButton.TabIndex = 0;
-            this.LoadButton.Text = "Load";
+            this.LoadButton.Text = "Load...";
             this.LoadButton.UseVisualStyleBackColor = true;
             this.LoadButton.Click += new System.EventHandler(this.LoadButton_Click);
             // 
             // ServerName
             // 
             this.ServerName.Location = new System.Drawing.Point(16, 64);
-            this.ServerName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ServerName.Margin = new System.Windows.Forms.Padding(4);
             this.ServerName.Name = "ServerName";
             this.ServerName.Size = new System.Drawing.Size(217, 22);
             this.ServerName.TabIndex = 1;
@@ -78,7 +80,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(481, 44);
+            this.label2.Location = new System.Drawing.Point(463, 44);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 16);
@@ -87,16 +89,16 @@
             // 
             // Username
             // 
-            this.Username.Location = new System.Drawing.Point(485, 64);
-            this.Username.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Username.Location = new System.Drawing.Point(467, 64);
+            this.Username.Margin = new System.Windows.Forms.Padding(4);
             this.Username.Name = "Username";
-            this.Username.Size = new System.Drawing.Size(175, 22);
+            this.Username.Size = new System.Drawing.Size(218, 22);
             this.Username.TabIndex = 4;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(668, 44);
+            this.label3.Location = new System.Drawing.Point(689, 44);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 16);
@@ -105,20 +107,20 @@
             // 
             // Password
             // 
-            this.Password.Location = new System.Drawing.Point(672, 64);
-            this.Password.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Password.Location = new System.Drawing.Point(693, 64);
+            this.Password.Margin = new System.Windows.Forms.Padding(4);
             this.Password.Name = "Password";
-            this.Password.Size = new System.Drawing.Size(185, 22);
+            this.Password.Size = new System.Drawing.Size(218, 22);
             this.Password.TabIndex = 6;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.TableGrid);
             this.groupBox2.Location = new System.Drawing.Point(17, 130);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox2.Size = new System.Drawing.Size(840, 273);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Size = new System.Drawing.Size(894, 273);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tables";
@@ -127,10 +129,10 @@
             // 
             this.TableGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TableGrid.Location = new System.Drawing.Point(8, 23);
-            this.TableGrid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TableGrid.Margin = new System.Windows.Forms.Padding(4);
             this.TableGrid.Name = "TableGrid";
             this.TableGrid.ReadOnly = true;
-            this.TableGrid.Size = new System.Drawing.Size(824, 242);
+            this.TableGrid.Size = new System.Drawing.Size(878, 242);
             this.TableGrid.TabIndex = 3;
             // 
             // label4
@@ -146,16 +148,16 @@
             // DatabaseName
             // 
             this.DatabaseName.Location = new System.Drawing.Point(241, 64);
-            this.DatabaseName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DatabaseName.Margin = new System.Windows.Forms.Padding(4);
             this.DatabaseName.Name = "DatabaseName";
-            this.DatabaseName.Size = new System.Drawing.Size(228, 22);
+            this.DatabaseName.Size = new System.Drawing.Size(218, 22);
             this.DatabaseName.TabIndex = 8;
             // 
             // IsWindowsAuthentication
             // 
             this.IsWindowsAuthentication.AutoSize = true;
             this.IsWindowsAuthentication.Location = new System.Drawing.Point(13, 13);
-            this.IsWindowsAuthentication.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.IsWindowsAuthentication.Margin = new System.Windows.Forms.Padding(4);
             this.IsWindowsAuthentication.Name = "IsWindowsAuthentication";
             this.IsWindowsAuthentication.Size = new System.Drawing.Size(168, 20);
             this.IsWindowsAuthentication.TabIndex = 10;
@@ -166,7 +168,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(17, 428);
+            this.label5.Location = new System.Drawing.Point(14, 414);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(42, 16);
@@ -175,18 +177,28 @@
             // 
             // KDiff
             // 
-            this.KDiff.Location = new System.Drawing.Point(17, 449);
-            this.KDiff.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.KDiff.Location = new System.Drawing.Point(64, 411);
+            this.KDiff.Margin = new System.Windows.Forms.Padding(4);
             this.KDiff.Name = "KDiff";
-            this.KDiff.Size = new System.Drawing.Size(840, 22);
+            this.KDiff.Size = new System.Drawing.Size(765, 22);
             this.KDiff.TabIndex = 12;
             this.KDiff.Text = "C:\\Program Files\\KDiff3\\kdiff3.exe";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(836, 410);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "Brows...";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // ConnectDatabaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(874, 482);
+            this.ClientSize = new System.Drawing.Size(921, 444);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.KDiff);
             this.Controls.Add(this.LoadButton);
             this.Controls.Add(this.label5);
@@ -202,7 +214,8 @@
             this.Controls.Add(this.ServerName);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ConnectDatabaseForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Connect Database";
@@ -230,5 +243,6 @@
         private System.Windows.Forms.CheckBox IsWindowsAuthentication;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox KDiff;
+        private System.Windows.Forms.Button button1;
     }
 }

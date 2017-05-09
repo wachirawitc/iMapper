@@ -57,46 +57,53 @@ namespace iMapper.Forms
 
         private void OnClickReloadClass(object sender, EventArgs e)
         {
-            if (dte2 != null)
+            new LoadForm(() =>
             {
-                var classElements = new List<ClassModel>();
-
-                var projects = dte2.Solution.Projects.Cast<Project>();
-                foreach (var project in projects)
+                if (dte2 != null)
                 {
-                    var projectItems = project.ProjectItems.GetFilesIncludeSubFolder().ToList();
-                    var fileCodeModel2S = projectItems
-                        .Where(x => x.Kind == KindElement.PhysicalFile)
-                        .Where(x => x.FileCodeModel is FileCodeModel2)
-                        .Select(x => x.FileCodeModel as FileCodeModel2)
-                        .ToList();
-                    if (fileCodeModel2S.Any())
+                    var classElements = new List<ClassModel>();
+
+                    var projects = dte2.Solution.Projects.Cast<Project>();
+                    foreach (var project in projects)
                     {
-                        foreach (var fileCode in fileCodeModel2S)
+                        var projectItems = project.ProjectItems.GetFilesIncludeSubFolder().ToList();
+                        var fileCodeModel2S = projectItems
+                            .Where(x => x.Kind == KindElement.PhysicalFile)
+                            .Where(x => x.FileCodeModel is FileCodeModel2)
+                            .Select(x => x.FileCodeModel as FileCodeModel2)
+                            .ToList();
+                        if (fileCodeModel2S.Any())
                         {
-                            var codeElements = fileCode.CodeElements;
-                            foreach (CodeElement codeElement in codeElements)
+                            foreach (var fileCode in fileCodeModel2S)
                             {
-                                if (codeElement.Kind == vsCMElement.vsCMElementNamespace)
+                                var codeElements = fileCode.CodeElements;
+                                foreach (CodeElement codeElement in codeElements)
                                 {
-                                    classElements.AddRange(codeElement.Children.Cast<CodeElement>()
-                                        .Select(x => x.GetClassElement())
-                                        .Where(classElement => classElement != null));
+                                    if (codeElement.Kind == vsCMElement.vsCMElementNamespace)
+                                    {
+                                        classElements.AddRange(codeElement.Children.Cast<CodeElement>()
+                                            .Select(x => x.GetClassElement())
+                                            .Where(classElement => classElement != null));
+                                    }
                                 }
                             }
                         }
                     }
-                }
 
-                if (classElements.Any())
-                {
-                    temporaryRepository.SetTransfer(classElements);
-                    InitAutoComplete();
-                }
+                    if (classElements.Any())
+                    {
+                        temporaryRepository.SetTransfer(classElements);
 
-                string message = $"Found {classElements.Count} class.";
-                MessageBox.Show(message, Text);
-            }
+                        Invoke((MethodInvoker)InitAutoComplete);
+                    }
+
+                    Invoke((MethodInvoker)delegate
+                    {
+                        string message = $"Found {classElements.Count} class.";
+                        MessageBox.Show(message, Text);
+                    });
+                }
+            }).ShowDialog();
         }
 
         private void OnClickSave(object sender, EventArgs e)

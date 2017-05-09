@@ -34,7 +34,6 @@
             this.ColumnNumber = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.IsReplace = new System.Windows.Forms.CheckBox();
-            this.CloseButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.Options = new System.Windows.Forms.ComboBox();
             this.Columns = new System.Windows.Forms.DataGridView();
@@ -78,20 +77,6 @@
             this.IsReplace.TabIndex = 23;
             this.IsReplace.Text = "Replace if existing";
             this.IsReplace.UseVisualStyleBackColor = true;
-            // 
-            // CloseButton
-            // 
-            this.CloseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.CloseButton.Image = global::iMapper.Properties.Resources.Close;
-            this.CloseButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CloseButton.Location = new System.Drawing.Point(345, 485);
-            this.CloseButton.Name = "CloseButton";
-            this.CloseButton.Size = new System.Drawing.Size(78, 38);
-            this.CloseButton.TabIndex = 22;
-            this.CloseButton.Text = "Close";
-            this.CloseButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.CloseButton.UseVisualStyleBackColor = true;
-            this.CloseButton.Click += new System.EventHandler(this.OnClickClose);
             // 
             // label3
             // 
@@ -164,7 +149,7 @@
             this.SaveInterfaceButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.SaveInterfaceButton.Image = global::iMapper.Properties.Resources.command;
             this.SaveInterfaceButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SaveInterfaceButton.Location = new System.Drawing.Point(9, 485);
+            this.SaveInterfaceButton.Location = new System.Drawing.Point(208, 485);
             this.SaveInterfaceButton.Name = "SaveInterfaceButton";
             this.SaveInterfaceButton.Size = new System.Drawing.Size(97, 38);
             this.SaveInterfaceButton.TabIndex = 14;
@@ -206,7 +191,7 @@
             this.SaveImplementButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.SaveImplementButton.Image = global::iMapper.Properties.Resources.command;
             this.SaveImplementButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SaveImplementButton.Location = new System.Drawing.Point(112, 485);
+            this.SaveImplementButton.Location = new System.Drawing.Point(311, 485);
             this.SaveImplementButton.Name = "SaveImplementButton";
             this.SaveImplementButton.Size = new System.Drawing.Size(112, 38);
             this.SaveImplementButton.TabIndex = 31;
@@ -227,7 +212,6 @@
             this.Controls.Add(this.ColumnNumber);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.IsReplace);
-            this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Options);
             this.Controls.Add(this.Columns);
@@ -251,7 +235,6 @@
         private System.Windows.Forms.Label ColumnNumber;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox IsReplace;
-        private System.Windows.Forms.Button CloseButton;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox Options;
         private System.Windows.Forms.DataGridView Columns;

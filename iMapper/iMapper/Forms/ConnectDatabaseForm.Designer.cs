@@ -44,16 +44,17 @@
             this.label5 = new System.Windows.Forms.Label();
             this.KDiff = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TableGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // LoadButton
             // 
-            this.LoadButton.Location = new System.Drawing.Point(693, 94);
+            this.LoadButton.Location = new System.Drawing.Point(836, 94);
             this.LoadButton.Margin = new System.Windows.Forms.Padding(4);
             this.LoadButton.Name = "LoadButton";
-            this.LoadButton.Size = new System.Drawing.Size(218, 28);
+            this.LoadButton.Size = new System.Drawing.Size(75, 28);
             this.LoadButton.TabIndex = 0;
             this.LoadButton.Text = "Load...";
             this.LoadButton.UseVisualStyleBackColor = true;
@@ -190,8 +191,14 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 13;
-            this.button1.Text = "Brows...";
+            this.button1.Text = "Browse...";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.OnLoadKDiff);
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "kdiff3.exe";
+            this.openFileDialog.InitialDirectory = "C:\\Program Files (x86)\\KDiff3";
             // 
             // ConnectDatabaseForm
             // 
@@ -244,5 +251,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox KDiff;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }

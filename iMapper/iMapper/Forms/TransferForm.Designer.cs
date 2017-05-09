@@ -33,15 +33,10 @@
             this.ReloadClass = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.CloseButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.StatusBar = new System.Windows.Forms.ToolStripProgressBar();
             this.Source = new System.Windows.Forms.TextBox();
             this.Destination = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -82,55 +77,19 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Destination";
             // 
-            // CloseButton
-            // 
-            this.CloseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.CloseButton.Image = global::iMapper.Properties.Resources.Close;
-            this.CloseButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CloseButton.Location = new System.Drawing.Point(245, 145);
-            this.CloseButton.Name = "CloseButton";
-            this.CloseButton.Size = new System.Drawing.Size(115, 38);
-            this.CloseButton.TabIndex = 24;
-            this.CloseButton.Text = "Close";
-            this.CloseButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.CloseButton.UseVisualStyleBackColor = true;
-            this.CloseButton.Click += new System.EventHandler(this.OnClickClose);
-            // 
             // SaveButton
             // 
             this.SaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.SaveButton.Image = global::iMapper.Properties.Resources.command;
             this.SaveButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SaveButton.Location = new System.Drawing.Point(12, 145);
+            this.SaveButton.Location = new System.Drawing.Point(276, 139);
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(115, 38);
+            this.SaveButton.Size = new System.Drawing.Size(84, 38);
             this.SaveButton.TabIndex = 23;
             this.SaveButton.Text = "Save";
             this.SaveButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.OnClickSave);
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
-            this.StatusBar});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 201);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(382, 22);
-            this.statusStrip1.TabIndex = 25;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(39, 17);
-            this.toolStripStatusLabel1.Text = "Status";
-            // 
-            // StatusBar
-            // 
-            this.StatusBar.Name = "StatusBar";
-            this.StatusBar.Size = new System.Drawing.Size(100, 16);
             // 
             // Source
             // 
@@ -150,11 +109,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(382, 223);
+            this.ClientSize = new System.Drawing.Size(382, 187);
             this.Controls.Add(this.Destination);
             this.Controls.Add(this.Source);
-            this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -170,8 +127,6 @@
             this.Load += new System.EventHandler(this.TransferForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -182,11 +137,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button CloseButton;
         private System.Windows.Forms.Button SaveButton;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripProgressBar StatusBar;
         private System.Windows.Forms.TextBox Source;
         private System.Windows.Forms.TextBox Destination;
         private System.Windows.Forms.ToolStripMenuItem ReloadClass;

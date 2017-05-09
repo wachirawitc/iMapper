@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModelForm));
             this.label1 = new System.Windows.Forms.Label();
             this.Tables = new System.Windows.Forms.ComboBox();
@@ -42,7 +40,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.ColumnNumber = new System.Windows.Forms.Label();
             this.IsPascalize = new System.Windows.Forms.CheckBox();
-            this.CloseButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Columns)).BeginInit();
             this.SuspendLayout();
@@ -70,23 +67,7 @@
             // 
             // Columns
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Columns.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.Columns.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Columns.DefaultCellStyle = dataGridViewCellStyle2;
             this.Columns.Location = new System.Drawing.Point(1, 119);
             this.Columns.Name = "Columns";
             this.Columns.ReadOnly = true;
@@ -166,8 +147,6 @@
             // IsPascalize
             // 
             this.IsPascalize.AutoSize = true;
-            this.IsPascalize.Checked = true;
-            this.IsPascalize.CheckState = System.Windows.Forms.CheckState.Checked;
             this.IsPascalize.Location = new System.Drawing.Point(15, 448);
             this.IsPascalize.Name = "IsPascalize";
             this.IsPascalize.Size = new System.Drawing.Size(71, 17);
@@ -175,28 +154,14 @@
             this.IsPascalize.Text = "Pascalize";
             this.IsPascalize.UseVisualStyleBackColor = true;
             // 
-            // CloseButton
-            // 
-            this.CloseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.CloseButton.Image = global::iMapper.Properties.Resources.Close;
-            this.CloseButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CloseButton.Location = new System.Drawing.Point(215, 492);
-            this.CloseButton.Name = "CloseButton";
-            this.CloseButton.Size = new System.Drawing.Size(115, 38);
-            this.CloseButton.TabIndex = 9;
-            this.CloseButton.Text = "Close";
-            this.CloseButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.CloseButton.UseVisualStyleBackColor = true;
-            this.CloseButton.Click += new System.EventHandler(this.OnClickClose);
-            // 
             // SaveButton
             // 
             this.SaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.SaveButton.Image = global::iMapper.Properties.Resources.command;
             this.SaveButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SaveButton.Location = new System.Drawing.Point(12, 494);
+            this.SaveButton.Location = new System.Drawing.Point(247, 492);
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(115, 38);
+            this.SaveButton.Size = new System.Drawing.Size(84, 38);
             this.SaveButton.TabIndex = 0;
             this.SaveButton.Text = "Save";
             this.SaveButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -212,7 +177,6 @@
             this.Controls.Add(this.ColumnNumber);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.IsReplace);
-            this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Options);
             this.Controls.Add(this.label2);
@@ -244,7 +208,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox Options;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button CloseButton;
         private System.Windows.Forms.CheckBox IsReplace;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label ColumnNumber;

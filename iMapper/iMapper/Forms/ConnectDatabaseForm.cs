@@ -80,5 +80,16 @@ namespace iMapper.Forms
                 Password.ReadOnly = false;
             }
         }
+
+        private void OnLoadKDiff(object sender, EventArgs e)
+        {
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                KDiff.Text = openFileDialog.FileName;
+                var config = temporaryRepository.GetConfig();
+                config.KDiff = openFileDialog.FileName;
+                temporaryRepository.SetConfig(config);
+            }
+        }
     }
 }

@@ -9,5 +9,7 @@
         public string OldValue { get; set; }
 
         public string NewValue { get; set; }
+
+        public bool ReplaceOldValue { get; set; }
     }
 }

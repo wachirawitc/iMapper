@@ -30,6 +30,7 @@ namespace iMapper.Forms
         {
             entries = LoadResources();
             Init();
+            ResourceFileName.Text = resourceFile.Name;
         }
 
         private void OnSelectedTableChanged(object sender, EventArgs e)
@@ -60,31 +61,61 @@ namespace iMapper.Forms
 
                     resourceGrid.DataSource = model;
                 }
+
+                var keyColumn = resourceGrid.Columns["Key"];
+                if (keyColumn != null)
+                {
+                    keyColumn.ReadOnly = true;
+                    keyColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                }
+
+                var isExistingColumn = resourceGrid.Columns["IsExisting"];
+                if (isExistingColumn != null)
+                {
+                    isExistingColumn.ReadOnly = true;
+                    isExistingColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+                }
+
+                var replaceOldValueColumn = resourceGrid.Columns["ReplaceOldValue"];
+                if (replaceOldValueColumn != null)
+                {
+                    replaceOldValueColumn.ReadOnly = false;
+                    replaceOldValueColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+                }
             }
         }
 
         private void OnClickSaveButton(object sender, EventArgs e)
         {
-            using (var resXResourceWriter = new ResXResourceWriter(resourceFile.FullName))
+            var dictionaries = new Dictionary<string, string>();
+            entries.ForEach(x => dictionaries[x.Key] = x.OldValue);
+
+            var dataSources = resourceGrid.DataSource as List<ResXResourceModel> ?? new List<ResXResourceModel>();
+            foreach (var source in dataSources)
             {
-                var items = resourceGrid.DataSource as List<ResXResourceModel>;
-                if (items != null)
+                if (dictionaries.ContainsKey(source.Key))
                 {
-                    foreach (var item in items)
+                    if (source.IsExisting && source.ReplaceOldValue)
                     {
-                        if (item.IsExisting)
-                        {
-                            if (item.OldValue != item.NewValue && item.NewValue != item.Key.Humanize(LetterCasing.Title))
-                            {
-                                resXResourceWriter.AddResource(item.Key, item.NewValue);
-                            }
-                        }
-                        else
-                        {
-                            resXResourceWriter.AddResource(item.Key, item.NewValue);
-                        }
+                        dictionaries[source.Key] = source.NewValue;
                     }
                 }
+                else
+                {
+                    dictionaries[source.Key] = source.NewValue;
+                }
+            }
+
+            using (var resXResourceWriter = new ResXResourceWriter(resourceFile.FullName))
+            {
+                foreach (var dictionary in dictionaries)
+                {
+                    resXResourceWriter.AddResource(dictionary.Key, dictionary.Value);
+                }
+
+                resXResourceWriter.Generate();
+                resXResourceWriter.Dispose();
+                resXResourceWriter.Close();
             }
             Close();
         }
@@ -118,15 +149,18 @@ namespace iMapper.Forms
         private List<ResXResourceModel> LoadResources()
         {
             var model = new List<ResXResourceModel>();
-            using (var reader = new ResXResourceReader(resourceFile.FullName))
+            using (var resXResourceReader = new ResXResourceReader(resourceFile.FullName))
             {
-                foreach (DictionaryEntry entry in reader)
+                foreach (DictionaryEntry entry in resXResourceReader)
                 {
-                    model.Add(new ResXResourceModel
+                    if (model.Any(x => x.Key == entry.Key) == false)
                     {
-                        Key = entry.Key as string,
-                        OldValue = entry.Value as string
-                    });
+                        model.Add(new ResXResourceModel
+                        {
+                            Key = entry.Key as string,
+                            OldValue = entry.Value as string
+                        });
+                    }
                 }
 
                 return model;

@@ -49,11 +49,10 @@
             // IsPascalize
             // 
             this.IsPascalize.AutoSize = true;
-            this.IsPascalize.Checked = true;
-            this.IsPascalize.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.IsPascalize.Location = new System.Drawing.Point(14, 484);
+            this.IsPascalize.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.IsPascalize.Location = new System.Drawing.Point(225, 261);
             this.IsPascalize.Name = "IsPascalize";
-            this.IsPascalize.Size = new System.Drawing.Size(71, 17);
+            this.IsPascalize.Size = new System.Drawing.Size(108, 28);
             this.IsPascalize.TabIndex = 26;
             this.IsPascalize.Text = "Pascalize";
             this.IsPascalize.UseVisualStyleBackColor = true;
@@ -61,7 +60,7 @@
             // ColumnNumber
             // 
             this.ColumnNumber.AutoSize = true;
-            this.ColumnNumber.Location = new System.Drawing.Point(50, 99);
+            this.ColumnNumber.Location = new System.Drawing.Point(392, 9);
             this.ColumnNumber.Name = "ColumnNumber";
             this.ColumnNumber.Size = new System.Drawing.Size(56, 13);
             this.ColumnNumber.TabIndex = 25;
@@ -70,7 +69,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(14, 99);
+            this.label4.Location = new System.Drawing.Point(349, 9);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(37, 13);
             this.label4.TabIndex = 24;
@@ -79,12 +78,12 @@
             // IsReplace
             // 
             this.IsReplace.AutoSize = true;
-            this.IsReplace.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.IsReplace.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.IsReplace.ForeColor = System.Drawing.Color.Red;
-            this.IsReplace.Location = new System.Drawing.Point(14, 462);
+            this.IsReplace.Location = new System.Drawing.Point(14, 260);
             this.IsReplace.Margin = new System.Windows.Forms.Padding(2);
             this.IsReplace.Name = "IsReplace";
-            this.IsReplace.Size = new System.Drawing.Size(131, 17);
+            this.IsReplace.Size = new System.Drawing.Size(181, 28);
             this.IsReplace.TabIndex = 23;
             this.IsReplace.Text = "Replace if existing";
             this.IsReplace.UseVisualStyleBackColor = true;
@@ -93,7 +92,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label3.Location = new System.Drawing.Point(14, 369);
+            this.label3.Location = new System.Drawing.Point(11, 140);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 16);
             this.label3.TabIndex = 21;
@@ -102,11 +101,11 @@
             // Options
             // 
             this.Options.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Options.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.Options.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.Options.FormattingEnabled = true;
-            this.Options.Location = new System.Drawing.Point(14, 388);
+            this.Options.Location = new System.Drawing.Point(14, 159);
             this.Options.Name = "Options";
-            this.Options.Size = new System.Drawing.Size(316, 24);
+            this.Options.Size = new System.Drawing.Size(316, 32);
             this.Options.TabIndex = 20;
             this.Options.SelectedIndexChanged += new System.EventHandler(this.OnSelectedOptions);
             // 
@@ -114,7 +113,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label2.Location = new System.Drawing.Point(11, 54);
+            this.label2.Location = new System.Drawing.Point(11, 68);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 16);
             this.label2.TabIndex = 19;
@@ -122,29 +121,29 @@
             // 
             // FileName
             // 
-            this.FileName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.FileName.Location = new System.Drawing.Point(14, 70);
+            this.FileName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.FileName.Location = new System.Drawing.Point(14, 87);
             this.FileName.Name = "FileName";
-            this.FileName.Size = new System.Drawing.Size(316, 22);
+            this.FileName.Size = new System.Drawing.Size(316, 29);
             this.FileName.TabIndex = 18;
             // 
             // Columns
             // 
             this.Columns.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Columns.Location = new System.Drawing.Point(0, 119);
+            this.Columns.Location = new System.Drawing.Point(350, 26);
             this.Columns.Name = "Columns";
             this.Columns.ReadOnly = true;
-            this.Columns.Size = new System.Drawing.Size(342, 237);
+            this.Columns.Size = new System.Drawing.Size(566, 276);
             this.Columns.TabIndex = 17;
             // 
             // Tables
             // 
             this.Tables.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Tables.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.Tables.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.Tables.FormattingEnabled = true;
             this.Tables.Location = new System.Drawing.Point(14, 26);
             this.Tables.Name = "Tables";
-            this.Tables.Size = new System.Drawing.Size(316, 24);
+            this.Tables.Size = new System.Drawing.Size(316, 32);
             this.Tables.TabIndex = 16;
             this.Tables.SelectedIndexChanged += new System.EventHandler(this.OnSelectedTables);
             // 
@@ -160,22 +159,21 @@
             // 
             // SaveButton
             // 
+            this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.SaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.SaveButton.Image = global::iMapper.Properties.Resources.command;
             this.SaveButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SaveButton.Location = new System.Drawing.Point(247, 499);
+            this.SaveButton.Location = new System.Drawing.Point(751, 308);
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(83, 38);
+            this.SaveButton.Size = new System.Drawing.Size(165, 38);
             this.SaveButton.TabIndex = 14;
             this.SaveButton.Text = "Save";
-            this.SaveButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.OnClickSave);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(14, 419);
+            this.label5.Location = new System.Drawing.Point(14, 210);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(79, 13);
             this.label5.TabIndex = 27;
@@ -183,17 +181,17 @@
             // 
             // ValidatorName
             // 
-            this.ValidatorName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ValidatorName.Location = new System.Drawing.Point(14, 435);
+            this.ValidatorName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.ValidatorName.Location = new System.Drawing.Point(14, 226);
             this.ValidatorName.Name = "ValidatorName";
-            this.ValidatorName.Size = new System.Drawing.Size(316, 22);
+            this.ValidatorName.Size = new System.Drawing.Size(316, 29);
             this.ValidatorName.TabIndex = 28;
             // 
             // ValidationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(343, 549);
+            this.ClientSize = new System.Drawing.Size(928, 361);
             this.Controls.Add(this.ValidatorName);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.IsPascalize);

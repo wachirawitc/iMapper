@@ -34,8 +34,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.SaveButton = new System.Windows.Forms.Button();
-            this.Source = new System.Windows.Forms.TextBox();
-            this.Destination = new System.Windows.Forms.TextBox();
+            this.Sources = new System.Windows.Forms.ComboBox();
+            this.Destinations = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,7 +46,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(382, 29);
+            this.menuStrip1.Size = new System.Drawing.Size(572, 29);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -62,7 +62,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 34);
+            this.label1.Location = new System.Drawing.Point(12, 43);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 16);
             this.label1.TabIndex = 1;
@@ -71,7 +71,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 91);
+            this.label2.Location = new System.Drawing.Point(12, 105);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 16);
             this.label2.TabIndex = 3;
@@ -79,39 +79,44 @@
             // 
             // SaveButton
             // 
+            this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.SaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.SaveButton.Image = global::iMapper.Properties.Resources.command;
             this.SaveButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SaveButton.Location = new System.Drawing.Point(276, 139);
+            this.SaveButton.Location = new System.Drawing.Point(422, 170);
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(84, 38);
+            this.SaveButton.Size = new System.Drawing.Size(138, 38);
             this.SaveButton.TabIndex = 23;
             this.SaveButton.Text = "Save";
-            this.SaveButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.OnClickSave);
             // 
-            // Source
+            // Sources
             // 
-            this.Source.Location = new System.Drawing.Point(12, 54);
-            this.Source.Name = "Source";
-            this.Source.Size = new System.Drawing.Size(348, 22);
-            this.Source.TabIndex = 26;
+            this.Sources.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Sources.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.Sources.FormattingEnabled = true;
+            this.Sources.Location = new System.Drawing.Point(13, 62);
+            this.Sources.Name = "Sources";
+            this.Sources.Size = new System.Drawing.Size(547, 28);
+            this.Sources.TabIndex = 28;
             // 
-            // Destination
+            // Destinations
             // 
-            this.Destination.Location = new System.Drawing.Point(12, 111);
-            this.Destination.Name = "Destination";
-            this.Destination.Size = new System.Drawing.Size(348, 22);
-            this.Destination.TabIndex = 27;
+            this.Destinations.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Destinations.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.Destinations.FormattingEnabled = true;
+            this.Destinations.Location = new System.Drawing.Point(12, 124);
+            this.Destinations.Name = "Destinations";
+            this.Destinations.Size = new System.Drawing.Size(548, 28);
+            this.Destinations.TabIndex = 29;
             // 
             // TransferForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(382, 187);
-            this.Controls.Add(this.Destination);
-            this.Controls.Add(this.Source);
+            this.ClientSize = new System.Drawing.Size(572, 220);
+            this.Controls.Add(this.Destinations);
+            this.Controls.Add(this.Sources);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -138,8 +143,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button SaveButton;
-        private System.Windows.Forms.TextBox Source;
-        private System.Windows.Forms.TextBox Destination;
         private System.Windows.Forms.ToolStripMenuItem ReloadClass;
+        private System.Windows.Forms.ComboBox Sources;
+        private System.Windows.Forms.ComboBox Destinations;
     }
 }

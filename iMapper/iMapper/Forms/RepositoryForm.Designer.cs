@@ -50,7 +50,7 @@
             // ColumnNumber
             // 
             this.ColumnNumber.AutoSize = true;
-            this.ColumnNumber.Location = new System.Drawing.Point(50, 57);
+            this.ColumnNumber.Location = new System.Drawing.Point(459, 5);
             this.ColumnNumber.Name = "ColumnNumber";
             this.ColumnNumber.Size = new System.Drawing.Size(56, 13);
             this.ColumnNumber.TabIndex = 25;
@@ -59,7 +59,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(14, 57);
+            this.label4.Location = new System.Drawing.Point(413, 5);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(37, 13);
             this.label4.TabIndex = 24;
@@ -68,12 +68,12 @@
             // IsReplace
             // 
             this.IsReplace.AutoSize = true;
-            this.IsReplace.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.IsReplace.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.IsReplace.ForeColor = System.Drawing.Color.Red;
-            this.IsReplace.Location = new System.Drawing.Point(14, 453);
+            this.IsReplace.Location = new System.Drawing.Point(135, 187);
             this.IsReplace.Margin = new System.Windows.Forms.Padding(2);
             this.IsReplace.Name = "IsReplace";
-            this.IsReplace.Size = new System.Drawing.Size(131, 17);
+            this.IsReplace.Size = new System.Drawing.Size(181, 28);
             this.IsReplace.TabIndex = 23;
             this.IsReplace.Text = "Replace if existing";
             this.IsReplace.UseVisualStyleBackColor = true;
@@ -82,7 +82,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label3.Location = new System.Drawing.Point(14, 327);
+            this.label3.Location = new System.Drawing.Point(12, 70);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 16);
             this.label3.TabIndex = 21;
@@ -91,11 +91,11 @@
             // Options
             // 
             this.Options.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Options.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.Options.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.Options.FormattingEnabled = true;
-            this.Options.Location = new System.Drawing.Point(14, 346);
+            this.Options.Location = new System.Drawing.Point(12, 89);
             this.Options.Name = "Options";
-            this.Options.Size = new System.Drawing.Size(409, 24);
+            this.Options.Size = new System.Drawing.Size(396, 32);
             this.Options.TabIndex = 20;
             // 
             // Columns
@@ -117,20 +117,20 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.Columns.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Columns.Location = new System.Drawing.Point(0, 77);
+            this.Columns.Location = new System.Drawing.Point(414, 22);
             this.Columns.Name = "Columns";
             this.Columns.ReadOnly = true;
-            this.Columns.Size = new System.Drawing.Size(435, 237);
+            this.Columns.Size = new System.Drawing.Size(557, 193);
             this.Columns.TabIndex = 17;
             // 
             // Tables
             // 
             this.Tables.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Tables.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.Tables.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.Tables.FormattingEnabled = true;
-            this.Tables.Location = new System.Drawing.Point(12, 21);
+            this.Tables.Location = new System.Drawing.Point(12, 22);
             this.Tables.Name = "Tables";
-            this.Tables.Size = new System.Drawing.Size(417, 24);
+            this.Tables.Size = new System.Drawing.Size(396, 32);
             this.Tables.TabIndex = 16;
             this.Tables.SelectedIndexChanged += new System.EventHandler(this.OnSelectedTables);
             // 
@@ -146,15 +146,14 @@
             // 
             // SaveInterfaceButton
             // 
+            this.SaveInterfaceButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.SaveInterfaceButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.SaveInterfaceButton.Image = global::iMapper.Properties.Resources.command;
             this.SaveInterfaceButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SaveInterfaceButton.Location = new System.Drawing.Point(208, 485);
+            this.SaveInterfaceButton.Location = new System.Drawing.Point(669, 221);
             this.SaveInterfaceButton.Name = "SaveInterfaceButton";
-            this.SaveInterfaceButton.Size = new System.Drawing.Size(97, 38);
+            this.SaveInterfaceButton.Size = new System.Drawing.Size(148, 38);
             this.SaveInterfaceButton.TabIndex = 14;
             this.SaveInterfaceButton.Text = "Interface";
-            this.SaveInterfaceButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.SaveInterfaceButton.UseVisualStyleBackColor = true;
             this.SaveInterfaceButton.Click += new System.EventHandler(this.OnClickInterfaceSave);
             // 
@@ -162,7 +161,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label5.Location = new System.Drawing.Point(11, 376);
+            this.label5.Location = new System.Drawing.Point(9, 133);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(163, 16);
             this.label5.TabIndex = 27;
@@ -170,33 +169,33 @@
             // 
             // EntityFrameworkName
             // 
-            this.EntityFrameworkName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.EntityFrameworkName.Location = new System.Drawing.Point(14, 392);
+            this.EntityFrameworkName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.EntityFrameworkName.Location = new System.Drawing.Point(12, 152);
             this.EntityFrameworkName.Name = "EntityFrameworkName";
-            this.EntityFrameworkName.Size = new System.Drawing.Size(409, 22);
+            this.EntityFrameworkName.Size = new System.Drawing.Size(396, 29);
             this.EntityFrameworkName.TabIndex = 26;
             // 
             // IsPluralize
             // 
             this.IsPluralize.AutoSize = true;
-            this.IsPluralize.Location = new System.Drawing.Point(14, 420);
+            this.IsPluralize.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.IsPluralize.Location = new System.Drawing.Point(12, 187);
             this.IsPluralize.Name = "IsPluralize";
-            this.IsPluralize.Size = new System.Drawing.Size(65, 17);
+            this.IsPluralize.Size = new System.Drawing.Size(100, 28);
             this.IsPluralize.TabIndex = 30;
             this.IsPluralize.Text = "Pluralize";
             this.IsPluralize.UseVisualStyleBackColor = true;
             // 
             // SaveImplementButton
             // 
+            this.SaveImplementButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.SaveImplementButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.SaveImplementButton.Image = global::iMapper.Properties.Resources.command;
             this.SaveImplementButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SaveImplementButton.Location = new System.Drawing.Point(311, 485);
+            this.SaveImplementButton.Location = new System.Drawing.Point(823, 221);
             this.SaveImplementButton.Name = "SaveImplementButton";
-            this.SaveImplementButton.Size = new System.Drawing.Size(112, 38);
+            this.SaveImplementButton.Size = new System.Drawing.Size(148, 38);
             this.SaveImplementButton.TabIndex = 31;
             this.SaveImplementButton.Text = "Implement";
-            this.SaveImplementButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.SaveImplementButton.UseVisualStyleBackColor = true;
             this.SaveImplementButton.Click += new System.EventHandler(this.OnClickImplementSave);
             // 
@@ -204,7 +203,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(435, 535);
+            this.ClientSize = new System.Drawing.Size(984, 266);
             this.Controls.Add(this.SaveImplementButton);
             this.Controls.Add(this.IsPluralize);
             this.Controls.Add(this.label5);

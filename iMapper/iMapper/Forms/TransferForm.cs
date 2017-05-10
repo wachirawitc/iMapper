@@ -41,17 +41,22 @@ namespace iMapper.Forms
             var models = temporaryRepository.GetTransfer();
             if (models.Any())
             {
-                var fullNames = models.Select(x => x.FullName).ToArray();
-                AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
-                collection.AddRange(fullNames);
+                var items = models.Select(x => new ComboboxItem
+                {
+                    Text = $"{x.Name} ({x.FullName})",
+                    Value = x.FullName
+                }).ToList();
 
-                Source.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-                Source.AutoCompleteSource = AutoCompleteSource.CustomSource;
-                Source.AutoCompleteCustomSource = collection;
+                foreach (var item in items)
+                {
+                    Sources.Items.Add(item);
+                    Destinations.Items.Add(item);
+                }
 
-                Destination.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-                Destination.AutoCompleteSource = AutoCompleteSource.CustomSource;
-                Destination.AutoCompleteCustomSource = collection;
+                Sources.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                Sources.AutoCompleteSource = AutoCompleteSource.ListItems;
+                Destinations.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                Destinations.AutoCompleteSource = AutoCompleteSource.ListItems;
             }
         }
 
@@ -78,12 +83,30 @@ namespace iMapper.Forms
             }).ShowDialog();
         }
 
+        private string Source
+        {
+            get
+            {
+                var item = Sources.SelectedItem as ComboboxItem;
+                return item?.Value as string;
+            }
+        }
+
+        private string Destination
+        {
+            get
+            {
+                var item = Destinations.SelectedItem as ComboboxItem;
+                return item?.Value as string;
+            }
+        }
+
         private void OnClickSave(object sender, EventArgs e)
         {
             var models = temporaryRepository.GetTransfer();
 
-            var source = models.FirstOrDefault(x => x.FullName.Equals(Source.Text));
-            var destination = models.FirstOrDefault(x => x.FullName.Equals(Destination.Text));
+            var source = models.FirstOrDefault(x => x.FullName.Equals(Source));
+            var destination = models.FirstOrDefault(x => x.FullName.Equals(Destination));
 
             if (source == null)
             {

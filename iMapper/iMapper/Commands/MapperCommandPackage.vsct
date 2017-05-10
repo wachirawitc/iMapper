@@ -56,7 +56,7 @@
         <Parent guid="ModelCmdSet" id="ModelGroup" />
         <Icon guid="designGuid" id="designIcon" />
         <Strings>
-          <ButtonText>Model Template</ButtonText>
+          <ButtonText>Model</ButtonText>
         </Strings>
       </Button>
 
@@ -64,7 +64,7 @@
         <Parent guid="ValidationCmdSet" id="ValidationGroup" />
         <Icon guid="designGuid" id="designIcon" />
         <Strings>
-          <ButtonText>Validation Template</ButtonText>
+          <ButtonText>Validation</ButtonText>
         </Strings>
       </Button>
 
@@ -72,7 +72,7 @@
         <Parent guid="TransferCmdSet" id="TransferGroup" />
         <Icon guid="designGuid" id="designIcon" />
         <Strings>
-          <ButtonText>Transfer Template</ButtonText>
+          <ButtonText>Transfer</ButtonText>
         </Strings>
       </Button>
 
@@ -80,7 +80,7 @@
         <Parent guid="RepositoryCmdSet" id="RepositoryGroup" />
         <Icon guid="designGuid" id="designIcon" />
         <Strings>
-          <ButtonText>Repository Template</ButtonText>
+          <ButtonText>Repository</ButtonText>
         </Strings>
       </Button>
 
@@ -88,7 +88,7 @@
         <Parent guid="ModelProjNodeCmdSet" id="ModelProjNodeGroup" />
         <Icon guid="designGuid" id="designIcon" />
         <Strings>
-          <ButtonText>Model Template</ButtonText>
+          <ButtonText>Model</ButtonText>
         </Strings>
       </Button>
 
@@ -96,7 +96,7 @@
         <Parent guid="ValidationProjNodeCmdSet" id="ValidationProjNodeGroup" />
         <Icon guid="designGuid" id="designIcon" />
         <Strings>
-          <ButtonText>Validation Template</ButtonText>
+          <ButtonText>Validation</ButtonText>
         </Strings>
       </Button>
 
@@ -104,7 +104,7 @@
         <Parent guid="RepositoryProjNodeCmdSet" id="RepositoryProjNodeGroup" />
         <Icon guid="designGuid" id="designIcon" />
         <Strings>
-          <ButtonText>Repository Template</ButtonText>
+          <ButtonText>Repository</ButtonText>
         </Strings>
       </Button>
 
@@ -112,7 +112,7 @@
         <Parent guid="ServiceCmdSet" id="ServiceGroup" />
         <Icon guid="designGuid" id="designIcon" />
         <Strings>
-          <ButtonText>Service Template</ButtonText>
+          <ButtonText>Service</ButtonText>
         </Strings>
       </Button>
     </Buttons>

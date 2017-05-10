@@ -53,7 +53,7 @@
             this.Tables.FormattingEnabled = true;
             this.Tables.Location = new System.Drawing.Point(16, 34);
             this.Tables.Name = "Tables";
-            this.Tables.Size = new System.Drawing.Size(472, 25);
+            this.Tables.Size = new System.Drawing.Size(300, 25);
             this.Tables.TabIndex = 1;
             this.Tables.SelectedIndexChanged += new System.EventHandler(this.OnSelectedTableChanged);
             // 
@@ -63,12 +63,12 @@
             this.resourceGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.resourceGrid.Location = new System.Drawing.Point(16, 95);
             this.resourceGrid.Name = "resourceGrid";
-            this.resourceGrid.Size = new System.Drawing.Size(472, 227);
+            this.resourceGrid.Size = new System.Drawing.Size(819, 227);
             this.resourceGrid.TabIndex = 2;
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(288, 328);
+            this.saveButton.Location = new System.Drawing.Point(635, 326);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(200, 34);
             this.saveButton.TabIndex = 3;
@@ -99,7 +99,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(500, 372);
+            this.ClientSize = new System.Drawing.Size(847, 372);
             this.Controls.Add(this.ResourceFileName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.saveButton);

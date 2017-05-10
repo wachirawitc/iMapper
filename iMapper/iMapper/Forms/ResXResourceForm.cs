@@ -3,6 +3,7 @@ using iMapper.Model;
 using iMapper.Repository;
 using iMapper.Support;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace iMapper.Forms
     {
         private readonly FileInfo resourceFile;
         private readonly TemporaryRepository temporaryRepository;
+        private List<ResXResourceModel> entries;
 
         public ResXResourceForm(FileInfo resourceFile)
         {
@@ -26,6 +28,7 @@ namespace iMapper.Forms
 
         private void OnLoadResXResourceForm(object sender, EventArgs e)
         {
+            entries = LoadResources();
             Init();
         }
 
@@ -40,15 +43,22 @@ namespace iMapper.Forms
 
                 if (tables.Any())
                 {
-                    var resources = tables
-                        .Select(x => new ResXResourceModel
-                        {
-                            Key = x.ColumnName.Pascalize(),
-                            Value = x.ColumnName.Humanize(LetterCasing.Title)
-                        })
-                        .ToList();
+                    var model = new List<ResXResourceModel>();
 
-                    resourceGrid.DataSource = resources;
+                    foreach (var column in tables)
+                    {
+                        var item = new ResXResourceModel();
+                        item.Key = column.ColumnName.Pascalize();
+                        item.NewValue = column.ColumnName.Humanize(LetterCasing.Title);
+
+                        var entry = entries.FirstOrDefault(x => x.Key == item.Key);
+                        item.IsExisting = entry != null;
+                        item.OldValue = entry?.OldValue;
+
+                        model.Add(item);
+                    }
+
+                    resourceGrid.DataSource = model;
                 }
             }
         }
@@ -62,7 +72,17 @@ namespace iMapper.Forms
                 {
                     foreach (var item in items)
                     {
-                        resXResourceWriter.AddResource(item.Key, item.Value);
+                        if (item.IsExisting)
+                        {
+                            if (item.OldValue != item.NewValue && item.NewValue != item.Key.Humanize(LetterCasing.Title))
+                            {
+                                resXResourceWriter.AddResource(item.Key, item.NewValue);
+                            }
+                        }
+                        else
+                        {
+                            resXResourceWriter.AddResource(item.Key, item.NewValue);
+                        }
                     }
                 }
             }
@@ -92,6 +112,24 @@ namespace iMapper.Forms
             {
                 var item = Tables.SelectedItem as ComboboxItem;
                 return item?.Value as string;
+            }
+        }
+
+        private List<ResXResourceModel> LoadResources()
+        {
+            var model = new List<ResXResourceModel>();
+            using (var reader = new ResXResourceReader(resourceFile.FullName))
+            {
+                foreach (DictionaryEntry entry in reader)
+                {
+                    model.Add(new ResXResourceModel
+                    {
+                        Key = entry.Key as string,
+                        OldValue = entry.Value as string
+                    });
+                }
+
+                return model;
             }
         }
     }

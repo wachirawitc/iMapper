@@ -5,39 +5,39 @@
   <Commands package="guidMapperCommandPackage">
     <Groups>
 
-      <Group guid="ConnectDbCmdSet" id="ConnectDbGroup" priority="0x0601">
+      <Group guid="ConnectDbCmdSet" id="ConnectDbGroup" priority="0x0001">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE" />
       </Group>
 
-      <Group guid="ModelCmdSet" id="ModelGroup" priority="0x0602">
+      <Group guid="ModelCmdSet" id="ModelGroup" priority="0x0002">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_FOLDERNODE" />
       </Group>
 
-      <Group guid="ValidationCmdSet" id="ValidationGroup" priority="0x0603">
+      <Group guid="ValidationCmdSet" id="ValidationGroup" priority="0x0003">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_FOLDERNODE" />
       </Group>
 
-      <Group guid="TransferCmdSet" id="TransferGroup" priority="0x0603">
+      <Group guid="TransferCmdSet" id="TransferGroup" priority="0x0003">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_FOLDERNODE" />
       </Group>
 
-      <Group guid="RepositoryCmdSet" id="RepositoryGroup" priority="0x0604">
+      <Group guid="RepositoryCmdSet" id="RepositoryGroup" priority="0x0004">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_FOLDERNODE" />
       </Group>
 
-      <Group guid="ModelProjNodeCmdSet" id="ModelProjNodeGroup" priority="0x0605">
+      <Group guid="ModelProjNodeCmdSet" id="ModelProjNodeGroup" priority="0x0005">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE" />
       </Group>
 
-      <Group guid="ValidationProjNodeCmdSet" id="ValidationProjNodeGroup" priority="0x0606">
+      <Group guid="ValidationProjNodeCmdSet" id="ValidationProjNodeGroup" priority="0x0006">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE" />
       </Group>
 
-      <Group guid="RepositoryProjNodeCmdSet" id="RepositoryProjNodeGroup" priority="0x0607">
+      <Group guid="RepositoryProjNodeCmdSet" id="RepositoryProjNodeGroup" priority="0x0007">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE" />
       </Group>
 
-      <Group guid="ServiceCmdSet" id="ServiceGroup" priority="0x0608">
+      <Group guid="ServiceCmdSet" id="ServiceGroup" priority="0x0008">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_FOLDERNODE" />
       </Group>
     </Groups>
@@ -127,49 +127,49 @@
 
     <GuidSymbol name="ConnectDbCmdSet" value="{89629128-c144-443f-9920-0ed1b9bc65b6}">
       <IDSymbol name="ConnectDbGroup" value="0x0201" />
-      <IDSymbol name="ConnectDatabaseCommandId" value="0x0200" />
+      <IDSymbol name="ConnectDatabaseCommandId" value="0x0202" />
     </GuidSymbol>
 
     <GuidSymbol name="ModelCmdSet" value="{0f8fad5b-d9cb-469f-a165-70867728950e}">
-      <IDSymbol name="ModelGroup" value="0x0301" />
-      <IDSymbol name="ModelCommandId" value="0x0300" />
+      <IDSymbol name="ModelGroup" value="0x0203" />
+      <IDSymbol name="ModelCommandId" value="0x0204" />
     </GuidSymbol>
 
     <GuidSymbol name="ValidationCmdSet" value="{80d2efe5-0057-4061-b0cf-0b43565e4777}">
-      <IDSymbol name="ValidationGroup" value="0x0401" />
-      <IDSymbol name="ValidationCommandId" value="0x0400" />
+      <IDSymbol name="ValidationGroup" value="0x0205" />
+      <IDSymbol name="ValidationCommandId" value="0x0206" />
     </GuidSymbol>
 
     <GuidSymbol name="TransferCmdSet" value="{b32a039d-3f1d-4db7-84a1-5015a677c6d5}">
-      <IDSymbol name="TransferGroup" value="0x0501" />
-      <IDSymbol name="TransferCommandId" value="0x0500" />
+      <IDSymbol name="TransferGroup" value="0x0207" />
+      <IDSymbol name="TransferCommandId" value="0x0208" />
     </GuidSymbol>
 
     <GuidSymbol name="RepositoryCmdSet" value="{8ae90204-5920-4068-8822-5b68e57ccb03}">
-      <IDSymbol name="RepositoryGroup" value="0x0601" />
-      <IDSymbol name="RepositoryCommandId" value="0x0600" />
+      <IDSymbol name="RepositoryGroup" value="0x0209" />
+      <IDSymbol name="RepositoryCommandId" value="0x0210" />
     </GuidSymbol>
 
     <GuidSymbol name="ModelProjNodeCmdSet" value="{97235e93-1311-44de-982e-27798e9f1270}">
-      <IDSymbol name="ModelProjNodeGroup" value="0x0701" />
-      <IDSymbol name="ModelProjNodeCommandId" value="0x0700" />
+      <IDSymbol name="ModelProjNodeGroup" value="0x0211" />
+      <IDSymbol name="ModelProjNodeCommandId" value="0x0212" />
     </GuidSymbol>
 
     <GuidSymbol name="ValidationProjNodeCmdSet" value="{ef162887-333c-4e3a-b22c-0d26604d0097}">
-      <IDSymbol name="ValidationProjNodeGroup" value="0x0801" />
-      <IDSymbol name="ValidationProjNodeCommandId" value="0x0800" />
+      <IDSymbol name="ValidationProjNodeGroup" value="0x0213" />
+      <IDSymbol name="ValidationProjNodeCommandId" value="0x0214" />
     </GuidSymbol>
 
     <GuidSymbol name="RepositoryProjNodeCmdSet" value="{a0d109bf-55fa-4eac-838f-c2a36e9976c3}">
-      <IDSymbol name="RepositoryProjNodeGroup" value="0x0901" />
-      <IDSymbol name="RepositoryProjNodeCommandId" value="0x0900" />
+      <IDSymbol name="RepositoryProjNodeGroup" value="0x0215" />
+      <IDSymbol name="RepositoryProjNodeCommandId" value="0x0216" />
     </GuidSymbol>
 
     <GuidSymbol name="ServiceCmdSet" value="{501a94a1-4dce-46b1-ab4a-84370e66d06c}">
-      <IDSymbol name="ServiceGroup" value="0x0101" />
-      <IDSymbol name="ServiceCommandId" value="0x0100" />
+      <IDSymbol name="ServiceGroup" value="0x0217" />
+      <IDSymbol name="ServiceCommandId" value="0x0218" />
     </GuidSymbol>
-    
+
     <GuidSymbol name="guidImages" value="{800f86f7-dada-497c-8666-ddbcce338fc0}">
       <IDSymbol name="bmpPic1" value="1" />
       <IDSymbol name="bmpPic2" value="2" />

@@ -1,29 +1,34 @@
 ﻿using EnvDTE;
 using EnvDTE80;
+using iMapper.Constance;
+using iMapper.Extensions;
 using iMapper.Forms;
+using iMapper.Model;
 using iMapper.Support;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.Design;
+using System.IO;
 using System.Linq;
 
 namespace iMapper.Commands
 {
     internal sealed class MapperCommand
     {
-        public const int ConnectDatabaseCommandId = 0x0200;
-        public const int MapViewModelCommandId = 0x0300;
-        public const int ValidationCommandId = 0x0400;
-        public const int TransferCommandId = 0x0500;
-        public const int RepositoryCommandId = 0x0600;
-        public const int ModelProjNodeCommandId = 0x0700;
-        public const int ValidationProjNodeCommandId = 0x0800;
-        public const int RepositoryProjNodeCommandId = 0x0900;
-        public const int ServiceCommandId = 0x0100;
+        public const int ConnectDatabaseCommandId = 0x0202;
+        public const int ModelCommandId = 0x0204;
+        public const int ValidationCommandId = 0x0206;
+        public const int TransferCommandId = 0x0208;
+        public const int RepositoryCommandId = 0x0210;
+        public const int ModelProjNodeCommandId = 0x0212;
+        public const int ValidationProjNodeCommandId = 0x0214;
+        public const int RepositoryProjNodeCommandId = 0x0216;
+        public const int ServiceCommandId = 0x0218;
 
         public static readonly Guid ConnectDatabaseCommand = new Guid("89629128-c144-443f-9920-0ed1b9bc65b6");
-        public static readonly Guid MapViewModelCommand = new Guid("0f8fad5b-d9cb-469f-a165-70867728950e");
+        public static readonly Guid ModelCommand = new Guid("0f8fad5b-d9cb-469f-a165-70867728950e");
         public static readonly Guid ValidationCommand = new Guid("80d2efe5-0057-4061-b0cf-0b43565e4777");
         public static readonly Guid TransferCommand = new Guid("b32a039d-3f1d-4db7-84a1-5015a677c6d5");
         public static readonly Guid RepositoryCommand = new Guid("8ae90204-5920-4068-8822-5b68e57ccb03");
@@ -43,44 +48,28 @@ namespace iMapper.Commands
 
             this.package = package;
 
-            OleMenuCommandService commandService = ServiceProvider.GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
+            var commandService = ServiceProvider.GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
             if (commandService != null)
             {
-                var connectDatabaseCommand = new CommandID(ConnectDatabaseCommand, ConnectDatabaseCommandId);
-                var connectDatabaseCommandMenuItem = new MenuCommand(ConnectDatabaseCallback, connectDatabaseCommand);
-                commandService.AddCommand(connectDatabaseCommandMenuItem);
+                var commands = new List<CommandModel>
+                {
+                    new CommandModel(ConnectDatabaseCommandId, ConnectDatabaseCommand, ConnectDatabaseCallback),
+                    new CommandModel(ModelCommandId, ModelCommand, ModelCallback),
+                    new CommandModel(ValidationCommandId, ValidationCommand, ValidationCallback),
+                    new CommandModel(TransferCommandId, TransferCommand, TransferCallback),
+                    new CommandModel(RepositoryCommandId, RepositoryCommand, RepositoryCallback),
+                    new CommandModel(ModelProjNodeCommandId, ModelProjNodeCommand, ModelProjNodeCallback),
+                    new CommandModel(ValidationProjNodeCommandId, ValidationProjNodeCommand, ValidationProjNodeCallback),
+                    new CommandModel(RepositoryProjNodeCommandId, RepositoryProjNodeCommand, RepositoryProjNodeCallback),
+                    new CommandModel(ServiceCommandId, ServiceCommand, ServiceCallback),
+                };
 
-                var mapViewModelCommand = new CommandID(MapViewModelCommand, MapViewModelCommandId);
-                var mapViewModelCommandMenuItem = new MenuCommand(MapViewModelCallback, mapViewModelCommand);
-                commandService.AddCommand(mapViewModelCommandMenuItem);
-
-                var validationCommand = new CommandID(ValidationCommand, ValidationCommandId);
-                var validationCommandMenuItem = new MenuCommand(ValidationCallback, validationCommand);
-                commandService.AddCommand(validationCommandMenuItem);
-
-                var transferCommand = new CommandID(TransferCommand, TransferCommandId);
-                var transferCommandMenuItem = new MenuCommand(TransferCallback, transferCommand);
-                commandService.AddCommand(transferCommandMenuItem);
-
-                var repositoryCommand = new CommandID(RepositoryCommand, RepositoryCommandId);
-                var repositoryCommandMenuItem = new MenuCommand(RepositoryCallback, repositoryCommand);
-                commandService.AddCommand(repositoryCommandMenuItem);
-
-                var modelProjNodeCommand = new CommandID(ModelProjNodeCommand, ModelProjNodeCommandId);
-                var modelProjNodeCommandMenuItem = new MenuCommand(ModelProjNodeCallback, modelProjNodeCommand);
-                commandService.AddCommand(modelProjNodeCommandMenuItem);
-
-                var validationProjNodeCommand = new CommandID(ValidationProjNodeCommand, ValidationProjNodeCommandId);
-                var validationProjNodeCommandMenuItem = new MenuCommand(ValidationProjNodeCallback, validationProjNodeCommand);
-                commandService.AddCommand(validationProjNodeCommandMenuItem);
-
-                var repositoryProjNodeCommand = new CommandID(RepositoryProjNodeCommand, RepositoryProjNodeCommandId);
-                var repositoryProjNodeCommandMenuItem = new MenuCommand(RepositoryProjNodeCallback, repositoryProjNodeCommand);
-                commandService.AddCommand(repositoryProjNodeCommandMenuItem);
-
-                var serviceCommand = new CommandID(ServiceCommand, ServiceCommandId);
-                var serviceCommandMenuItem = new MenuCommand(ServiceCallback, serviceCommand);
-                commandService.AddCommand(serviceCommandMenuItem);
+                foreach (var command in commands)
+                {
+                    var commandId = new CommandID(command.MenuGroup, command.CommandId);
+                    var menuCommand = new MenuCommand(command.Event, commandId);
+                    commandService.AddCommand(menuCommand);
+                }
             }
 
             SetSolutionPath();
@@ -268,7 +257,7 @@ namespace iMapper.Commands
             }
         }
 
-        private void MapViewModelCallback(object sender, EventArgs e)
+        private void ModelCallback(object sender, EventArgs e)
         {
             var dte2 = Package.GetGlobalService(typeof(SDTE)) as DTE2;
             if (dte2 != null)

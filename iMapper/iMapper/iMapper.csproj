@@ -69,6 +69,8 @@
     <Compile Include="Extensions\CodeElementExtension.cs" />
     <Compile Include="Extensions\DateTimeExtension.cs" />
     <Compile Include="Extensions\DirectoryInfoExtension.cs" />
+    <Compile Include="Extensions\Dte2Extension.cs" />
+    <Compile Include="Extensions\FileCodeModel2Extension.cs" />
     <Compile Include="Extensions\FileExtension.cs" />
     <Compile Include="Extensions\ProjectExtension.cs" />
     <Compile Include="Extensions\ProjectItemExtension.cs" />
@@ -118,6 +120,7 @@
     </Compile>
     <Compile Include="Model\ClassElementModel.cs" />
     <Compile Include="Model\ClassModel.cs" />
+    <Compile Include="Model\CommandModel.cs" />
     <Compile Include="Model\Config.cs" />
     <Compile Include="Model\Database\ColumnModel.cs" />
     <Compile Include="Model\Database\StoredProceduresColumnsModel.cs" />

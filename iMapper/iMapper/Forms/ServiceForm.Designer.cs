@@ -48,11 +48,11 @@
             // SaveImplementButton
             // 
             this.SaveImplementButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.SaveImplementButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.SaveImplementButton.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveImplementButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SaveImplementButton.Location = new System.Drawing.Point(811, 217);
+            this.SaveImplementButton.Location = new System.Drawing.Point(518, 221);
             this.SaveImplementButton.Name = "SaveImplementButton";
-            this.SaveImplementButton.Size = new System.Drawing.Size(160, 38);
+            this.SaveImplementButton.Size = new System.Drawing.Size(200, 38);
             this.SaveImplementButton.TabIndex = 45;
             this.SaveImplementButton.Text = "Implement";
             this.SaveImplementButton.UseVisualStyleBackColor = true;
@@ -61,10 +61,10 @@
             // IsPluralize
             // 
             this.IsPluralize.AutoSize = true;
-            this.IsPluralize.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.IsPluralize.Location = new System.Drawing.Point(214, 140);
+            this.IsPluralize.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IsPluralize.Location = new System.Drawing.Point(12, 132);
             this.IsPluralize.Name = "IsPluralize";
-            this.IsPluralize.Size = new System.Drawing.Size(100, 28);
+            this.IsPluralize.Size = new System.Drawing.Size(73, 21);
             this.IsPluralize.TabIndex = 44;
             this.IsPluralize.Text = "Pluralize";
             this.IsPluralize.UseVisualStyleBackColor = true;
@@ -72,30 +72,32 @@
             // ColumnNumber
             // 
             this.ColumnNumber.AutoSize = true;
-            this.ColumnNumber.Location = new System.Drawing.Point(457, 9);
+            this.ColumnNumber.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ColumnNumber.Location = new System.Drawing.Point(367, 9);
             this.ColumnNumber.Name = "ColumnNumber";
-            this.ColumnNumber.Size = new System.Drawing.Size(56, 13);
+            this.ColumnNumber.Size = new System.Drawing.Size(67, 17);
             this.ColumnNumber.TabIndex = 41;
             this.ColumnNumber.Text = "0 Columns";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(421, 9);
+            this.label4.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(319, 8);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(37, 13);
+            this.label4.Size = new System.Drawing.Size(42, 17);
             this.label4.TabIndex = 40;
             this.label4.Text = "Found";
             // 
             // IsReplace
             // 
             this.IsReplace.AutoSize = true;
-            this.IsReplace.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.IsReplace.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.IsReplace.ForeColor = System.Drawing.Color.Red;
-            this.IsReplace.Location = new System.Drawing.Point(14, 140);
+            this.IsReplace.Location = new System.Drawing.Point(12, 106);
             this.IsReplace.Margin = new System.Windows.Forms.Padding(2);
             this.IsReplace.Name = "IsReplace";
-            this.IsReplace.Size = new System.Drawing.Size(181, 28);
+            this.IsReplace.Size = new System.Drawing.Size(126, 21);
             this.IsReplace.TabIndex = 39;
             this.IsReplace.Text = "Replace if existing";
             this.IsReplace.UseVisualStyleBackColor = true;
@@ -103,21 +105,21 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label3.Location = new System.Drawing.Point(14, 73);
+            this.label3.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(9, 56);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 16);
+            this.label3.Size = new System.Drawing.Size(46, 17);
             this.label3.TabIndex = 37;
             this.label3.Text = "Option";
             // 
             // Options
             // 
             this.Options.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Options.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.Options.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Options.FormattingEnabled = true;
-            this.Options.Location = new System.Drawing.Point(14, 92);
+            this.Options.Location = new System.Drawing.Point(12, 76);
             this.Options.Name = "Options";
-            this.Options.Size = new System.Drawing.Size(404, 32);
+            this.Options.Size = new System.Drawing.Size(300, 25);
             this.Options.TabIndex = 36;
             // 
             // Columns
@@ -139,40 +141,40 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.Columns.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Columns.Location = new System.Drawing.Point(424, 25);
+            this.Columns.Location = new System.Drawing.Point(318, 29);
             this.Columns.Name = "Columns";
             this.Columns.ReadOnly = true;
-            this.Columns.Size = new System.Drawing.Size(547, 186);
+            this.Columns.Size = new System.Drawing.Size(400, 186);
             this.Columns.TabIndex = 35;
             // 
             // Tables
             // 
             this.Tables.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Tables.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.Tables.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tables.FormattingEnabled = true;
-            this.Tables.Location = new System.Drawing.Point(17, 25);
+            this.Tables.Location = new System.Drawing.Point(12, 28);
             this.Tables.Name = "Tables";
-            this.Tables.Size = new System.Drawing.Size(401, 32);
+            this.Tables.Size = new System.Drawing.Size(300, 25);
             this.Tables.TabIndex = 34;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(9, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 16);
+            this.label1.Size = new System.Drawing.Size(36, 17);
             this.label1.TabIndex = 33;
             this.label1.Text = "Table";
             // 
             // SaveInterfaceButton
             // 
             this.SaveInterfaceButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.SaveInterfaceButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.SaveInterfaceButton.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveInterfaceButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SaveInterfaceButton.Location = new System.Drawing.Point(645, 217);
+            this.SaveInterfaceButton.Location = new System.Drawing.Point(312, 221);
             this.SaveInterfaceButton.Name = "SaveInterfaceButton";
-            this.SaveInterfaceButton.Size = new System.Drawing.Size(160, 38);
+            this.SaveInterfaceButton.Size = new System.Drawing.Size(200, 38);
             this.SaveInterfaceButton.TabIndex = 32;
             this.SaveInterfaceButton.Text = "Interface";
             this.SaveInterfaceButton.UseVisualStyleBackColor = true;
@@ -182,7 +184,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(985, 275);
+            this.ClientSize = new System.Drawing.Size(730, 275);
             this.Controls.Add(this.SaveImplementButton);
             this.Controls.Add(this.IsPluralize);
             this.Controls.Add(this.ColumnNumber);

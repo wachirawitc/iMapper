@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModelForm));
             this.label1 = new System.Windows.Forms.Label();
             this.Tables = new System.Windows.Forms.ComboBox();
@@ -49,97 +47,88 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 16);
+            this.label1.Size = new System.Drawing.Size(40, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "Table";
             // 
             // Tables
             // 
             this.Tables.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Tables.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.Tables.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tables.FormattingEnabled = true;
-            this.Tables.Location = new System.Drawing.Point(12, 28);
+            this.Tables.Location = new System.Drawing.Point(13, 34);
+            this.Tables.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Tables.Name = "Tables";
-            this.Tables.Size = new System.Drawing.Size(316, 32);
+            this.Tables.Size = new System.Drawing.Size(300, 25);
             this.Tables.TabIndex = 2;
             this.Tables.SelectedIndexChanged += new System.EventHandler(this.OnSelectedTables);
             // 
             // Columns
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Columns.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.Columns.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Columns.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Columns.Location = new System.Drawing.Point(334, 28);
+            this.Columns.Location = new System.Drawing.Point(321, 34);
+            this.Columns.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Columns.Name = "Columns";
             this.Columns.ReadOnly = true;
-            this.Columns.Size = new System.Drawing.Size(515, 179);
+            this.Columns.Size = new System.Drawing.Size(400, 220);
             this.Columns.TabIndex = 3;
             // 
             // FileName
             // 
-            this.FileName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.FileName.Location = new System.Drawing.Point(12, 95);
+            this.FileName.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FileName.Location = new System.Drawing.Point(13, 84);
+            this.FileName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.FileName.Name = "FileName";
-            this.FileName.Size = new System.Drawing.Size(316, 29);
+            this.FileName.Size = new System.Drawing.Size(300, 25);
             this.FileName.TabIndex = 5;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label2.Location = new System.Drawing.Point(12, 76);
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(10, 63);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 16);
+            this.label2.Size = new System.Drawing.Size(63, 17);
             this.label2.TabIndex = 6;
             this.label2.Text = "File name";
             // 
             // Options
             // 
             this.Options.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Options.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.Options.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Options.FormattingEnabled = true;
-            this.Options.Location = new System.Drawing.Point(11, 153);
+            this.Options.Location = new System.Drawing.Point(13, 134);
+            this.Options.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Options.Name = "Options";
-            this.Options.Size = new System.Drawing.Size(316, 32);
+            this.Options.Size = new System.Drawing.Size(300, 25);
             this.Options.TabIndex = 7;
             this.Options.SelectedIndexChanged += new System.EventHandler(this.OnSelectedOptions);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label3.Location = new System.Drawing.Point(8, 134);
+            this.label3.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(12, 113);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 16);
+            this.label3.Size = new System.Drawing.Size(46, 17);
             this.label3.TabIndex = 8;
             this.label3.Text = "Option";
             // 
             // IsReplace
             // 
             this.IsReplace.AutoSize = true;
-            this.IsReplace.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.IsReplace.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.IsReplace.ForeColor = System.Drawing.Color.Red;
-            this.IsReplace.Location = new System.Drawing.Point(11, 200);
-            this.IsReplace.Margin = new System.Windows.Forms.Padding(2);
+            this.IsReplace.Location = new System.Drawing.Point(12, 165);
+            this.IsReplace.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.IsReplace.Name = "IsReplace";
-            this.IsReplace.Size = new System.Drawing.Size(181, 28);
+            this.IsReplace.Size = new System.Drawing.Size(126, 21);
             this.IsReplace.TabIndex = 10;
             this.IsReplace.Text = "Replace if existing";
             this.IsReplace.UseVisualStyleBackColor = true;
@@ -147,28 +136,33 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(331, 8);
+            this.label4.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(318, 9);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(37, 13);
+            this.label4.Size = new System.Drawing.Size(42, 17);
             this.label4.TabIndex = 11;
             this.label4.Text = "Found";
             // 
             // ColumnNumber
             // 
             this.ColumnNumber.AutoSize = true;
-            this.ColumnNumber.Location = new System.Drawing.Point(374, 8);
+            this.ColumnNumber.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ColumnNumber.Location = new System.Drawing.Point(368, 9);
+            this.ColumnNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ColumnNumber.Name = "ColumnNumber";
-            this.ColumnNumber.Size = new System.Drawing.Size(56, 13);
+            this.ColumnNumber.Size = new System.Drawing.Size(67, 17);
             this.ColumnNumber.TabIndex = 12;
             this.ColumnNumber.Text = "0 Columns";
             // 
             // IsPascalize
             // 
             this.IsPascalize.AutoSize = true;
-            this.IsPascalize.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.IsPascalize.Location = new System.Drawing.Point(220, 200);
+            this.IsPascalize.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IsPascalize.Location = new System.Drawing.Point(12, 192);
+            this.IsPascalize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.IsPascalize.Name = "IsPascalize";
-            this.IsPascalize.Size = new System.Drawing.Size(108, 28);
+            this.IsPascalize.Size = new System.Drawing.Size(75, 21);
             this.IsPascalize.TabIndex = 13;
             this.IsPascalize.Text = "Pascalize";
             this.IsPascalize.UseVisualStyleBackColor = true;
@@ -176,10 +170,11 @@
             // SaveButton
             // 
             this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.SaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.SaveButton.Location = new System.Drawing.Point(706, 213);
+            this.SaveButton.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SaveButton.Location = new System.Drawing.Point(521, 262);
+            this.SaveButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(143, 38);
+            this.SaveButton.Size = new System.Drawing.Size(200, 34);
             this.SaveButton.TabIndex = 0;
             this.SaveButton.Text = "Save";
             this.SaveButton.UseVisualStyleBackColor = true;
@@ -187,9 +182,9 @@
             // 
             // ModelForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(859, 259);
+            this.ClientSize = new System.Drawing.Size(732, 303);
             this.Controls.Add(this.IsPascalize);
             this.Controls.Add(this.ColumnNumber);
             this.Controls.Add(this.label4);
@@ -202,9 +197,10 @@
             this.Controls.Add(this.Tables);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.SaveButton);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ModelForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Model";

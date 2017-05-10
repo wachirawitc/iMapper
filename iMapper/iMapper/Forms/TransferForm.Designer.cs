@@ -41,50 +41,53 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ReloadClass});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(572, 29);
+            this.menuStrip1.Size = new System.Drawing.Size(572, 25);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // ReloadClass
             // 
-            this.ReloadClass.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReloadClass.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ReloadClass.Image = global::iMapper.Properties.Resources.reload;
             this.ReloadClass.Name = "ReloadClass";
-            this.ReloadClass.Size = new System.Drawing.Size(95, 25);
+            this.ReloadClass.Size = new System.Drawing.Size(82, 21);
             this.ReloadClass.Text = "Reload...";
             this.ReloadClass.Click += new System.EventHandler(this.OnClickReloadClass);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 43);
+            this.label1.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(11, 37);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 16);
+            this.label1.Size = new System.Drawing.Size(45, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "Source";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 105);
+            this.label2.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(11, 91);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 16);
+            this.label2.Size = new System.Drawing.Size(70, 17);
             this.label2.TabIndex = 3;
             this.label2.Text = "Destination";
             // 
             // SaveButton
             // 
             this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.SaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.SaveButton.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SaveButton.Location = new System.Drawing.Point(422, 170);
+            this.SaveButton.Location = new System.Drawing.Point(359, 141);
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(138, 38);
+            this.SaveButton.Size = new System.Drawing.Size(200, 38);
             this.SaveButton.TabIndex = 23;
             this.SaveButton.Text = "Save";
             this.SaveButton.UseVisualStyleBackColor = true;
@@ -93,28 +96,28 @@
             // Sources
             // 
             this.Sources.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Sources.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.Sources.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Sources.FormattingEnabled = true;
-            this.Sources.Location = new System.Drawing.Point(13, 62);
+            this.Sources.Location = new System.Drawing.Point(12, 56);
             this.Sources.Name = "Sources";
-            this.Sources.Size = new System.Drawing.Size(547, 28);
+            this.Sources.Size = new System.Drawing.Size(547, 25);
             this.Sources.TabIndex = 28;
             // 
             // Destinations
             // 
             this.Destinations.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Destinations.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.Destinations.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Destinations.FormattingEnabled = true;
-            this.Destinations.Location = new System.Drawing.Point(12, 124);
+            this.Destinations.Location = new System.Drawing.Point(11, 110);
             this.Destinations.Name = "Destinations";
-            this.Destinations.Size = new System.Drawing.Size(548, 28);
+            this.Destinations.Size = new System.Drawing.Size(548, 25);
             this.Destinations.TabIndex = 29;
             // 
             // TransferForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(572, 220);
+            this.ClientSize = new System.Drawing.Size(572, 193);
             this.Controls.Add(this.Destinations);
             this.Controls.Add(this.Sources);
             this.Controls.Add(this.SaveButton);

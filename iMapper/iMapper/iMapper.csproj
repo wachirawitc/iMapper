@@ -100,6 +100,12 @@
     <Compile Include="Forms\RepositoryForm.Designer.cs">
       <DependentUpon>RepositoryForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ResXResourceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ResXResourceForm.Designer.cs">
+      <DependentUpon>ResXResourceForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ServiceForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +137,7 @@
     <Compile Include="Model\ModelConfig.cs" />
     <Compile Include="Model\PropertyModel.cs" />
     <Compile Include="Model\RepositoryConfig.cs" />
+    <Compile Include="Model\ResXResourceModel.cs" />
     <Compile Include="Model\ServiceConfig.cs" />
     <Compile Include="Model\ValidationConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -538,6 +545,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RepositoryForm.resx">
       <DependentUpon>RepositoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ResXResourceForm.resx">
+      <DependentUpon>ResXResourceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ServiceForm.resx">
       <DependentUpon>ServiceForm.cs</DependentUpon>

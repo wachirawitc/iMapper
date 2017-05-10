@@ -44,6 +44,10 @@
       <Group guid="ServiceCmdSet" id="ServiceGroup" priority="0x0008">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_FOLDERNODE" />
       </Group>
+
+      <Group guid="ResXResourceCmdSet" id="ResXResourceGroup" priority="0x0009">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE" />
+      </Group>
     </Groups>
 
     <Buttons>
@@ -127,6 +131,15 @@
           <ButtonText>Service</ButtonText>
         </Strings>
       </Button>
+
+      <Button guid="ResXResourceCmdSet" id="ResXResourceCommandId" priority="0x0110" type="Button">
+        <Parent guid="ResXResourceCmdSet" id="ResXResourceGroup" />
+        <Icon guid="designGuid" id="designIcon" />
+        <Strings>
+          <ButtonText>ResX Resource</ButtonText>
+        </Strings>
+      </Button>
+      
     </Buttons>
 
     <Bitmaps>
@@ -187,6 +200,11 @@
     <GuidSymbol name="SaveCmdSet" value="{84160585-dc7f-44b2-ab42-f9e135f7dce6}">
       <IDSymbol name="SaveGroup" value="0x0219" />
       <IDSymbol name="SaveCommandId" value="0x0220" />
+    </GuidSymbol>
+
+    <GuidSymbol name="ResXResourceCmdSet" value="{c5088d7f-2809-4383-84a3-25b64104575d}">
+      <IDSymbol name="ResXResourceGroup" value="0x0221" />
+      <IDSymbol name="ResXResourceCommandId" value="0x0222" />
     </GuidSymbol>
 
     <GuidSymbol name="designGuid" value="{800f86f7-dada-497c-8666-ddbcce338fc0}">

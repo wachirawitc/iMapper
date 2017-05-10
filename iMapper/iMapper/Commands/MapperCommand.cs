@@ -8,6 +8,7 @@ using Microsoft.VisualStudio.Shell.Interop;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
+using System.IO;
 using System.Linq;
 
 namespace iMapper.Commands
@@ -39,7 +40,8 @@ namespace iMapper.Commands
                     new CommandModel(0x0214, new Guid("ef162887-333c-4e3a-b22c-0d26604d0097"), ValidationProjNodeCallback),
                     new CommandModel(0x0216, new Guid("a0d109bf-55fa-4eac-838f-c2a36e9976c3"), RepositoryProjNodeCallback),
                     new CommandModel(0x0218, new Guid("501a94a1-4dce-46b1-ab4a-84370e66d06c"), ServiceCallback),
-                    new CommandModel(0x0220, new Guid("84160585-dc7f-44b2-ab42-f9e135f7dce6"), ResaveProjectCallback)
+                    new CommandModel(0x0220, new Guid("84160585-dc7f-44b2-ab42-f9e135f7dce6"), ResaveProjectCallback),
+                    new CommandModel(0x0222, new Guid("c5088d7f-2809-4383-84a3-25b64104575d"), ResXResourceCallback)
                 };
 
                 foreach (var command in commands)
@@ -64,6 +66,40 @@ namespace iMapper.Commands
         public static void Initialize(Package package)
         {
             Instance = new MapperCommand(package);
+        }
+
+        private void ResXResourceCallback(object sender, EventArgs e)
+        {
+            var dte2 = Package.GetGlobalService(typeof(SDTE)) as DTE2;
+            if (dte2 != null)
+            {
+                UIHierarchy uih = dte2.ToolWindows.SolutionExplorer;
+                Array selectedItems = (Array)uih.SelectedItems;
+                if (selectedItems == null || selectedItems.Length > 1)
+                {
+                    ShowDiabog("Select one ResX item.", "ResX Resource");
+                }
+                else
+                {
+                    var hierarchyItem = selectedItems.Cast<UIHierarchyItem>().First();
+                    var projectItem = hierarchyItem.Object as ProjectItem;
+                    if (projectItem != null)
+                    {
+                        var resXResourceFile = (string)projectItem.Properties.Item("FullPath").Value;
+                        var resxInfo = new FileInfo(resXResourceFile);
+
+                        if (string.IsNullOrEmpty(resXResourceFile) == false && resxInfo.Exists)
+                        {
+                            var extension = Path.GetExtension(resxInfo.FullName);
+                            if (".resx".Equals(extension))
+                            {
+                                var form = new ResXResourceForm(resxInfo);
+                                form.ShowDialog();
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         private static void ResaveProjectCallback(object sender, EventArgs e)

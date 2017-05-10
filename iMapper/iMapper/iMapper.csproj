@@ -230,6 +230,7 @@
     <Content Include="Commands\Resources\database.png" />
     <Content Include="Commands\Resources\icon.ico" />
     <Content Include="Commands\Resources\measuring.png" />
+    <Content Include="Commands\Resources\office-material.png" />
     <Content Include="Commands\Resources\reload.png" />
     <Content Include="Commands\Resources\save.png" />
     <Content Include="icon.ico" />

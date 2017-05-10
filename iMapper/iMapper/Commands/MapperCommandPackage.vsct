@@ -134,9 +134,9 @@
 
       <Button guid="ResXResourceCmdSet" id="ResXResourceCommandId" priority="0x0110" type="Button">
         <Parent guid="ResXResourceCmdSet" id="ResXResourceGroup" />
-        <Icon guid="designGuid" id="designIcon" />
+        <Icon guid="resXGuid" id="resXIcon" />
         <Strings>
-          <ButtonText>ResX Resource</ButtonText>
+          <ButtonText>ResX</ButtonText>
         </Strings>
       </Button>
       
@@ -146,6 +146,7 @@
       <Bitmap guid="designGuid" href="Resources\measuring.png" usedList="designIcon" />
       <Bitmap guid="databaseGuid" href="Resources\database.png" usedList="databaseIcon" />
       <Bitmap guid="saveGuid" href="Resources\save.png" usedList="saveIcon" />
+      <Bitmap guid="resXGuid" href="Resources\office-material.png" usedList="resXIcon" />
     </Bitmaps>
   </Commands>
 
@@ -217,6 +218,10 @@
 
     <GuidSymbol name="saveGuid" value="{8ab7a814-50ab-40d4-a861-470a741334d4}">
       <IDSymbol name="saveIcon" value="1" />
+    </GuidSymbol>
+
+    <GuidSymbol name="resXGuid" value="{bdabad50-ba4b-49c7-a61a-89b6717998b7}">
+      <IDSymbol name="resXIcon" value="1" />
     </GuidSymbol>
   </Symbols>
 </CommandTable>

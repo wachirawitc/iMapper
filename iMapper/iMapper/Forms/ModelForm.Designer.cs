@@ -41,6 +41,8 @@
             this.ColumnNumber = new System.Windows.Forms.Label();
             this.IsPascalize = new System.Windows.Forms.CheckBox();
             this.SaveButton = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.ResXResourceName = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.Columns)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,7 +63,7 @@
             this.Tables.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tables.FormattingEnabled = true;
             this.Tables.Location = new System.Drawing.Point(13, 34);
-            this.Tables.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tables.Margin = new System.Windows.Forms.Padding(4);
             this.Tables.Name = "Tables";
             this.Tables.Size = new System.Drawing.Size(300, 25);
             this.Tables.TabIndex = 2;
@@ -71,7 +73,7 @@
             // 
             this.Columns.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Columns.Location = new System.Drawing.Point(321, 34);
-            this.Columns.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Columns.Margin = new System.Windows.Forms.Padding(4);
             this.Columns.Name = "Columns";
             this.Columns.ReadOnly = true;
             this.Columns.Size = new System.Drawing.Size(400, 220);
@@ -81,7 +83,7 @@
             // 
             this.FileName.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FileName.Location = new System.Drawing.Point(13, 84);
-            this.FileName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.FileName.Margin = new System.Windows.Forms.Padding(4);
             this.FileName.Name = "FileName";
             this.FileName.Size = new System.Drawing.Size(300, 25);
             this.FileName.TabIndex = 5;
@@ -102,8 +104,8 @@
             this.Options.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Options.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Options.FormattingEnabled = true;
-            this.Options.Location = new System.Drawing.Point(13, 134);
-            this.Options.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Options.Location = new System.Drawing.Point(13, 196);
+            this.Options.Margin = new System.Windows.Forms.Padding(4);
             this.Options.Name = "Options";
             this.Options.Size = new System.Drawing.Size(300, 25);
             this.Options.TabIndex = 7;
@@ -113,7 +115,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 113);
+            this.label3.Location = new System.Drawing.Point(12, 175);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(46, 17);
@@ -125,7 +127,7 @@
             this.IsReplace.AutoSize = true;
             this.IsReplace.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.IsReplace.ForeColor = System.Drawing.Color.Red;
-            this.IsReplace.Location = new System.Drawing.Point(12, 165);
+            this.IsReplace.Location = new System.Drawing.Point(12, 227);
             this.IsReplace.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.IsReplace.Name = "IsReplace";
             this.IsReplace.Size = new System.Drawing.Size(126, 21);
@@ -159,8 +161,8 @@
             // 
             this.IsPascalize.AutoSize = true;
             this.IsPascalize.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IsPascalize.Location = new System.Drawing.Point(12, 192);
-            this.IsPascalize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.IsPascalize.Location = new System.Drawing.Point(12, 254);
+            this.IsPascalize.Margin = new System.Windows.Forms.Padding(4);
             this.IsPascalize.Name = "IsPascalize";
             this.IsPascalize.Size = new System.Drawing.Size(75, 21);
             this.IsPascalize.TabIndex = 13;
@@ -172,7 +174,7 @@
             this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.SaveButton.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveButton.Location = new System.Drawing.Point(521, 262);
-            this.SaveButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SaveButton.Margin = new System.Windows.Forms.Padding(4);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(200, 34);
             this.SaveButton.TabIndex = 0;
@@ -180,11 +182,33 @@
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.OnClickSaveButton);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(9, 115);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(126, 17);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "ResX Resource Name";
+            // 
+            // ResXResourceName
+            // 
+            this.ResXResourceName.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ResXResourceName.Location = new System.Drawing.Point(12, 136);
+            this.ResXResourceName.Margin = new System.Windows.Forms.Padding(4);
+            this.ResXResourceName.Name = "ResXResourceName";
+            this.ResXResourceName.Size = new System.Drawing.Size(300, 25);
+            this.ResXResourceName.TabIndex = 14;
+            // 
             // ModelForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(732, 303);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.ResXResourceName);
             this.Controls.Add(this.IsPascalize);
             this.Controls.Add(this.ColumnNumber);
             this.Controls.Add(this.label4);
@@ -200,7 +224,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ModelForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Model";
@@ -225,5 +249,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label ColumnNumber;
         private System.Windows.Forms.CheckBox IsPascalize;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox ResXResourceName;
     }
 }

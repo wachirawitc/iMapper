@@ -35,64 +35,82 @@ namespace iMapper.Forms
         private void OnLoadModelForm(object sender, EventArgs e)
         {
             Init();
+
+            var config = temporaryRepository.GetConfig() ?? new Config();
+            config.Model = config.Model ?? new ModelConfig();
+
+            IsReplace.Checked = config.Model.IsReplace;
+            IsPascalize.Checked = config.Model.IsPascalize;
+            Options.SelectedIndex = config.Model.OptionId;
+            ResXResourceName.Text = config.Model.ResXResourceName;
         }
 
         private void OnClickSaveButton(object sender, EventArgs e)
         {
-            var item = Tables.SelectedItem as ComboboxItem;
-            if (item != null)
+            if (string.IsNullOrEmpty(ResXResourceName.Text))
             {
-                var columns = temporaryRepository
-                    .GetColumns()
-                    .Where(x => x.TableName == (string)item.Value)
-                    .ToList();
+                MessageBox.Show("ResX resource name required.", Text);
+                return;
+            }
 
-                var code = GetCode(columns);
+            var table = Tables.SelectedItem as ComboboxItem;
+            if (table?.Value == null)
+            {
+                MessageBox.Show("Table is required.", Text);
+                return;
+            }
 
-                var fileName = $"{FileName.Text}.cs";
+            var columns = temporaryRepository
+                .GetColumns()
+                .Where(x => x.TableName == (string)table.Value)
+                .ToList();
 
-                var originalFile = new FileInfo($@"{destinationPath}{fileName}");
+            var code = GetCode(columns);
 
-                var sourceManage = new SourceManage(fileName, code);
-                var sourceFile = sourceManage.Create();
+            var fileName = $"{FileName.Text}.cs";
 
-                var fileInProject = projectItem
-                            .GetFiles()
-                            .FirstOrDefault(x => x.Name == sourceFile.Name);
+            var originalFile = new FileInfo($@"{destinationPath}{fileName}");
 
-                if (fileInProject != null && IsReplace.Checked == false)
+            var sourceManage = new SourceManage(fileName, code);
+            var sourceFile = sourceManage.Create();
+
+            var fileInProject = projectItem
+                        .GetFiles()
+                        .FirstOrDefault(x => x.Name == sourceFile.Name);
+
+            if (fileInProject != null && IsReplace.Checked == false)
+            {
+                var outputFile = new FileInfo(Temporary.Directory + $"_{fileName}");
+                outputFile.DeleteIfExisting();
+                outputFile.CreateAndDispose();
+
+                var beforeModificationDate = outputFile.GetLastWriteTime();
+
+                string command = $"\"{sourceFile.FullName}\" \"{originalFile.FullName}\" -o \"{outputFile.FullName}\"";
+                var process = System.Diagnostics.Process.Start(temporaryRepository.Kdiff.FullName, command);
+                if (process != null)
                 {
-                    var outputFile = new FileInfo(Temporary.Directory + $"_{fileName}");
-                    outputFile.DeleteIfExisting();
-                    outputFile.CreateAndDispose();
+                    process.WaitForExit();
 
-                    var beforeModificationDate = outputFile.GetLastWriteTime();
-
-                    string command = $"\"{sourceFile.FullName}\" \"{originalFile.FullName}\" -o \"{outputFile.FullName}\"";
-                    var process = System.Diagnostics.Process.Start(temporaryRepository.Kdiff.FullName, command);
-                    if (process != null)
+                    var afterModificationDate = outputFile.GetLastWriteTime();
+                    if (beforeModificationDate.IsEarlierThan(afterModificationDate))
                     {
-                        process.WaitForExit();
+                        sourceFile.DeleteIfExisting();
+                        File.Copy(outputFile.FullName, sourceFile.FullName);
 
-                        var afterModificationDate = outputFile.GetLastWriteTime();
-                        if (beforeModificationDate.IsEarlierThan(afterModificationDate))
-                        {
-                            sourceFile.DeleteIfExisting();
-                            File.Copy(outputFile.FullName, sourceFile.FullName);
-
-                            fileInProject.Delete();
-                            projectItem.AddFromFileCopy(sourceFile.FullName);
-                            projectItem.ContainingProject.Save();
-                        }
+                        fileInProject.Delete();
+                        projectItem.AddFromFileCopy(sourceFile.FullName);
+                        projectItem.ContainingProject.Save();
                     }
                 }
-                else
-                {
-                    originalFile.DeleteIfExisting();
-                    projectItem.AddFromFileCopy(sourceFile.FullName);
-                    projectItem.ContainingProject.Save();
-                }
             }
+            else
+            {
+                originalFile.DeleteIfExisting();
+                projectItem.AddFromFileCopy(sourceFile.FullName);
+                projectItem.ContainingProject.Save();
+            }
+
             UpdateConfig();
             Close();
         }
@@ -114,11 +132,6 @@ namespace iMapper.Forms
                     ColumnNumber.Text = $"{columns.Count} Columns";
                 }
             }
-        }
-
-        private void OnClickClose(object sender, EventArgs e)
-        {
-            Close();
         }
 
         private void Init()
@@ -186,6 +199,7 @@ namespace iMapper.Forms
                 template.Namespace = nameSpace;
                 template.Name = FileName.Text;
                 template.Columns = columns;
+                template.ResXResourceName = ResXResourceName.Text;
                 code = template.TransformText();
             }
             else if (ModelOption == ModelOption.AspMvcCustom1)
@@ -195,6 +209,7 @@ namespace iMapper.Forms
                 template.Namespace = nameSpace;
                 template.Name = FileName.Text;
                 template.Columns = columns;
+                template.ResXResourceName = ResXResourceName.Text;
                 code = template.TransformText();
             }
             return code;
@@ -229,6 +244,7 @@ namespace iMapper.Forms
             config.Model.IsReplace = IsReplace.Checked;
             config.Model.IsPascalize = IsPascalize.Checked;
             config.Model.OptionId = Options.SelectedIndex;
+            config.Model.ResXResourceName = ResXResourceName.Text;
             temporaryRepository.SetConfig(config);
         }
     }

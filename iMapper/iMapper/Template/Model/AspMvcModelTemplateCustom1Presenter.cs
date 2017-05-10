@@ -16,6 +16,7 @@ namespace iMapper.Template.Model
         public string Namespace { get; set; }
 
         public List<ColumnModel> Columns { get; set; }
+        public string ResXResourceName { get; set; }
 
         public string GetName(string name)
         {
@@ -60,16 +61,16 @@ namespace iMapper.Template.Model
             string columnName = GetName(column.ColumnName);
 
             var builder = new StringBuilder();
-            builder.AppendLine($"\t\t[DisplayNameLocalized(nameof(Text.{columnName}))]");
+            builder.AppendLine($"\t\t[DisplayNameLocalized(nameof({ResXResourceName}.{columnName}))]");
 
             if (column.IsNullable == false)
             {
-                builder.AppendLine($"\t\t[RequiredLocalized(nameof(Text.{columnName}))]");
+                builder.AppendLine($"\t\t[RequiredLocalized(nameof({ResXResourceName}.{columnName}))]");
             }
 
             if (column.CharacterMaximumLength != null)
             {
-                builder.AppendLine($"\t\t[StringLengthLocalized({column.CharacterMaximumLength.Value}, nameof(Text.{columnName}))]");
+                builder.AppendLine($"\t\t[StringLengthLocalized({column.CharacterMaximumLength.Value}, nameof({ResXResourceName}.{columnName}))]");
             }
 
             return builder.ToString();
@@ -91,16 +92,16 @@ namespace iMapper.Template.Model
             string columnName = GetName(column.ColumnName);
 
             var builder = new StringBuilder();
-            builder.AppendLine($"\t\t[DisplayNameLocalized(nameof(Text.{columnName}))]");
+            builder.AppendLine($"\t\t[DisplayNameLocalized(nameof({ResXResourceName}.{columnName}))]");
 
             if (column.IsNullable == false)
             {
-                builder.AppendLine($"\t\t[RequiredLocalized(nameof(Text.{columnName}))]");
+                builder.AppendLine($"\t\t[RequiredLocalized(nameof({ResXResourceName}.{columnName}))]");
             }
 
             if (column.CharacterMaximumLength != null)
             {
-                builder.AppendLine($"\t\t[RangeLocalized(0, {column.CharacterMaximumLength.Value}, nameof(Text.{columnName}), \"###,###,###,###0\")]");
+                builder.AppendLine($"\t\t[RangeLocalized(0, {column.CharacterMaximumLength.Value}, nameof({ResXResourceName}.{columnName}), \"###,###,###,###0\")]");
             }
 
             return builder.ToString();
@@ -122,11 +123,11 @@ namespace iMapper.Template.Model
             string columnName = GetName(column.ColumnName);
 
             var builder = new StringBuilder();
-            builder.AppendLine($"\t\t[DisplayNameLocalized(nameof(Text.{columnName}))]");
+            builder.AppendLine($"\t\t[DisplayNameLocalized(nameof({ResXResourceName}.{columnName}))]");
 
             if (column.IsNullable == false)
             {
-                builder.AppendLine($"\t\t[RequiredLocalized(nameof(Text.{columnName}))]");
+                builder.AppendLine($"\t\t[RequiredLocalized(nameof({ResXResourceName}.{columnName}))]");
             }
 
             builder.AppendLine("\t\t[DataType(DataType.Date)]");

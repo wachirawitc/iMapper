@@ -16,6 +16,7 @@ namespace iMapper.Template.Model
         public string Namespace { get; set; }
 
         public List<ColumnModel> Columns { get; set; }
+        public string ResXResourceName { get; set; }
 
         public string GetName(string name)
         {
@@ -60,7 +61,7 @@ namespace iMapper.Template.Model
             string columnName = GetName(column.ColumnName);
 
             var builder = new StringBuilder();
-            builder.AppendLine($"\t\t[Display(Name = nameof({columnName}), ResourceType = typeof(Text))]");
+            builder.AppendLine($"\t\t[Display(Name = nameof({columnName}), ResourceType = typeof({ResXResourceName}))]");
 
             if (column.IsNullable == false)
             {
@@ -91,7 +92,7 @@ namespace iMapper.Template.Model
             string columnName = GetName(column.ColumnName);
 
             var builder = new StringBuilder();
-            builder.AppendLine($"\t\t[Display(Name = nameof({columnName}), ResourceType = typeof(Text))]");
+            builder.AppendLine($"\t\t[Display(Name = nameof({columnName}), ResourceType = typeof({ResXResourceName}))]");
 
             if (column.IsNullable == false)
             {
@@ -122,7 +123,7 @@ namespace iMapper.Template.Model
             string columnName = GetName(column.ColumnName);
 
             var builder = new StringBuilder();
-            builder.AppendLine($"\t\t[Display(Name = nameof({columnName}), ResourceType = typeof(Text))]");
+            builder.AppendLine($"\t\t[Display(Name = nameof({columnName}), ResourceType = typeof({ResXResourceName}))]");
 
             if (column.IsNullable == false)
             {

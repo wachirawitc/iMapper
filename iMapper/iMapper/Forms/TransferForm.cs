@@ -41,6 +41,9 @@ namespace iMapper.Forms
             var models = temporaryRepository.GetTransfer();
             if (models.Any())
             {
+                Sources.Items.Clear();
+                Destinations.Items.Clear();
+
                 var items = models.Select(x => new ComboboxItem
                 {
                     Text = $"{x.Name} ({x.FullName})",
@@ -66,16 +69,15 @@ namespace iMapper.Forms
             {
                 if (dte2 != null)
                 {
-                    var classElements = dte2.GetClass();
-                    if (classElements.Any())
-                    {
-                        temporaryRepository.SetTransfer(classElements);
-
-                        Invoke((MethodInvoker)InitAutoComplete);
-                    }
-
                     Invoke((MethodInvoker)delegate
                     {
+                        var classElements = dte2.GetClass();
+                        if (classElements.Any())
+                        {
+                            temporaryRepository.SetTransfer(classElements);
+                        }
+
+                        InitAutoComplete();
                         string message = $"Found {classElements.Count} class.";
                         MessageBox.Show(message, Text);
                     });
@@ -175,11 +177,6 @@ namespace iMapper.Forms
 
                 Close();
             }
-        }
-
-        private void OnClickClose(object sender, EventArgs e)
-        {
-            Close();
         }
     }
 }

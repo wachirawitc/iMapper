@@ -280,6 +280,7 @@
     </Content>
     <VSCTCompile Include="Commands\MapperCommandPackage.vsct">
       <ResourceName>Menus.ctmenu</ResourceName>
+      <SubType>Designer</SubType>
     </VSCTCompile>
   </ItemGroup>
   <ItemGroup>

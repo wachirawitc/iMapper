@@ -5,11 +5,7 @@
   <Commands package="guidMapperCommandPackage">
     <Groups>
 
-      <Group guid="SaveCmdSet" id="SaveGroup" priority="0x0000">
-        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE" />
-      </Group>
-
-      <Group guid="ConnectDbCmdSet" id="ConnectDbGroup" priority="0x0001">
+      <Group guid="ProjectNodeCmdSet" id="ProjectNodeGroup" priority="0x0001">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE" />
       </Group>
 
@@ -17,35 +13,7 @@
         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_FOLDERNODE" />
       </Group>
 
-      <Group guid="ValidationCmdSet" id="ValidationGroup" priority="0x0003">
-        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_FOLDERNODE" />
-      </Group>
-
-      <Group guid="TransferCmdSet" id="TransferGroup" priority="0x0003">
-        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_FOLDERNODE" />
-      </Group>
-
-      <Group guid="RepositoryCmdSet" id="RepositoryGroup" priority="0x0004">
-        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_FOLDERNODE" />
-      </Group>
-
-      <Group guid="ModelProjNodeCmdSet" id="ModelProjNodeGroup" priority="0x0005">
-        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE" />
-      </Group>
-
-      <Group guid="ValidationProjNodeCmdSet" id="ValidationProjNodeGroup" priority="0x0006">
-        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE" />
-      </Group>
-
-      <Group guid="RepositoryProjNodeCmdSet" id="RepositoryProjNodeGroup" priority="0x0007">
-        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE" />
-      </Group>
-
-      <Group guid="ServiceCmdSet" id="ServiceGroup" priority="0x0008">
-        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_FOLDERNODE" />
-      </Group>
-
-      <Group guid="ResXResourceCmdSet" id="ResXResourceGroup" priority="0x0009">
+      <Group guid="ItemNodeCmdSet" id="ItemNodeGroup" priority="0x0009">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE" />
       </Group>
     </Groups>
@@ -53,15 +21,15 @@
     <Buttons>
 
       <Button guid="SaveCmdSet" id="SaveCommandId" priority="0x0100" type="Button">
-        <Parent guid="SaveCmdSet" id="SaveGroup" />
+        <Parent guid="ProjectNodeCmdSet" id="ProjectNodeGroup" />
         <Icon guid="saveGuid" id="saveIcon" />
         <Strings>
           <ButtonText>Resave Project (ALL)</ButtonText>
         </Strings>
       </Button>
 
-      <Button guid="ConnectDbCmdSet" id="ConnectDatabaseCommandId" priority="0x0101" type="Button">
-        <Parent guid="ConnectDbCmdSet" id="ConnectDbGroup" />
+      <Button guid="ProjectNodeCmdSet" id="ConnectDatabaseCommandId" priority="0x0101" type="Button">
+        <Parent guid="ProjectNodeCmdSet" id="ProjectNodeGroup" />
         <Icon guid="databaseGuid" id="databaseIcon" />
         <Strings>
           <ButtonText>Config Database</ButtonText>
@@ -77,7 +45,7 @@
       </Button>
 
       <Button guid="ValidationCmdSet" id="ValidationCommandId" priority="0x0103" type="Button">
-        <Parent guid="ValidationCmdSet" id="ValidationGroup" />
+        <Parent guid="ModelCmdSet" id="ModelGroup" />
         <Icon guid="designGuid" id="designIcon" />
         <Strings>
           <ButtonText>Validation</ButtonText>
@@ -85,7 +53,7 @@
       </Button>
 
       <Button guid="TransferCmdSet" id="TransferCommandId" priority="0x0104" type="Button">
-        <Parent guid="TransferCmdSet" id="TransferGroup" />
+        <Parent guid="ModelCmdSet" id="ModelGroup" />
         <Icon guid="designGuid" id="designIcon" />
         <Strings>
           <ButtonText>Transfer</ButtonText>
@@ -93,7 +61,7 @@
       </Button>
 
       <Button guid="RepositoryCmdSet" id="RepositoryCommandId" priority="0x0105" type="Button">
-        <Parent guid="RepositoryCmdSet" id="RepositoryGroup" />
+        <Parent guid="ModelCmdSet" id="ModelGroup" />
         <Icon guid="designGuid" id="designIcon" />
         <Strings>
           <ButtonText>Repository</ButtonText>
@@ -101,7 +69,7 @@
       </Button>
 
       <Button guid="ModelProjNodeCmdSet" id="ModelProjNodeCommandId" priority="0x0106" type="Button">
-        <Parent guid="ModelProjNodeCmdSet" id="ModelProjNodeGroup" />
+        <Parent guid="ProjectNodeCmdSet" id="ProjectNodeGroup" />
         <Icon guid="designGuid" id="designIcon" />
         <Strings>
           <ButtonText>Model</ButtonText>
@@ -109,7 +77,7 @@
       </Button>
 
       <Button guid="ValidationProjNodeCmdSet" id="ValidationProjNodeCommandId" priority="0x0107" type="Button">
-        <Parent guid="ValidationProjNodeCmdSet" id="ValidationProjNodeGroup" />
+        <Parent guid="ProjectNodeCmdSet" id="ProjectNodeGroup" />
         <Icon guid="designGuid" id="designIcon" />
         <Strings>
           <ButtonText>Validation</ButtonText>
@@ -117,7 +85,7 @@
       </Button>
 
       <Button guid="RepositoryProjNodeCmdSet" id="RepositoryProjNodeCommandId" priority="0x0108" type="Button">
-        <Parent guid="RepositoryProjNodeCmdSet" id="RepositoryProjNodeGroup" />
+        <Parent guid="ProjectNodeCmdSet" id="ProjectNodeGroup" />
         <Icon guid="designGuid" id="designIcon" />
         <Strings>
           <ButtonText>Repository</ButtonText>
@@ -125,21 +93,20 @@
       </Button>
 
       <Button guid="ServiceCmdSet" id="ServiceCommandId" priority="0x0109" type="Button">
-        <Parent guid="ServiceCmdSet" id="ServiceGroup" />
+        <Parent guid="ModelCmdSet" id="ModelGroup" />
         <Icon guid="designGuid" id="designIcon" />
         <Strings>
           <ButtonText>Service</ButtonText>
         </Strings>
       </Button>
 
-      <Button guid="ResXResourceCmdSet" id="ResXResourceCommandId" priority="0x0110" type="Button">
-        <Parent guid="ResXResourceCmdSet" id="ResXResourceGroup" />
-        <Icon guid="resXGuid" id="resXIcon" />
+      <Button guid="ItemNodeCmdSet" id="ResXResourceCommandId" priority="0x0110" type="Button">
+        <Parent guid="ItemNodeCmdSet" id="ItemNodeGroup" />
+        <Icon guid="designGuid" id="designIcon" />
         <Strings>
           <ButtonText>ResX</ButtonText>
         </Strings>
       </Button>
-      
     </Buttons>
 
     <Bitmaps>
@@ -153,8 +120,8 @@
   <Symbols>
     <GuidSymbol name="guidMapperCommandPackage" value="{37023129-2a33-478e-8bb8-8fa2efbc2e54}" />
 
-    <GuidSymbol name="ConnectDbCmdSet" value="{89629128-c144-443f-9920-0ed1b9bc65b6}">
-      <IDSymbol name="ConnectDbGroup" value="0x0201" />
+    <GuidSymbol name="ProjectNodeCmdSet" value="{89629128-c144-443f-9920-0ed1b9bc65b6}">
+      <IDSymbol name="ProjectNodeGroup" value="0x0201" />
       <IDSymbol name="ConnectDatabaseCommandId" value="0x0202" />
     </GuidSymbol>
 
@@ -203,8 +170,8 @@
       <IDSymbol name="SaveCommandId" value="0x0220" />
     </GuidSymbol>
 
-    <GuidSymbol name="ResXResourceCmdSet" value="{c5088d7f-2809-4383-84a3-25b64104575d}">
-      <IDSymbol name="ResXResourceGroup" value="0x0221" />
+    <GuidSymbol name="ItemNodeCmdSet" value="{c5088d7f-2809-4383-84a3-25b64104575d}">
+      <IDSymbol name="ItemNodeGroup" value="0x0221" />
       <IDSymbol name="ResXResourceCommandId" value="0x0222" />
     </GuidSymbol>
 

@@ -37,26 +37,26 @@ namespace iMapper.Forms
         {
             new LoadForm(() =>
             {
-                var config = new Config
-                {
-                    ServerName = ServerName.Text,
-                    Database = DatabaseName.Text,
-                    User = Username.Text,
-                    Password = Password.Text,
-                    IsWindowsAuthentication = IsWindowsAuthentication.Checked,
-                    KDiff = KDiff.Text
-                };
-                var repository = new MsRepository(config.ServerName, config.Database, config.User, config.Password);
-                if (IsWindowsAuthentication.Checked)
-                {
-                    repository = new MsRepository(ServerName.Text, DatabaseName.Text);
-                }
-
-                var columns = repository.GetColumns();
-                temporaryRepository.SetColumns(columns);
-                temporaryRepository.SetConfig(config);
                 Invoke((MethodInvoker)delegate
                 {
+                    var config = new Config
+                    {
+                        ServerName = ServerName.Text,
+                        Database = DatabaseName.Text,
+                        User = Username.Text,
+                        Password = Password.Text,
+                        IsWindowsAuthentication = IsWindowsAuthentication.Checked,
+                        KDiff = KDiff.Text
+                    };
+                    var repository = new MsRepository(config.ServerName, config.Database, config.User, config.Password);
+                    if (IsWindowsAuthentication.Checked)
+                    {
+                        repository = new MsRepository(ServerName.Text, DatabaseName.Text);
+                    }
+
+                    var columns = repository.GetColumns();
+                    temporaryRepository.SetColumns(columns);
+                    temporaryRepository.SetConfig(config);
                     TableGrid.DataSource = columns;
                 });
             }).ShowDialog();

@@ -46,7 +46,7 @@
 
       <Button guid="ConnectDbCmdSet" id="ConnectDatabaseCommandId" priority="0x0101" type="Button">
         <Parent guid="ConnectDbCmdSet" id="ConnectDbGroup" />
-        <Icon guid="guidImages" id="bmpPic1" />
+        <Icon guid="databaseGuid" id="databaseIcon" />
         <Strings>
           <ButtonText>Config Database</ButtonText>
         </Strings>
@@ -54,7 +54,7 @@
 
       <Button guid="ModelCmdSet" id="ModelCommandId" priority="0x0102" type="Button">
         <Parent guid="ModelCmdSet" id="ModelGroup" />
-        <Icon guid="guidImages" id="bmpPic1" />
+        <Icon guid="designGuid" id="designIcon" />
         <Strings>
           <ButtonText>Model Template</ButtonText>
         </Strings>
@@ -62,7 +62,7 @@
 
       <Button guid="ValidationCmdSet" id="ValidationCommandId" priority="0x0103" type="Button">
         <Parent guid="ValidationCmdSet" id="ValidationGroup" />
-        <Icon guid="guidImages" id="bmpPic1" />
+        <Icon guid="designGuid" id="designIcon" />
         <Strings>
           <ButtonText>Validation Template</ButtonText>
         </Strings>
@@ -70,7 +70,7 @@
 
       <Button guid="TransferCmdSet" id="TransferCommandId" priority="0x0104" type="Button">
         <Parent guid="TransferCmdSet" id="TransferGroup" />
-        <Icon guid="guidImages" id="bmpPic1" />
+        <Icon guid="designGuid" id="designIcon" />
         <Strings>
           <ButtonText>Transfer Template</ButtonText>
         </Strings>
@@ -78,7 +78,7 @@
 
       <Button guid="RepositoryCmdSet" id="RepositoryCommandId" priority="0x0105" type="Button">
         <Parent guid="RepositoryCmdSet" id="RepositoryGroup" />
-        <Icon guid="guidImages" id="bmpPic1" />
+        <Icon guid="designGuid" id="designIcon" />
         <Strings>
           <ButtonText>Repository Template</ButtonText>
         </Strings>
@@ -86,7 +86,7 @@
 
       <Button guid="ModelProjNodeCmdSet" id="ModelProjNodeCommandId" priority="0x0106" type="Button">
         <Parent guid="ModelProjNodeCmdSet" id="ModelProjNodeGroup" />
-        <Icon guid="guidImages" id="bmpPic1" />
+        <Icon guid="designGuid" id="designIcon" />
         <Strings>
           <ButtonText>Model Template</ButtonText>
         </Strings>
@@ -94,7 +94,7 @@
 
       <Button guid="ValidationProjNodeCmdSet" id="ValidationProjNodeCommandId" priority="0x0107" type="Button">
         <Parent guid="ValidationProjNodeCmdSet" id="ValidationProjNodeGroup" />
-        <Icon guid="guidImages" id="bmpPic1" />
+        <Icon guid="designGuid" id="designIcon" />
         <Strings>
           <ButtonText>Validation Template</ButtonText>
         </Strings>
@@ -102,7 +102,7 @@
 
       <Button guid="RepositoryProjNodeCmdSet" id="RepositoryProjNodeCommandId" priority="0x0108" type="Button">
         <Parent guid="RepositoryProjNodeCmdSet" id="RepositoryProjNodeGroup" />
-        <Icon guid="guidImages" id="bmpPic1" />
+        <Icon guid="designGuid" id="designIcon" />
         <Strings>
           <ButtonText>Repository Template</ButtonText>
         </Strings>
@@ -110,7 +110,7 @@
 
       <Button guid="ServiceCmdSet" id="ServiceCommandId" priority="0x0109" type="Button">
         <Parent guid="ServiceCmdSet" id="ServiceGroup" />
-        <Icon guid="guidImages" id="bmpPic1" />
+        <Icon guid="designGuid" id="designIcon" />
         <Strings>
           <ButtonText>Service Template</ButtonText>
         </Strings>
@@ -118,7 +118,8 @@
     </Buttons>
 
     <Bitmaps>
-      <Bitmap guid="guidImages" href="Resources\MapperCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
+      <Bitmap guid="designGuid" href="Resources\measuring.png" usedList="designIcon" />
+      <Bitmap guid="databaseGuid" href="Resources\database.png" usedList="databaseIcon" />
     </Bitmaps>
   </Commands>
 
@@ -170,13 +171,12 @@
       <IDSymbol name="ServiceCommandId" value="0x0218" />
     </GuidSymbol>
 
-    <GuidSymbol name="guidImages" value="{800f86f7-dada-497c-8666-ddbcce338fc0}">
-      <IDSymbol name="bmpPic1" value="1" />
-      <IDSymbol name="bmpPic2" value="2" />
-      <IDSymbol name="bmpPicSearch" value="3" />
-      <IDSymbol name="bmpPicX" value="4" />
-      <IDSymbol name="bmpPicArrows" value="5" />
-      <IDSymbol name="bmpPicStrikethrough" value="6" />
+    <GuidSymbol name="designGuid" value="{800f86f7-dada-497c-8666-ddbcce338fc0}">
+      <IDSymbol name="designIcon" value="1" />
+    </GuidSymbol>
+
+    <GuidSymbol name="databaseGuid" value="{f93e4e1d-fdb3-4e36-9de4-9ba2718e33b8}">
+      <IDSymbol name="databaseIcon" value="1" />
     </GuidSymbol>
   </Symbols>
 </CommandTable>

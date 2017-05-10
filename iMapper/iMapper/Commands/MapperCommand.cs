@@ -1,7 +1,5 @@
 ﻿using EnvDTE;
 using EnvDTE80;
-using iMapper.Constance;
-using iMapper.Extensions;
 using iMapper.Forms;
 using iMapper.Model;
 using iMapper.Support;
@@ -10,7 +8,6 @@ using Microsoft.VisualStudio.Shell.Interop;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
-using System.IO;
 using System.Linq;
 
 namespace iMapper.Commands

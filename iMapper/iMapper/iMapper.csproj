@@ -220,6 +220,8 @@
   <ItemGroup>
     <Content Include="Commands\Resources\Close.png" />
     <Content Include="Commands\Resources\command.png" />
+    <Content Include="Commands\Resources\database.png" />
+    <Content Include="Commands\Resources\measuring.png" />
     <Content Include="Commands\Resources\reload.png" />
     <Content Include="MapperCommandPackage.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

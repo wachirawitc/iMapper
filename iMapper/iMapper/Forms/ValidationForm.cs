@@ -65,6 +65,8 @@ namespace iMapper.Forms
             IsReplace.Checked = config.Validation.IsReplace;
             IsPascalize.Checked = config.Validation.IsPascalize;
             Options.SelectedIndex = config.Validation.OptionId;
+            ResXResourceName.Text = config.Validation.ResXResourceName;
+            ResXResourceNameError.Text = config.Validation.ResXResourceNameError;
         }
 
         private void OnSelectedTables(object sender, System.EventArgs e)
@@ -129,15 +131,29 @@ namespace iMapper.Forms
             }
         }
 
-        private void OnClickClose(object sender, System.EventArgs e)
-        {
-            Close();
-        }
-
         private void OnClickSave(object sender, System.EventArgs e)
         {
             if (string.IsNullOrEmpty(TableName))
             {
+                MessageBox.Show("Required Table Name", Text);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(ResXResourceNameError.Text))
+            {
+                MessageBox.Show("Required ResX Resource Name (Error Message)", Text);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(ResXResourceName.Text))
+            {
+                MessageBox.Show("Required ResX Resource Name (Text Message)", Text);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(FileName.Text))
+            {
+                MessageBox.Show("Required File Name", Text);
                 return;
             }
 
@@ -208,6 +224,8 @@ namespace iMapper.Forms
                 template.Name = FileName.Text;
                 template.ValidatorName = ValidatorName.Text;
                 template.Columns = columns;
+                template.ResXResourceName = ResXResourceName.Text;
+                template.ResXResourceNameError = ResXResourceNameError.Text;
                 code = template.TransformText();
             }
             else if (ValidationOption == ValidationOption.Custom1)
@@ -218,6 +236,8 @@ namespace iMapper.Forms
                 template.Name = FileName.Text;
                 template.ValidatorName = ValidatorName.Text;
                 template.Columns = columns;
+                template.ResXResourceName = ResXResourceName.Text;
+                template.ResXResourceNameError = ResXResourceNameError.Text;
                 code = template.TransformText();
             }
             return code;
@@ -230,7 +250,8 @@ namespace iMapper.Forms
             config.Validation.IsReplace = IsReplace.Checked;
             config.Validation.IsPascalize = IsPascalize.Checked;
             config.Validation.OptionId = Options.SelectedIndex;
-
+            config.Validation.ResXResourceName = ResXResourceName.Text;
+            config.Validation.ResXResourceNameError = ResXResourceNameError.Text;
             temporaryRepository.SetConfig(config);
         }
     }

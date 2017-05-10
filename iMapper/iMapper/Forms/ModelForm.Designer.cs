@@ -189,9 +189,9 @@
             this.label5.Location = new System.Drawing.Point(9, 115);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(126, 17);
+            this.label5.Size = new System.Drawing.Size(214, 17);
             this.label5.TabIndex = 15;
-            this.label5.Text = "ResX Resource Name";
+            this.label5.Text = "ResX Resource Name (Text Message)";
             // 
             // ResXResourceName
             // 

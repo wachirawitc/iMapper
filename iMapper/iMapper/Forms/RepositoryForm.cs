@@ -220,17 +220,18 @@ namespace iMapper.Forms
 
         private bool ValidationButton()
         {
-            if (string.IsNullOrEmpty(EntityFrameworkName.Text))
+            if (string.IsNullOrEmpty(SelectTable))
             {
-                MessageBox.Show("Not found entity framework name", Text);
+                MessageBox.Show("Required table.", Text);
                 return true;
             }
 
-            if (string.IsNullOrEmpty(SelectTable))
+            if (string.IsNullOrEmpty(EntityFrameworkName.Text))
             {
-                MessageBox.Show("Select table.", Text);
+                MessageBox.Show("Required Entity framework name", Text);
                 return true;
             }
+
             return false;
         }
     }

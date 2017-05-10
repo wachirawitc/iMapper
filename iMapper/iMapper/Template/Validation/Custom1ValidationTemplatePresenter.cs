@@ -18,6 +18,8 @@ namespace iMapper.Template.Validation
         public string Namespace { get; set; }
 
         public List<ColumnModel> Columns { get; set; }
+        public string ResXResourceName { get; set; }
+        public string ResXResourceNameError { get; set; }
 
         public string GetName(string name)
         {
@@ -87,18 +89,18 @@ namespace iMapper.Template.Validation
 
             if (column.IsNullable == false)
             {
-                rules.Add($"\t\t\tAdd(new Required(Model.{name}, Text.{name}));");
+                rules.Add($"\t\t\tAdd(new Required(Model.{name}, {ResXResourceName}.{name}));");
             }
 
             if (column.CharacterMaximumLength != null)
             {
-                rules.Add($"\t\t\tAdd(new StringLength(Model.{name}, {column.CharacterMaximumLength.Value}, Text.{name}));");
+                rules.Add($"\t\t\tAdd(new StringLength(Model.{name}, {column.CharacterMaximumLength.Value}, {ResXResourceName}.{name}));");
             }
 
             if (column.IsRelation && string.IsNullOrEmpty(column.RelationTable) == false)
             {
                 var relationTable = column.RelationTable;
-                rules.Add($"\t\t\tAdd(() => {relationTable.Camelize()}Repository.IsExisting(Model.{name}), ValidationMessage.NotFound{relationTable});");
+                rules.Add($"\t\t\tAdd(() => {relationTable.Camelize()}Repository.IsExisting(Model.{name}), {ResXResourceNameError}.NotFound{relationTable});");
             }
 
             return string.Join("\n", rules);
@@ -124,11 +126,11 @@ namespace iMapper.Template.Validation
             var relationTable = column.RelationTable;
             if (column.IsNullable && column.IsRelation && string.IsNullOrEmpty(column.RelationTable) == false)
             {
-                rules.Add($"\t\t\tAdd(() => Model.{name} != null && {relationTable.Camelize()}Repository.IsExisting(Model.{name}.Value), ValidationMessage.NotFound{relationTable});");
+                rules.Add($"\t\t\tAdd(() => Model.{name} != null && {relationTable.Camelize()}Repository.IsExisting(Model.{name}.Value), {ResXResourceNameError}.NotFound{relationTable});");
             }
             else if (column.IsRelation && string.IsNullOrEmpty(column.RelationTable) == false)
             {
-                rules.Add($"\t\t\tAdd(() => {relationTable.Camelize()}Repository.IsExisting(Model.{name}), ValidationMessage.NotFound{relationTable});");
+                rules.Add($"\t\t\tAdd(() => {relationTable.Camelize()}Repository.IsExisting(Model.{name}), {ResXResourceNameError}.NotFound{relationTable});");
             }
 
             return string.Join("\n", rules);
@@ -153,13 +155,13 @@ namespace iMapper.Template.Validation
 
             if (column.IsNullable == false)
             {
-                rules.Add($"\t\t\tAdd(new Required(Model.{name}, Text.{name}));");
+                rules.Add($"\t\t\tAdd(new Required(Model.{name}, {ResXResourceName}.{name}));");
             }
 
             if (column.IsRelation && string.IsNullOrEmpty(column.RelationTable) == false)
             {
                 var relationTable = column.RelationTable;
-                rules.Add($"\t\t\tAdd(() => {relationTable.Camelize()}Repository.IsExisting(Model.{name}), ValidationMessage.NotFound{relationTable});");
+                rules.Add($"\t\t\tAdd(() => {relationTable.Camelize()}Repository.IsExisting(Model.{name}), {ResXResourceNameError}.NotFound{relationTable});");
             }
 
             return string.Join("\n", rules);

@@ -47,16 +47,22 @@ namespace iMapper.Forms
 
         private void OnClickSaveButton(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(ResXResourceName.Text))
-            {
-                MessageBox.Show("ResX resource name required.", Text);
-                return;
-            }
-
             var table = Tables.SelectedItem as ComboboxItem;
             if (table?.Value == null)
             {
-                MessageBox.Show("Table is required.", Text);
+                MessageBox.Show("Required Table.", Text);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(FileName.Text))
+            {
+                MessageBox.Show("Required File Name.", Text);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(ResXResourceName.Text))
+            {
+                MessageBox.Show("Required ResX Resource Name (Text).", Text);
                 return;
             }
 

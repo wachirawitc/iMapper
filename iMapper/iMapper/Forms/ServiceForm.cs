@@ -88,7 +88,7 @@ namespace iMapper.Forms
         {
             if (string.IsNullOrEmpty(SelectTable))
             {
-                MessageBox.Show("Select table.", Text);
+                MessageBox.Show("Required table.", Text);
                 return true;
             }
             return false;

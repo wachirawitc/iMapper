@@ -110,12 +110,12 @@ namespace iMapper.Forms
 
             if (source == null)
             {
-                MessageBox.Show("Not found source class.");
+                MessageBox.Show("Required source class.");
             }
 
             if (destination == null)
             {
-                MessageBox.Show("Not found destination class.");
+                MessageBox.Show("Required destination class.");
             }
 
             if (source != null && destination != null)

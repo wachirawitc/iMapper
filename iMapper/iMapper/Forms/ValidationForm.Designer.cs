@@ -43,6 +43,10 @@
             this.SaveButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.ValidatorName = new System.Windows.Forms.TextBox();
+            this.ResXResourceName = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.ResXResourceNameError = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Columns)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,7 +54,7 @@
             // 
             this.IsPascalize.AutoSize = true;
             this.IsPascalize.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IsPascalize.Location = new System.Drawing.Point(14, 241);
+            this.IsPascalize.Location = new System.Drawing.Point(16, 351);
             this.IsPascalize.Name = "IsPascalize";
             this.IsPascalize.Size = new System.Drawing.Size(75, 21);
             this.IsPascalize.TabIndex = 26;
@@ -82,7 +86,7 @@
             this.IsReplace.AutoSize = true;
             this.IsReplace.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.IsReplace.ForeColor = System.Drawing.Color.Red;
-            this.IsReplace.Location = new System.Drawing.Point(15, 215);
+            this.IsReplace.Location = new System.Drawing.Point(16, 325);
             this.IsReplace.Margin = new System.Windows.Forms.Padding(2);
             this.IsReplace.Name = "IsReplace";
             this.IsReplace.Size = new System.Drawing.Size(126, 21);
@@ -178,9 +182,9 @@
             this.label5.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(12, 165);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(92, 17);
+            this.label5.Size = new System.Drawing.Size(72, 17);
             this.label5.TabIndex = 27;
-            this.label5.Text = "Validator Name";
+            this.label5.Text = "Model Base";
             // 
             // ValidatorName
             // 
@@ -190,11 +194,51 @@
             this.ValidatorName.Size = new System.Drawing.Size(300, 25);
             this.ValidatorName.TabIndex = 28;
             // 
+            // ResXResourceName
+            // 
+            this.ResXResourceName.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ResXResourceName.Location = new System.Drawing.Point(14, 239);
+            this.ResXResourceName.Name = "ResXResourceName";
+            this.ResXResourceName.Size = new System.Drawing.Size(300, 25);
+            this.ResXResourceName.TabIndex = 30;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(12, 219);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(210, 17);
+            this.label6.TabIndex = 29;
+            this.label6.Text = "ResX Resource Name (Text Message)";
+            // 
+            // ResXResourceNameError
+            // 
+            this.ResXResourceNameError.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ResXResourceNameError.Location = new System.Drawing.Point(15, 294);
+            this.ResXResourceNameError.Name = "ResXResourceNameError";
+            this.ResXResourceNameError.Size = new System.Drawing.Size(300, 25);
+            this.ResXResourceNameError.TabIndex = 32;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(13, 274);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(215, 17);
+            this.label7.TabIndex = 31;
+            this.label7.Text = "ResX Resource Name (Error Message)";
+            // 
             // ValidationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(730, 361);
+            this.ClientSize = new System.Drawing.Size(730, 385);
+            this.Controls.Add(this.ResXResourceNameError);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.ResXResourceName);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.ValidatorName);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.IsPascalize);
@@ -238,5 +282,9 @@
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox ValidatorName;
+        private System.Windows.Forms.TextBox ResXResourceName;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox ResXResourceNameError;
+        private System.Windows.Forms.Label label7;
     }
 }

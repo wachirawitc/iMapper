@@ -18,6 +18,8 @@ namespace iMapper.Template.Validation
         public string Namespace { get; set; }
 
         public List<ColumnModel> Columns { get; set; }
+        public string ResXResourceName { get; set; }
+        public string ResXResourceNameError { get; set; }
 
         public string GetName(string name)
         {
@@ -44,20 +46,20 @@ namespace iMapper.Template.Validation
 
             if (column.IsNullable == false)
             {
-                rules.Add("\t\t\t\t\t.NotNull().WithLocalizedMessage(() => ValidationMessage.Require)");
-                rules.Add("\t\t\t\t\t.NotEmpty().WithLocalizedMessage(() => ValidationMessage.Require)");
+                rules.Add($"\t\t\t\t\t.NotNull().WithLocalizedMessage(() => {ResXResourceNameError}.Require)");
+                rules.Add($"\t\t\t\t\t.NotEmpty().WithLocalizedMessage(() => {ResXResourceNameError}.Require)");
             }
 
             if (column.CharacterMaximumLength != null)
             {
-                rules.Add($"\t\t\t\t\t.Length(0, {column.CharacterMaximumLength.Value}).WithLocalizedMessage(() => ValidationMessage.InvalidStringLength)");
+                rules.Add($"\t\t\t\t\t.Length(0, {column.CharacterMaximumLength.Value}).WithLocalizedMessage(() => {ResXResourceNameError}.InvalidStringLength)");
             }
 
             if (column.IsRelation && string.IsNullOrEmpty(column.RelationTable) == false)
             {
                 var relationTable = column.RelationTable;
                 var columnName = column.ColumnName;
-                rules.Add($"\t\t\t\t\t.Must({columnName.Camelize()} => {relationTable.Camelize()}Repository.IsExisting({columnName.Camelize()})).WithMessage(ValidationMessage.NotExist)");
+                rules.Add($"\t\t\t\t\t.Must({columnName.Camelize()} => {relationTable.Camelize()}Repository.IsExisting({columnName.Camelize()})).WithMessage({ResXResourceNameError}.NotExist)");
             }
 
             return string.Join("\n", rules) + ";";
@@ -84,14 +86,14 @@ namespace iMapper.Template.Validation
 
             if (column.IsNullable == false)
             {
-                rules.Add("\t\t\t\t\t.NotNull().WithLocalizedMessage(() => ValidationMessage.Require)");
+                rules.Add($"\t\t\t\t\t.NotNull().WithLocalizedMessage(() => {ResXResourceNameError}.Require)");
             }
 
             if (column.IsRelation && string.IsNullOrEmpty(column.RelationTable) == false)
             {
                 var relationTable = column.RelationTable;
                 var columnName = column.ColumnName;
-                rules.Add($"\t\t\t\t\t.Must({columnName.Camelize()} => {relationTable.Camelize()}Repository.IsExisting({columnName.Camelize()})).WithMessage(ValidationMessage.NotExist)");
+                rules.Add($"\t\t\t\t\t.Must({columnName.Camelize()} => {relationTable.Camelize()}Repository.IsExisting({columnName.Camelize()})).WithMessage({ResXResourceNameError}.NotExist)");
             }
 
             return string.Join("\n", rules) + ";";

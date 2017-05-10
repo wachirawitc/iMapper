@@ -14,26 +14,6 @@ namespace iMapper.Commands
 {
     internal sealed class MapperCommand
     {
-        public const int ConnectDatabaseCommandId = 0x0202;
-        public const int ModelCommandId = 0x0204;
-        public const int ValidationCommandId = 0x0206;
-        public const int TransferCommandId = 0x0208;
-        public const int RepositoryCommandId = 0x0210;
-        public const int ModelProjNodeCommandId = 0x0212;
-        public const int ValidationProjNodeCommandId = 0x0214;
-        public const int RepositoryProjNodeCommandId = 0x0216;
-        public const int ServiceCommandId = 0x0218;
-
-        public static readonly Guid ConnectDatabaseCommand = new Guid("89629128-c144-443f-9920-0ed1b9bc65b6");
-        public static readonly Guid ModelCommand = new Guid("0f8fad5b-d9cb-469f-a165-70867728950e");
-        public static readonly Guid ValidationCommand = new Guid("80d2efe5-0057-4061-b0cf-0b43565e4777");
-        public static readonly Guid TransferCommand = new Guid("b32a039d-3f1d-4db7-84a1-5015a677c6d5");
-        public static readonly Guid RepositoryCommand = new Guid("8ae90204-5920-4068-8822-5b68e57ccb03");
-        public static readonly Guid ModelProjNodeCommand = new Guid("97235e93-1311-44de-982e-27798e9f1270");
-        public static readonly Guid ValidationProjNodeCommand = new Guid("ef162887-333c-4e3a-b22c-0d26604d0097");
-        public static readonly Guid RepositoryProjNodeCommand = new Guid("a0d109bf-55fa-4eac-838f-c2a36e9976c3");
-        public static readonly Guid ServiceCommand = new Guid("501a94a1-4dce-46b1-ab4a-84370e66d06c");
-
         private readonly Package package;
 
         private MapperCommand(Package package)
@@ -50,15 +30,16 @@ namespace iMapper.Commands
             {
                 var commands = new List<CommandModel>
                 {
-                    new CommandModel(ConnectDatabaseCommandId, ConnectDatabaseCommand, ConnectDatabaseCallback),
-                    new CommandModel(ModelCommandId, ModelCommand, ModelCallback),
-                    new CommandModel(ValidationCommandId, ValidationCommand, ValidationCallback),
-                    new CommandModel(TransferCommandId, TransferCommand, TransferCallback),
-                    new CommandModel(RepositoryCommandId, RepositoryCommand, RepositoryCallback),
-                    new CommandModel(ModelProjNodeCommandId, ModelProjNodeCommand, ModelProjNodeCallback),
-                    new CommandModel(ValidationProjNodeCommandId, ValidationProjNodeCommand, ValidationProjNodeCallback),
-                    new CommandModel(RepositoryProjNodeCommandId, RepositoryProjNodeCommand, RepositoryProjNodeCallback),
-                    new CommandModel(ServiceCommandId, ServiceCommand, ServiceCallback),
+                    new CommandModel(0x0202, new Guid("89629128-c144-443f-9920-0ed1b9bc65b6"), ConnectDatabaseCallback),
+                    new CommandModel(0x0204, new Guid("0f8fad5b-d9cb-469f-a165-70867728950e"), ModelCallback),
+                    new CommandModel(0x0206, new Guid("80d2efe5-0057-4061-b0cf-0b43565e4777"), ValidationCallback),
+                    new CommandModel(0x0208, new Guid("b32a039d-3f1d-4db7-84a1-5015a677c6d5"), TransferCallback),
+                    new CommandModel(0x0210, new Guid("8ae90204-5920-4068-8822-5b68e57ccb03"), RepositoryCallback),
+                    new CommandModel(0x0212, new Guid("97235e93-1311-44de-982e-27798e9f1270"), ModelProjNodeCallback),
+                    new CommandModel(0x0214, new Guid("ef162887-333c-4e3a-b22c-0d26604d0097"), ValidationProjNodeCallback),
+                    new CommandModel(0x0216, new Guid("a0d109bf-55fa-4eac-838f-c2a36e9976c3"), RepositoryProjNodeCallback),
+                    new CommandModel(0x0218, new Guid("501a94a1-4dce-46b1-ab4a-84370e66d06c"), ServiceCallback),
+                    new CommandModel(0x0220, new Guid("84160585-dc7f-44b2-ab42-f9e135f7dce6"), ResaveProjectCallback)
                 };
 
                 foreach (var command in commands)
@@ -83,6 +64,18 @@ namespace iMapper.Commands
         public static void Initialize(Package package)
         {
             Instance = new MapperCommand(package);
+        }
+
+        private static void ResaveProjectCallback(object sender, EventArgs e)
+        {
+            var dte2 = Package.GetGlobalService(typeof(SDTE)) as DTE2;
+            if (dte2 != null)
+            {
+                foreach (Project project in dte2.Solution.Projects)
+                {
+                    project.Save();
+                }
+            }
         }
 
         private void ServiceCallback(object sender, EventArgs e)

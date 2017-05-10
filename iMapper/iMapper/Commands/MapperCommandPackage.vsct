@@ -5,6 +5,10 @@
   <Commands package="guidMapperCommandPackage">
     <Groups>
 
+      <Group guid="SaveCmdSet" id="SaveGroup" priority="0x0000">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE" />
+      </Group>
+
       <Group guid="ConnectDbCmdSet" id="ConnectDbGroup" priority="0x0001">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE" />
       </Group>
@@ -43,6 +47,14 @@
     </Groups>
 
     <Buttons>
+
+      <Button guid="SaveCmdSet" id="SaveCommandId" priority="0x0100" type="Button">
+        <Parent guid="SaveCmdSet" id="SaveGroup" />
+        <Icon guid="saveGuid" id="saveIcon" />
+        <Strings>
+          <ButtonText>Resave Project (ALL)</ButtonText>
+        </Strings>
+      </Button>
 
       <Button guid="ConnectDbCmdSet" id="ConnectDatabaseCommandId" priority="0x0101" type="Button">
         <Parent guid="ConnectDbCmdSet" id="ConnectDbGroup" />
@@ -120,6 +132,7 @@
     <Bitmaps>
       <Bitmap guid="designGuid" href="Resources\measuring.png" usedList="designIcon" />
       <Bitmap guid="databaseGuid" href="Resources\database.png" usedList="databaseIcon" />
+      <Bitmap guid="saveGuid" href="Resources\save.png" usedList="saveIcon" />
     </Bitmaps>
   </Commands>
 
@@ -171,12 +184,21 @@
       <IDSymbol name="ServiceCommandId" value="0x0218" />
     </GuidSymbol>
 
+    <GuidSymbol name="SaveCmdSet" value="{84160585-dc7f-44b2-ab42-f9e135f7dce6}">
+      <IDSymbol name="SaveGroup" value="0x0219" />
+      <IDSymbol name="SaveCommandId" value="0x0220" />
+    </GuidSymbol>
+
     <GuidSymbol name="designGuid" value="{800f86f7-dada-497c-8666-ddbcce338fc0}">
       <IDSymbol name="designIcon" value="1" />
     </GuidSymbol>
 
     <GuidSymbol name="databaseGuid" value="{f93e4e1d-fdb3-4e36-9de4-9ba2718e33b8}">
       <IDSymbol name="databaseIcon" value="1" />
+    </GuidSymbol>
+
+    <GuidSymbol name="saveGuid" value="{8ab7a814-50ab-40d4-a861-470a741334d4}">
+      <IDSymbol name="saveIcon" value="1" />
     </GuidSymbol>
   </Symbols>
 </CommandTable>

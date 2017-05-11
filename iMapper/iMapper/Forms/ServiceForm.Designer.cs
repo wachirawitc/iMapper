@@ -156,6 +156,7 @@
             this.Tables.Name = "Tables";
             this.Tables.Size = new System.Drawing.Size(300, 25);
             this.Tables.TabIndex = 34;
+            this.Tables.SelectedIndexChanged += new System.EventHandler(this.OnSelectTables);
             // 
             // label1
             // 

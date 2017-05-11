@@ -150,11 +150,6 @@ namespace iMapper.Forms
             Close();
         }
 
-        private void CloseButton_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private void CreateFile(FileInfo sourceFile, string fileName, FileInfo originalFile)
         {
             var fileInProject = projectItems
@@ -193,6 +188,16 @@ namespace iMapper.Forms
                 projectItems.AddFromFileCopy(sourceFile.FullName);
                 projectItems.ContainingProject.Save();
             }
+        }
+
+        private void OnSelectTables(object sender, EventArgs e)
+        {
+            var columns = temporaryRepository
+                .GetColumns()
+                .Where(x => x.TableName.Equals(SelectTable))
+                .ToList();
+
+            Columns.DataSource = columns;
         }
     }
 }

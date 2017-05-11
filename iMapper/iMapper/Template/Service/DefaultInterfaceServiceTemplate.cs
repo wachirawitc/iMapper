@@ -35,7 +35,7 @@ namespace iMapper.Template.Service
             
             #line default
             #line hidden
-            this.Write("{\r\n    public interface I");
+            this.Write("{\r\n    public interface ");
             
             #line 10 "D:\Source\iMapper\iMapper\iMapper\Template\Service\DefaultInterfaceServiceTemplate.tt"
  Write(Name); 

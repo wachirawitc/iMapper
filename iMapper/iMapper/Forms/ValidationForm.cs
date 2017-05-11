@@ -210,6 +210,7 @@ namespace iMapper.Forms
                 projectItems.AddFromFileCopy(sourceFile.FullName);
                 projectItems.ContainingProject.Save();
             }
+            UpdateConfig();
             Close();
         }
 

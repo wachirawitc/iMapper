@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace <# Write(Namespace); #>
 {
-    public interface I<# Write(Name); #>
+    public interface <# Write(Name); #>
     {
         <# Write(TableName); #>Model Get(<# Write(GetPkParameter()); #>);
 

@@ -20,14 +20,6 @@
 
     <Buttons>
 
-      <Button guid="SaveCmdSet" id="SaveCommandId" priority="0x0100" type="Button">
-        <Parent guid="ProjectNodeCmdSet" id="ProjectNodeGroup" />
-        <Icon guid="saveGuid" id="saveIcon" />
-        <Strings>
-          <ButtonText>Resave Project (ALL)</ButtonText>
-        </Strings>
-      </Button>
-
       <Button guid="ProjectNodeCmdSet" id="ConnectDatabaseCommandId" priority="0x0101" type="Button">
         <Parent guid="ProjectNodeCmdSet" id="ProjectNodeGroup" />
         <Icon guid="databaseGuid" id="databaseIcon" />
@@ -163,11 +155,6 @@
     <GuidSymbol name="ServiceCmdSet" value="{501a94a1-4dce-46b1-ab4a-84370e66d06c}">
       <IDSymbol name="ServiceGroup" value="0x0217" />
       <IDSymbol name="ServiceCommandId" value="0x0218" />
-    </GuidSymbol>
-
-    <GuidSymbol name="SaveCmdSet" value="{84160585-dc7f-44b2-ab42-f9e135f7dce6}">
-      <IDSymbol name="SaveGroup" value="0x0219" />
-      <IDSymbol name="SaveCommandId" value="0x0220" />
     </GuidSymbol>
 
     <GuidSymbol name="ItemNodeCmdSet" value="{c5088d7f-2809-4383-84a3-25b64104575d}">

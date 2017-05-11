@@ -40,7 +40,6 @@ namespace iMapper.Commands
                     new CommandModel(0x0214, new Guid("ef162887-333c-4e3a-b22c-0d26604d0097"), ValidationProjNodeCallback),
                     new CommandModel(0x0216, new Guid("a0d109bf-55fa-4eac-838f-c2a36e9976c3"), RepositoryProjNodeCallback),
                     new CommandModel(0x0218, new Guid("501a94a1-4dce-46b1-ab4a-84370e66d06c"), ServiceCallback),
-                    new CommandModel(0x0220, new Guid("84160585-dc7f-44b2-ab42-f9e135f7dce6"), ResaveProjectCallback),
                     new CommandModel(0x0222, new Guid("c5088d7f-2809-4383-84a3-25b64104575d"), ResXResourceCallback)
                 };
 
@@ -98,18 +97,6 @@ namespace iMapper.Commands
                             }
                         }
                     }
-                }
-            }
-        }
-
-        private static void ResaveProjectCallback(object sender, EventArgs e)
-        {
-            var dte2 = Package.GetGlobalService(typeof(SDTE)) as DTE2;
-            if (dte2 != null)
-            {
-                foreach (Project project in dte2.Solution.Projects)
-                {
-                    project.Save();
                 }
             }
         }
@@ -219,7 +206,7 @@ namespace iMapper.Commands
             }
         }
 
-        private void ConnectDatabaseCallback(object sender, EventArgs e)
+        private static void ConnectDatabaseCallback(object sender, EventArgs e)
         {
             var dte2 = Package.GetGlobalService(typeof(SDTE)) as DTE2;
             if (dte2 != null)

@@ -40,7 +40,8 @@ namespace iMapper.Commands
                     new CommandModel(0x0214, new Guid("ef162887-333c-4e3a-b22c-0d26604d0097"), ValidationProjNodeCallback),
                     new CommandModel(0x0216, new Guid("a0d109bf-55fa-4eac-838f-c2a36e9976c3"), RepositoryProjNodeCallback),
                     new CommandModel(0x0218, new Guid("501a94a1-4dce-46b1-ab4a-84370e66d06c"), ServiceCallback),
-                    new CommandModel(0x0222, new Guid("c5088d7f-2809-4383-84a3-25b64104575d"), ResXResourceCallback)
+                    new CommandModel(0x0222, new Guid("c5088d7f-2809-4383-84a3-25b64104575d"), ResXResourceCallback),
+                    new CommandModel(0x0224, new Guid("7c9e6679-7425-40de-944b-e07fc1f90ae7"), TransferNameCallback)
                 };
 
                 foreach (var command in commands)
@@ -65,6 +66,30 @@ namespace iMapper.Commands
         public static void Initialize(Package package)
         {
             Instance = new MapperCommand(package);
+        }
+
+        private void TransferNameCallback(object sender, EventArgs e)
+        {
+            var dte2 = Package.GetGlobalService(typeof(SDTE)) as DTE2;
+            if (dte2 != null)
+            {
+                UIHierarchy uih = dte2.ToolWindows.SolutionExplorer;
+                Array selectedItems = (Array)uih.SelectedItems;
+                if (selectedItems == null || selectedItems.Length > 1)
+                {
+                    ShowDiabog("Select one item.", "Transfer Name");
+                }
+                else
+                {
+                    var hierarchyItem = selectedItems.Cast<UIHierarchyItem>().First();
+                    var projectItem = hierarchyItem.Object as ProjectItem;
+                    if (projectItem != null)
+                    {
+                        var form = new TransferNameForm(projectItem.ProjectItems);
+                        form.Show();
+                    }
+                }
+            }
         }
 
         private void ResXResourceCallback(object sender, EventArgs e)

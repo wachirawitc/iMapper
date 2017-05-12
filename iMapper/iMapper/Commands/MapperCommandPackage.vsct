@@ -99,6 +99,15 @@
           <ButtonText>ResX</ButtonText>
         </Strings>
       </Button>
+
+      <Button guid="TransferNameCmdSet" id="TransferNameCommandId" priority="0x0111" type="Button">
+        <Parent guid="ModelCmdSet" id="ModelGroup" />
+        <Icon guid="designGuid" id="designIcon" />
+        <Strings>
+          <ButtonText>Transfer Name</ButtonText>
+        </Strings>
+      </Button>
+      
     </Buttons>
 
     <Bitmaps>
@@ -162,6 +171,11 @@
       <IDSymbol name="ResXResourceCommandId" value="0x0222" />
     </GuidSymbol>
 
+    <GuidSymbol name="TransferNameCmdSet" value="{7c9e6679-7425-40de-944b-e07fc1f90ae7}">
+      <IDSymbol name="TransferNameGroup" value="0x0223" />
+      <IDSymbol name="TransferNameCommandId" value="0x0224" />
+    </GuidSymbol>
+    
     <GuidSymbol name="designGuid" value="{800f86f7-dada-497c-8666-ddbcce338fc0}">
       <IDSymbol name="designIcon" value="1" />
     </GuidSymbol>

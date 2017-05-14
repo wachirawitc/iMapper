@@ -86,7 +86,7 @@ namespace iMapper.Commands
                     if (projectItem != null)
                     {
                         var form = new TransferNameForm(projectItem.ProjectItems);
-                        form.Show();
+                        form.ShowDialog();
                     }
                 }
             }

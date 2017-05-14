@@ -1,6 +1,7 @@
 ﻿using EnvDTE;
 using EnvDTE80;
 using iMapper.Extensions;
+using iMapper.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Windows.Forms;
 
 namespace iMapper.Forms
 {
+    [System.Runtime.InteropServices.Guid("B3758C11-DDB7-417B-87F5-46CD3B624E92")]
     public partial class TransferNameForm : Form
     {
         private const string InterfaceName = "IMapper";
@@ -27,38 +29,49 @@ namespace iMapper.Forms
 
         private void OnClickLoad(object sender, EventArgs e)
         {
-            var models = new List<string>();
-            var items = projectItems.GetFilesIncludeSubFolder();
-            foreach (var item in items)
+            new LoadForm(() =>
             {
-                var fileCode = item.FileCodeModel as FileCodeModel2;
-                if (fileCode != null)
+                Invoke((MethodInvoker)delegate
                 {
-                    var codeElements = fileCode.CodeElements;
-                    foreach (CodeElement codeElement in codeElements)
+                    var models = new List<TransferNameModel>();
+                    var items = projectItems.GetCodeClasses();
+                    foreach (var item in items)
                     {
-                        if (codeElement.Kind == vsCMElement.vsCMElementNamespace)
+                        foreach (var codeClass in item.CodeClasses)
                         {
-                            foreach (CodeElement element in codeElement.Children)
+                            string fileName = item.ProjectItem.Name;
+                            string className = codeClass.Name;
+
+                            var implementedInterface = codeClass.ImplementedInterfaces.OfType<CodeInterface>().FirstOrDefault();
+                            if (implementedInterface != null)
                             {
-                                if (element.Kind == vsCMElement.vsCMElementClass)
+                                string interfaceName = implementedInterface.FullName;
+                                string namespaceFullName = implementedInterface.Namespace.FullName;
+                                var strings = interfaceName.Replace(namespaceFullName + ".", string.Empty).Split('<', '>').ToList();
+                                if (strings.Count == 3 && strings[1].IndexOf(',') > 0)
                                 {
-                                    var codeClass = element as CodeClass;
-                                    if (codeClass != null)
+                                    var mapClass = strings[1].Split(',').ToList();
+                                    if (mapClass.Count == 2)
                                     {
-                                        var implementedInterface = codeClass.ImplementedInterfaces.OfType<CodeInterface>().FirstOrDefault();
-                                        if (implementedInterface != null)
+                                        var source = mapClass[0].Split('.').Last();
+                                        var destination = mapClass[1].Split('.').Last();
+
+                                        var targetClassName = $"Map{source}To{destination}";
+                                        var targetFileName = $"{targetClassName}.cs";
+
+                                        if (targetFileName.Equals(fileName) == false || targetClassName.Equals(className) == false)
                                         {
-                                            string interfaceName = implementedInterface.FullName;
-                                            string namespaceFullName = implementedInterface.Namespace.FullName;
+                                            models.Add(new TransferNameModel { FileName = fileName });
                                         }
                                     }
                                 }
                             }
                         }
                     }
-                }
-            }
+
+                    abnormalDatas.DataSource = models;
+                });
+            }).ShowDialog();
         }
     }
 }

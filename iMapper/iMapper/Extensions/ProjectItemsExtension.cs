@@ -50,10 +50,11 @@ namespace iMapper.Extensions
         public static IEnumerable<CodeClassModel> GetCodeClasses(this ProjectItems projectItems)
         {
             var models = new List<CodeClassModel>();
-
+            
             var items = GetFilesIncludeSubFolder(projectItems);
             foreach (var item in items)
             {
+                string name = item.Name;
                 var fileCode = item.FileCodeModel as FileCodeModel2;
                 if (fileCode != null)
                 {

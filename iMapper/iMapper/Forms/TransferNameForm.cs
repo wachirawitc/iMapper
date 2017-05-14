@@ -59,9 +59,29 @@ namespace iMapper.Forms
                                         var targetClassName = $"Map{source}To{destination}";
                                         var targetFileName = $"{targetClassName}.cs";
 
-                                        if (targetFileName.Equals(fileName) == false || targetClassName.Equals(className) == false)
+                                        if (targetFileName.Equals(fileName) == false && targetClassName.Equals(className) == false)
                                         {
-                                            models.Add(new TransferNameModel { FileName = fileName });
+                                            models.Add(new TransferNameModel
+                                            {
+                                                FileName = fileName,
+                                                Reason = "File name and class name is incorrect"
+                                            });
+                                        }
+                                        else if (targetFileName.Equals(fileName) == false)
+                                        {
+                                            models.Add(new TransferNameModel
+                                            {
+                                                FileName = fileName,
+                                                Reason = "File name is incorrect"
+                                            });
+                                        }
+                                        else if (targetClassName.Equals(className) == false)
+                                        {
+                                            models.Add(new TransferNameModel
+                                            {
+                                                FileName = fileName,
+                                                Reason = "Class name is incorrect"
+                                            });
                                         }
                                     }
                                 }

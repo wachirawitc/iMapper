@@ -241,7 +241,10 @@
     <Content Include="Commands\Resources\office-material.png" />
     <Content Include="Commands\Resources\reload.png" />
     <Content Include="Commands\Resources\save.png" />
-    <Content Include="icon.ico" />
+    <Content Include="icon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="MapperCommandPackage.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>

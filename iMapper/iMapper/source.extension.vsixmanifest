@@ -4,7 +4,7 @@
     <Identity Id="iMapper.Company.b808327e-d33e-48fc-9980-a06522867952" Version="2.0.3" Language="en-US" Publisher="ToomDev" />
     <DisplayName>iMapper</DisplayName>
     <Description xml:space="preserve">Code Generator</Description>
-    <Icon>MapperCommandPackage.ico</Icon>
+    <Icon>icon.ico</Icon>
   </Metadata>
   <Installation>
     <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[14.0]" />

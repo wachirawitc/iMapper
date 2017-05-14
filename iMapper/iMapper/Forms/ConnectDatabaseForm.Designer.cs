@@ -84,7 +84,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(463, 44);
+            this.label2.Location = new System.Drawing.Point(237, 44);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 17);
@@ -94,7 +94,7 @@
             // Username
             // 
             this.Username.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Username.Location = new System.Drawing.Point(467, 64);
+            this.Username.Location = new System.Drawing.Point(241, 64);
             this.Username.Margin = new System.Windows.Forms.Padding(4);
             this.Username.Name = "Username";
             this.Username.Size = new System.Drawing.Size(155, 25);
@@ -104,7 +104,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(626, 44);
+            this.label3.Location = new System.Drawing.Point(400, 44);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(57, 17);
@@ -114,7 +114,7 @@
             // Password
             // 
             this.Password.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Password.Location = new System.Drawing.Point(630, 64);
+            this.Password.Location = new System.Drawing.Point(404, 64);
             this.Password.Margin = new System.Windows.Forms.Padding(4);
             this.Password.Name = "Password";
             this.Password.Size = new System.Drawing.Size(156, 25);
@@ -134,7 +134,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(237, 44);
+            this.label4.Location = new System.Drawing.Point(564, 44);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(95, 17);
@@ -144,7 +144,7 @@
             // DatabaseName
             // 
             this.DatabaseName.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DatabaseName.Location = new System.Drawing.Point(241, 64);
+            this.DatabaseName.Location = new System.Drawing.Point(568, 64);
             this.DatabaseName.Margin = new System.Windows.Forms.Padding(4);
             this.DatabaseName.Name = "DatabaseName";
             this.DatabaseName.Size = new System.Drawing.Size(218, 25);

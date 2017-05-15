@@ -3,7 +3,7 @@
   <Metadata>
     <Identity Id="iMapper.Company.b808327e-d33e-48fc-9980-a06522867952" Version="2.0.3" Language="en-US" Publisher="ToomDev" />
     <DisplayName>iMapper</DisplayName>
-    <Description xml:space="preserve">Code Generator</Description>
+    <Description xml:space="preserve">Tool for generator model , service , repository , mapper from database schema (Microsoft SQL Server)</Description>
     <Icon>icon.ico</Icon>
   </Metadata>
   <Installation>

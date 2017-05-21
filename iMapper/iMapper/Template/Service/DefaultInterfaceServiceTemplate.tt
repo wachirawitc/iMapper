@@ -12,5 +12,10 @@ namespace <# Write(Namespace); #>
         <# Write(TableName); #>Model Get(<# Write(GetPkParameter()); #>);
 
         List<<# Write(TableName); #>Model> Get<# Write(TableNamePluralize); #>();
+
+        <# if(HasPk){ #>
+bool IsExisting(<# Write(GetPkParameter()); #>);
+        <# } #>
+
     }
 }

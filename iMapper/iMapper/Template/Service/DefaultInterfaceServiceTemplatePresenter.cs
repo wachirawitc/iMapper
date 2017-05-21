@@ -27,7 +27,9 @@ namespace iMapper.Template.Service
             var items = Columns.Where(x => x.IsPrimaryKey)
                 .Select(x => $"{x.DataType.GetMsType(x.IsNullable)} {x.ColumnName.Camelize()}")
                 .ToList();
-            return string.Join(",", items);
+            return string.Join(" , ", items);
         }
+
+        public bool HasPk => Columns.Any(x => x.IsPrimaryKey);
     }
 }

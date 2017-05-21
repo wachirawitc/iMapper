@@ -70,7 +70,28 @@ namespace iMapper.Template.Service
             
             #line default
             #line hidden
-            this.Write("();\r\n    }\r\n}");
+            this.Write("();\r\n\r\n        ");
+            
+            #line 16 "D:\Source\iMapper\iMapper\iMapper\Template\Service\DefaultInterfaceServiceTemplate.tt"
+ if(HasPk){ 
+            
+            #line default
+            #line hidden
+            this.Write("bool IsExisting(");
+            
+            #line 17 "D:\Source\iMapper\iMapper\iMapper\Template\Service\DefaultInterfaceServiceTemplate.tt"
+ Write(GetPkParameter()); 
+            
+            #line default
+            #line hidden
+            this.Write(");\r\n        ");
+            
+            #line 18 "D:\Source\iMapper\iMapper\iMapper\Template\Service\DefaultInterfaceServiceTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

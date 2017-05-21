@@ -29,5 +29,12 @@ namespace <# Write(Namespace); #>
         {
             throw new NotImplementedException();
         }
+
+        <# if(HasPk){ #>
+public bool IsExisting(<# Write(GetPkParameter()); #>)
+        {
+            throw new NotImplementedException();
+        }
+        <# } #>
     }
 }

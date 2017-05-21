@@ -33,7 +33,7 @@ namespace iMapper.Template.Repository
             var items = Columns.Where(x => x.IsPrimaryKey)
                 .Select(x => $"{x.DataType.GetMsType(x.IsNullable)} {x.ColumnName.Camelize()}")
                 .ToList();
-            return string.Join(",", items);
+            return string.Join(" , ", items);
         }
 
         public string GetPkArgument()
@@ -41,7 +41,7 @@ namespace iMapper.Template.Repository
             var items = Columns.Where(x => x.IsPrimaryKey)
                 .Select(x => $"x.{x.ColumnName} == {x.ColumnName.Camelize()}")
                 .ToList();
-            return string.Join(",", items);
+            return string.Join(" && ", items);
         }
 
         public string GetPkUpdateArgument()
@@ -49,7 +49,7 @@ namespace iMapper.Template.Repository
             var items = Columns.Where(x => x.IsPrimaryKey)
                 .Select(x => $"x.{x.ColumnName} == {TableNameCamelize}.{x.ColumnName}")
                 .ToList();
-            return string.Join(",", items);
+            return string.Join(" && ", items);
         }
 
         public bool HasPk => Columns.Any(x => x.IsPrimaryKey);

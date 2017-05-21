@@ -141,8 +141,30 @@ namespace iMapper.Template.Service
             
             #line default
             #line hidden
-            this.Write("()\r\n        {\r\n            throw new NotImplementedException();\r\n        }\r\n    }" +
-                    "\r\n}");
+            this.Write("()\r\n        {\r\n            throw new NotImplementedException();\r\n        }\r\n\r\n   " +
+                    "     ");
+            
+            #line 33 "D:\Source\iMapper\iMapper\iMapper\Template\Service\DefaultServiceTemplate.tt"
+ if(HasPk){ 
+            
+            #line default
+            #line hidden
+            this.Write("public bool IsExisting(");
+            
+            #line 34 "D:\Source\iMapper\iMapper\iMapper\Template\Service\DefaultServiceTemplate.tt"
+ Write(GetPkParameter()); 
+            
+            #line default
+            #line hidden
+            this.Write(")\r\n        {\r\n            throw new NotImplementedException();\r\n        }\r\n      " +
+                    "  ");
+            
+            #line 38 "D:\Source\iMapper\iMapper\iMapper\Template\Service\DefaultServiceTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

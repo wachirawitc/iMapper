@@ -12,4 +12,4 @@ namespace <# WriteLine(Namespace); #>
 	{<#    foreach(var column in Columns) { #> 
 		public <# Write(column.DataType.GetMsType(column.IsNullable)); #> <# Write(GetName(column.ColumnName)); #> { get; set; } 
 	<#    } #>}
-}
+} 
